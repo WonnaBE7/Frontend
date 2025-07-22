@@ -1,15 +1,13 @@
 <template>
-  <div class="flex justify-center">
+  <div class="scrollbar-hide flex justify-center bg-white">
     <div
-      class="w-full md:max-w-[768px] bg-gray-BGDim min-h-screen flex flex-col"
+      class="w-full md:max-w-[768px] bg-gray-BGDim min-h-screen flex flex-col overscroll-none"
     >
       <PWAUpdatePrompt />
       <Header />
-
-      <main class="flex-grow px-4 sm:px-5 pt-20 pb-20">
+      <main class="scrollbar-hide flex-grow px-4 sm:px-5 pt-20 pb-20 bg-gray-BGDim">
         <slot />
       </main>
-
       <Navigator />
     </div>
   </div>
