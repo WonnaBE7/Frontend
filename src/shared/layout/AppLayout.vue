@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col min-h-screen w-full bg-gray-BGDim">
+  <div class="flex flex-col min-h-screen  bg-gray-BGDim">
     <OfflineIndicator />
     <PWAUpdatePrompt />
     <Header />
-    <main class="flex-1 px-4 sm:px-5 pt-16 pb-12 w-full max-w-[360px] md:max-w-[768px] mx-auto">
+    <main class="flex-1 px-4 sm:px-5 pt-16 pb-12 w-full md:max-w-[768px] mx-auto">
       <slot />
     </main>
     <Navigator />
