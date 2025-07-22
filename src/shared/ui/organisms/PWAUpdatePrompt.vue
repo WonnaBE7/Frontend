@@ -19,13 +19,13 @@
         <div class="flex space-x-3">
           <button
             @click="updateApp"
-            class="flex-1 bg-primary-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors"
+            class="flex-1 bg-primary-500 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors"
           >
             업데이트
           </button>
           <button
             @click="dismissUpdate"
-            class="px-4 py-3 text-gray-500 hover:text-gray-700 transition-colors"
+            class="px-4 py-3 text-gray-500 hover:text-gray-300 transition-colors"
           >
             나중에
           </button>
