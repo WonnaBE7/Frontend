@@ -1,6 +1,8 @@
 import type { Config } from 'tailwindcss'
+import scrollbarHide from 'tailwind-scrollbar-hide'
 
 export default {
+  plugins: [scrollbarHide],
   content: [
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
@@ -45,5 +47,4 @@ export default {
       },
     },
   },
-  plugins: [],
 } satisfies Config

@@ -1,11 +1,9 @@
 <template>
-  <div id="app" class="min-h-screen">
+  <div id="app" class="safe-top-white overscroll-none overflow-x-hidden font-sans min-h-screen pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
     <RouterView />
-    <!-- <PWAUpdatePrompt /> -->
   </div>
 </template>
 
 <script setup lang="ts">
-//import PWAUpdatePrompt from '@/shared/ui/PWAUpdatePrompt/PWAUpdatePrompt.vue'
+import '@/style.css'
 </script>
-

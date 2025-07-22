@@ -1,9 +1,38 @@
 <template>
   <AppLayout>
     <CardBox>
-      <h2 class="font-Pretendard font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
     </CardBox>
     <CardBox>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+    </CardBox>
+    
+    <CardBox>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+    </CardBox>
+    <CardBox>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+    </CardBox>
+    <CardBox>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+    </CardBox>
+    <CardBox>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
+      <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
       <h2 class="font-bold text-lg mb-2">메인 페이지</h2>
     </CardBox>
   </AppLayout>

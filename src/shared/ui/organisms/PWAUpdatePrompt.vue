@@ -5,7 +5,7 @@
       class="fixed inset-0 bg-black bg-opacity-50 flex items-end z-50"
       @click="handleBackdropClick"
     >
-      <div class="bg-white w-full rounded-t-xl p-6 transform transition-transform duration-300">
+      <div class=" fixed bottom-0 left-1/2 -translate-x-1/2 bg-white w-full md:max-w-[768px] rounded-t-xl p-6 transform transition-transform duration-300">
         <div class="flex items-center space-x-4 mb-4">
           <div class="w-12 h-12 bg-primary-500 rounded-xl flex items-center justify-center">
             <span class="text-white text-xl">🚀</span>
@@ -19,13 +19,13 @@
         <div class="flex space-x-3">
           <button
             @click="updateApp"
-            class="flex-1 bg-primary-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors"
+            class="flex-1 bg-primary-500 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors"
           >
             업데이트
           </button>
           <button
             @click="dismissUpdate"
-            class="px-4 py-3 text-gray-500 hover:text-gray-700 transition-colors"
+            class="px-4 py-3 text-gray-500 hover:text-gray-300 transition-colors"
           >
             나중에
           </button>
