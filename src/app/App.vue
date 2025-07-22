@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="safe-area-fill overscroll-none overflow-x-hidden font-sans">
+  <div id="app" class="bg-white safe-area-fill overscroll-none overflow-x-hidden font-sans">
     <RouterView />
   </div>
 </template>
