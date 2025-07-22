@@ -1,10 +1,9 @@
 <template>
   <div class="flex justify-center">
-    <div class="w-full md:max-w-[768px] bg-gray-BGDim min-h-screen flex flex-col">
-      <OfflineIndicator />
+    <div class="w-full md:max-w-[768px] bg-gray-BGDim flex flex-col overscroll-none min-h-screen">
       <PWAUpdatePrompt />
       <Header />
-      <main class="flex-grow px-4 sm:px-5 pt-24 pb-20">
+      <main class="flex-grow px-4 sm:px-5 pt-20 pb-20">
         <slot />
       </main>
       <Navigator />

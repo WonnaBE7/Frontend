@@ -15,5 +15,5 @@ select {
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
-  background-color: #ffffff; /* 회색 배경 */
+  background-color: #ffffff; /* 흰색 배경 */
 }
