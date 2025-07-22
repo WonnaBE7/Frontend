@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed bottom-0 left-1/2 -translate-x-1/2 z-10 w-full max-w-[360px] md:max-w-[768px]
+    class="fixed bottom-0 left-1/2 -translate-x-1/2 z-10 w-full  md:max-w-[768px]
            bg-white border-t border-gray-200 flex justify-around items-center h-20"
   >
     <RouterLink
@@ -14,7 +14,7 @@
       ]"
     >
       <component :is="item.icon" class="w-5 h-5 mb-1" />
-      <span class="text-xs">{{ item.label }}</span>
+      <span class="text-s mb-4">{{ item.label }}</span>
     </RouterLink>
   </nav>
 </template>

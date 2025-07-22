@@ -1,10 +1,11 @@
 <template>
-  <div class="flex justify-center bg-white min-h-screen">
+  <div class="flex flex-col min-h-screen  bg-gray-BGDim">
+    <OfflineIndicator />
     <PWAUpdatePrompt />
     <Header />
-    <div class="w-full max-w-[360px] md:max-w-[768px] bg-gray-BGDim px-4 sm:px-5 pt-16 pb-12">
+    <main class="flex-1 px-4 sm:px-5 pt-16 pb-12 w-full md:max-w-[768px] mx-auto">
       <slot />
-    </div>
+    </main>
     <Navigator />
   </div>
 </template>
