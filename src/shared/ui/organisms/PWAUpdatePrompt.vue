@@ -16,10 +16,10 @@
           </div>
         </div>
         
-        <div class="flex space-x-4">
+        <div class="flex justify-end space-x-2">
           <button
             @click="updateApp"
-            class="flex-1 bg-primary-500 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors"
+            class="bg-gray-500 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-gray-600 transition-colors"
           >
             업데이트
           </button>

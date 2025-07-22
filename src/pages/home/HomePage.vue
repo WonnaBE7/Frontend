@@ -7,10 +7,10 @@
     <LabelInput  label="이름"></LabelInput>
     <LabelInput  label="이메일"></LabelInput>
     
-    <Button>
+    <Button customClass="bg-sub-yellow-p text-black hover:bg:sub-yellow-bg">
       노란 버튼
     </Button>
-    <Button customClass="bg-gray-50 text-black border border-gray-500">
+    <Button customClass="bg-gray-50 text-black border border-gray-500 hover:bg:gray-100">
       하얀 버튼
     </Button>
   </AppLayout>
