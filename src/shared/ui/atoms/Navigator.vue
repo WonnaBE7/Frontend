@@ -14,7 +14,7 @@
       ]"
     >
       <component :is="item.icon" class="w-5 h-5 mb-1" />
-      <span class="text-xs">{{ item.label }}</span>
+      <span class="text-s mb-4">{{ item.label }}</span>
     </RouterLink>
   </nav>
 </template>
