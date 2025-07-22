@@ -1,8 +1,7 @@
 <template>
     <button
-        :type="type"
         :class="[
-            'w-full px-4 py-2 rounded font-pretendard text-xs',
+            'w-full px-4 py-2 rounded font-pretendard text-sm',
             defaultClass,
             customClass
         ]"
@@ -17,5 +16,5 @@ const props = defineProps({
     customClass : {type : String, default : " "}
 })
 
-const defaultClass = 'bg-sub-yellow-p text-black hover:bg:sub-yellow-s'
+const defaultClass = 'bg-sub-yellow-p text-black hover:bg:sub-yellow-bg'
 </script>
