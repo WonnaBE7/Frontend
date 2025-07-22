@@ -5,7 +5,7 @@
     >
       <PWAUpdatePrompt />
       <Header />
-      <main class="scrollbar-hide flex-grow px-4 sm:px-5 pt-20 pb-20 bg-gray-BGDim">
+      <main class="scrollbar-hide flex-grow p-4 sm:px-5 pt-20 pb-20 bg-gray-BGDim">
         <slot />
       </main>
       <Navigator />
