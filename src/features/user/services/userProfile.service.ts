@@ -1,4 +1,4 @@
-import type { UserProfile } from '@/entities/user/user.entity'
+import type { UserProfile } from '@/entities/user/user-profile/user.entity'
 
 export const getMockUserProfile = (): UserProfile => ({
   name: '김보성',
