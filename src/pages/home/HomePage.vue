@@ -18,13 +18,18 @@
       <FinTypeCard label="YOLO 형" descript="즐겨요 ㅠ"></FinTypeCard>
       <FinTypeCard label="자린고비형" descript="돈없어요 ㅠ"></FinTypeCard>
     </div>
+
+    <Card>
+      <Input label="테스트"/>
+    </Card>
   </AppLayout>
 </template>
 
 <script setup lang="ts">
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
-import LabelInput from '@/shared/ui/atoms/LabelInput.vue'
+import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import FinTypeCard from '@/shared/ui/molecules/FinTypeCard.vue'
+import Input from '@/shared/ui/atoms/Input.vue'
 </script>
