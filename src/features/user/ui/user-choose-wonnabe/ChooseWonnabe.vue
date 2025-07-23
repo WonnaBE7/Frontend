@@ -10,7 +10,7 @@
         :key="type.label"
         @click="toggleSelect(type.label)"
         :class="[
-          'cursor-pointer transition rounded-xl', // 추가적으로 radius 주면 더 예쁨
+          'cursor-pointer transition rounded-xl',
           selected.includes(type.label) ? 'ring-2 ring-yellow-400' : ''
         ]"
       >

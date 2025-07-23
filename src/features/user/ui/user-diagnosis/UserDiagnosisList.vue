@@ -39,6 +39,5 @@ const answers = ref<(number | null)[]>(Array(questions.length).fill(null))
 
 const submitAnswers = () => {
   console.log('진단 결과:', answers.value)
-  // 추후 axios.post('/api/diagnosis', answers.value) 가능
 }
 </script>
