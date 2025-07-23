@@ -19,14 +19,12 @@
         <div class="w-1/2 flex justify-end ml-auto space-x-2">
           <Button
             @click="updateApp"
-            class="bg-gray-900 text-gray-200 hover:bg-gray-600 transition-colors"
           >
             업데이트
           </Button>
           <Button
             label="white"
             @click="dismissUpdate"
-            class="bg-gray-100 text-gray-500 hover:text-gray-300 transition-colors"
           >
             나중에
           </Button>
