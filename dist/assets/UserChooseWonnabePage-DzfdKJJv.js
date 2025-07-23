@@ -1,1 +1,0 @@
-import{a}from"./AppLayout.vue_vue_type_script_setup_true_lang-BUVbdR5K.js";import{_ as e}from"./UserTitle.vue_vue_type_script_setup_true_lang-CWZUAF-R.js";import{d as o,a as s,w as t,o as r,f as n}from"./index-Yuy5okMT.js";const l=o({__name:"UserChooseWonnabePage",setup(_){return(c,m)=>(r(),s(a,null,{default:t(()=>[n(e,{label:"워너비 선택"})]),_:1}))}});export{l as default};

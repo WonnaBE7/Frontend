@@ -9,7 +9,7 @@
     
     <div class="flex flex-row w-full gap-4">
       <FinTypeCard label="자린고비형" descript="돈없어요 ㅠ"></FinTypeCard>
-      <FinTypeCard label="YOLO 형" descript="즐겨요 ㅠ"></FinTypeCard>
+      <FinTypeCard label="YOLO형" descript="즐겨요 ㅠ"></FinTypeCard>
       <FinTypeCard label="자린고비형" descript="돈없어요 ㅠ"></FinTypeCard>
     </div>
 
