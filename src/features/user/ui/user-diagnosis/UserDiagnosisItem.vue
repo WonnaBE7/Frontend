@@ -16,7 +16,8 @@
           class="sr-only"
           :name="`q-${index}`"
           :value="choice.value"
-          v-model="selected"
+          :checked="selected === choice.value"
+          @change="() => emit('update:selected', choice.value)"
         />
         <div
           class="w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center"
@@ -33,7 +34,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import Tag from '@/shared/ui/atoms/Tag.vue'
@@ -44,7 +44,10 @@ defineProps<{
   index: number
   total: number
   choices: { value: number; label: string }[]
+  selected: number | null
 }>()
 
-const selected = ref<number | null>(null)
+const emit = defineEmits<{
+  (e: 'update:selected', value: number): void
+}>()
 </script>

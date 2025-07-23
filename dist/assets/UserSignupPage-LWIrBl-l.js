@@ -1,0 +1,1 @@
+import{a}from"./AppLayout.vue_vue_type_script_setup_true_lang-BUVbdR5K.js";import{_ as e}from"./UserTitle.vue_vue_type_script_setup_true_lang-CWZUAF-R.js";import{d as o,a as t,w as r,o as s,f as _}from"./index-Yuy5okMT.js";const l=o({__name:"UserSignupPage",setup(n){return(c,m)=>(s(),t(a,null,{default:r(()=>[_(e,{label:"회원 가입"})]),_:1}))}});export{l as default};
