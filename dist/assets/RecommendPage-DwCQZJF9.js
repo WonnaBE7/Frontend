@@ -1,1 +1,0 @@
-import{_ as e}from"./AppLayout.vue_vue_type_script_setup_true_lang-Crews53L.js";import{d as o,c as a,o as c}from"./index-BaMhHUJh.js";const s=o({__name:"RecommendPage",setup(n){return(r,t)=>(c(),a(e))}});export{s as default};

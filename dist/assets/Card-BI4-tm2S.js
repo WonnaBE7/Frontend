@@ -1,1 +1,0 @@
-import{d as o}from"./AppLayout.vue_vue_type_script_setup_true_lang-Crews53L.js";import{g as s,o as t,l as r}from"./index-BaMhHUJh.js";const c={},n={class:"flex flex-col items-center justify-center bg-white shadow-sm rounded-2xl p-5 mb-4 w-full"};function l(e,a){return t(),s("div",n,[r(e.$slots,"default")])}const i=o(c,[["render",l]]);export{i as C};

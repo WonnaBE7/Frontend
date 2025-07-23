@@ -18,7 +18,7 @@
 import { ref } from 'vue'
 import UserDiagnosisItem from '@/features/user/ui/user-diagnosis/UserDiagnosisItem.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
-import {choices, questions} from '@/entities/user/user-profile/userDiagnosis.constants.ts'
+import {choices, questions} from '@/features/user/constants/userDiagnosis.ts'
 const answers = ref<(number | null)[]>(Array(questions.length).fill(null))
 
 const submitAnswers = () => {
