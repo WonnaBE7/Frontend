@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import Header from '@/shared/ui/atoms/Header.vue'
-import Navigator from '@/shared/ui/atoms/Navigator.vue'
+import Header from '@/shared/ui/molecules/Header.vue'
+import Navigator from '@/shared/ui/molecules/Navigator.vue'
 import PWAUpdatePrompt from '@/shared/ui/organisms/PWAUpdatePrompt.vue'
 </script>
