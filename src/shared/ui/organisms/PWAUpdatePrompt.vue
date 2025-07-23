@@ -16,7 +16,7 @@
           </div>
         </div>
         
-        <div class="w-1/3 flex justify-end ml-auto space-x-2">
+        <div class="w-1/2 flex justify-end ml-auto space-x-2">
           <Button
             @click="updateApp"
             class="bg-gray-900 text-gray-200 hover:bg-gray-600 transition-colors"

@@ -9,7 +9,7 @@
       :to="item.path"
       :class="[
         'flex flex-col items-center justify-center w-full py-2 text-gray-500',
-        route.name === item.name ? 'text-sub-yellow-p' : '',
+        (route.path === item.path || route.path.startsWith(item.path + '/')) ? 'text-sub-yellow-p' : '',
         'hover:text-sub-yellow-c'
       ]"
     >
