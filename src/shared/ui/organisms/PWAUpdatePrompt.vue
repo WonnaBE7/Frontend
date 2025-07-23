@@ -24,6 +24,7 @@
             업데이트
           </Button>
           <Button
+            label="white"
             @click="dismissUpdate"
             class="bg-gray-100 text-gray-500 hover:text-gray-300 transition-colors"
           >
