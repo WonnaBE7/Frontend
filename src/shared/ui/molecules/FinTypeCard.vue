@@ -6,8 +6,8 @@
             alt="성향 이미지"
             class="w-full p-4"
         >
-        <Typography type="Body1">{{label}}</Typography>
-        <Typography type="Small2">{{descript}}</Typography>
+        <Typography type="B_14_140">{{label}}</Typography>
+        <Typography type="M_12_120" class="text-gray-500">{{descript}}</Typography>
     </CardBox>
 
 </template>

@@ -22,6 +22,13 @@
     <Card>
       <Input label="테스트"/>
     </Card>
+
+    <Tag>
+      여행
+    </Tag>
+    <NoBorderTag color="bg-sub-yellow-p text-white">
+      추가 추천
+    </NoBorderTag>
   </AppLayout>
 </template>
 
@@ -32,4 +39,6 @@ import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import FinTypeCard from '@/shared/ui/molecules/FinTypeCard.vue'
 import Input from '@/shared/ui/atoms/Input.vue'
+import Tag from '@/shared/ui/atoms/Tag.vue'
+import NoBorderTag from '@/shared/ui/atoms/NoBorderTag.vue'
 </script>
