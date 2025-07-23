@@ -1,10 +1,10 @@
 <template>
     <span 
-        :class="['inline-flex items-center px-3 py-1 rounded-full', 
+        :class="['inline-flex items-center px-4 py-1 rounded-full', 
         color]
         "
     >
-      <Typography type="B_12_140">
+      <Typography type="M_12_140">
         <slot />
       </Typography>
     </span>

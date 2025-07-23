@@ -1,6 +1,6 @@
 <template>
-    <span class="inline-flex items-center px-3 py-1 rounded-full border border-gray-500">
-      <Typography type="B_12_140">
+    <span class="inline-flex items-center px-4 py-1 rounded-full border border-gray-500">
+      <Typography type="M_12_140">
         <slot />
       </Typography>
     </span>
