@@ -14,13 +14,13 @@
             </div>
         </div>
     </Card>
-  </template>
+</template>
   
-  <script setup lang="ts">
-  import type { UserProfile } from '@/entities/user/user.entity'
-  import Typography from '@/shared/ui/atoms/Typography.vue'
-  import Card from '@/shared/ui/atoms/Card.vue'
-import NoBorderTag from '@/shared/ui/atoms/NoBorderTag.vue';
+<script setup lang="ts">
+    import type { UserProfile } from '@/entities/user/user.entity.ts'
+    import Typography from '@/shared/ui/atoms/Typography.vue'
+    import Card from '@/shared/ui/atoms/Card.vue'
+    import NoBorderTag from '@/shared/ui/atoms/NoBorderTag.vue';
   
   defineProps<{ profile: UserProfile }>()
-  </script>
+</script>

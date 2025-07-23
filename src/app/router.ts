@@ -1,52 +1,61 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
-import HomePage from '@/pages/home/HomePage.vue'
-import RecommendPage from '@/pages/recommend/RecommendPage.vue'
-import BoardPage from '@/pages/board/BoardPage.vue'
-import GoalSimulationPage from '@/pages/goal/GoalSimulationPage.vue'
-import UserPage from '@/pages/user/UserPage.vue'
-
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: HomePage,
-    meta: {
-      title: '홈'
-    }
+    component: () => import('@/pages/home/HomePage.vue'),
+    meta: { title: '홈' }
   },
   {
     path: '/recommend',
     name: 'Recommend',
-    component: RecommendPage,
-    meta: {
-      title: '상품 추천'
-    }
+    component: () => import('@/pages/recommend/RecommendPage.vue'),
+    meta: { title: '상품 추천' }
   },
   {
     path: '/board',
     name: 'Board',
-    component: BoardPage,
-    meta: {
-      title: '게시판'
-    }
+    component: () => import('@/pages/board/BoardPage.vue'),
+    meta: { title: '게시판' }
   },
   {
     path: '/goal',
     name: 'Goal',
-    component: GoalSimulationPage,
-    meta: {
-      title: '목표 시뮬레이션'
-    }
+    component: () => import('@/pages/goal/GoalSimulationPage.vue'),
+    meta: { title: '목표 시뮬레이션' }
   },
   {
     path: '/user',
     name: 'User',
-    component: UserPage,
-    meta: {
-      title: '유저 페이지'
-    }
+    component: () => import('@/pages/user/UserProfilePage.vue'),
+    meta: { title: '유저 페이지' }
+  },
+  {
+    path: '/user/signup',
+    name: 'UserSignupPage',
+    component: () => import('@/pages/user/UserSignupPage.vue')
+  },
+  {
+    path: '/user/profile-edit',
+    name: 'UserProfileEditPage',
+    component: () => import('@/pages/user/UserProfileEditPage.vue')
+  },
+  {
+    path: '/user/choose-wonnabe',
+    name: 'UserChooseWonnabePage',
+    component: () => import('@/pages/user/UserChooseWonnabePage.vue')
+  },
+  {
+    path: '/user/diagnosis',
+    name: 'UserDiagnosisPage',
+    component: () => import('@/pages/user/UserDiagnosisPage.vue')
+  },
+  {
+    path: '/user/history',
+    name: 'UserHistoryPage',
+    component: () => import('@/pages/user/UserHistoryPage.vue')
   },
   {
     path: '/:pathMatch(.*)*',
