@@ -37,7 +37,7 @@
   import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
   import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
-  import { ref, computed, watch } from 'vue'
+  import { ref, computed } from 'vue'
   
   interface Term {
     id: string
