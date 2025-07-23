@@ -1,6 +1,6 @@
 <template>
     <AppLayout>
-      <UserTitle label="회원정보 수정"/>
+      <UserTitle :label="'회원정보 수정'" :subText="userSubTextMap['회원정보 수정']" />
       <UserProfileCard ></UserProfileCard>
       <UserProfileEditForm></UserProfileEditForm>
     </AppLayout>
@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
+import { userSubTextMap } from '@/features/user/constants/userSubTextMap'
 import UserProfileCard from '@/features/user/ui/UserProfileCard.vue';
 import UserProfileEditForm from '@/features/user/ui/user-profile-edit/UserProfileEditForm.vue'
 </script>
