@@ -9,6 +9,34 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        h1: ['22px', '160%'],
+        h2: ['22px', '160%'],
+        h3: ['20px', '160%'],
+        h4: ['20px', '120%'],
+        subtitle: ['18px', '120%'],
+        'body-lg-1': ['16px', '160%'],
+        'body-lg-2': ['16px', '160%'],
+        'body-lg-3': ['16px', '140%'],
+        'body-lg-4': ['16px', '140%'],
+        'body-lg-5': ['16px', '120%'],
+        'body-lg-6': ['16px', '120%'],
+        'body-1': ['14px', '140%'],
+        'body-2': ['14px', '160%'],
+        'body-3': ['14px', '140%'],
+        'body-4': ['14px', '120%'],
+        'body-5': ['14px', '120%'],
+        'small-1': ['12px', '140%'],
+        'small-2': ['12px', '140%'],
+        'small-3': ['12px', '120%'],
+        'small-4': ['12px', '120%'],
+        'small-5': ['10px', '120%'],
+        'small-6': ['10px', '120%']
+      },
+      fontWeight: {
+        medium: '500',
+        bold: '700'
+      },
       fontFamily: {
         sans: ['Pretendard', 'ui-sans-serif', 'system-ui'],
         pretendard: ['Pretendard', 'sans-serif'],

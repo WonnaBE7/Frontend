@@ -16,19 +16,19 @@
           </div>
         </div>
         
-        <div class="flex space-x-3">
-          <button
+        <div class="w-1/3 flex justify-end ml-auto space-x-2">
+          <Button
             @click="updateApp"
-            class="flex-1 bg-primary-500 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors"
+            class="bg-gray-900 text-gray-200 hover:bg-gray-600 transition-colors"
           >
             업데이트
-          </button>
-          <button
+          </Button>
+          <Button
             @click="dismissUpdate"
-            class="px-4 py-3 text-gray-500 hover:text-gray-300 transition-colors"
+            class="bg-gray-100 text-gray-500 hover:text-gray-300 transition-colors"
           >
             나중에
-          </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -37,6 +37,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import Button from '../atoms/Button.vue'
 
 const showUpdatePrompt = ref(false)
 

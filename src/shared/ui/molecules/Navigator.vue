@@ -9,8 +9,8 @@
       :to="item.path"
       :class="[
         'flex flex-col items-center justify-center w-full py-2 text-gray-500',
-        route.name === item.name ? 'text-gray-600' : '',
-        'hover:text-yellow-400'
+        route.name === item.name ? 'text-sub-yellow-p' : '',
+        'hover:text-sub-yellow-c'
       ]"
     >
       <component :is="item.icon" class="w-5 h-5 mb-1" />
