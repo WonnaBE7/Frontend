@@ -4,7 +4,7 @@
       <LabelInput label="이메일" v-model="form.email" />
       <LabelInput label="비밀번호" v-model="form.password" type="password" />
     
-      <div class="flex flex-row gap-4 mt-48">
+      <div class="flex flex-row gap-4 mt-32">
         <Button
             type="submit"
             label="white"
@@ -36,6 +36,5 @@ import Button from '@/shared/ui/atoms/Button.vue'
   
   const handleSubmit = () => {
     console.log('폼 제출', form.value)
-    // TODO: 여기에 API 연동 추가 (예: emit 또는 service 호출)
   }
   </script>
