@@ -1,0 +1,1 @@
+import{a}from"./AppLayout.vue_vue_type_script_setup_true_lang-BUVbdR5K.js";import{d as o,a as e,o as t}from"./index-Yuy5okMT.js";const m=o({__name:"GoalSimulationPage",setup(n){return(r,s)=>(t(),e(a))}});export{m as default};
