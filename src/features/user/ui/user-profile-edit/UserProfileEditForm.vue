@@ -4,7 +4,7 @@
       <LabelInput label="이메일" v-model="form.email" />
       <LabelInput label="비밀번호" v-model="form.password" type="password" />
     
-        <div class="flex flex-row gap-4 mt-48">
+      <div class="flex flex-row gap-4 mt-48">
         <Button
             type="submit"
             label="white"

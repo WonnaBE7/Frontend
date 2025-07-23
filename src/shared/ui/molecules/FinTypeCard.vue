@@ -1,5 +1,5 @@
 <template>
-    <CardBox class="mb-0">
+    <Card class="mb-0">
         <img
             v-if="finImage"
             :src="finImage"
@@ -8,12 +8,12 @@
         >
         <Typography type="B_14_140">{{label}}</Typography>
         <Typography type="M_12_120" class="text-gray-500">{{descript}}</Typography>
-    </CardBox>
+    </Card>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import CardBox from '../atoms/Card.vue'
+import Card from '../atoms/Card.vue'
 import Typography from '../atoms/Typography.vue'
 import { finTypeImages } from '@/shared/assets/fintype'
 

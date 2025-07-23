@@ -40,7 +40,7 @@ import { ref } from 'vue'
 import FinTypeCard from '@/shared/ui/molecules/FinTypeCard.vue'
 import Tag from '@/shared/ui/atoms/Tag.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
-import { finTypes } from '@/entities/finType/finTypes'
+import { finTypes } from '@/entities/finType/finTypes.ts'
 
 const selected = ref<string[]>([])
 
@@ -58,7 +58,7 @@ const emit = defineEmits<{
 }>()
 
 const submit = () => {
-  emit('submit', selected.value)
+  console.log(selected.value);
 }
 
 const submitNowMe = () => {
