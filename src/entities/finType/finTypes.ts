@@ -1,0 +1,16 @@
+// src/entities/finType/finTypes.ts
+
+export const finTypes = [
+    { label: '가족중심형', descript: '가족 재정형' },
+    { label: '경험소비형', descript: '취향 중심 소비' },
+    { label: '공격투자형', descript: '고위험 고수익 추구' },
+    { label: '균형성장형', descript: '균형 잡힌 투자·소비형' },
+    { label: '느긋한관망형', descript: '소극적 금융 태도' },
+    { label: '루틴러형', descript: '일상 중심 소비형' },
+    { label: '무계획형', descript: '즉흥 소비형' },
+    { label: '미래계획형', descript: '장기 계획형' },
+    { label: '새싹투자자형', descript: '투자 입문형' },
+    { label: '소확행형', descript: '감성 소비형' },
+    { label: '자린고비형', descript: '초절약 소비형' },
+    { label: 'YOLO형', descript: '현재 중심 소비형' }
+  ]
