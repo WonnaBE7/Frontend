@@ -5,7 +5,7 @@
             customClass
             ]"
     >
-        <Typography type="Body1">
+        <Typography type="B_14_140">
             <slot />
         </Typography>
     </button>

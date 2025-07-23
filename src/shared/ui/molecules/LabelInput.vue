@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col">
-        <Typography type="Body1">{{label}}</Typography>
+        <Typography type="B_14_120">{{label}}</Typography>
         <Input :label="label"/>
     </div>
 </template>
