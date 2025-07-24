@@ -1,8 +1,7 @@
 <template>
   <AppLayout>
-    <TitleTab :selected="selectedTab" @update:selected="onTabChange" />
-    <div>{{selectedTab}}</div>
-    <div class="mt-6">
+    <TitleTab :selected="selectedTab" @update:selected="onTabChange"/>
+    <div class="mt-8">
       <AssetSummary v-if="selectedTab === '자산 현황'" />
       <ConsumptionSummary v-else-if="selectedTab === '소비 분석'" />
     </div>

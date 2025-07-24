@@ -11,7 +11,7 @@
       <RouterLink
       to="/assets"
       class="w-full">
-        <Typography type="B_16_120" class="flex bg-yellow-50 w-full items-center justify-center p-3 rounded-md mt-4 mb-4">총 자산: {{ formattedTotal }}원</Typography>
+        <Typography type="B_16_120" class="flex bg-sub-yellow-bg w-full items-center justify-center p-3 rounded-md mt-4 mb-4">총 자산: {{ formattedTotal }}원</Typography>
         <AssetBarChart :data="chartData[selectedTab]" />
       </RouterLink>
   </Card>

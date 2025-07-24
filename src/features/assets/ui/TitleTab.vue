@@ -1,5 +1,5 @@
 <template>
-  <UserTitle label="자산 분석" subText="자산 현황과 소비 패턴을 분석하고 관리하세요" />
+  <UserTitle label="자산 분석" subText="자산 현황과 소비 패턴을 분석하고 관리하세요" class="mb-4"/>
   <AssetTypeTab :tabs="tabs" :selected="selected" @update:selected="$emit('update:selected', $event)" />
 </template>
 

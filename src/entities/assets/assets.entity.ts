@@ -30,7 +30,28 @@ export interface AssetCategory {
     percentage: number
   }
 
-  // 통합 타입 (탭 UI에서 사용)
+  /** 카테고리별 자산 항목 */
+export interface AssetCategoryItem {
+    assetCategory: string
+    amount: number
+    percentage: number
+    accountsCount: number
+  }
+  
+  /** 자산 분석 요약 정보 */
+  export interface AssetSummaryMeta {
+    totalAssets: number
+    changeAmount: number
+    changeRate: number
+  }
+  
+  /** 전체 자산 분석 응답 구조 */
+  export interface AssetAnalysis {
+    meta: AssetSummaryMeta
+    categories: AssetCategoryItem[]
+  }
+
+  // 탭키 타입 
   export const assetTabs = ['자산 현황', '소비 분석'] as const
   export type AssetTabKey = (typeof assetTabs)[number]
   
