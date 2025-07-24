@@ -1,13 +1,13 @@
 <template>
-    <div class="w-full py-8 px-4 bg-gray-50 rounded-xl">
+    <div class="w-full py-4 px-4 bg-gray-50 rounded-xl">
       <div class="flex items-center w-full">
-        <component :is="icon" class="w-8 h-8 text-gray-400 mr-4" />
+        <component :is="icon" class="w-8 h-8 text-gray-900 mr-4" />
   
         <div class="flex-1">
           <Typography type="B_14_120">{{ label }}</Typography>
           <div class="flex gap-2 mt-2">
-            <NoBorderTag color="bg-gray-200">{{ category }}</NoBorderTag>
-            <NoBorderTag color="bg-gray-200">{{ finType }}</NoBorderTag>
+            <NoBorderTag color="bg-gray-150">{{ category }}</NoBorderTag>
+            <NoBorderTag color="bg-gray-150">{{ finType }}</NoBorderTag>
           </div>
         </div>
   

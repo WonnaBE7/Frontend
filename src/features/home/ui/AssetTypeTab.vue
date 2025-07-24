@@ -6,7 +6,7 @@
       class="px-3 py-1 border text-sm font-medium transition"
       :class="selected === tab
         ? 'bg-yellow-400 text-black border-yellow-500'
-        : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-100'"
+        : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'"
       @click="$emit('update:selected', tab)"
     >
      {{ tab }}

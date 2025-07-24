@@ -5,7 +5,7 @@
     </div>
 
     <div class="grid grid-cols-2 gap-4">
-      <div
+      <Card
         v-for="type in types"
         :key="type.label"
         @click="toggleSelect(type.label)"
@@ -14,13 +14,12 @@
           selected.includes(type.label) ? 'ring-2 ring-yellow-400' : ''
         ]"
       >
-        <Card>
+        
           <FinTypeColCard
             :label="type.label"
             :descript="type.descript"
           />
-        </Card>
-      </div>
+      </Card>
     </div>
 
     <Button

@@ -1,10 +1,10 @@
 <template>
-   <Card class="w-full">
-    <IconLabel :icon="Wallet" class="mb-4">자산 & 소비 현황</IconLabel>
-    <AssetTypeTab :tabs="tabs" :selected="selectedTab" @update:selected="onTabChange" />
-    <Typography type="B_16_120" class="flex bg-yellow-50 w-full items-center justify-center p-3 rounded-md mt-4 mb-4">총 자산: {{ formattedTotal }}원</Typography>
-    <AssetBarChart :data="chartData[selectedTab]" />
-    </Card>
+  <Card class="w-full">
+      <IconLabel :icon="Wallet" class="mb-4">자산 & 소비 현황</IconLabel>
+      <AssetTypeTab :tabs="tabs" :selected="selectedTab" @update:selected="onTabChange" />
+      <Typography type="B_16_120" class="flex bg-yellow-50 w-full items-center justify-center p-3 rounded-md mt-4 mb-4">총 자산: {{ formattedTotal }}원</Typography>
+      <AssetBarChart :data="chartData[selectedTab]" />
+  </Card>
   </template>
   
   <script setup lang="ts">

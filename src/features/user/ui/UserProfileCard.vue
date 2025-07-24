@@ -6,7 +6,7 @@
             <div>
                 <Typography type="B_16_120">{{ userProfile.name }}</Typography>
                 <div class="mt-1">
-                    <NoBorderTag color="bg-gray-100">{{ userProfile.finType }}</NoBorderTag>
+                    <NoBorderTag color="bg-gray-50">{{ userProfile.finType }}</NoBorderTag>
                 </div>
                 <Typography type="M_12_140" class="text-gray-500 mt-1">
                     {{ userProfile.income_job_type }} · 월 {{ userProfile.income_amount }}만원
