@@ -25,7 +25,7 @@ const fontMap: Record<string, { size: string; weight: string }> = {
   M_22_160: { size: 'text-h2', weight: 'font-medium' },
   B_20_160: { size: 'text-h3', weight: 'font-bold' },
   B_20_120: { size: 'text-h4', weight: 'font-bold' },
-  B_18_20: { size: 'text-subtitle', weight: 'font-bold' },
+  B_18_120: { size: 'text-subtitle', weight: 'font-bold' },
   B_16_160: { size: 'text-body-lg-1', weight: 'font-bold' },
   M_16_160: { size: 'text-body-lg-2', weight: 'font-medium' },
   B_16_140: { size: 'text-body-lg-3', weight: 'font-bold' },

@@ -5,7 +5,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/pages/home/HomePage.vue'),
+    component: () => import('@/pages/home/HomeDashBoardPage.vue'),
     meta: { title: '홈' }
   },
   {
