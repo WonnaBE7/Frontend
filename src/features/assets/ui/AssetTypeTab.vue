@@ -16,16 +16,15 @@
 
 <script setup lang="ts">
 import Button from '@/shared/ui/atoms/Button.vue';
+import type { AssetTabKey } from '@/entities/assets/assets.entity';
 
-const tabs = ['자산 현황', '소비 분석'] as const
-type TabKey = (typeof tabs)[number]
 
 defineProps<{
-  selected: string
-  tabs: readonly string[]
+  selected: AssetTabKey
+  tabs: readonly AssetTabKey[]
 }>()
 
 defineEmits<{
-  (e: 'update:selected', tab: TabKey): void
+  (e: 'update:selected', tab: AssetTabKey): void
 }>()
 </script>

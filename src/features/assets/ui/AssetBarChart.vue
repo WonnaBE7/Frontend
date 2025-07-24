@@ -23,7 +23,7 @@
   
   <script setup lang="ts">
 import Typography from '@/shared/ui/atoms/Typography.vue';
-
+import { colorMap } from '@/entities/assets/assets.constants'
   interface AssetItem {
     type: string
     label: string
@@ -34,11 +34,4 @@ import Typography from '@/shared/ui/atoms/Typography.vue';
     data: AssetItem[]
   }>()
   
-  const colorMap: Record<string, string> = {
-    입출금: '#ffd500',
-    저축: '#78c65f',
-    투자: '#2a9fd6',
-    연금: '#ff9900',
-    포인트: '#ff6b6b',
-  }
   </script>

@@ -12,12 +12,12 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/assets',
     name: 'Assets',
-    component: () => import('@/pages/assets/HomeAssetsPage.vue')
+    component: () => import('@/pages/assets/AssetsPage.vue')
   },
   {
     path: '/assets/detail',
     name: 'AssetsDetail',
-    component: () => import('@/pages/assets/HomeAssetsDetailPage.vue')
+    component: () => import('@/pages/assets/AssetsDetailPage.vue')
   },
 
 ////
