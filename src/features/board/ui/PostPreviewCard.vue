@@ -1,5 +1,5 @@
 <template>
-      <div class="bg-gray-50 mb-4 p-4 rounded-md">
+      <div class="w-full bg-gray-50 mb-4 p-4 rounded-md">
         <div class="flex flex-row justify-between mb-4">
           <Typography type="B_14_140">{{ title }}</Typography>
           <Trash2Icon
@@ -25,8 +25,8 @@
         <div class="flex flex-row items-center justify-between">
           <!-- 작성자 / 태그 -->
           <div class="flex items-center gap-2">
-            <Typography type="M_12_120">{{ author }}</Typography>
-            <Tag>{{ tag }}</Tag>
+            <Typography type="M_12_120">{{ userName }}</Typography>
+            <Tag>{{ category }}</Tag>
           </div>
       
           <!-- 좋아요 / 댓글 -->
@@ -62,8 +62,8 @@
  defineProps<{
     title: string
     content: string
-    author: string
-    tag: string
+    userName: string
+    category: string
     likeCount: number
     commentCount: number
   }>()

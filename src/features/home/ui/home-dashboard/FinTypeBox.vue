@@ -14,9 +14,9 @@
                 v-for="type in finTypes"
                 :key="type.label"
             >
-                    <FinTypeColCard
-                        :label="type.label"
-                        class="border-none"
+                <FinTypeColCard
+                    :label="type.label"
+                    class="border-none"
                 />
             </div>
         </div>
