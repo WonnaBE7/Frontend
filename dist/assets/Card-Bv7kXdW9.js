@@ -1,0 +1,1 @@
+import{c as r,o as n,h as l}from"./index-CTLnS1Ah.js";const a=(e,t)=>{const o=e.__vccOpts||e;for(const[s,c]of t)o[s]=c;return o},f={},_={class:"flex flex-col items-center justify-center bg-white shadow-sm rounded-2xl p-5 mb-4 w-full"};function d(e,t){return n(),r("div",_,[l(e.$slots,"default")])}const m=a(f,[["render",d]]);export{m as C};
