@@ -5,7 +5,7 @@
     </div>
 
     <div class="grid grid-cols-2 gap-4">
-      <div
+      <Card
         v-for="type in types"
         :key="type.label"
         @click="toggleSelect(type.label)"
@@ -14,11 +14,12 @@
           selected.includes(type.label) ? 'ring-2 ring-yellow-400' : ''
         ]"
       >
-        <FinTypeCard
-          :label="type.label"
-          :descript="type.descript"
-        />
-      </div>
+        
+          <FinTypeColCard
+            :label="type.label"
+            :descript="type.descript"
+          />
+      </Card>
     </div>
 
     <Button
@@ -37,7 +38,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import FinTypeCard from '@/shared/ui/molecules/FinTypeCard.vue'
+import Card from '@/shared/ui/atoms/Card.vue'
+import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue'
 import Tag from '@/shared/ui/atoms/Tag.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
 import { finTypes } from '@/entities/finType/finTypes.ts'
