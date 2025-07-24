@@ -1,10 +1,12 @@
 <template>
   <div class="grid grid-cols-3 gap-2">
     <div v-for="type in types" :key="type.label">
-      <FinTypeColCard
-        :label="type.label"
-        :descript="type.descript"
-      />
+      <Card>
+        <FinTypeColCard
+          :label="type.label"
+          :descript="type.descript"
+        />
+      </Card>
     </div>
   </div>
 

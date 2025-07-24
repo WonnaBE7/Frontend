@@ -14,10 +14,12 @@
           selected.includes(type.label) ? 'ring-2 ring-yellow-400' : ''
         ]"
       >
-        <FinTypeCard
-          :label="type.label"
-          :descript="type.descript"
-        />
+        <Card>
+          <FinTypeColCard
+            :label="type.label"
+            :descript="type.descript"
+          />
+        </Card>
       </div>
     </div>
 
@@ -37,7 +39,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import FinTypeCard from '@/shared/ui/molecules/FinTypeCard.vue'
+import Card from '@/shared/ui/atoms/Card.vue'
+import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue'
 import Tag from '@/shared/ui/atoms/Tag.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
 import { finTypes } from '@/entities/finType/finTypes.ts'

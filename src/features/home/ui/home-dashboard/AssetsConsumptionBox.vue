@@ -1,9 +1,6 @@
 <template>
    <Card class="w-full">
-    <Typography type="B_18_120" class="flex flex-row w-full mb-4">
-        <component :is="Wallet" class="w-5 h-5 mr-2" />
-        자산 & 소비 현황
-    </Typography>
+    <IconLabel :icon="Wallet" class="mb-4">자산 & 소비 현황</IconLabel>
     <AssetTypeTab :tabs="tabs" :selected="selectedTab" @update:selected="onTabChange" />
     <Typography type="B_16_120" class="flex bg-yellow-50 w-full items-center justify-center p-3 rounded-md mt-4 mb-4">총 자산: {{ formattedTotal }}원</Typography>
     <AssetBarChart :data="chartData[selectedTab]" />
@@ -17,6 +14,7 @@
     import Card from '@/shared/ui/atoms/Card.vue'
     import Typography from '@/shared/ui/atoms/Typography.vue'
     import { Wallet } from 'lucide-vue-next'
+import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 
   const tabs = ['자산 현황', '소비 분석']  as const
   type TabKey = (typeof tabs)[number]  
