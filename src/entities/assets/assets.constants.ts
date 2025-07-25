@@ -1,13 +1,13 @@
 export const colorMap: Record<string, string> = {
-  checking: '#ffd500',
-  savings: '#78c65f',
-  investment: '#2a9fd6',
-  insurance: '#ff9900',
-  other: '#ff6b6b',
-  food: '#ffd500',
-  shopping: '#78c65f',
-  transport: '#2a9fd6',
-  financial: '#ff9900',
+  checking: 'bg-sub-yellow-p',
+  savings: 'bg-sub-green-p',
+  investment: 'bg-sub-aqua-p',
+  insurance: 'bg-sub-orange-p',
+  other: 'bg-sub-red-p',
+  food: 'bg-sub-yellow-p',
+  shopping: 'bg-sub-orange-p',
+  transport: 'bg-sub-green-p',
+  financial: 'bg-sub-aqua-p',
 }
 export const categoryLabelMap: Record<string, string> = {
   checking: '예금',
