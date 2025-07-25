@@ -1,60 +1,169 @@
-import type { AssetItem } from './assets.entity'
+import type { AssetSummaryMeta } from './assets.entity'
 
-export const mockAssetItems: Record<string, AssetItem[]> = {
-  '자산 현황': [
-    { type: 'checking', label: '예금', percentage: 40 },
-    { type: 'savings', label: '적금', percentage: 24 },
-    { type: 'investment', label: '투자', percentage: 20 },
-    { type: 'insurance', label: '연금', percentage: 12 },
-    { type: 'other', label: '기타', percentage: 4 },
-  ],
-  '소비 분석': [
-    { type: 'checking', label: '식비', percentage: 30 },
-    { type: 'savings', label: '쇼핑', percentage: 25 },
-    { type: 'investment', label: '교통', percentage: 15 },
-    { type: 'insurance', label: '문화', percentage: 20 },
-    { type: 'other', label: '기타', percentage: 10 },
-  ],
+export const mockAssetSummaryMeta: AssetSummaryMeta = {
+  totalAmount: '52,000,000',
+  changeRate: '+9.5',
+  changeAmount: '+4,500,000'
 }
 
-import type { AssetAnalysis } from './assets.entity'
 
-export const mockAssetAnalysis: AssetAnalysis = {
-  meta: {
-    totalAssets: 52000000,
-    changeAmount: 4500000,
-    changeRate: 9.5
-  },
+import type { ConsumptionSummaryMeta } from './assets.entity'
+
+export const mockConsumptionSummaryMeta: ConsumptionSummaryMeta = {
+  monthlyConsumption: '800,000',
+  changeRate: '-1.5',
+  changeAmount: '-45,000'
+}
+
+
+import type { AssetDetailResponse } from './assets.entity'
+
+export const mockAssetCategoryDetailResponse: AssetDetailResponse = {
   categories: [
     {
       assetCategory: 'checking',
-      amount: 25000000,
-      percentage: 48.1,
-      accountsCount: 3
+      amount: '25,000,000',
+      accountsCount: 3,
     },
     {
       assetCategory: 'savings',
-      amount: 12000000,
-      percentage: 23.1,
-      accountsCount: 2
+      amount: '12,000,000',
+      accountsCount: 2,
     },
     {
       assetCategory: 'investment',
-      amount: 8000000,
-      percentage: 15.4,
-      accountsCount: 2
+      amount: '8,000,000',
+      accountsCount: 2,
     },
     {
       assetCategory: 'insurance',
-      amount: 5000000,
-      percentage: 9.6,
-      accountsCount: 2
+      amount: '5,000,000',
+      accountsCount: 2,
     },
     {
       assetCategory: 'other',
-      amount: 2000000,
-      percentage: 3.8,
-      accountsCount: 2
+      amount: '2,000,000',
+      accountsCount: 2,
+    },
+  ],
+}
+
+import type { AssetCategoryRatioResponse } from './assets.entity'
+
+export const mockAssetCategoryRatio: AssetCategoryRatioResponse = {
+  categories: [
+    {
+      assetCategory: 'checking',
+      percentage: 48.1
+    },
+    {
+      assetCategory: 'savings',
+      percentage: 23.1
+    },
+    {
+      assetCategory: 'investment',
+      percentage: 15.4
+    },
+    {
+      assetCategory: 'insurance',
+      percentage: 9.6
+    },
+    {
+      assetCategory: 'other',
+      percentage: 3.8
     }
   ]
+}
+
+import type { AssetCategoryDetailResponse } from './assets.entity'
+
+export const mockCheckingCategoryDetail: AssetCategoryDetailResponse = {
+  assetCategory: 'checking',
+  totalAmount: '25,000,000',
+  accounts: [
+    {
+      bankName: '우리은행',
+      accountName: 'ＫＢ마이핏통장',
+      accountNumber: '1002-***-*****56',
+      balance: '15,000,000'
+    },
+    {
+      bankName: 'KB국민은행',
+      accountName: 'ＫＢ마이핏통장',
+      accountNumber: '123456-**-*****78',
+      balance: '8,000,000'
+    },
+    {
+      bankName: '신한은행',
+      accountName: 'ＫＢ마이핏통장',
+      accountNumber: '110-***-*****90',
+      balance: '2,000,000'
+    }
+  ]
+}
+
+export const mockSavingsCategoryDetail: AssetCategoryDetailResponse = {
+  assetCategory: 'savings',
+  totalAmount: '12,000,000',
+  accounts: [
+    {
+      bankName: '카카오뱅크',
+      accountName: '세이프박스',
+      accountNumber: '3333-**-***556',
+      balance: '6,000,000'
+    },
+    {
+      bankName: '토스뱅크',
+      accountName: '자동저축',
+      accountNumber: '1004-**-**888',
+      balance: '6,000,000'
+    }
+  ]
+}
+
+export const mockInvestmentCategoryDetail: AssetCategoryDetailResponse = {
+  assetCategory: 'investment',
+  totalAmount: '8,000,000',
+  accounts: [
+    {
+      bankName: '삼성증권',
+      accountName: '주식계좌',
+      accountNumber: '0000-11-22-33',
+      balance: '8,000,000'
+    }
+  ]
+}
+
+export const mockInsuranceCategoryDetail: AssetCategoryDetailResponse = {
+  assetCategory: 'insurance',
+  totalAmount: '5,000,000',
+  accounts: [
+    {
+      bankName: '삼성생명',
+      accountName: '연금보험',
+      accountNumber: '9000-99-88',
+      balance: '5,000,000'
+    }
+  ]
+}
+
+export const mockOtherCategoryDetail: AssetCategoryDetailResponse = {
+  assetCategory: 'other',
+  totalAmount: '2,000,000',
+  accounts: [
+    {
+      bankName: '농협은행',
+      accountName: '예비자금',
+      accountNumber: '1122-33-444',
+      balance: '2,000,000'
+    }
+  ]
+}
+
+export const mockCategoryDetailMap: Record<string, AssetCategoryDetailResponse> = {
+  checking: mockCheckingCategoryDetail,
+  savings: mockSavingsCategoryDetail,
+  investment: mockInvestmentCategoryDetail,
+  insurance: mockInsuranceCategoryDetail,
+  other: mockOtherCategoryDetail,
 }

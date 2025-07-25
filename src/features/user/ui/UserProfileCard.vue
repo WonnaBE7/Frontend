@@ -1,5 +1,5 @@
 <template>
-    <Card>
+    <Card class="bg-white">
         <div class="w-full flex justify-left items-center space-x-4">
             <img :src="userProfile.finTypeUrl" alt="프로필 이미지" class="w-20 h-20 rounded-full" />
         

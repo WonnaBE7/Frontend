@@ -30,11 +30,11 @@
   import NoBorderTag from '@/shared/ui/atoms/NoBorderTag.vue'
   import Typography from '@/shared/ui/atoms/Typography.vue'
   
-  defineProps({
-    icon: { type: Object },
+  defineProps<{
+    icon: any,
     label: String,
     finType: String,
     category: String,
     percent: String,
-  })
+  }>()
   </script>

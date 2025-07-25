@@ -1,5 +1,5 @@
 <template>
-  <Card>
+  <Card class="bg-white">
     <div class="w-full flex flex-row">
       <IconLabel :icon="Target">
         목표 달성 현황

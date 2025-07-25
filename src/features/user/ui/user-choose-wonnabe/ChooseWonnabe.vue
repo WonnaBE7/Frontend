@@ -10,7 +10,7 @@
         :key="type.label"
         @click="toggleSelect(type.label)"
         :class="[
-          'cursor-pointer transition rounded-xl',
+          'cursor-pointer transition rounded-xl bg-white',
           selected.includes(type.label) ? 'ring-2 ring-yellow-400' : ''
         ]"
       >

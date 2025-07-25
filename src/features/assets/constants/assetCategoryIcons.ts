@@ -7,7 +7,3 @@ export const assetCategoryIconMap: Record<string, any> = {
   insurance: Shield,
   other: MoreHorizontal
 }
-
-export const assetCategoryColorMap : Record<string, string> = {
-    
-}

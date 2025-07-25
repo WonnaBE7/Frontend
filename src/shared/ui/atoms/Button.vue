@@ -5,7 +5,7 @@
             label === 'white' ? 'bg-gray-50 text-black border border-gray-200 hover:bg:gray-100':'bg-sub-yellow-p text-black hover:bg:sub-yellow-bg' 
             ]"
     >
-        <Typography type="B_14_140">
+        <Typography type="B_14_120">
             <slot />
         </Typography>
     </button>

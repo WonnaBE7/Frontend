@@ -1,5 +1,8 @@
 <template>
-    <p>ConsumptionSummary</p>
+    <ConsumptionTopBox/>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ConsumptionTopBox from './ConsumptionTopBox.vue';
+
+</script>

@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-3 gap-2">
     <div v-for="type in types" :key="type.label">
-      <Card>
+      <Card class="bg-white">
         <FinTypeColCard
           :label="type.label"
           :descript="type.descript"
@@ -11,7 +11,7 @@
   </div>
 
   <!-- 마지막 성향 정보 카드 -->
-  <Card class="mt-2 justify-start">
+  <Card class="mt-2 justify-start bg-white">
     <Typography class="w-full" type="B_16_120">이번 달 현황</Typography>
     <FinTypeRowCard :label="lastType.label" :descript="lastType.descript"></FinTypeRowCard>
   </Card>
