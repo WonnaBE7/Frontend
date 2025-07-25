@@ -1,4 +1,4 @@
-import{c as t}from"./AppLayout.vue_vue_type_script_setup_true_lang-DW7FygP5.js";/**
+import{c as t}from"./AppLayout.vue_vue_type_script_setup_true_lang-6dqD2iWU.js";/**
  * @license lucide-vue-next v0.525.0 - ISC
  *
  * This source code is licensed under the ISC license.

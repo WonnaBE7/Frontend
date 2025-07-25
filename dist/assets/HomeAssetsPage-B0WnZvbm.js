@@ -1,1 +1,0 @@
-import{b as e}from"./AppLayout.vue_vue_type_script_setup_true_lang-DW7FygP5.js";import{d as o,g as s,o as a}from"./index-CTLnS1Ah.js";const m=o({__name:"HomeAssetsPage",setup(t){return(r,n)=>(a(),s(e))}});export{m as default};

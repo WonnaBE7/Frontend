@@ -23,14 +23,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import TotalAssets from '../TotalAssets.vue'
 import AssetBarChart from '../AssetBarChart.vue'
 import AssetDetailBar from '../AssetDetailBar.vue'
-
-import type { AssetTabKey } from '@/entities/assets/assets.entity'
 import { categoryLabelMap } from '@/entities/assets/assets.constants'
 import {
   mockAssetSummaryMeta,
@@ -38,7 +36,6 @@ import {
   mockAssetCategoryDetailResponse
 } from '@/entities/assets/assets.mock'
 
-// ✅ 차트 데이터는 'mockAssetCategoryRatio' 기준으로 매핑
 const chartData = computed(() =>
   mockAssetCategoryRatio.categories.map(category => ({
     type: category.assetCategory,
