@@ -33,6 +33,7 @@ const fontMap: Record<string, { size: string; weight: string }> = {
   B_16_120: { size: 'ttext-body-lg-5', weight: 'font-bold' },
   M_16_120: { size: 'ttext-body-lg-6', weight: 'font-medium' },
   B_14_140: { size: 'text-body-1', weight: 'font-bold' },
+  B_14_160: { size: 'text-body-2', weight: 'font-bold' },
   M_14_160: { size: 'text-body-2', weight: 'font-medium' },
   M_14_140: { size: 'text-body-3', weight: 'font-medium' },
   B_14_120: { size: 'text-body-4', weight: 'font-bold' },

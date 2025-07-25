@@ -1,6 +1,5 @@
 <template>
   <TotalAssets :meta="mockAssetSummaryMeta" :type="'자산'" />
-
   <Card class="bg-white">
     <AssetBarChart :data="chartData" />
   </Card>
@@ -14,7 +13,7 @@
       v-for="category in mockAssetCategoryDetailResponse.categories"
       :key="category.assetCategory"
       :assetCategory="category.assetCategory"
-      :amount="`₩${category.amount.toLocaleString()}`"
+      :amount="`${category.amount.toLocaleString()}원`"
       :accountsCount="category.accountsCount.toString()"
       :cardBg="'bg-gray-100 mb-0 mt-4'"
       :iconText="categoryLabelMap[category.assetCategory]"
@@ -27,8 +26,8 @@ import { computed } from 'vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import TotalAssets from '../TotalAssets.vue'
-import AssetBarChart from '../AssetBarChart.vue'
-import AssetDetailBar from '../AssetDetailBar.vue'
+import AssetBarChart from './AssetBarChart.vue'
+import AssetDetailBar from './AssetDetailBar.vue'
 import { categoryLabelMap } from '@/entities/assets/assets.constants'
 import {
   mockAssetSummaryMeta,

@@ -1,4 +1,5 @@
 <template>
+    <Typography type="B_18_120" class="mb-4">자산 상세 내역</Typography>
     <Card class="bg-sub-yellow-bg mb-6">
       <Typography type="M_16_120" class="w-full">
         총 {{ label }} 금액
@@ -14,11 +15,11 @@
       <Card class="border border-gray-150">
         <div class="flex flex-row w-full justify-between items-center">
             <div>
-                <Typography type="M_14_140" class="text-gray-800">
-                {{ account.bankName }}
+                <Typography type="M_14_140" class="text-gray-800 mb-2">
+                  {{ account.bankName }}
                 </Typography>
                 <Typography type="M_12_120" class="text-gray-200">
-                {{ account.accountNumber }}
+                  {{ account.accountNumber }}
                 </Typography>
             </div>
             <Typography type="B_16_120">

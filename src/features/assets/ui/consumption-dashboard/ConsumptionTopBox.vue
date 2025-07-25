@@ -17,6 +17,7 @@
     <ConsumptionInfoDisplay
       :amount="store.displayedAmount"
       :date="store.displayedDate"
+      :type="store.selectedTab"
     />
   </Card>
 </template>

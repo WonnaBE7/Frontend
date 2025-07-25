@@ -54,7 +54,7 @@ const formattedAmount = computed(() => {
     props.type === '자산'
       ? (props.meta as AssetSummaryMeta).totalAmount
       : (props.meta as ConsumptionSummaryMeta).monthlyConsumption
-  return `₩${amountStr}`
+  return `${amountStr}원`
 })
 
 </script>
