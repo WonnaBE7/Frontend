@@ -1,0 +1,1 @@
+import{_ as o}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{g as s,o as r,A as t}from"./index-OgGFUILW.js";const c={},n={class:"flex flex-col items-center justify-center shadow-sm rounded-2xl p-5 mb-4 w-full"};function l(e,a){return r(),s("div",n,[t(e.$slots,"default")])}const _=o(c,[["render",l]]);export{_ as C};

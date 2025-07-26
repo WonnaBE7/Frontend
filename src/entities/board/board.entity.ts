@@ -29,3 +29,9 @@ export interface CommentSummary {
   content: string
   likeCount: number
 }
+
+// 작성한 글 / 스크랩 한 글 숫자
+export interface WriteScrapedSummary{
+  write : number,
+  scrap : number
+}

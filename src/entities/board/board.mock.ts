@@ -1,6 +1,6 @@
 // board.mock.ts
 
-import type { Board, CommunityPreview, CommentSummary } from './board.entity'
+import type { Board, CommunityPreview, CommentSummary, WriteScrapedSummary } from './board.entity'
 
 export const mockBoards: Board[] = [
   {
@@ -119,3 +119,10 @@ export const mockLikedBoards: Board[] = mockBoards.filter((b) => b.isLiked)
 
 // 내가 쓴 글 (예: userName === '절약왕123')
 export const mockMyBoards: Board[] = mockBoards.filter((b) => b.userName === '절약왕123')
+
+
+// 쓴글과 스크랩 숫자
+export const mockMyWriteScrap: WriteScrapedSummary={
+  write : 5,
+  scrap : 3,
+}

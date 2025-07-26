@@ -9,7 +9,7 @@
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
 import { userSubTextMap } from '@/features/user/constants/userSubTextMap'
-import ChooseWonnabe from '@/features/user/ui/user-choose-wonnabe/ChooseWonnabe.vue'
+import ChooseWonnabe from '@/features/user/user-choose-wonnabe/ui/ChooseWonnabe.vue';
 
 
 </script>

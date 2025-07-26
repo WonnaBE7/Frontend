@@ -13,6 +13,6 @@ import Card from '@/shared/ui/atoms/Card.vue';
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
 import { userSubTextMap } from '@/features/user/constants/userSubTextMap'
-import UserProfileCard from '@/features/user/ui/UserProfileCard.vue';
-import UserProfileEditForm from '@/features/user/ui/user-profile-edit/UserProfileEditForm.vue'
+import UserProfileCard from '@/shared/ui/molecules/UserProfileCard.vue';
+import UserProfileEditForm from '@/features/user/user-profile-edit/ui/UserProfileEditForm.vue';
 </script>

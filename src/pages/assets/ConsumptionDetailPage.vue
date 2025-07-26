@@ -16,8 +16,8 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import AppLayout from '@/shared/layout/AppLayout.vue'
-import ConsumptionDetailCategory from '@/features/assets/ui/consumption-detail/ConsumptionDetailCategory.vue'
-import ConsumptionDetailDate from '@/features/assets/ui/consumption-detail/ConsumptionDetailDate.vue'
+import ConsumptionDetailCategory from '@/features/assets/consumption-detail/ui/ConsumptionDetailCategory.vue'
+import ConsumptionDetailDate from '@/features/assets/consumption-detail/ui/ConsumptionDetailDate.vue'
 
 const route = useRoute()
 const category = computed(() => route.query.category as string || '')

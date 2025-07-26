@@ -11,8 +11,8 @@
 <script setup lang="ts">
 import Card from '@/shared/ui/atoms/Card.vue';
   import AppLayout from '@/shared/layout/AppLayout.vue'
-  import UserProfileCard from '@/features/user/ui/UserProfileCard.vue';
-  import UserSettingsMenu from '@/features/user/ui/user-profile/UserSettingsMenu.vue';
+  import UserProfileCard from '@/shared/ui/molecules/UserProfileCard.vue';
+  import UserSettingsMenu from '@/features/user/user-profile/ui/UserSettingsMenu.vue';
   import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
   import { userSubTextMap } from '@/features/user/constants/userSubTextMap'
 </script>
