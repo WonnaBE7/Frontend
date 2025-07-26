@@ -1,5 +1,5 @@
 <template>
-    <Card class="bg-white">
+    <Card class="bg-white border border-gray-150">
         <div class="w-full flex flex-row">
             <IconLabel :icon="TrendingUp" :iconClass="'text-sub-yellow-p'">
                 현재의 나,

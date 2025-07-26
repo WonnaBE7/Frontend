@@ -16,7 +16,6 @@
             :class="colorMap[item.type]"
           ></span>
           <Typography type="B_12_120">{{ item.label }} {{ item.percentage }}%</Typography>
-          
         </li>
       </ul>
     </div>

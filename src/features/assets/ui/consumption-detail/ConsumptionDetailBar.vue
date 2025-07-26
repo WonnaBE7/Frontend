@@ -3,11 +3,11 @@
     <Card
       v-for="tx in transactions"
       :key="tx.transactionName + tx.transactionTime"
-      class="border bg-white"
+      class="border border-gray-150 bg-white"
     >
       <div class="flex items-center gap-3 w-full justify-between">
         <div class="flex flex-row mb-1">
-          <div class="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full mr-2">
+          <div class="bg-gray-BGDim w-10 h-10 flex items-center justify-center rounded-full mr-2">
             <component :is="iconMap[category] ?? iconMap.default" class="w-5 h-5 text-gray-500" />
           </div>
           <div>

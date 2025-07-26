@@ -10,11 +10,10 @@
         :key="type.label"
         @click="toggleSelect(type.label)"
         :class="[
-          'cursor-pointer transition rounded-xl bg-white',
-          selected.includes(type.label) ? 'ring-2 ring-yellow-400' : ''
+          'cursor-pointer transition rounded-xl bg-white border border-gray-150',
+          selected.includes(type.label) ? 'ring-2 ring-sub-yellow-p' : ''
         ]"
       >
-        
           <FinTypeColCard
             :label="type.label"
             :descript="type.descript"

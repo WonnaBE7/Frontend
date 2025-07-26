@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
 import type { Board } from './board.entity'
-import { mockBoards } from './board.mock'
+import { mockTop3Boards } from './board.mock'
 
 export const usePostPreviewStore = defineStore('postPreview', {
   state: () => ({
-    posts: mockBoards as Board[],
+    posts: mockTop3Boards as Board[],
   }),
   getters: {
     top3Posts: (state) => state.posts.slice(0, 3),

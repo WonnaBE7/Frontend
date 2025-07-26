@@ -1,5 +1,5 @@
 <template>
-  <Card class="bg-white">
+  <Card class="bg-white border border-gray-150">
     <ConsumptionTabs
       :tabs="store.tabs"
       :selectedTab="store.selectedTab"

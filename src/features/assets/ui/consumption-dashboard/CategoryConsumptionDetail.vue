@@ -1,5 +1,5 @@
 <template>
-    <Card class="bg-white w-full">
+    <Card class="bg-white w-full border border-gray-150">
       <Typography type="B_18_120" class="w-full mb-4">카테고리별 소비 내역</Typography>
       <ul class="space-y-4 w-full">
         <li 
@@ -32,7 +32,7 @@
             </div>
           </div>
   
-          <div class="h-2 bg-gray-200 rounded-full mb-2">
+          <div class="h-2 bg-gray-BGDim rounded-full mb-2">
             <div
               class="h-full rounded-full"
               :class="`${colorMap[item.consumptionCategory]}`"

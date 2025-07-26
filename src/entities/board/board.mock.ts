@@ -1,4 +1,6 @@
-import type { Board } from './board.entity'
+// board.mock.ts
+
+import type { Board, CommunityPreview, CommentSummary } from './board.entity'
 
 export const mockBoards: Board[] = [
   {
@@ -37,4 +39,83 @@ export const mockBoards: Board[] = [
     isLiked: false,
     createdAt: '2025-07-21',
   },
+  {
+    boardId: 4,
+    title: '생활비 아끼는 꿀팁 공유해요!',
+    content: '마트 세일 시간대 이용해서 아껴요.',
+    userName: '절약고수',
+    category: '소확행형',
+    likeCount: 18,
+    commentCount: 7,
+    isScraped: true,
+    isLiked: true,
+    createdAt: '2025-07-20',
+  },
+  {
+    boardId: 5,
+    title: '부자되는 지름길은?',
+    content: '지출 줄이고 자동이체 적금이 최고예요.',
+    userName: '부자될래',
+    category: '자린고비형',
+    likeCount: 31,
+    commentCount: 12,
+    isScraped: false,
+    isLiked: true,
+    createdAt: '2025-07-19',
+  },
 ]
+
+export const mockTop3Boards: Board[] = [
+  mockBoards[1],
+  mockBoards[4],
+  mockBoards[0],
+]
+
+export const mockCommunityTop3: CommunityPreview[] = [
+  {
+    communityId: 1,
+    communityName: '자린고비형',
+    simpleDescription: '불필요한 지출은 철저히 억제',
+    memberCount: 37000,
+    latestBoard: '월 50만원으로 생활하기 챌린지',
+  },
+  {
+    communityId: 2,
+    communityName: '소확행형',
+    simpleDescription: '소소한 행복을 추구하는 소비 패턴',
+    memberCount: 28000,
+    latestBoard: '스타벅스 말고 동네 카페 가기',
+  },
+  {
+    communityId: 3,
+    communityName: '욜로형',
+    simpleDescription: '즐길 땐 확실히 즐긴다',
+    memberCount: 25000,
+    latestBoard: '일주일에 한 번은 무조건 스테이크',
+  },
+]
+
+export const mockComments: CommentSummary[] = [
+  {
+    commentId: 1,
+    userName: '절약왕123',
+    nowme: '자린고비형',
+    content: '밥 먹어요',
+    likeCount: 12,
+  },
+  {
+    commentId: 2,
+    userName: '절약싫어',
+    nowme: '경험소비형',
+    content: '돈 아끼죠',
+    likeCount: 13,
+  },
+]
+// 스크랩한 게시글만 (isScraped === true)
+export const mockScrapedBoards: Board[] = mockBoards.filter((b) => b.isScraped)
+
+// 좋아요 누른 게시글만 (isLiked === true)
+export const mockLikedBoards: Board[] = mockBoards.filter((b) => b.isLiked)
+
+// 내가 쓴 글 (예: userName === '절약왕123')
+export const mockMyBoards: Board[] = mockBoards.filter((b) => b.userName === '절약왕123')

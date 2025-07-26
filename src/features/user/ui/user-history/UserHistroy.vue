@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-3 gap-2">
     <div v-for="type in types" :key="type.label">
-      <Card class="bg-white">
+      <Card class="bg-white border border-gray-150">
         <FinTypeColCard
           :label="type.label"
           :descript="type.descript"
@@ -11,10 +11,14 @@
   </div>
 
   <!-- 마지막 성향 정보 카드 -->
-  <Card class="mt-2 justify-start bg-white">
+  <Card class="mt-2 justify-start bg-white border border-gray-150">
     <Typography class="w-full" type="B_16_120">이번 달 현황</Typography>
     <FinTypeRowCard :label="lastType.label" :descript="lastType.descript"></FinTypeRowCard>
   </Card>
+
+  <Button class="flex tems-center justify-center mb-4" @click="goToDiagnosis">
+    <IconLabel :icon="RefreshCw">재진단 하기</IconLabel>
+  </Button>
 </template>
 
 <script setup lang="ts">
@@ -24,10 +28,17 @@ import Typography from '@/shared/ui/atoms/Typography.vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import { finTypeMonth } from '@/entities/finType/finTypes'
 import FinTypeRowCard from '@/shared/ui/molecules/FinTypeRowCard.vue'
+import Button from '@/shared/ui/atoms/Button.vue'
+import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
+import { RefreshCw } from 'lucide-vue-next'
+import { useRouter } from 'vue-router'
 
-// 전체 타입 목록
 const types = finTypeMonth
 
-// 마지막 타입
 const lastType = computed(() => types.at(-1)!)
+const router = useRouter()
+
+function goToDiagnosis() {
+    router.push({ path: '/user/diagnosis'})
+}
 </script>

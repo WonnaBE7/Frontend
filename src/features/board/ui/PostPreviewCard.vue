@@ -1,5 +1,5 @@
 <template>
-      <div class="w-full bg-gray-50 mb-4 p-4 rounded-md">
+      <div class="w-full bg-gray-BGDim mb-4 p-4 rounded-md">
         <div class="flex flex-row justify-between mb-4">
           <Typography type="B_14_140">{{ title }}</Typography>
           <Trash2Icon

@@ -1,5 +1,5 @@
 <template>
-  <Card class="bg-white">
+  <Card class="bg-white border border-gray-150">
     <div class="w-full flex justify-between mb-4">
       <Tag>{{ tag }}</Tag>
       <Typography type="M_12_120">{{ index }}/{{ total }}</Typography>

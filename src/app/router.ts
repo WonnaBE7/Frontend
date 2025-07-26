@@ -25,13 +25,15 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/assets/ConsumptionDetailPage.vue')
   },
 
-////
+//// 상품 추천
   {
     path: '/recommend',
     name: 'Recommend',
     component: () => import('@/pages/recommend/RecommendPage.vue'),
     meta: { title: '상품 추천' }
   },
+
+  //// 게시판
   {
     path: '/board',
     name: 'Board',
@@ -39,13 +41,52 @@ const routes: RouteRecordRaw[] = [
     meta: { title: '게시판' }
   },
   {
+    path: '/board/category',
+    name: 'BoardCategory',
+    component: () => import('@/pages/board/BoardCategoryPage.vue'),
+    meta: { title: '게시판' }
+  },
+  {
+    path: '/board/category/detail',
+    name: 'BoardCategoryDetail',
+    component: () => import('@/pages/board/BoardCategoryDetailPage.vue'),
+    meta: { title: '게시판' }
+  },
+  {
+    path: '/board/write',
+    name: 'BoardWrite',
+    component: () => import('@/pages/board/BoardWritePage.vue'),
+    meta: { title: '게시판' }
+  },
+  {
+    path: '/board/scraped',
+    name: 'BoardScraped',
+    component: () => import('@/pages/board/BoardScrapedPage.vue'),
+    meta: { title: '게시판' }
+  },
+  {
+    path: '/board/liked',
+    name: 'BoardLiked',
+    component: () => import('@/pages/board/BoardLikedPage.vue'),
+    meta: { title: '게시판' }
+  },
+  {
+    path: '/board/post',
+    name: 'BoardPost',
+    component: () => import('@/pages/board/BoardPostPage.vue'),
+    meta: { title: '게시판' }
+  },
+
+
+  /// 목표
+  {
     path: '/goal',
     name: 'Goal',
     component: () => import('@/pages/goal/GoalSimulationPage.vue'),
     meta: { title: '목표 시뮬레이션' }
   },
 
-  /// 
+  /// 유저
   {
     path: '/user',
     name: 'User',
@@ -77,7 +118,7 @@ const routes: RouteRecordRaw[] = [
     name: 'UserHistoryPage',
     component: () => import('@/pages/user/UserHistoryPage.vue')
   },
-  /// 유저
+  /// 
   {
     path: '/:pathMatch(.*)*',
     redirect: '/'
