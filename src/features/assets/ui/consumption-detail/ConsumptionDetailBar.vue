@@ -3,7 +3,7 @@
     <Card
       v-for="tx in transactions"
       :key="tx.transactionName + tx.transactionTime"
-      class="flex justify-between items-center rounded-xl shadow-sm border"
+      class="border bg-white"
     >
       <div class="flex items-center gap-3 w-full justify-between">
         <div class="flex flex-row mb-1">
@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
-import { Coffee, Utensils, Bus, Wallet, CircleDollarSign, CalendarCheck } from 'lucide-vue-next'
+import { Utensils, Bus, Wallet, CircleDollarSign, CalendarCheck } from 'lucide-vue-next'
 
 import type { ConsumptionCategory, ConsumptionTransaction } from '@/entities/assets/consumption/consumption.entity'
 
