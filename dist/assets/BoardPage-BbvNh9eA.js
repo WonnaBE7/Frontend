@@ -1,1 +1,0 @@
-import{b as e}from"./AppLayout.vue_vue_type_script_setup_true_lang-DW7FygP5.js";import{d as o,g as a,o as r}from"./index-CTLnS1Ah.js";const m=o({__name:"BoardPage",setup(t){return(n,s)=>(r(),a(e))}});export{m as default};

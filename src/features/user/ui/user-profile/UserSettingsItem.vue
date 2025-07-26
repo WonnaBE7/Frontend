@@ -3,7 +3,7 @@
     :to="routePath"
     class="block"
   >
-    <Card>
+    <Card class="bg-white">
       <div class="w-full flex justify-between items-center">
         <div class="flex items-center gap-2">
           <component :is="icon" class="w-5 h-5" />

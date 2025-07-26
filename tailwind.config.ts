@@ -70,7 +70,31 @@ export default {
             s :'#FFD88C',
             c:'#FFE9BF',
             bg:'#FFF7E6'
-          } 
+          },
+          red:{
+            p:'#EC6250',
+            s:'#FFB5AB',
+            c:'#FEE3E0',
+            bg:'#FFF1EF',
+          },
+          aqua:{
+            p:'#0098C2',
+            s:'#AFEBFB',
+            c:'#D2F4FD',
+            bg:'#EEFBFF',
+          },
+          green:{
+            p:'#51B910',
+            s:'#96B881',
+            c:'#BACEAD',
+            bg:'#EFF9E9',
+          },
+          orange:{
+            p:'#F59E0B',
+            s:'#FFE1AD',
+            c:'#FFEFD3',
+            bg:'#FFF6E7',
+          }
         }
       },
     },

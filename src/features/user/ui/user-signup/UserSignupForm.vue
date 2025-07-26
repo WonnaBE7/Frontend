@@ -2,7 +2,7 @@
     <LabelInput label="이름" class="mb-4"/>
     <LabelInput label="이메일" class="mb-4"/>
     <LabelInput label="비밀번호" class="mb-8"/>
-    <Card class="p-4">
+    <Card class="p-4 bg-white">
       <div class="flex w-full justify-between items-center mb-2">
         <Typography type="M_14_120">약관 동의</Typography>
         <div class="flex flex-row gap-2">

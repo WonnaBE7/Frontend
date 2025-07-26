@@ -1,5 +1,5 @@
 <template>
-    <Card>
+    <Card class="bg-white">
       <div class="w-full flex flex-row">
         <IconLabel IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'" class="mb-4" >
             워너비 게시판 인기글
