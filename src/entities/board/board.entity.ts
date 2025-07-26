@@ -35,3 +35,9 @@ export interface WriteScrapedSummary{
   write : number,
   scrap : number
 }
+
+export interface CreatePostPayload {
+  communityId: number
+  title: string
+  content: string
+}

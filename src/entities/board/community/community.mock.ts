@@ -17,7 +17,7 @@ export const mockCommunities: CommunityPreview[] = [
   },
   {
     communityId: 3,
-    communityName: '욜로형',
+    communityName: 'YOLO형',
     simpleDescription: '즐길 땐 확실히 즐긴다',
     memberCount: 25000,
     latestBoard: '일주일에 한 번은 무조건 스테이크',

@@ -63,6 +63,54 @@ export const mockBoards: Board[] = [
     isLiked: true,
     createdAt: '2025-07-19',
   },
+  {
+    boardId: 6,
+    title: '처음 투자, 뭘로 시작할까요?',
+    content: '펀드, ETF 고민됩니다!',
+    userName: '투자새싹',
+    category: '새싹투자형',
+    likeCount: 5,
+    commentCount: 1,
+    isScraped: false,
+    isLiked: false,
+    createdAt: '2025-07-18',
+  },
+  {
+    boardId: 7,
+    title: '소확행 비용으로 여행 가기',
+    content: '국내 소도시 여행 추천받아요!',
+    userName: '감성소비자',
+    category: '소확행형',
+    likeCount: 15,
+    commentCount: 6,
+    isScraped: true,
+    isLiked: false,
+    createdAt: '2025-07-17',
+  },
+  {
+    boardId: 8,
+    title: '단기 고수익 전략 뭐 있나요?',
+    content: '비트코인 단타 어때요?',
+    userName: '단타왕',
+    category: '공격투자형',
+    likeCount: 13,
+    commentCount: 9,
+    isScraped: false,
+    isLiked: true,
+    createdAt: '2025-07-16',
+  },
+  {
+    boardId: 9,
+    title: '마트 대신 전통시장 가보셨나요?',
+    content: '물가 비교해봤어요.',
+    userName: '시장러버',
+    category: '자린고비형',
+    likeCount: 17,
+    commentCount: 4,
+    isScraped: false,
+    isLiked: false,
+    createdAt: '2025-07-15',
+  },
 ]
 
 export const mockTop3Boards: Board[] = [
@@ -88,7 +136,7 @@ export const mockCommunityTop3: CommunityPreview[] = [
   },
   {
     communityId: 3,
-    communityName: '욜로형',
+    communityName: 'YOLO형',
     simpleDescription: '즐길 땐 확실히 즐긴다',
     memberCount: 25000,
     latestBoard: '일주일에 한 번은 무조건 스테이크',
@@ -126,3 +174,11 @@ export const mockMyWriteScrap: WriteScrapedSummary={
   write : 5,
   scrap : 3,
 }
+
+export const mockBoardsByCategory: Record<string, Board[]> = mockBoards.reduce((acc, board) => {
+  if (!acc[board.category]) {
+    acc[board.category] = []
+  }
+  acc[board.category].push(board)
+  return acc
+}, {} as Record<string, Board[]>)

@@ -1,6 +1,6 @@
 <template>
-      <div class="w-full mb-4 p-4 rounded-md">
-        <div class="flex flex-row justify-between mb-4">
+      <Card @click="goToPost">
+        <div class="w-full flex flex-row justify-between mb-4">
           <Typography type="B_14_140">{{ title }}</Typography>
           <Trash2Icon
             v-if="isMyPost"
@@ -17,15 +17,14 @@
           />
         </div>
     
-        
-        <Typography type="R_12_140" class="text-gray-500 mb-4 line-clamp-2">
+        <Typography type="R_12_140" class="text-gray-500 mb-4 line-clamp-2 w-full">
           {{ content }}
         </Typography>
     
-        <div class="flex flex-row items-center justify-between">
+        <div class="flex flex-row items-center justify-between w-full">
           <div class="flex items-center gap-2">
             <Typography type="M_12_120">{{ userName }}</Typography>
-            <Tag class="bg-gray-100">{{ category }}</Tag>
+            <NoBorderTag color="bg-gray-100">{{ category }}</NoBorderTag>
           </div>
       
           <div class="flex items-center gap-4 text-sm text-gray-500">
@@ -46,18 +45,21 @@
             </div>
           </div>
         </div>
-      </div>
+      </Card>
   </template>
   
   <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { useRoute } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
   import Typography from '@/shared/ui/atoms/Typography.vue'
-  import Tag from '@/shared/ui/atoms/Tag.vue'
+
   import { HeartIcon, BookmarkIcon, Trash2Icon, MessageCircle } from 'lucide-vue-next'
+  import NoBorderTag from '../atoms/NoBorderTag.vue'
+  import Card from '../atoms/Card.vue'
 
   
- defineProps<{
+ const props = defineProps<{
+    boardId: number
     title: string
     content: string
     userName: string
@@ -73,7 +75,8 @@
   // 현재 라우트 기준
   const route = useRoute()
   const isMyPost = computed(() => route.path.includes('/board/write'))
-  
+  const router = useRouter()
+
   // 상태: 좋아요, 스크랩
   const isLiked = ref(false)
   const isScrapped = ref(false)
@@ -84,4 +87,5 @@
   const toggleScrap = () => {
     isScrapped.value = !isScrapped.value
   }
+  const goToPost = () => router.push(`/board/post/${props.boardId}`)
   </script>

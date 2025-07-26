@@ -17,6 +17,7 @@
   import { mockCommunities } from '@/entities/board/community/community.mock';
   import BoardCategory from '../../board-category/ui/BoardCategory.vue';
   import { useRouter } from 'vue-router';
+
   const top3Communities = mockCommunities.slice(0, 3)
 
   const router = useRouter()

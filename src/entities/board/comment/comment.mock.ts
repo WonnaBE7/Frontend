@@ -23,7 +23,7 @@ export const mockComments: Comment[] = [
     commentId: 3,
     boardId: 2,
     userName: '카드달인',
-    nowme: '욜로형',
+    nowme: 'YOLO형',
     content: '요즘 현대카드 혜택 괜찮아요!',
     likeCount: 3,
     createdAt: '2025-07-22',

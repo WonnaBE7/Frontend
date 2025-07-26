@@ -1,6 +1,6 @@
 <template>
     <AppLayout>
-        <BoardCategoryBox></BoardCategoryBox>
+        <BoardCategoryBox/>
     </AppLayout>
 </template>
    

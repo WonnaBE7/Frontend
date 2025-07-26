@@ -44,37 +44,31 @@ const routes: RouteRecordRaw[] = [
     path: '/board/category',
     name: 'BoardCategory',
     component: () => import('@/pages/board/BoardCategoryPage.vue'),
-    meta: { title: '게시판' }
   },
   {
-    path: '/board/category/detail',
+    path: '/board/category/detail/:category',
     name: 'BoardCategoryDetail',
     component: () => import('@/pages/board/BoardCategoryDetailPage.vue'),
-    meta: { title: '게시판' }
   },
   {
-    path: '/board/write',
-    name: 'BoardWrite',
-    component: () => import('@/pages/board/BoardWritePage.vue'),
-    meta: { title: '게시판' }
+    path: '/board/writed',
+    name: 'BoardWrited',
+    component: () => import('@/pages/board/BoardWritedPage.vue'),
   },
   {
     path: '/board/scraped',
     name: 'BoardScraped',
     component: () => import('@/pages/board/BoardScrapedPage.vue'),
-    meta: { title: '게시판' }
   },
   {
-    path: '/board/liked',
-    name: 'BoardLiked',
-    component: () => import('@/pages/board/BoardLikedPage.vue'),
-    meta: { title: '게시판' }
+    path: '/board/write',
+    name: 'BoardWrite',
+    component: () => import('@/pages/board/BoardWritePage.vue'),
   },
   {
-    path: '/board/post',
+    path: '/board/post/:id',
     name: 'BoardPost',
     component: () => import('@/pages/board/BoardPostPage.vue'),
-    meta: { title: '게시판' }
   },
 
 
