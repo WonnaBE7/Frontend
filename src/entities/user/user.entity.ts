@@ -5,3 +5,5 @@ export interface UserProfile {
     income_amount: number
     finTypeUrl: string
 }
+
+

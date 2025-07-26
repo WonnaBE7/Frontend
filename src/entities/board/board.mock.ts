@@ -1,0 +1,40 @@
+import type { Board } from './board.entity'
+
+export const mockBoards: Board[] = [
+  {
+    boardId: 1,
+    title: '투자 초보 포트폴리오 조언 구합니다.',
+    content: '저는 매달 50만원 이하로 생활하려고 노력 중입니다.',
+    userName: '절약왕123',
+    category: '새싹투자형',
+    likeCount: 12,
+    commentCount: 8,
+    isScraped: false,
+    isLiked: true,
+    createdAt: '2025-07-23',
+  },
+  {
+    boardId: 2,
+    title: '요즘 카드 혜택 뭐가 제일 좋아요?',
+    content: '신한카드 좋다는데 다른 카드도 궁금해요.',
+    userName: '금융왕',
+    category: '자린고비형',
+    likeCount: 22,
+    commentCount: 15,
+    isScraped: true,
+    isLiked: false,
+    createdAt: '2025-07-22',
+  },
+  {
+    boardId: 3,
+    title: '적금만으로 충분할까요?',
+    content: '금리 낮은 요즘 투자도 고려 중입니다.',
+    userName: '무계획러',
+    category: '공격투자형',
+    likeCount: 9,
+    commentCount: 3,
+    isScraped: false,
+    isLiked: false,
+    createdAt: '2025-07-21',
+  },
+]

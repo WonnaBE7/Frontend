@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
-import { Home, Star, Target, User, MessageSquare } from 'lucide-vue-next'
+import { Home, Star, Target, ChartNoAxesCombined, MessageSquare } from 'lucide-vue-next'
 
 const route = useRoute()
 
@@ -31,6 +31,6 @@ const navItems = ref([
   { name: 'Goal', path: '/goal', label: '목표', icon: Target },
   { name: 'Home', path: '/', label: '홈', icon: Home },
   { name: 'Recommend', path: '/recommend', label: '추천', icon: Star },
-  { name: 'User', path: '/user', label: '마이', icon: User }
+  { name: 'Assets', path: '/assets', label: '자산분석', icon: ChartNoAxesCombined }
 ])
 </script>

@@ -2,12 +2,30 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
+  // 자산 분석 메인
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/pages/home/HomePage.vue'),
+    component: () => import('@/pages/home/HomeDashBoardPage.vue'),
     meta: { title: '홈' }
   },
+  {
+    path: '/assets',
+    name: 'Assets',
+    component: () => import('@/pages/assets/AssetsPage.vue')
+  },
+  {
+    path: '/assets/detail',
+    name: 'AssetsDetail',
+    component: () => import('@/pages/assets/AssetsDetailPage.vue')
+  },
+  {
+    path: '/assets/consumption/detail',
+    name: 'ConsumptionDetail',
+    component: () => import('@/pages/assets/ConsumptionDetailPage.vue')
+  },
+
+////
   {
     path: '/recommend',
     name: 'Recommend',
@@ -26,6 +44,8 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/goal/GoalSimulationPage.vue'),
     meta: { title: '목표 시뮬레이션' }
   },
+
+  /// 
   {
     path: '/user',
     name: 'User',
@@ -57,6 +77,7 @@ const routes: RouteRecordRaw[] = [
     name: 'UserHistoryPage',
     component: () => import('@/pages/user/UserHistoryPage.vue')
   },
+  /// 유저
   {
     path: '/:pathMatch(.*)*',
     redirect: '/'
