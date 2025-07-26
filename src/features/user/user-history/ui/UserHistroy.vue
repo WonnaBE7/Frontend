@@ -25,12 +25,12 @@ import { computed } from 'vue'
 import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import Card from '@/shared/ui/atoms/Card.vue'
-import { finTypeMonth } from '@/entities/finType/finTypes'
 import FinTypeRowCard from '@/shared/ui/molecules/FinTypeRowCard.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import { RefreshCw } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
+import { finTypeMonth } from '@/shared/constants/finTypes.constants'
 
 const types = finTypeMonth
 

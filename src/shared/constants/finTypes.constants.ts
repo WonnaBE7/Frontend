@@ -27,3 +27,18 @@ export const finTypeMonth = [
   { label: '자린고비형', descript: '2024.11' },
   { label: 'YOLO형', descript: '2024.12' }
 ]
+
+export const finTypeIcons: Record<string, string> = {
+  '가족중심형': '📚',
+  '경험소비형': '🎨',
+  '공격투자형': '📈',
+  '균형 성장형': '⚖️',
+  '느긋한 관망형': '🛋️',
+  '루틴러형': '🗓️',
+  '무계획형': '🎲',
+  '미래계획형': '📅',
+  '새싹 투자자형': '🌱',
+  '소확행형': '🍰',
+  '자린고비형': '💰',
+  'YOLO형': '🛫'
+}

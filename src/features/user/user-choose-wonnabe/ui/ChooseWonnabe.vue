@@ -41,7 +41,7 @@ import Card from '@/shared/ui/atoms/Card.vue'
 import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue'
 import Tag from '@/shared/ui/atoms/Tag.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
-import { finTypes } from '@/entities/finType/finTypes.ts'
+import { finTypes } from '@/shared/constants/finTypes.constants'
 
 const selected = ref<string[]>([])
 

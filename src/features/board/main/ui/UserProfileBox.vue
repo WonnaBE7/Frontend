@@ -16,7 +16,7 @@
                             :style="{ width: `${goal.progressRate}%` }"
                         ></div>
                     </div>
-                    <div class="w-full flex flex-row justify-between">
+                    <div class="w-full flex flex-row justify-between items-center">
                         <Typography type="M_12_140" class="text-gray-500">{{goal.progressRate}}% 달성</Typography>
                         <Tag>{{goal.categoryName}}</Tag>
                     </div>

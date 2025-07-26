@@ -4,15 +4,16 @@
         <IconLabel IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'" class="mb-4" >
             워너비 게시판 인기글
         </IconLabel>
-          <RouterLink
-              to="/board">
-              <component :is="ChevronRight"></component>
-          </RouterLink>
+        <RouterLink
+            to="/board">
+            <component :is="ChevronRight"></component>
+        </RouterLink>
       </div>
       <PostPreviewCard
         v-for="post in topPosts"
         :key="post.boardId"
         v-bind="post"
+        class="bg-gray-BGDim"
       />
    </Card>
   </template>

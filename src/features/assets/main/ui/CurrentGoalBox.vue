@@ -1,21 +1,20 @@
 <template>
   <Card class="bg-white border border-gray-150">
-    <div class="w-full flex flex-row">
+    <div class="w-full flex flex-row justify-between items-center">
       <IconLabel :icon="Target">
         목표 달성 현황
       </IconLabel>
-      <RouterLink
-        to="/goal">
-          <component :is="ChevronRight"></component>
+      <RouterLink to="/goal">
+        <component :is="ChevronRight" class="text-gray-400" />
       </RouterLink>
     </div>
+
     <div
-      v-for="goal in goalStore.goals"
+      v-for="goal in goals"
       :key="goal.id"
       class="w-full mt-4"
     >
       <CurrentGoal
-        :icon="iconMap[goal.categoryName] || Target"
         :label="goal.goalName"
         :category="goal.categoryName"
         :finType="goal.nowmeName"
@@ -26,17 +25,11 @@
 </template>
 
 <script setup lang="ts">
-import { Target, Airplay, Wallet, ChevronRight } from 'lucide-vue-next'
+import { Target, ChevronRight } from 'lucide-vue-next'
 import CurrentGoal from '@/shared/ui/molecules/CurrentGoal.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import Card from '@/shared/ui/atoms/Card.vue'
-import { useGoalStore } from '@/entities/goal/goal.store'
+import { mockGoals } from '@/entities/goal/goal.mock'
 
-const iconMap: Record<string, any> = {
-  '부동산': Target,
-  '커리어': Wallet,
-  '여행': Airplay
-}
-
-const goalStore = useGoalStore()
+const goals = mockGoals
 </script>

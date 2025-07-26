@@ -1,17 +1,17 @@
 <template>
-      <div class="w-full bg-gray-BGDim mb-4 p-4 rounded-md">
+      <div class="w-full mb-4 p-4 rounded-md">
         <div class="flex flex-row justify-between mb-4">
           <Typography type="B_14_140">{{ title }}</Typography>
           <Trash2Icon
             v-if="isMyPost"
-            class="w-5 h-5 text-gray-400 cursor-pointer hover:text-red-400 transition"
+            class="w-5 h-5 text-gray-900 cursor-pointer hover:text-red-400 transition"
             @click="emit('delete')"
           />
           <BookmarkIcon
             v-else
             :class="[
               'w-5 h-5 cursor-pointer transition',
-              isScrapped ? 'text-yellow-400 fill-yellow-400' : 'text-yellow-400'
+              isScrapped ? 'text-sub-yellow-p fill-sub-yellow-p' : 'text-sub-yellow-p'
             ]"
             @click="toggleScrap"
           />
@@ -23,13 +23,11 @@
         </Typography>
     
         <div class="flex flex-row items-center justify-between">
-          <!-- 작성자 / 태그 -->
           <div class="flex items-center gap-2">
             <Typography type="M_12_120">{{ userName }}</Typography>
-            <Tag>{{ category }}</Tag>
+            <Tag class="bg-gray-100">{{ category }}</Tag>
           </div>
       
-          <!-- 좋아요 / 댓글 -->
           <div class="flex items-center gap-4 text-sm text-gray-500">
             <div
               class="flex items-center gap-1 cursor-pointer"
@@ -38,7 +36,7 @@
               <HeartIcon
                 :class="[
                   'w-4 h-4 transition',
-                  isLiked ? 'text-red-500 fill-red-500' : 'text-red-500'
+                  isLiked ? 'text-sub-red-p fill-sub-red-p' : 'text-sub-red-p'
                 ]"
               />
               <Typography type="M_12_120">{{ likeCount }}</Typography>
@@ -74,7 +72,7 @@
   
   // 현재 라우트 기준
   const route = useRoute()
-  const isMyPost = computed(() => route.path.includes('/board/mypost'))
+  const isMyPost = computed(() => route.path.includes('/board/write'))
   
   // 상태: 좋아요, 스크랩
   const isLiked = ref(false)
