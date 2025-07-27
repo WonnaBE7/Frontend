@@ -1,5 +1,5 @@
 <template>
-  <Card class="bg-sub-yellow-bg">
+  <Card class="bg-sub-yellow-bg border border-sub-yellow-c">
     <div class="w-full">
       <div class="flex flex-row w-full justify-between">
         <Typography type="M_16_120" class="w-full mb-2 text-gray-400">

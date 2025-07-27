@@ -1,0 +1,1 @@
+import{h as c,o as n,G as l}from"./index-B_OVlkb9.js";const a=(e,t)=>{const o=e.__vccOpts||e;for(const[s,r]of t)o[s]=r;return o},f={},_={class:"flex flex-col items-center justify-center shadow-sm rounded-2xl p-5 mb-4 w-full"};function d(e,t){return n(),c("div",_,[l(e.$slots,"default")])}const m=a(f,[["render",d]]);export{m as C};

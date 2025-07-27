@@ -9,5 +9,5 @@
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
 import { userSubTextMap } from '@/features/user/constants/userSubTextMap'
-import UserHistroy from '@/features/user/ui/user-history/UserHistroy.vue';
+import UserHistroy from '@/features/user/user-history/ui/UserHistroy.vue';
 </script>

@@ -16,7 +16,7 @@ export const mockGoals: Goal[] = [
   {
     id: 2,
     goalName: '디지털 노마드 준비',
-    categoryName: '커리어',
+    categoryName: '교육',
     nowmeName: '알뜰살뜰형',
     progressRate: 32,
     targetAmount: 5000000,
@@ -28,7 +28,7 @@ export const mockGoals: Goal[] = [
   {
     id: 3,
     goalName: '내 집 마련',
-    categoryName: '부동산',
+    categoryName: '내 집 마련',
     nowmeName: '성실 투자형',
     progressRate: 78,
     targetAmount: 65000000,

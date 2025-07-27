@@ -1,0 +1,88 @@
+import type { CommunityPreview } from './community.entity'
+
+export const mockCommunities: CommunityPreview[] = [
+  {
+    communityId: 1,
+    communityName: '자린고비형',
+    simpleDescription: '불필요한 지출은 철저히 억제',
+    memberCount: 37000,
+    latestBoard: '월 50만원으로 생활하기 챌린지',
+  },
+  {
+    communityId: 2,
+    communityName: '소확행형',
+    simpleDescription: '소소한 행복을 추구하는 소비 패턴',
+    memberCount: 28000,
+    latestBoard: '스타벅스 말고 동네 카페 가기',
+  },
+  {
+    communityId: 3,
+    communityName: 'YOLO형',
+    simpleDescription: '즐길 땐 확실히 즐긴다',
+    memberCount: 25000,
+    latestBoard: '일주일에 한 번은 무조건 스테이크',
+  },
+  {
+    communityId: 4,
+    communityName: '새싹 투자자형',
+    simpleDescription: '재테크에 첫 발을 내딛는 초보자',
+    memberCount: 16000,
+    latestBoard: 'ETF가 뭐에요? 처음 시작하는 투자',
+  },
+  {
+    communityId: 5,
+    communityName: '공격투자형',
+    simpleDescription: '고위험 고수익을 노리는 재테크 전략가',
+    memberCount: 12000,
+    latestBoard: '1주일에 수익률 10% 목표 달성 후기',
+  },
+  {
+    communityId: 6,
+    communityName: '가족중심형',
+    simpleDescription: '가족의 안정을 우선하는 재정 운영',
+    memberCount: 21000,
+    latestBoard: '아이 학원비 줄이기 꿀팁 공유',
+  },
+  {
+    communityId: 7,
+    communityName: '경험소비형',
+    simpleDescription: '경험과 추억을 위한 소비 선호',
+    memberCount: 19500,
+    latestBoard: '뮤지컬 할인 예매 정보 나눠요',
+  },
+  {
+    communityId: 8,
+    communityName: '균형 성장형',
+    simpleDescription: '투자와 소비의 균형을 지향',
+    memberCount: 23400,
+    latestBoard: '이번 달 자산 포트폴리오 점검',
+  },
+  {
+    communityId: 9,
+    communityName: '느긋한 관망형',
+    simpleDescription: '크게 욕심내지 않는 소극적 재정 스타일',
+    memberCount: 9800,
+    latestBoard: '적금만 꾸준히... 이게 나한테 맞는 걸까?',
+  },
+  {
+    communityId: 10,
+    communityName: '루틴러형',
+    simpleDescription: '규칙적인 소비 루틴을 중시',
+    memberCount: 18700,
+    latestBoard: '월말 가계부 작성 루틴 공유해요',
+  },
+  {
+    communityId: 11,
+    communityName: '무계획형',
+    simpleDescription: '즉흥적 소비가 잦은 자유로운 재정 스타일',
+    memberCount: 13200,
+    latestBoard: '이번 달도 카드값 폭탄... 다들 어때요?',
+  },
+  {
+    communityId: 12,
+    communityName: '미래계획형',
+    simpleDescription: '장기적인 목표 설정과 실천을 중시',
+    memberCount: 22500,
+    latestBoard: '2030년까지 1억 모으기 프로젝트',
+  },
+]
