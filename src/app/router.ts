@@ -88,6 +88,11 @@ const routes: RouteRecordRaw[] = [
     meta: { title: '유저 페이지' }
   },
   {
+    path: '/user/login',
+    name: 'UserLoginPage',
+    component: () => import('@/pages/user/UserLoginPage.vue')
+  },
+  {
     path: '/user/signup',
     name: 'UserSignupPage',
     component: () => import('@/pages/user/UserSignupPage.vue')

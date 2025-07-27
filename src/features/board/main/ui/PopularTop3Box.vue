@@ -15,7 +15,7 @@
   import { Star , ChevronRight} from 'lucide-vue-next'
   import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
   import { mockCommunities } from '@/entities/board/community/community.mock';
-  import BoardCategory from '../../board-category/ui/BoardCategory.vue';
+  import BoardCategory from '../../board-community/ui/BoardCategory.vue';
   import { useRouter } from 'vue-router';
 
   const top3Communities = mockCommunities.slice(0, 3)

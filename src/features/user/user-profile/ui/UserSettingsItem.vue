@@ -34,7 +34,8 @@ const routeMap: Record<string, string> = {
   '워너비 선택': '/user/choose-wonnabe',
   '금융 성향 진단': '/user/diagnosis',
   '나의 금융 히스토리': '/user/history',
-  '회원 가입' : '/user/signup'
+  '회원 가입' : '/user/signup',
+  '로그인' : '/user/login'
 }
 
 const routePath = computed(() => routeMap[props.label] || '/')

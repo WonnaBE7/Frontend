@@ -20,4 +20,3 @@ export const categoryLabelMap: Record<string, string> = {
   transport: '교통',
   financial: '문화',
 }
-
