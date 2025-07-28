@@ -27,6 +27,6 @@ function goToScrap (){
 }
 
 function goToWrite (){
-    router.push({ path: '/board/write'})
+    router.push({ path: '/board/writed'})
 }
 </script>

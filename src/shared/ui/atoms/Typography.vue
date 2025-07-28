@@ -2,7 +2,7 @@
   <component
     :is="tag"
     :class="[
-      'font-pretendard',
+      'font-pretendard whitespace-nowrap',
       fontSizeClass,
       fontWeightClass,
       customClass

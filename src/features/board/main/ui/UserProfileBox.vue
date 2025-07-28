@@ -27,11 +27,11 @@
 </template>
 <script setup lang="ts">
 import Tag from '@/shared/ui/atoms/Tag.vue'
-import { mockGoals } from '@/entities/goal/goal.mock';
+import { mockGoalSummary } from '@/entities/goal/goal.mock';
 import UserProfileCard from '@/shared/ui/molecules/UserProfileCard.vue';
 import Card from '@/shared/ui/atoms/Card.vue';
 import Typography from '@/shared/ui/atoms/Typography.vue';
 
-const goals= mockGoals;
+const goals= mockGoalSummary.goals;
 
 </script>

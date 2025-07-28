@@ -19,6 +19,8 @@
         :category="goal.categoryName"
         :finType="goal.nowmeName"
         :percent="goal.progressRate.toString()"
+        :color="''"
+        class="bg-gray-BGDim "
       />
     </div>
   </Card>
@@ -29,7 +31,7 @@ import { Target, ChevronRight } from 'lucide-vue-next'
 import CurrentGoal from '@/shared/ui/molecules/CurrentGoal.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import Card from '@/shared/ui/atoms/Card.vue'
-import { mockGoals } from '@/entities/goal/goal.mock'
+import { mockGoalSummary } from '@/entities/goal/goal.mock'
 
-const goals = mockGoals
+const goals = mockGoalSummary.goals
 </script>

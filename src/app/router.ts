@@ -76,8 +76,23 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/goal',
     name: 'Goal',
-    component: () => import('@/pages/goal/GoalSimulationPage.vue'),
-    meta: { title: '목표 시뮬레이션' }
+    component: () => import('@/pages/goal/GoalPage.vue'),
+    meta: { title: '목표 페이지' }
+  },
+  {
+    path: '/goal/report',
+    name: 'GoalReport',
+    component: () => import('@/pages/goal/GoalReportPage.vue'),
+  },
+  {
+    path: '/goal/simulation/input',
+    name: 'GoalSimulationInput',
+    component: () => import('@/pages/goal/GoalSimulationInputPage.vue'),
+  },
+  {
+    path: '/goal/simulation/result',
+    name: 'GoalSimulationResult',
+    component: () => import('@/pages/goal/GoalSimulationResultPage.vue'),
   },
 
   /// 유저
