@@ -21,6 +21,7 @@ const props = defineProps({
 
 // 매핑 정의
 const fontMap: Record<string, { size: string; weight: string }> = {
+  B_28_160: {size:'text-h', weight: 'font-bold'},
   B_22_160: { size: 'text-h1', weight: 'font-bold' },
   M_22_160: { size: 'text-h2', weight: 'font-medium' },
   B_20_160: { size: 'text-h3', weight: 'font-bold' },

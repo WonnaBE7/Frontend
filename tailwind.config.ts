@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {
       fontSize: {
+        h:['28px', '160%'],
         h1: ['22px', '160%'],
         h2: ['22px', '160%'],
         h3: ['20px', '160%'],

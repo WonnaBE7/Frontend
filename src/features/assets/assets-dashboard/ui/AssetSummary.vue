@@ -5,7 +5,7 @@
   </Card>
 
   <Card class="w-full mt-4 flex flex-col bg-white border border-gray-150">
-    <Typography type="B_18_120" class="w-full mb">
+    <Typography type="B_18_120" class="w-full">
       자산 상세 내역
     </Typography>
 

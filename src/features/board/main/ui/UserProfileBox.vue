@@ -7,8 +7,9 @@
             v-for="goal in goals"
             :key="goal.id"
             class="min-w-[240px] max-w-[240px] flex-shrink-0"
+            @click="goToReport(goal.id)"
             >
-                <Card class="bg-gray-BGDim">
+                <Card class="bg-gray-BGDim !mb-0">
                     <Typography type="B_14_120" class="w-full mb-2">{{goal.goalName}}</Typography>
                     <div class="h-2 bg-gray-150 rounded-full overflow-hidden mb-2 w-full">
                         <div
@@ -27,11 +28,16 @@
 </template>
 <script setup lang="ts">
 import Tag from '@/shared/ui/atoms/Tag.vue'
-import { mockGoals } from '@/entities/goal/goal.mock';
+import { mockGoalSummary } from '@/entities/goal/goal.mock';
 import UserProfileCard from '@/shared/ui/molecules/UserProfileCard.vue';
 import Card from '@/shared/ui/atoms/Card.vue';
 import Typography from '@/shared/ui/atoms/Typography.vue';
+import { useRouter } from 'vue-router';
 
-const goals= mockGoals;
+const goals= mockGoalSummary.goals;
+const router =useRouter()
+function goToReport(goalId: number) {
+  router.push({ path: '/goal/report', query: { goalId: goalId.toString() } })
+}
 
 </script>
