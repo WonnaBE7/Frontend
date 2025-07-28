@@ -20,7 +20,7 @@
   import AppLayout from '@/shared/layout/AppLayout.vue'
   import PostPreviewCard from '@/shared/ui/molecules/PostPreviewCard.vue'
   import { mockBoardsByCategory } from '@/entities/board/board.mock'
-  import PopularTop3Card from '@/entities/recommend/PopularTop3Card.vue'
+  import PopularTop3Card from '@/features/recommend/main/ui/PopularTop3Card.vue'
   
   const route = useRoute()
   const router = useRouter()

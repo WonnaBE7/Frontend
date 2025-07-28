@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="mt-4 h-2 w-full bg-gray-1BGDim00 rounded-full overflow-hidden">
+    <div v-if="color !== 'white'" class="mt-4 h-2 w-full bg-gray-1BGDim00 rounded-full overflow-hidden">
       <div
         class="h-full bg-sub-yellow-p transition-all duration-300"
         :style="{ width: percent + '%' }"

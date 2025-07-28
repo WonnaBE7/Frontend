@@ -1,9 +1,9 @@
 <template>
     <div class="w-full flex flex-row justify-between mb-4 items-center">
-        <Typography type="B_16_120" class="w-full">목표 리스트</Typography>
-        <Button class="w-1/3" @click="goToSimulation">
+        <IconLabel :icon="Target">목표 리스트</IconLabel>
+        <Button class="max-w-[120px]" @click="goToSimulation">
             <div class="flex flex-row items-center justify-center gap-1">
-                <component :is="Plus" class="w-4"/> 
+                <component :is="FilePlus" class="w-4"/> 
                 <Typography type="B_16_120">새 목표</Typography>
             </div>
         </Button>
@@ -48,9 +48,10 @@ import Card from '@/shared/ui/atoms/Card.vue';
 import Typography from '@/shared/ui/atoms/Typography.vue';
 import type { Goal } from '@/entities/goal/goal.entity';
 import CurrentGoal from '@/shared/ui/molecules/CurrentGoal.vue';
-import { Calendar, Plus } from 'lucide-vue-next';
+import { Calendar, FilePlus, Target } from 'lucide-vue-next';
 import { useRouter } from 'vue-router';
 import Button from '@/shared/ui/atoms/Button.vue';
+import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
 
 defineProps<{
     goals : Goal[]

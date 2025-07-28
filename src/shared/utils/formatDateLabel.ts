@@ -6,3 +6,8 @@ export function formatDateLabel(dateStr: string): string {
 
   return '오늘'
 }
+
+export function formatDateToKoreanMonth(dateStr: string): string {
+  const [year, month] = dateStr.split('-')
+  return `${year}년 ${parseInt(month)}월`
+}

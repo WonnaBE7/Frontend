@@ -8,7 +8,7 @@
       </RouterLink>
     </div>
     <TotalAssets :meta="mockAssetSummaryMeta" :type="'자산'"/>
-    <TotalAssets :meta="mockConsumptionSummaryMeta" :type="'소비'"/>
+    <TotalAssets :meta="mockConsumptionSummaryMeta" :type="'소비'" class="!mb-0"/>
   </Card>
   </template>
   

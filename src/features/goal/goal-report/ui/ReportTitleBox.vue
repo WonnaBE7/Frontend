@@ -7,7 +7,7 @@
       :finType="goal.nowmeName"
       :percent="goal.progressRate.toString()"
       :color="'white'"
-      class="!bg-transparent !text-white"
+      class="!bg-transparent !text-white mb-4"
     />
 
     <AllGoalBox 
@@ -15,8 +15,8 @@
       :color2="'bg-white/10'"
       :icon1="CircleDollarSign"
       :icon2="Target"
-      :content1="formattedTarget"
-      :content2="formattedCurrent"
+      :content1="goal.targetAmount.toLocaleString() + '원'"
+      :content2="goal.currentAmount.toLocaleString() + '원'"
       :label1="'목표 금액'"
       :label2="'현재 금액'"
     />
@@ -30,12 +30,9 @@ import CurrentGoal from '@/shared/ui/molecules/CurrentGoal.vue'
 import { Target, CircleDollarSign } from 'lucide-vue-next'
 import type { GoalReport } from '@/entities/goal/goal.entity'
 
-const props = defineProps<{
+defineProps<{
   goal: GoalReport
 }>()
 
 const gradientStyle = `background: linear-gradient(to right, #302DAC, #5754DA)`
-
-const formattedTarget = props.goal.targetAmount.toLocaleString() + '원'
-const formattedCurrent = props.goal.currentAmount.toLocaleString() + '원'
 </script>

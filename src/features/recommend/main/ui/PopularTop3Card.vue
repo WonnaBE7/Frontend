@@ -23,13 +23,13 @@
   </template>
   
   <script setup lang="ts">
-import Card from '@/shared/ui/atoms/Card.vue';
-import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
-import NoBorderTag from '@/shared/ui/atoms/NoBorderTag.vue';
-import Typography from '@/shared/ui/atoms/Typography.vue';
-import { Star } from 'lucide-vue-next';
-import {mockPopularProducts} from '@/entities/board/product/product.mock'
-import { productTypeLabelMap } from '@/entities/board/product/product.constants'
+  import Card from '@/shared/ui/atoms/Card.vue';
+  import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
+  import NoBorderTag from '@/shared/ui/atoms/NoBorderTag.vue';
+  import Typography from '@/shared/ui/atoms/Typography.vue';
+  import { Star } from 'lucide-vue-next';
+  import {mockPopularProducts} from '@/entities/board/product/product.mock'
+  import { productTypeLabelMap } from '@/entities/board/product/product.constants'
 
   const items = mockPopularProducts
   

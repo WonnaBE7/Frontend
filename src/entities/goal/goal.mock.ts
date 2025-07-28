@@ -1,4 +1,4 @@
-import type { GoalSummary, GoalReport, GoalSimulationInput, GoalReportSaveRequest } from './goal.entity'
+import type { GoalSummary, GoalReport, GoalSimulationInput, GoalReportSaveRequest, GoalSimulationResponse } from './goal.entity'
 
 export const mockGoalSummary: GoalSummary = {
   totalGoalCount: 3,
@@ -19,7 +19,7 @@ export const mockGoalSummary: GoalSummary = {
     {
       id: 2,
       goalName: '최신형 노트북 구매',
-      categoryName: '전자제품',
+      categoryName: '취미/문화',
       nowmeName: '소확행형',
       progressRate: 80,
       targetAmount: 2500000,
@@ -31,7 +31,7 @@ export const mockGoalSummary: GoalSummary = {
     {
       id: 3,
       goalName: '내 집 마련',
-      categoryName: '주거',
+      categoryName: '내 집 마련',
       nowmeName: '미래계획형',
       progressRate: 60,
       targetAmount: 67500000,
@@ -116,7 +116,7 @@ export const mockGoalReports: GoalReport[] = [
   {
     id: 3,
     goalName: '내 집 마련',
-    categoryName: '주거',
+    categoryName: '내 집 마련',
     nowmeName: '미래계획형',
     progressRate: 60,
     targetAmount: 67500000,
@@ -157,3 +157,45 @@ export const mockGoalReportSave: GoalReportSaveRequest = {
   selectedProductId: 55,
   status: 'PUBLISHED',
 };
+
+
+
+export const mockGoalSimulationResponse: GoalSimulationResponse = {
+  goalId: 123,
+  futureMeMessage: "안녕! 난 미래의 너야! 👋\n자산 분석을 통한 너의 맞춤형인 '자린고비형'에 맞는 상품을 추천해줄게!",
+  recommendedProducts: [
+    {
+      id: 55,
+      name: '카카오뱅크 세이브업 적금',
+      bank: '카카오뱅크',
+      tag: ['앱으로 간편 관리', '추가 추천'],
+      interestRate: 3.9,
+      achievementRate: 98,
+      monthlyDepositAmount: 150000,
+      expectedAchievementDate: '2026-11',
+      expectedTotalAmount: 3000000,
+    },
+    {
+      id: 62,
+      name: '토스뱅크 먼저 적금',
+      bank: '토스뱅크',
+      tag: ['자동저축', '높은 금리', '교체 추천'],
+      interestRate: 3.9,
+      achievementRate: 90,
+      monthlyDepositAmount: 150000,
+      expectedAchievementDate: '2026-11',
+      expectedTotalAmount: 3000000,
+    },
+    {
+      id: 68,
+      name: '케이뱅크 코드K 자유적금',
+      bank: '케이뱅크',
+      tag: ['자동저축', '높은 금리'],
+      interestRate: 4.1,
+      achievementRate: 93,
+      monthlyDepositAmount: 150000,
+      expectedAchievementDate: '2026-11',
+      expectedTotalAmount: 3000000,
+    },
+  ],
+}
