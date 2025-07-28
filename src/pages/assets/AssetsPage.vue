@@ -11,8 +11,8 @@
 <script setup lang="ts">
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import TitleTab from '@/features/assets/ui/TitleTab.vue'
-import AssetSummary from '@/features/assets/ui/assets-dashboard/AssetSummary.vue'
-import ConsumptionSummary from '@/features/assets/ui/consumption-dashboard/ConsumptionSummary.vue'
+import AssetSummary from '@/features/assets/assets-dashboard/ui/AssetSummary.vue'
+import ConsumptionSummary from '@/features/assets/consumption-dashboard/ui/ConsumptionSummary.vue'
 import { ref } from 'vue'
 import type {AssetTabKey } from '@/entities/assets/assets.entity'
 

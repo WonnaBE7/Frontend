@@ -1,0 +1,11 @@
+<template>
+  <AppLayout>
+      <GoalSimulationInputForm/>
+  </AppLayout>
+</template>
+
+<script setup lang="ts">
+import AppLayout from '@/shared/layout/AppLayout.vue';
+import GoalSimulationInputForm from '@/features/goal/goal-simulation-input/ui/GoalSimulationInputForm.vue';
+
+</script>

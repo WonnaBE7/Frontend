@@ -25,13 +25,15 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/assets/ConsumptionDetailPage.vue')
   },
 
-////
+//// 상품 추천
   {
     path: '/recommend',
     name: 'Recommend',
     component: () => import('@/pages/recommend/RecommendPage.vue'),
     meta: { title: '상품 추천' }
   },
+
+  //// 게시판
   {
     path: '/board',
     name: 'Board',
@@ -39,18 +41,71 @@ const routes: RouteRecordRaw[] = [
     meta: { title: '게시판' }
   },
   {
-    path: '/goal',
-    name: 'Goal',
-    component: () => import('@/pages/goal/GoalSimulationPage.vue'),
-    meta: { title: '목표 시뮬레이션' }
+    path: '/board/category',
+    name: 'BoardCategory',
+    component: () => import('@/pages/board/BoardCategoryPage.vue'),
+  },
+  {
+    path: '/board/category/detail/:category',
+    name: 'BoardCategoryDetail',
+    component: () => import('@/pages/board/BoardCategoryDetailPage.vue'),
+  },
+  {
+    path: '/board/writed',
+    name: 'BoardWrited',
+    component: () => import('@/pages/board/BoardWritedPage.vue'),
+  },
+  {
+    path: '/board/scraped',
+    name: 'BoardScraped',
+    component: () => import('@/pages/board/BoardScrapedPage.vue'),
+  },
+  {
+    path: '/board/write',
+    name: 'BoardWrite',
+    component: () => import('@/pages/board/BoardWritePage.vue'),
+  },
+  {
+    path: '/board/post/:id',
+    name: 'BoardPost',
+    component: () => import('@/pages/board/BoardPostPage.vue'),
   },
 
-  /// 
+
+  /// 목표
+  {
+    path: '/goal',
+    name: 'Goal',
+    component: () => import('@/pages/goal/GoalPage.vue'),
+    meta: { title: '목표 페이지' }
+  },
+  {
+    path: '/goal/report',
+    name: 'GoalReport',
+    component: () => import('@/pages/goal/GoalReportPage.vue'),
+  },
+  {
+    path: '/goal/simulation/input',
+    name: 'GoalSimulationInput',
+    component: () => import('@/pages/goal/GoalSimulationInputPage.vue'),
+  },
+  {
+    path: '/goal/simulation/result',
+    name: 'GoalSimulationResult',
+    component: () => import('@/pages/goal/GoalSimulationResultPage.vue'),
+  },
+
+  /// 유저
   {
     path: '/user',
     name: 'User',
     component: () => import('@/pages/user/UserProfilePage.vue'),
     meta: { title: '유저 페이지' }
+  },
+  {
+    path: '/user/login',
+    name: 'UserLoginPage',
+    component: () => import('@/pages/user/UserLoginPage.vue')
   },
   {
     path: '/user/signup',
@@ -77,7 +132,7 @@ const routes: RouteRecordRaw[] = [
     name: 'UserHistoryPage',
     component: () => import('@/pages/user/UserHistoryPage.vue')
   },
-  /// 유저
+  /// 
   {
     path: '/:pathMatch(.*)*',
     redirect: '/'

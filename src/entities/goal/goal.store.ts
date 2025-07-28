@@ -1,21 +1,20 @@
+// goal.store.ts
 import { defineStore } from 'pinia'
-import type { Goal } from './goal.entity'
-import { mockGoals } from './goal.mock'
+import type { GoalSimulationResponse } from './goal.entity'
 
-export const useGoalStore = defineStore('goal', {
-  state: () => ({
-    goals: mockGoals as Goal[]
-  }),
-  getters: {
-    totalProgress(): number {
-      return Math.round(
-        this.goals.reduce((acc, g) => acc + g.progressRate, 0) / this.goals.length
-      )
-    }
-  },
-  actions: {
-    addGoal(goal: Goal) {
-      this.goals.push(goal)
-    }
-  }
-})
+// goal.store.ts
+
+export const useGoalSimulationStore = defineStore('goalSimulation', {
+    state: () => ({
+      result: null as GoalSimulationResponse | null
+    }),
+    actions: {
+      setResult(result: GoalSimulationResponse) {
+        this.result = result
+      },
+      resetResult() {
+        this.result = null
+      }
+    },
+    persist: true // ✅ 이거 추가
+  })

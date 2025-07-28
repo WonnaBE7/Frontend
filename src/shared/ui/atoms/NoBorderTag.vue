@@ -4,7 +4,7 @@
         color]
         "
     >
-      <Typography type="M_12_140">
+      <Typography type="M_12_140" class="whitespace-nowrap">
         <slot />
       </Typography>
     </span>
