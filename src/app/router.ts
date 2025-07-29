@@ -32,6 +32,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/recommend/RecommendPage.vue'),
     meta: { title: '상품 추천' }
   },
+  {
+    path: '/recommend/wishlist',
+    name: 'Wishlist',
+    component: () => import('@/pages/recommend/WishlistPage.vue'),
+  },
+  {
+    path: '/recommend/product-detail',
+    name: 'ProductDetail',
+    component: () => import('@/pages/recommend/ProductDetailPage.vue'),
+  },
 
   //// 게시판
   {

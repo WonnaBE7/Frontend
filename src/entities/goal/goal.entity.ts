@@ -8,7 +8,7 @@ export interface Goal {
   currentAmount: number
   goalDurationMonths: number
   startDate: string
-  status: 'PUBLISHED' | 'DELETED' | 'COMPLETED'
+  status: 'PUBLISHED' | 'DELETED' | 'ACHIEVED'
 }
 
 export interface GoalSummary {

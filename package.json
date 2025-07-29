@@ -12,6 +12,7 @@
     "preview:https": "vite preview --host --https"
   },
   "dependencies": {
+    "chart.js": "^4.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
@@ -20,6 +21,7 @@
     "pinia-plugin-persistedstate": "^4.4.1",
     "tailwind-scrollbar-hide": "^4.0.0",
     "vue": "^3.5.17",
+    "vue-chartjs": "^5.3.2",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {

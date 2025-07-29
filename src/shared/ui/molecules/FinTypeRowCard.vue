@@ -4,7 +4,7 @@
         v-if="finImage"
         :src="finImage"
         alt="성향 이미지"
-        class="w-2/5 p-4"
+        class="w-2/5"
       />
       <div class="w-3/5">
         <Typography type="B_16_120">{{ label }}</Typography>
