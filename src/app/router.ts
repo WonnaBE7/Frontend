@@ -38,9 +38,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/recommend/WishlistPage.vue'),
   },
   {
-    path: '/recommend/product-detail',
-    name: 'ProductDetail',
-    component: () => import('@/pages/recommend/ProductDetailPage.vue'),
+    path: '/recommend/card/detail',
+    component: () => import('@/pages/recommend/CardDetailPage.vue'),
+  },
+  {
+    path: '/recommend/savings/detail',
+    component: () => import('@/pages/recommend/SavingsDetailPage.vue'),
+  },
+  {
+    path: '/recommend/insurance/detail',
+    component: () => import('@/pages/recommend/InsuranceDetailPage.vue'),
   },
 
   //// 게시판

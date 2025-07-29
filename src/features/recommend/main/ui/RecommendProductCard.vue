@@ -38,20 +38,26 @@
   import { computed } from 'vue'
   import Card from '@/shared/ui/atoms/Card.vue'
   import Typography from '@/shared/ui/atoms/Typography.vue'
-  import type { 
-    RecommendedSavingsProduct, 
-    RecommendedCardProduct, 
-    RecommendedInsuranceProduct 
+  import { ChevronRight, Star } from 'lucide-vue-next';
+    
+  import type {
+    RecommendedSavingsProduct,
+    RecommendedCardProduct,
+    RecommendedInsuranceProduct,
+    WishlistProduct
   } from '@/entities/recommend/recommend.entity'
-import { ChevronRight, Star } from 'lucide-vue-next';
-  
+
   const props = defineProps<{
-    product: RecommendedSavingsProduct | RecommendedCardProduct | RecommendedInsuranceProduct
+    product:
+      | RecommendedSavingsProduct
+      | RecommendedCardProduct
+      | RecommendedInsuranceProduct
+      | WishlistProduct  // ✅ 추가
   }>()
-  
-  defineEmits<{
-    (e: 'click', product: typeof props.product): void
-  }>()
+    
+    defineEmits<{
+      (e: 'click', product: typeof props.product): void
+    }>()
   
   // 상품 타입별 이름 추출
   const productName = computed(() => {

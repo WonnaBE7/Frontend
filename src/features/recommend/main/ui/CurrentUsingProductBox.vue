@@ -2,7 +2,7 @@
   <Card class="bg-white border border-gray-150">
     <IconLabel :icon="Eye" class="mb-4">현재 보유 상품</IconLabel>
 
-    <div class="flex flex-row gap-4 items-start">
+    <div class="flex flex-row gap-2 items-start w-full">
       <!-- 예적금 -->
       <div class="flex flex-col flex-1">
         <div class="flex flex-row items-center gap-2 mb-2">

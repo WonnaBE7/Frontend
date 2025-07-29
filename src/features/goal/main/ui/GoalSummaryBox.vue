@@ -1,7 +1,7 @@
 <template>
     <Button
       class="fixed bottom-24 right-4 z-40 bg-sub-yellow-p hover:bg-sub-yellow-d text-white 
-             rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
+             rounded-full w-14 h-14 flex items-center justify-center max-w-[56px]"
       @click="goToSimulation"
     >
       <component :is="FilePlus" class="w-5 h-5" />

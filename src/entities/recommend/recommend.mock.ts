@@ -21,12 +21,12 @@ export const mockCurrentProducts: CurrentProductsResponse = {
     count: 2,
     products: [
       {
-        productId: "1300",
+        productId: "200",
         productName: "KB Star 적금",
         interestRate: 3.8
       },
       {
-        productId: "1501",
+        productId: "201",
         productName: "우리은행 정기예금",
         interestRate: 3.2
       }
@@ -36,7 +36,7 @@ export const mockCurrentProducts: CurrentProductsResponse = {
     count: 1,
     products: [
       {
-        cardId: "01",
+        cardId: "101",
         cardName: "현대카드 M",
         benefitDescription: "교통비 10% 적립"
       }
@@ -46,7 +46,7 @@ export const mockCurrentProducts: CurrentProductsResponse = {
     count: 1,
     products: [
       {
-        productId: "3001",
+        productId: "301",
         insuranceName: "동양생명 실손보험",
         coverage: "의료비 80% 보장"
       }
@@ -56,7 +56,7 @@ export const mockCurrentProducts: CurrentProductsResponse = {
 
 // 예적금 상품 상세 조회
 export const mockSavingsDetail: SavingsDetailResponse = {
-  productId: "2001",
+  productId: "200",
   productName: "KB Star 적금",
   bankName: "KB국민은행",
   category: "적금",
@@ -79,7 +79,7 @@ export const mockSavingsDetail: SavingsDetailResponse = {
 
 // 보험 상품 상세 조회
 export const mockInsuranceDetail: InsuranceDetailResponse = {
-  productId: "3001",
+  productId: "301",
   insuranceName: "동양생명 실손보험",
   insuranceCompany: "동양생명",
   startDate: "2023-03",
@@ -99,7 +99,7 @@ export const mockInsuranceDetail: InsuranceDetailResponse = {
 
 // 카드 상품 상세 조회
 export const mockCardDetail: CardDetailResponse = {
-  cardId: "1",
+  cardId: "101",
   cardName: "신한 딥드림 카드",
   cardCompany: "신한카드",
   startDate: "2023-06",
@@ -122,7 +122,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
   products: [
     {
       productType: "savings",
-      productId: "2001",
+      productId: "200",
       productName: "카카오뱅크 세이브 적금",
       bankName: "카카오뱅크",
       type: "정기적금",

@@ -86,23 +86,26 @@
   }
   
   function goToDetail(product: RecommendedSavingsProduct | RecommendedCardProduct | RecommendedInsuranceProduct) {
-    // 상품 타입별로 다른 ID 필드 처리
-    let productId: string
-    
-    if (selectedTab.value === 'savings') {
-      productId = (product as RecommendedSavingsProduct).productId
-    } else if (selectedTab.value === 'card') {
-      productId = (product as RecommendedCardProduct).cardId
-    } else {
-      productId = (product as RecommendedInsuranceProduct).productId
-    }
-  
-    router.push({
-      path: '/recommend/product-detail',
-      query: {
-        productId: productId,
-        productType: selectedTab.value
-      }
-    })
+  let productId: string
+  let routePath: string
+
+  if ('productId' in product && 'interestRate' in product) {
+    // 예적금 상품
+    productId = product.productId
+    routePath = '/recommend/savings/detail'
+  } else if ('cardId' in product) {
+    // 카드 상품
+    productId = product.cardId
+    routePath = '/recommend/card/detail'
+  } else {
+    // 보험 상품
+    productId = product.productId
+    routePath = '/recommend/insurance/detail'
   }
+
+  router.push({
+    path: routePath,
+    query: {productId}
+  })
+}
   </script>
