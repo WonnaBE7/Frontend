@@ -6,7 +6,7 @@
       alt="성향 이미지"
       class="w-1/3"
     />
-    <Typography type="B_20_160" class="mb-4">자린고비형 맞춤 목표 설정</Typography>
+    <Typography type="B_20_160" class="mb-4">{{user.nowME}} 맞춤 목표 설정</Typography>
 
     <Card class="w-full mb-4 bg-white border border-gray-150">
       <Typography type="B_16_120" class="mb-4 w-full">🎯 목표 카테고리를 선택해주세요</Typography>
@@ -15,7 +15,6 @@
           v-for="category in goalCategories"
           :key="category"
           :class="[
-            'border rounded px-2 py-1 text-sm',
             selectedCategory === category
               ? 'bg-sub-yellow-p text-white border-none'
               : 'bg-white text-gray-800'
@@ -62,7 +61,7 @@
       </Typography>
     </Card>
 
-    <Button class="w-full mt-4" @click="submitGoal">제출하기</Button>
+    <Button class="w-full mb-4" @click="submitGoal">제출하기</Button>
   </div>
 </template>
 
@@ -92,6 +91,7 @@ const goalDurationMonthsStr = ref('')
 
 const router = useRouter()
 const goalSimulationStore = useGoalSimulationStore()
+const user = mockUserProfile
 
 const finImage = computed(() => {
   const image = finTypeImages[mockUserProfile.nowME || '']
