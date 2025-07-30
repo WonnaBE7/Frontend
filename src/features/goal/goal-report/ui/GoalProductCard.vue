@@ -14,7 +14,7 @@
             <Typography type="M_12_120" class="text-gray-500 mr-1">금리: </Typography>
             <Typography type="M_12_120" class="text-sub-green-p">연 {{ product.interestRate }}%</Typography>
           </div>
-          <span @click="toggleDetail" :class="isOpen ? 'rotate-180' : ''">▼</span>
+          <component :is="ChevronDown" @click="toggleDetail" :class="isOpen ? 'rotate-180' : ''"/>
         </div>
       </Card>
   
@@ -43,14 +43,12 @@
           <Button>상품 상세보기</Button>
         </div>
         
-        <div v-if="isSelected" class="absolute top-2 right-2 bg-yellow-400 text-xs px-2 py-1 rounded">
-          사용 중
-        </div>
       </Card>
     </div>
   </template>
   
   <script setup lang="ts">
+  import {ChevronDown} from 'lucide-vue-next'
   import Card from '@/shared/ui/atoms/Card.vue';
   import { ref, defineProps, computed } from 'vue'
   import type { RecommendedProduct } from '@/entities/goal/goal.entity'

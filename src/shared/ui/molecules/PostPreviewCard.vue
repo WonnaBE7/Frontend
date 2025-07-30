@@ -1,5 +1,5 @@
 <template>
-      <Card @click="goToPost">
+      <Card @click="goToPost" >
         <div class="w-full flex flex-row justify-between mb-4">
           <Typography type="B_14_140">{{ title }}</Typography>
           <Trash2Icon

@@ -6,9 +6,6 @@
     <template v-else-if="type === 'current' || type === 'today'">
       <ConsumptionDetailDate :type="type" />
     </template>
-    <template v-else>
-      <div class="text-center text-gray-400 mt-10">유효하지 않은 접근입니다.</div>
-    </template>
   </AppLayout>
 </template>
 

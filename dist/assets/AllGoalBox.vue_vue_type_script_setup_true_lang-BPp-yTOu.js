@@ -1,6 +1,0 @@
-import{c as i,b as l}from"./AppLayout.vue_vue_type_script_setup_true_lang-BvONmtKi.js";import{C as n}from"./Card-D6RuHQT6.js";import{d,g as _,o as c,b as a,n as r,w as o,c as p,f as m,e as s,t}from"./index-DberAeK0.js";/**
- * @license lucide-vue-next v0.525.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */const k=i("calendar",[["path",{d:"M8 2v4",key:"1cmpym"}],["path",{d:"M16 2v4",key:"4m81vk"}],["rect",{width:"18",height:"18",x:"3",y:"4",rx:"2",key:"1hopcy"}],["path",{d:"M3 10h18",key:"8toen8"}]]),f={class:"flex flex-row gap-4 w-full"},C=d({__name:"AllGoalBox",props:{color1:{},color2:{},icon1:{},icon2:{},content1:{},content2:{},label1:{},label2:{}},setup(h){return(e,u)=>(c(),_("div",f,[a(n,{class:r([e.color1,"w-full !mb-0"])},{default:o(()=>[(c(),p(m(e.icon1),{class:"w-8 h-8 mb-2"})),a(l,{type:"B_18_120",class:"mb-1 whitespace-nowrap"},{default:o(()=>[s(t(e.content1),1)]),_:1}),a(l,{type:"M_12_120"},{default:o(()=>[s(t(e.label1),1)]),_:1})]),_:1},8,["class"]),a(n,{class:r([e.color2,"w-full !mb-0"])},{default:o(()=>[(c(),p(m(e.icon2),{class:"w-8 h-8 mb-2"})),a(l,{type:"B_18_120",class:"mb-1 whitespace-nowrap"},{default:o(()=>[s(t(e.content2),1)]),_:1}),a(l,{type:"M_12_120"},{default:o(()=>[s(t(e.label2),1)]),_:1})]),_:1},8,["class"])]))}});export{k as C,C as _};

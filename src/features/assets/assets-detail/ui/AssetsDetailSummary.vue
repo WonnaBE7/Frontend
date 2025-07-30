@@ -5,7 +5,7 @@
         총 {{ label }} 금액
       </Typography>
       <Typography type="B_22_160" class="w-full">
-        {{ details.totalAmount }}
+        {{ details.totalAmount.toLocaleString() }}원
       </Typography>
     </Card>
   
@@ -23,7 +23,7 @@
                 </Typography>
             </div>
             <Typography type="B_16_120">
-            {{ account.balance }}원
+            {{ account.balance.toLocaleString() }}원
             </Typography>
         </div>
       </Card>
