@@ -1,1 +1,0 @@
-import{_ as e}from"./AppLayout.vue_vue_type_script_setup_true_lang-DmFSe4mj.js";import{d as o,c as a,o as s}from"./index-DnLb7Hb6.js";const m=o({__name:"WishlistPage",setup(t){return(r,_)=>(s(),a(e))}});export{m as default};
