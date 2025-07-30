@@ -17,8 +17,13 @@
   import Card from '@/shared/ui/atoms/Card.vue';
   import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
   import Typography from '@/shared/ui/atoms/Typography.vue';
-  import { mockSavingsDetailPage } from '@/entities/recommend/recommend.mock';
+ 
   import { MessageCircle } from 'lucide-vue-next';
+    import type { MainFeature } from '@/entities/recommend/recommend.entity';
   
-  const datas = mockSavingsDetailPage.mainFeatures;
+    const props = defineProps<{
+        mainFeatures : MainFeature[]
+    }>()
+
+    const datas = props.mainFeatures
   </script>

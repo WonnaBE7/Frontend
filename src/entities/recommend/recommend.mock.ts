@@ -12,7 +12,8 @@ import type {
   CardDetailPageResponse,
   SavingsApplicationRequest,
   InsuranceApplicationRequest,
-  CardApplicationRequest
+  CardApplicationRequest,
+  InsurancesDetailPageResponse
 } from './recommend.entity'
 
 // 현재 보유상품 조회
@@ -305,60 +306,60 @@ export const mockSavingsDetailPage: SavingsDetailPageResponse = {
 }
 
 // 카드 상세보기 페이지 (보험상품 상세 조회 API 데이터)
-export const mockCardDetailPage1: CardDetailPageResponse = {
+export const mockCardDetailPage: CardDetailPageResponse = {
   productInfo: {
-    ptofuv: "KAKAO_PAY_CARD_001", // 오타 필드
+    cardId: "100", 
     cardName: "카카오페이 카드",
     cardCompany: "카카오페이",
     matchScore: 94,
     mainBenefit: "간편결제 5% 적립",
-    benefitRate: "최대 5%",
-    description: "카카오페이 카드는 간편결제 시장을 선도하는 카드로, 일상 속 모든 결제를 더욱 편리하고 혜택있게 만들어줍니다. 특히 온라인 쇼핑과 배달앱 사용이 많은 분들께 최적화된 카드입니다."
+    benefitSummary: "스타벅스 50% 할인\n대중교통 10% 할인\nCGV, 롯데시네마 5,000원 할인"
   },
   comparisonChart: {
     labels: ["혜택", "적절성", "편의성", "안정성", "접근성"],
     currentUserData: [3, 3, 3, 4, 4],
     recommendedProductData: [5, 4, 5, 4, 5]
   },
-  mainFeatures: [
-    {
-      title: "주요 혜택",
-      items: [
-        "간편결제 5% 적립",
-        "온라인쇼핑 3% 적립",
-        "배달앱 5% 할인"
-      ]
+  note: {
+      category: "혜택 적용 범위: 교통, 식비",
+      previousMonthSpendig: "전월 실적: 없음",
+      usage: "국내 전용 / 해외 겸용",
+      annualFee: "국내 연회비: 없음 / 해외 연회비: 없음"
     }
-  ],
-  termsAndConditions: {
-    annualFee: "연회비 없음",
-    previousPerformance: "전월실적 없음",
-    specialNotes: [
-      "카카오페이 가입 필수",
-      "즉시 발급 가능"
-    ]
-  }
 }
 
-// 보험 상품 상세 조회 페이지 (실제로는 카드 데이터)
-export const mockCardDetailPage2: CardDetailPageResponse = {
+
+export const mockInsuranesDetailPage : InsurancesDetailPageResponse={
   productInfo: {
-    cardId: "2000",
-    productName: "KB 틴업 체크카드",
-    productCompany: "KB국민카드",
-    matchScore: 93,
-    mainBenefit: "앱으로 간편 가입",
-    benefitSummary: "스타벅스 50% 할인\n대중교통 10% 할인\nCGV, 롯데시네마 5,000원 할인"
-  },
-  comparisonChart: {
-    labels: ["확장성", "혜택 범위", "전월 실적", "카드 활용도", "연회비 부담"],
-    currentUserData: [4, 3, 2, 4, 3],
-    recommendedProductData: [3, 4, 5, 4, 5]
-  },
-  Note: {
-    category: "혜택 적용 범위: 교통, 식비",
-    previousMonthSpendig: "전월 실적: 없음", // 오타 그대로 유지
-    usage: "국내 전용 / 해외 겸용",
-    annualFee: "국내 연회비: 없음 / 해외 연회비: 없음"
+      productId: "01",
+      productName: "카카오페이 보험",
+      productCompany: "카카오페이",
+      matchScore: 94,
+      mainBenefit: "간편결제 5% 적립",
+      benefitRate: "최대 5%",
+      description: "카카오페이 카드는 간편결제 시장을 선도하는 카드로, 일상 속 모든 결제를 더욱 편리하고 혜택있게 만들어줍니다. 특히 온라인 쇼핑과 배달앱 사용이 많은 분들께 최적화된 카드입니다."
+    },
+    comparisonChart: {
+      labels: ["혜택", "적절성", "편의성", "안정성", "접근성"],
+      currentUserData: [3, 3, 3, 4, 4],
+      recommendedProductData: [5, 4, 5, 4, 5]
+    },
+    mainFeatures: [
+      {
+        title: "주요 혜택",
+        items: [
+          "간편결제 5% 적립",
+          "온라인쇼핑 3% 적립",
+          "배달앱 5% 할인"
+        ]
+      }
+    ],
+    termsAndConditions: {
+      annualFee: "연회비 없음",
+      previousPerformance: "전월실적 없음",
+      specialNotes: [
+        "카카오페이 가입 필수",
+        "즉시 발급 가능"
+      ]
+    }
   }
-}

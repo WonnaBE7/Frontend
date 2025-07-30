@@ -23,8 +23,11 @@
     LineElement,
     Filler
   } from 'chart.js'
-  import { mockSavingsDetailPage } from '@/entities/recommend/recommend.mock'
-  
+  import type {ComparisonChart} from '@/entities/recommend/recommend.entity'
+  const props = defineProps<{
+    comparisonChart : ComparisonChart
+  }>()
+
   ChartJS.register(
     Title,
     Tooltip,
@@ -35,7 +38,7 @@
     Filler
   )
   
-  const { labels, currentUserData, recommendedProductData } = mockSavingsDetailPage.comparisonChart
+  const { labels, currentUserData, recommendedProductData } = props.comparisonChart
   
   const chartData = {
   labels,

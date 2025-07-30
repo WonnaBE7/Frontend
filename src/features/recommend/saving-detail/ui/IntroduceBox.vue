@@ -24,11 +24,15 @@
 </template>
 <script setup lang="ts">
 import Card from '@/shared/ui/atoms/Card.vue';
-import { mockSavingsDetailPage } from '@/entities/recommend/recommend.mock';
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
 import { MessageCircle, Star } from 'lucide-vue-next';
 import Typography from '@/shared/ui/atoms/Typography.vue';
-  
-  const data = mockSavingsDetailPage.productInfo
+import type { SavingsProductInfo } from '@/entities/recommend/recommend.entity';
+
+const props = defineProps<{
+    productInfo : SavingsProductInfo
+}>()
+
+  const data = props.productInfo
 
 </script>

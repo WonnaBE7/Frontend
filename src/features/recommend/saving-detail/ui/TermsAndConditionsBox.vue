@@ -20,6 +20,10 @@
   import Typography from '@/shared/ui/atoms/Typography.vue';
   import { mockSavingsDetailPage } from '@/entities/recommend/recommend.mock';
   import { MessageCircle } from 'lucide-vue-next';
+  import type { SavingsTermsAndConditions } from '@/entities/recommend/recommend.entity';
   
-  const datas = mockSavingsDetailPage.termsAndConditions;
+  const props = defineProps<{
+    termsAndConditions: SavingsTermsAndConditions
+  }>()
+  const datas = props.termsAndConditions;
   </script>

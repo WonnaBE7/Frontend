@@ -253,17 +253,12 @@ export interface SavingsDetailPageResponse {
 
 // 카드 상세보기 페이지 (보험상품 상세 조회에서 나온 데이터)
 export interface CardProductInfo {
-  ptofuv?: string          // 오타로 보이는 필드
-  cardId?: string          // 실제 사용되는 필드
-  cardName?: string
-  productName?: string     // 다른 API에서는 이걸 사용
-  cardCompany?: string
-  productCompany?: string  // 다른 API에서는 이걸 사용
+  cardId: string          // 오타로 보이는 필드
+  cardName: string
+  cardCompany: string
   matchScore: number
   mainBenefit: string
-  benefitRate?: string
-  benefitSummary?: string
-  description?: string
+  benefitSummary: string
 }
 
 export interface CardTermsAndConditions {
@@ -274,7 +269,7 @@ export interface CardTermsAndConditions {
 
 export interface CardNote {
   category: string
-  previousMonthSpendig: string // API의 오타 그대로 유지
+  previousMonthSpendig: string 
   usage: string
   annualFee: string
 }
@@ -282,7 +277,29 @@ export interface CardNote {
 export interface CardDetailPageResponse {
   productInfo: CardProductInfo
   comparisonChart: ComparisonChart
-  mainFeatures?: MainFeature[]
-  termsAndConditions?: CardTermsAndConditions
-  Note?: CardNote
+  note: CardNote
+}
+
+// 보험 상세보기 페이지
+export interface InsuranceProductInfo {
+  productId: string
+  productName: string
+  productCompany: string
+  matchScore: number
+  mainBenefit: string
+  benefitRate: string
+  description: string
+}
+
+export interface InsurancesDetailPageResponse {
+  productInfo: InsuranceProductInfo
+  comparisonChart: ComparisonChart
+  mainFeatures: MainFeature[]
+  termsAndConditions: InsurancesTermsAndConditions
+}
+
+export interface InsurancesTermsAndConditions {
+  annualFee: string
+  previousPerformance: string
+  specialNotes: string[]
 }
