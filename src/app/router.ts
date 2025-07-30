@@ -32,6 +32,23 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/recommend/RecommendPage.vue'),
     meta: { title: '상품 추천' }
   },
+  {
+    path: '/recommend/wishlist',
+    name: 'Wishlist',
+    component: () => import('@/pages/recommend/WishlistPage.vue'),
+  },
+  {
+    path: '/recommend/card/detail',
+    component: () => import('@/pages/recommend/CardDetailPage.vue'),
+  },
+  {
+    path: '/recommend/savings/detail',
+    component: () => import('@/pages/recommend/SavingsDetailPage.vue'),
+  },
+  {
+    path: '/recommend/insurance/detail',
+    component: () => import('@/pages/recommend/InsuranceDetailPage.vue'),
+  },
 
   //// 게시판
   {

@@ -11,7 +11,7 @@
       @close="showMessageModal = false"
     />
 
-    <div v-show="!showLetterIcon && !showMessageModal">
+    <div v-show="!showLetterIcon && !showMessageModal" class="mb-4">
       <ReportTitleBox v-if="reportData" :goal="reportData" />
       <ReportCurrentBox v-if="reportData" :goal="reportData" />
       <ReportProductBox
@@ -19,7 +19,12 @@
         :products="reportData.recommendedProducts"
         :selectedProductId="reportData.selectedProductId"
       />
+        <AchievedButton
+        v-if="reportData"
+        :goalId="reportData?.id"
+      />
     </div>
+   
   </AppLayout>
 </template>
 
@@ -34,6 +39,7 @@ import LetterOverlay from '@/features/goal/goal-report/ui/LetterOverlay.vue'
 import FutureMessageCard from '@/features/goal/goal-report/ui/FutureMessageCard.vue'
 import { mockGoalReports } from '@/entities/goal/goal.mock'
 import type { GoalReport } from '@/entities/goal/goal.entity'
+import AchievedButton from '@/features/goal/goal-report/ui/AchievedButton.vue'
 
 const route = useRoute()
 const reportData = ref<GoalReport | null>(null)
@@ -51,4 +57,5 @@ onMounted(() => {
     }
   }
 })
+
 </script>

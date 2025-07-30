@@ -1,15 +1,15 @@
 /** 자산 분석 요약 정보 */
 export interface AssetSummaryMeta {
-  totalAmount: string
-  changeRate: string
-  changeAmount: string
+  totalAmount: number
+  changeRate: number
+  changeAmount: number
 }
 
 // 소비 현황
 export interface ConsumptionSummaryMeta {
-  monthlyConsumption: string     
-  changeRate: string             
-  changeAmount: string           
+  monthlyConsumption: number     
+  changeRate: number             
+  changeAmount: number           
 }
 
 // 차트 데이터 
@@ -26,7 +26,7 @@ export interface AssetCategoryRatioResponse {
 // 자산 타입에 대한 내용
 export interface AssetDetailItem {
   assetCategory: string        
-  amount: string               
+  amount: number               // 문자열에서 숫자로 수정
   accountsCount: number        
 }
 export interface AssetDetailResponse {
@@ -37,12 +37,12 @@ export interface AssetDetailResponse {
 export interface AssetAccountDetail {
   bankName: string
   accountName: string
-  accountNumber: string
-  balance: string
+  accountNumber: string         // number에서 string으로 (계좌번호는 보통 문자열)
+  balance: number              // 문자열에서 숫자로 수정
 }
 export interface AssetCategoryDetail {
   assetCategory: string
-  totalAmount: string
+  totalAmount: number          // 문자열에서 숫자로 수정
   accounts: AssetAccountDetail[]
 }
 
@@ -60,20 +60,17 @@ export type AssetOrConsumptionSummary = {
   }[]
 }
 
-
 // 단일 계좌 정보
 export interface AccountDetail {
   bankName: string
   accountName: string
-  accountNumber: string
-  balance: string
+  accountNumber: string        // number에서 string으로 (계좌번호는 보통 문자열)
+  balance: number             // 문자열에서 숫자로 수정
 }
 
 // 특정 자산 카테고리 상세 정보
 export interface AssetCategoryDetailResponse {
   assetCategory: string
-  totalAmount: string
+  totalAmount: number         // 문자열에서 숫자로 수정
   accounts: AccountDetail[]
 }
-
-//-----

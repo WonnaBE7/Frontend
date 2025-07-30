@@ -19,6 +19,5 @@ defineEmits<{
   (e: 'update:selected', tab: AssetTabKey): void
 }>()
 
-// 내부 상태는 필요 없음, props + emit만 쓰면 됨
 const tabs = assetTabs;
 </script>
