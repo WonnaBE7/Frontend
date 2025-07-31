@@ -72,7 +72,6 @@ const updateApp = async () => {
     const registrations = await navigator.serviceWorker.getRegistrations()
     registrations.forEach(reg => reg.update())
 
-    // ✅ 유저가 버튼 누를 때만 새로고침
     window.location.reload()
   }
 }

@@ -1,51 +1,37 @@
 import { fetcher } from '@/shared/utils/fetcher'
-import { mockGoalReports } from './goal.mock'
-import type { GoalSimulationInput, GoalReport } from './goal.entity'
+import { mockGoalReports, mockGoalSummary } from './goal.mock'
+import type { GoalReport, GoalSummary } from './goal.entity'
 
-export const postGoalSimulation = async (
-  input: GoalSimulationInput
-): Promise<GoalReport> => {
-  try {
-    const res = await fetcher<{ code: number; message: string; data: GoalReport }>({
-      url: '/api/goals',
-      method: 'POST',
-      body: input,
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
+
+export const fetchGoals = async (status: 'PUBLISHED' | 'ACHIEVED' = 'PUBLISHED')=> {
+  try{
+    const res = await fetcher<GoalSummary>({
+      url: `${BASE_URL}/api/goals?status=${status}`,
+      method: 'GET',
     })
-
     return res.data
-  } catch (err) {
-    console.warn('서버 응답 실패, mock 데이터 반환')
-    return mockGoalReports[0]
+  }catch{ 
+    console.log('연결 x')
+    const filteredGoals = mockGoalSummary.goals.filter(g => g.status === status)
+
+    return {
+      totalGoalCount: filteredGoals.length,
+      totalTargetAmount: filteredGoals.reduce((acc, g) => acc + g.targetAmount, 0),
+      goals: filteredGoals,
+    }
   }
 }
 
-export interface Goal {
-  id: number
-  goalName: string
-  categoryName: string
-  nowmeName: string
-  progressRate: number
-  targetAmount: number
-  currentAmount: number
-  goalDurationMonths: number
-  startDate: string
-  status: 'PUBLISHED' | 'ACHIEVED'
-}
-
-export interface GoalListResponse {
-  code: number
-  message: string
-  data: {
-    totalGoalCount: number
-    totalTargetAmount: number
-    goals: Goal[]
+export const fetchGoalReport = async (goalId: number)=> {
+  try{
+    const res = await fetcher<GoalReport>({
+      url: `${BASE_URL}/api/goals?goalId=${goalId}`,
+      method: 'GET',
+    })
+    return res.data
+  }catch{ 
+    return mockGoalReports.find(g => g.id === goalId)
   }
-}
-
-export const fetchGoals = async (status: 'PUBLISHED' | 'ACHIEVED' = 'PUBLISHED'): Promise<GoalListResponse> => {
-  const BASE_URL = import.meta.env.VITE_API_BASE_URL
-  return await fetcher<GoalListResponse>({
-    url: `${BASE_URL}/api/goals?status=${status}`,
-    method: 'GET',
-  })
 }

@@ -6,7 +6,7 @@ interface DiagnosisRequest {
   diagnosis_answers: number[]
 }
 
-export const submitNowmeDiagnosis = async (payload: DiagnosisRequest): Promise<void> => {
+export const submitNowmeDiagnosis = async (payload: DiagnosisRequest) => {
   await fetcher({
     url: `${BASE_URL}/api/mypage/nowme/diagnosis`,
     method: 'POST',

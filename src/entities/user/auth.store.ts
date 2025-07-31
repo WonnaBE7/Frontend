@@ -41,11 +41,11 @@ export const useAuthStore = defineStore('auth', {
         this.accessToken = token
         this.user = JSON.parse(user)
       } else {
-        // 🔁 accessToken 없음 → refreshToken 쿠키로 재발급 요청
         try {
           const res = await refreshToken()
           this.accessToken = res.data.accessToken
           this.user = res.data.user
+          
           localStorage.setItem('accessToken', res.data.accessToken)
           localStorage.setItem('user', JSON.stringify(res.data.user))
         } catch (err) {

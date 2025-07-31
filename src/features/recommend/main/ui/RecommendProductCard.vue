@@ -52,7 +52,7 @@
       | RecommendedSavingsProduct
       | RecommendedCardProduct
       | RecommendedInsuranceProduct
-      | WishlistProduct  // ✅ 추가
+      | WishlistProduct  
   }>()
     
     defineEmits<{

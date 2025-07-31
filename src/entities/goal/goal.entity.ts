@@ -22,6 +22,7 @@ export interface RecommendedProduct {
   id: number
   name: string
   bank: string
+  category: string,
   interestRate: number
   achievementRate: number
   monthlyDepositAmount: number
@@ -64,5 +65,5 @@ export interface GoalSimulationResponse {
 // 리포트 저장 요청용
 export interface GoalReportSaveRequest {
   selectedProductId: number
-  status: 'PUBLISHED' | 'DRAFT'
+  status: 'PUBLISHED' | 'ACHEVIED'
 }

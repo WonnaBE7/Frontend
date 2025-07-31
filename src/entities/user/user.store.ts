@@ -12,10 +12,8 @@ export const useUserProfileStore = defineStore('userProfile', {
   actions: {
     async fetchUserProfile() {
       try {
-        // 서버에서 가져올 경우:
         const res = await fetcher<UserProfile>({ url: `${BASE_URL}/api/user/profile`, method: 'GET' })
         this.profile = res.data
-
       } catch (e) {
         console.warn('🔁 fallback: mock user profile 사용')
         this.profile = mockUserProfile

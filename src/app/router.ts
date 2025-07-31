@@ -40,9 +40,8 @@ const routes: RouteRecordRaw[] = [
     },
     beforeEnter: async (to, _from, next) => {
       const type = to.query.type as string
-      const categoryLabel = to.query.label as string // 예: 식비
+      const categoryLabel = to.query.label as string 
   
-      // ✅ 날짜 추출
       let dateTitle = ''
       if (type === 'current') {
         const yearMonth = mockMonthlyConsumptionSummary.yearMonth // '2025-07'
@@ -302,7 +301,6 @@ export const router = createRouter({
   }
 })
 
-// ✅ from에 타입 명시 (RouteLocationNormalized)
 router.beforeEach((to: RouteLocationNormalized, _from: RouteLocationNormalized, next: NavigationGuardNext) => {
   if (to.meta?.title) {
     document.title = to.meta.title as string

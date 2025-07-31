@@ -13,7 +13,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const updateWonnaBESelections = async (
   payload: UpdateWonnaBERequest
-): Promise<UpdateWonnaBEResponse> => {
+)=> {
   return await fetcher<UpdateWonnaBEResponse>({
     url: `${BASE_URL}/api/mypage/wonnabe`,
     method: 'PATCH',

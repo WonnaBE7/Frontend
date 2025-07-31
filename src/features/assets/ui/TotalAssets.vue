@@ -19,9 +19,13 @@
         {{ formattedAmount }}
       </Typography>
 
-      <Typography type="M_12_140" class="text-gray-400">
+      <Typography type="M_12_140" class="text-gray-400 mb-2 sm:mb-3">
         지난달 대비 {{ formattedChangeAmount }}원
       </Typography>
+
+      <Typography type="M_10_120" class="flex flex-row items-center gap-2 text-sub-orange-s">
+         <component :is="MessageCircleWarning" class="w-4"/> 보험은 총자산에 들어가지 않습니다
+      </Typography> 
     </div>
   </Card>
 </template>
@@ -31,7 +35,7 @@ import type { AssetSummaryMeta, ConsumptionSummaryMeta } from '@/entities/assets
 import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
-import { TrendingUp, TrendingDown } from 'lucide-vue-next'
+import { TrendingUp, TrendingDown, MessageCircleWarning } from 'lucide-vue-next'
 import { computed } from 'vue'
 
 type SummaryType = '자산' | '소비'

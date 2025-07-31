@@ -7,7 +7,7 @@
     <div class="flex w-full justify-between items-center mb-2">
       <Typography type="M_14_120">약관 동의</Typography>
       <div class="flex flex-row gap-2">
-        <input type="checkbox" v-model="allChecked" @change="toggleAll" />
+        <input type="checkbox" :checked="allChecked" @change="toggleAll" />
         <Typography type="M_14_120">전체동의</Typography>
       </div>
     </div>
@@ -35,7 +35,7 @@
     </div>
   </Card>
 
-  <Button class="mt-4 w-full" :disabled="!canSubmit" @click="onSubmit">
+  <Button class="mt-4 w-full" @click="onSubmit">
     회원가입 및 자산 연동하기
   </Button>
 </template>
@@ -46,7 +46,7 @@ import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
 
-import { ref, computed } from 'vue'
+import { ref, watch } from 'vue'
 import { signup } from '@/features/user/user-signup/services/signup.service'
 import { useRouter } from 'vue-router'
 
@@ -70,15 +70,18 @@ const terms: Term[] = [
 ]
 
 const checked = ref<string[]>([])
-const allChecked = computed({
-  get: () => checked.value.length === terms.length,
-  set: (val: boolean) => {
-    checked.value = val ? terms.map(term => term.id) : []
-  },
+const allChecked = ref(false)
+
+watch(checked, (newVal) => {
+  allChecked.value = newVal.length === terms.length
 })
 
 const toggleAll = () => {
-  allChecked.value = !allChecked.value
+  if (allChecked.value) {
+    checked.value = []
+  } else {
+    checked.value = terms.map(term => term.id)
+  }
 }
 
 const syncAllChecked = () => {
@@ -87,25 +90,29 @@ const syncAllChecked = () => {
   }
 }
 
-const isValidTerms = computed(() => {
-  return terms.filter(t => t.required).every(t => checked.value.includes(t.id))
-})
-
-const canSubmit = computed(() => {
-  return name.value && email.value && password.value && isValidTerms.value
-})
-
 const onSubmit = async () => {
+  const missingRequiredTerms = terms
+    .filter(t => t.required && !checked.value.includes(t.id))
+    .map(t => `- ${t.label}`)
+
+  if (missingRequiredTerms.length > 0) {
+    alert(
+      `필수 약관에 모두 동의해야 가입할 수 있습니다.\n\n동의가 필요한 항목:\n${missingRequiredTerms.join('\n')}`
+    )
+    return
+  }
   try {
     const res = await signup({
       name: name.value,
       email: email.value,
       password: password.value,
     })
-    alert('회원가입이 완료되었습니다!')
+      console.log(res.code)
+      alert('회원가입이 완료되었습니다!')
     router.push('/user/login')
   } catch (error) {
-    alert('회원가입에 실패했습니다.')
+      console.log(name.value, email.value, password.value)
+      alert('회원가입에 실패했습니다.')
   }
 }
 </script>

@@ -78,11 +78,11 @@ import { goalCategories, goalCategoryIcons } from '@/shared/constants/goalCatego
 import { mockUserProfile } from '@/entities/user/user.mock'
 import { finTypeImages } from '@/shared/assets/fintype'
 import { useGoalSimulationStore } from '@/entities/goal/goal.store'
-import { fetcher } from '@/shared/utils/fetcher'
 import { mockGoalSimulationResponse } from '@/entities/goal/goal.mock'
 
 import type { GoalSimulationInput, GoalSimulationResponse } from '@/entities/goal/goal.entity'
 import Tag from '@/shared/ui/atoms/Tag.vue'
+import { postGoalSimulation } from '../service/simulation-input.service'
 
 const selectedCategory = ref<string | null>(null)
 const goalName = ref('')
@@ -130,11 +130,7 @@ const submitGoal = async () => {
   let result: GoalSimulationResponse
 
   try {
-    result = await fetcher<GoalSimulationResponse>({
-      url: '/api/goals/simulation',
-      method: 'POST',
-      body: requestBody,
-    })
+    result = await postGoalSimulation(requestBody)
   } catch (e) {
     console.warn('⚠️ 서버 연결 실패, mock 데이터 사용')
     result = mockGoalSimulationResponse
@@ -143,4 +139,5 @@ const submitGoal = async () => {
   goalSimulationStore.setResult(result)
   router.push('/goal/simulation/result')
 }
+
 </script>

@@ -1,16 +1,20 @@
 <template>
-  <div class="flex flex-col w-full">
-    <LabelInput label="이메일" v-model="email" class="mb-4" />
-    <LabelInput label="비밀번호" type="password" v-model="password" class="mb-8" />
+  <div class="flex flex-col w-full h-full justify-center">
+    <div class="mb-40">
+      <LabelInput label="이메일" v-model="email" class="mb-4" />
+      <LabelInput label="비밀번호" type="password" v-model="password" class="mb-8" />
 
-    <Button class="mt-4" @click="handleLogin">로그인</Button>
+      <Button class="mt-4" @click="handleLogin">로그인</Button>
 
-    <Button class="mt-4">
-      <div class="flex flex-row items-center justify-center gap-2">
-        <MessageCircle class="w-4 h-4 fill-gray-900" />
-        카카오로 로그인하기
-      </div>
-    </Button>
+      <Button class="mt-4">
+        <div class="flex flex-row items-center justify-center gap-2">
+          <MessageCircle class="w-4 h-4 fill-gray-900" />
+          카카오로 로그인하기
+        </div>
+      </Button>
+
+      <Typography type="M_12_120" class="w-full flex justify-center mt-4 text-gray-500">회원가입 하러가기</Typography>
+    </div>
   </div>
 </template>
 
@@ -22,6 +26,7 @@ import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
 import { MessageCircle } from 'lucide-vue-next'
 import { login } from '@/features/user/user-login/services/login.service'
 import { useAuthStore } from '@/entities/user/auth.store'
+import Typography from '@/shared/ui/atoms/Typography.vue'
 
 const authStore = useAuthStore()
 const email = ref('')

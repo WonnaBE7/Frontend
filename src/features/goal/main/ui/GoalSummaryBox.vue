@@ -63,7 +63,6 @@ import Button from '@/shared/ui/atoms/Button.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import CurrentGoal from '@/shared/ui/molecules/CurrentGoal.vue'
 import CustomDropdown from '@/shared/ui/atoms/CustomDropdown.vue'
-import { mockGoalSummary } from '@/entities/goal/goal.mock'
 import { Calendar, FilePlus, Target } from 'lucide-vue-next'
 
 const selectedStatus = ref<'PUBLISHED' | 'ACHIEVED'>('PUBLISHED')
@@ -86,23 +85,17 @@ function goToSimulation() {
 const loadGoals = async () => {
   try {
     const res = await fetchGoals(selectedStatus.value)
-    goals.value = res.data.goals
+    goals.value = res.goals
   } catch (err) {
     console.error('목표 불러오기 실패:', err)
   }
 }
 
-watch(selectedStatus, () => {
-  loadGoals()
+onMounted(async () => {
+  await loadGoals()
 })
 
-onMounted(async () => {
-  try {
-    const res = await fetchGoals('PUBLISHED')
-    goals.value = res.data.goals
-  } catch (e) {
-    console.warn('✅ 백엔드 서버가 꺼져있으므로 mock 데이터를 사용합니다.')
-    goals.value = mockGoalSummary.goals
-  }
+watch(selectedStatus, () => {
+  loadGoals()
 })
 </script>

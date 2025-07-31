@@ -1,20 +1,16 @@
-import type { GoalSimulationInput, GoalReport } from '@/entities/goal/goal.entity'
 import { fetcher } from '@/shared/utils/fetcher'
-import { mockGoalReports } from '@/entities/goal/goal.mock'
+import type { GoalSimulationInput, GoalSimulationResponse } from '@/entities/goal/goal.entity'
 
-export const simulateGoal = async (
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
+export const postGoalSimulation = async (
   input: GoalSimulationInput
-): Promise<GoalReport> => {
-  try {
-    const res = await fetcher<{ code: number; message: string; data: GoalReport }>({
-      url: '/api/goals/simulation',
-      method: 'POST',
-      body: input
-    })
+) => {
+  const res = await fetcher<GoalSimulationResponse>({
+    url: `${BASE_URL}/api/goals`,
+    method: 'POST',
+    body: input,
+  })
 
-    return res.data
-  } catch (e) {
-    console.warn('서버 에러, mock 사용')
-    return mockGoalReports[0]
-  }
+  return res.data
 }

@@ -79,7 +79,7 @@ const submit = async () => {
     const res = await updateWonnaBESelections({
       selected_wonnabe_ids: selectedIds,
     })
-    console.log('✅ 워너비 선택 저장 완료:', res.message)
+    console.log('워너비 선택 저장 완료:', res.message)
     router.push('/user')
   } catch (e) {
     console.error('❌ 워너비 선택 저장 실패:', e)

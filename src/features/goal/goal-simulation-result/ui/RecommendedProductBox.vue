@@ -25,9 +25,12 @@ import Card from '@/shared/ui/atoms/Card.vue';
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
 import { CheckCircle, MessageCircleIcon } from 'lucide-vue-next'
 import GoalProductCard from '../../goal-report/ui/GoalProductCard.vue';
-import type { RecommendedProduct } from '@/entities/goal/goal.entity';
+import type { GoalReportSaveRequest, RecommendedProduct } from '@/entities/goal/goal.entity';
 import { useRoute } from 'vue-router';
 import {mockUserProfile } from '@/entities/user/user.mock'
+import { useGoalSimulationStore } from '@/entities/goal/goal.store'
+import { patchGoalSelection } from '../service/simulation-result.service';
+import { router } from '@/app/router';
 
 defineProps<{
   products: RecommendedProduct[]
@@ -37,22 +40,36 @@ const user = mockUserProfile
 
 const route = useRoute()
 const isSimulationPage = route.path.startsWith('/goal/simulation')
-
 const selectedProductId = ref<number | null>(null)
 
 function handleSelect(productId: number) {
   selectedProductId.value = productId
 }
 
-function submitSelectedProduct() {
-  if (selectedProductId.value !== null) {
-    console.log({
-      selectedProductId: selectedProductId.value,
-      status: 'PUBLISHED'
-    })
-    // TODO: 서버 통신 후 성공하면 router.push('/goal')
-  } else {
-    console.warn('선택된 상품이 없습니다.')
+const goalStore = useGoalSimulationStore()
+
+async function submitSelectedProduct() {
+  const goalId = goalStore.result?.goalId
+
+  if (!goalId || selectedProductId.value === null) {
+    console.warn('목표 ID 또는 선택된 상품이 없습니다.')
+    return
+  }
+
+  const payload: GoalReportSaveRequest = {
+    selectedProductId: selectedProductId.value,
+    status: 'PUBLISHED',
+  }
+
+  try {
+    await patchGoalSelection(goalId, payload)
+    console.log(goalId, payload)
+    console.log('목표 저장 성공')
+    router.push('/goal')
+  } catch (e) {
+    console.log(goalId, payload)
+    console.error('목표 저장 실패:', e)
+    router.push('/goal')
   }
 }
 </script>
