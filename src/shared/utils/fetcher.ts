@@ -1,23 +1,28 @@
-// fetcher.ts
-
-// 1. Method 타입 선언 (enum 대신 type으로)
-export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
-
-// 2. 요청 옵션 타입 정의
-export interface RequestOptions {
-  url: string;
-  method: Method;
-  body?: any;
-  headers?: Record<string, string>;
+// types.ts 또는 fetcher.ts 상단에 공통 응답 타입 정의
+export interface BaseResponse<T> {
+  code: number
+  message: string
+  data: T
 }
 
-// 3. fetcher 함수
+export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
+
+export interface RequestOptions {
+  url: string
+  method: Method
+  body?: any
+  headers?: Record<string, string>
+  credentials?: RequestCredentials // 'include', 'same-origin', 'omit'
+}
+
+// fetcher 함수 정의
 export const fetcher = async <T = any>({
   url,
   method,
   body,
   headers = {},
-}: RequestOptions): Promise<T> => {
+  credentials = 'same-origin',
+}: RequestOptions): Promise<BaseResponse<T>> => {
   try {
     const response = await fetch(url, {
       method,
@@ -26,17 +31,18 @@ export const fetcher = async <T = any>({
         ...headers,
       },
       body: body ? JSON.stringify(body) : undefined,
-    });
+      credentials,
+    })
 
-    const data = await response.json();
+    const data: BaseResponse<T> = await response.json()
 
     if (!response.ok) {
-      throw new Error(data.message || 'API 요청 중 오류가 발생했습니다.');
+      throw new Error(data.message || 'API 요청 중 오류가 발생했습니다.')
     }
 
-    return data;
+    return data
   } catch (error: any) {
-    console.error('[fetcher error]', error);
-    throw error;
+    console.error('[fetcher error]', error)
+    throw error
   }
-};
+}

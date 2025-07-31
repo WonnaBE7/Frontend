@@ -18,3 +18,34 @@ export const postGoalSimulation = async (
     return mockGoalReports[0]
   }
 }
+
+export interface Goal {
+  id: number
+  goalName: string
+  categoryName: string
+  nowmeName: string
+  progressRate: number
+  targetAmount: number
+  currentAmount: number
+  goalDurationMonths: number
+  startDate: string
+  status: 'PUBLISHED' | 'ACHIEVED'
+}
+
+export interface GoalListResponse {
+  code: number
+  message: string
+  data: {
+    totalGoalCount: number
+    totalTargetAmount: number
+    goals: Goal[]
+  }
+}
+
+export const fetchGoals = async (status: 'PUBLISHED' | 'ACHIEVED' = 'PUBLISHED'): Promise<GoalListResponse> => {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL
+  return await fetcher<GoalListResponse>({
+    url: `${BASE_URL}/api/goals?status=${status}`,
+    method: 'GET',
+  })
+}

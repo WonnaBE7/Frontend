@@ -7,16 +7,16 @@
     <div class="grid grid-cols-2 gap-4">
       <Card
         v-for="type in types"
-        :key="type.label"
-        @click="toggleSelect(type.label)"
+        :key="type.id"
+        @click="toggleSelect(type.name)"
         :class="[
           'cursor-pointer transition rounded-xl bg-white border border-gray-150',
-          selected.includes(type.label) ? 'ring-2 ring-sub-yellow-p' : ''
+          selected.includes(type.name) ? 'ring-2 ring-sub-yellow-p' : ''
         ]"
       >
           <FinTypeColCard
-            :label="type.label"
-            :descript="type.descript"
+            :label="type.name"
+            :descript="type.description"
           />
       </Card>
     </div>
@@ -41,9 +41,9 @@ import Card from '@/shared/ui/atoms/Card.vue'
 import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue'
 import Tag from '@/shared/ui/atoms/Tag.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
-import { finTypes } from '@/shared/constants/finTypes.constants'
-
-const selected = ref<string[]>([])
+import { financialTendencyList } from '@/shared/constants/finTypes.constants'
+import { updateWonnaBESelections } from '../services/choose-wannabe.service'
+import { router } from '@/app/router'
 
 const toggleSelect = (label: string) => {
   if (selected.value.includes(label)) {
@@ -58,13 +58,31 @@ const emit = defineEmits<{
   (e: 'submit-nowme'): void
 }>()
 
-const submit = () => {
-  console.log(selected.value);
-}
 
 const submitNowMe = () => {
   emit('submit-nowme')
 }
+const selected = ref<string[]>([])
+const types = financialTendencyList 
 
-const types = finTypes
+
+const getSelectedIds = () => {
+  return types
+    .filter((t) => selected.value.includes(t.name))
+    .map((t) => t.id)
+}
+
+const submit = async () => {
+  const selectedIds = getSelectedIds()
+  console.log(selectedIds)
+  try {
+    const res = await updateWonnaBESelections({
+      selected_wonnabe_ids: selectedIds,
+    })
+    console.log('✅ 워너비 선택 저장 완료:', res.message)
+    router.push('/user')
+  } catch (e) {
+    console.error('❌ 워너비 선택 저장 실패:', e)
+  }
+}
 </script>

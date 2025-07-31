@@ -26,15 +26,26 @@
   <script setup lang="ts">
   import { ref } from 'vue'
   import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
-import Button from '@/shared/ui/atoms/Button.vue'
-  
+  import Button from '@/shared/ui/atoms/Button.vue'
+  import { updateUserProfile } from '@/features/user/user-profile-edit/services/profile-edit.service'
+  import { useRouter } from 'vue-router'
   const form = ref({
     name: '',
     email: '',
     password: ''
   })
-  
-  const handleSubmit = () => {
-    console.log('폼 제출', form.value)
+  const router = useRouter()
+  const handleSubmit = async () => {
+  try {
+    const { name, password } = form.value
+    const res = await updateUserProfile({ name, password })
+    
+    console.log('수정 완료:', res.message)
+    alert('사용자 정보가 성공적으로 수정되었습니다.')
+    router.push('/user')
+  } catch (err: any) {
+    console.error('수정 실패:', err.message)
+    alert('오류가 발생했습니다. 다시 시도해주세요.')
   }
+}
   </script>
