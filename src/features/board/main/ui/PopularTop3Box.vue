@@ -1,10 +1,10 @@
 <template>
-  <div class="w-full flex flex-row items-center mt-8 mb-4">
+  <div class="w-full flex flex-row items-center mt-4 mb-4">
     <IconLabel :icon="Star" iconClass="text-sub-yellow-p">
       인기 게시판 TOP 3
     </IconLabel>
     <ChevronRight
-      class="w-5 h-5"
+      class="w-5 h-5 sm:w-7 sm:h-7"
       @click="goToCategory"
     />
   </div>

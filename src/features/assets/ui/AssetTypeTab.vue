@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row justify-between w-full gap-1 p-2 bg-white">
+  <div class="flex flex-row justify-between w-full gap-1 sm:gap-2 p-2 sm:p-3 bg-white">
     <Button
       v-for="tab in tabs"
       :key="tab"

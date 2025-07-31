@@ -4,7 +4,7 @@
              rounded-full w-14 h-14 flex items-center justify-center max-w-[56px]"
       @click="goToSimulation"
     >
-      <component :is="FilePlus" class="w-5 h-5" />
+      <component :is="FilePlus" class="w-5 h-5 sm:w-7 sm:h-7" />
     </Button>
   
     <!-- 정렬 드롭다운 -->
@@ -21,7 +21,7 @@
       <Card 
         v-for="goal in sortedGoals"
         :key="goal.id"
-        class="bg-white border border-gray-150 mb-4"
+        class="bg-white border border-gray-150"
         @click="goToReport(goal.id)"
       >
         <CurrentGoal
@@ -32,7 +32,7 @@
           :color="''"
           class="bg-white"
         />
-        <div class="flex flex-row w-full gap-2 mt-2">
+        <div class="flex flex-row w-full gap-2">
           <Card class="bg-sub-yellow-bg">
             <Typography type="M_10_120" class="w-full mb-2">목표 금액</Typography>
             <Typography type="B_12_120" class="w-full">{{ goal.targetAmount.toLocaleString() }}원</Typography>
@@ -74,8 +74,8 @@
   
   // 드롭다운 옵션들
   const sortOptions = [
-    { value: 'dateAsc', label: '오름차순' },
-    { value: 'dateDesc', label: '내림차순' },
+    // { value: 'dateAsc', label: '오름차순' },
+    // { value: 'dateDesc', label: '내림차순' },
     { value: 'statusProgress', label: '진행중' },
     { value: 'statusComplete', label: '완료' }
   ]
@@ -92,10 +92,10 @@
   const sortedGoals = computed(() => {
     const list = [...props.goals]
     switch (selectedSort.value) {
-      case 'dateAsc':
-        return list.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
-      case 'dateDesc':
-        return list.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
+      // case 'dateAsc':
+      //   return list.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
+      // case 'dateDesc':
+      //   return list.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
       case 'statusProgress':
         return list.filter(goal => goal.status === 'PUBLISHED')
       case 'statusComplete':

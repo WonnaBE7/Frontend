@@ -1,6 +1,6 @@
 <template>
   <input 
-    class="w-full px-2 py-2 border border-gray-500 rounded mb-2 fontSize-body-5"
+    class="w-full px-2 py-2 border border-gray-150 rounded mb-2 fontSize-body-5"
     v-model="modelValue"
     :placeholder="placeholder"
   />
@@ -17,9 +17,9 @@ const props = defineProps({
 const modelValue = defineModel<string | number>()
 
 const placeholder =
-  props.label.length > 5
+  props.label.length > 8
     ? ''
-    : ['비밀번호', '목표'].includes(props.label)
+    : ['비밀번호', '목표', '연결할 계좌'].includes(props.label)
       ? `${props.label}를 입력하세요`
       : `${props.label}을 입력하세요`
 </script>

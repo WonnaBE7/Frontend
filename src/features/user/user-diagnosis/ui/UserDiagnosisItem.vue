@@ -1,10 +1,10 @@
 <template>
   <Card class="bg-white border border-gray-150">
-    <div class="w-full flex justify-between mb-4">
+    <div class="w-full flex justify-between mb-4 md:mb-6">
       <Tag>{{ tag }}</Tag>
       <Typography type="M_12_120">{{ index }}/{{ total }}</Typography>
     </div>
-    <Typography type="M_14_120" class="w-full px-1 mb-4">{{ label }}</Typography>
+    <Typography type="M_14_120" class="w-full px-1 mb-6 md:mb-8">{{ label }}</Typography>
     <div class="w-full flex justify-between p-1">
       <label
         v-for="choice in choices"
@@ -20,14 +20,14 @@
           @change="() => emit('update:selected', choice.value)"
         />
         <div
-          class="w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center"
+          class="w-5 h-5 sm:w-7 sm:h-7 rounded-full border-2 border-gray-400 flex items-center justify-center"
         >
           <div
             v-if="selected === choice.value"
-            class="w-2.5 h-2.5 rounded-full bg-sub-yellow-p"
+            class="w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full bg-sub-yellow-p"
           ></div>
         </div>
-        <Typography type="M_12_120" class="mt-1">{{ choice.label }}</Typography>
+        <Typography type="M_12_120" class="mt-2 md:mt-3">{{ choice.label }}</Typography>
       </label>
     </div>
   </Card>

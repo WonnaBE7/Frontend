@@ -1,7 +1,7 @@
 <template>
   <Card class="w-full bg-white border border-gray-150">
     <div class="w-full flex flex-row">
-      <IconLabel :icon="Wallet" class="mb-4">자산 & 소비 현황</IconLabel>
+      <IconLabel :icon="Wallet" class="mb-4 sm:mb-6">자산 & 소비 현황</IconLabel>
       <RouterLink
       to="/assets">
         <component :is="ChevronRight"></component>

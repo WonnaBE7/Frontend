@@ -4,8 +4,7 @@
       class="bg-white flex flex-row items-center justify-center w-full border border-gray-150 hover:bg-gray-50 transition-colors mb-4"
       :disabled="mockWishlist.totalCount === 0"
     >
-    <IconLabel :icon="Heart" iconClass="w-4 h-4 mr-2 text-red-500" class="!font-medium">관심상품 보기 ({{ mockWishlist.totalCount || 0 }})</IconLabel>
-      
+    <Typography type="B_16_140" class="flex !flex-row gap-2 items-center"><Heart class="text-sub-red-p"/>관심상품 보기 ({{ mockWishlist.totalCount || 0 }})</Typography>
     </Button>
   </template>
   
@@ -14,7 +13,8 @@
   import Button from '@/shared/ui/atoms/Button.vue'
   import { Heart } from 'lucide-vue-next'
   import { mockWishlist } from '@/entities/recommend/recommend.mock'
-import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
+// import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
+import Typography from '@/shared/ui/atoms/Typography.vue'
   
   const router = useRouter()
   

@@ -6,9 +6,9 @@
             <div class="flex items-center gap-3">
                 <div
                     :class="colorMap[assetCategory]"
-                    class="w-10 h-10 flex items-center justify-center rounded-full"
+                    class="w-10 sm:w-14 md:w-18 h-10 sm:h-14 md:h-18 flex items-center justify-center rounded-full mr-1 sm:mr-2 md:mr-3"
                     >
-                    <component :is="iconComponent" class="w-5 h-5 text-white" />
+                    <component :is="iconComponent" class="w-5 sm:w-7 md:w-9 h-5 sm:h-7 md:h-9 text-white" />
                     </div>
                 <div>
                 <Typography type="B_14_140" class="mb-2 text-gray-900">{{ iconText }}</Typography>

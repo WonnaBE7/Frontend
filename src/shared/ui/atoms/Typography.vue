@@ -3,7 +3,7 @@
     :is="tag"
     :class="[
       'font-pretendard',
-      fontSizeClass,
+      ...fontSizeClass,
       fontWeightClass,
       customClass
     ]"
@@ -20,31 +20,103 @@ const props = defineProps({
 })
 
 // 매핑 정의
-const fontMap: Record<string, { size: string; weight: string }> = {
-  B_28_160: {size:'text-h', weight: 'font-bold'},
-  B_22_160: { size: 'text-h1', weight: 'font-bold' },
-  M_22_160: { size: 'text-h2', weight: 'font-medium' },
-  B_20_160: { size: 'text-h3', weight: 'font-bold' },
-  B_20_120: { size: 'text-h4', weight: 'font-bold' },
-  B_18_120: { size: 'text-subtitle', weight: 'font-bold' },
-  B_16_160: { size: 'text-body-lg-1', weight: 'font-bold' },
-  M_16_160: { size: 'text-body-lg-2', weight: 'font-medium' },
-  B_16_140: { size: 'text-body-lg-3', weight: 'font-bold' },
-  M_16_140: { size: 'text-body-lg-4', weight: 'font-medium' },
-  B_16_120: { size: 'text-body-lg-5', weight: 'font-bold' },
-  M_16_120: { size: 'text-body-lg-6', weight: 'font-medium' },
-  B_14_140: { size: 'text-body-1', weight: 'font-bold' },
-  B_14_160: { size: 'text-body-2', weight: 'font-bold' },
-  M_14_160: { size: 'text-body-2', weight: 'font-medium' },
-  M_14_140: { size: 'text-body-3', weight: 'font-medium' },
-  B_14_120: { size: 'text-body-4', weight: 'font-bold' },
-  M_14_120: { size: 'text-body-5', weight: 'font-medium' },
-  B_12_140: { size: 'text-small-1', weight: 'font-bold' },
-  M_12_140: { size: 'text-small-2', weight: 'font-medium' },
-  B_12_120: { size: 'text-small-3', weight: 'font-bold' },
-  M_12_120: { size: 'text-small-4', weight: 'font-medium' },
-  B_10_120: { size: 'text-small-5', weight: 'font-bold' },
-  M_10_120: { size: 'text-small-6', weight: 'font-medium' }
+const fontMap: Record<string, { size: string[]; weight: string }> = {
+  B_28_160: {
+    size: ['text-r-28-160', 'sm:text-r-30-160', 'md:text-r-32-160'],
+    weight: 'font-bold'
+  },
+  B_22_160: {
+    size: ['text-r-22-160', 'sm:text-r-24-160', 'md:text-r-26-160'],
+    weight: 'font-bold'
+  },
+  M_22_160: {
+    size: ['text-r-22-160', 'sm:text-r-24-160', 'md:text-r-26-160'],
+    weight: 'font-medium'
+  },
+  B_20_160: {
+    size: ['text-r-20-160', 'sm:text-r-22-160', 'md:text-r-24-160'],
+    weight: 'font-bold'
+  },
+  B_20_120: {
+    size: ['text-r-20-120', 'sm:text-r-22-120', 'md:text-r-24-120'],
+    weight: 'font-bold'
+  },
+  B_18_120: {
+    size: ['text-r-18-120', 'sm:text-r-20-120', 'md:text-r-22-120'],
+    weight: 'font-bold'
+  },
+  B_16_160: {
+    size: ['text-r-16-160', 'sm:text-r-18-160', 'md:text-r-20-160'],
+    weight: 'font-bold'
+  },
+  M_16_160: {
+    size: ['text-r-16-160', 'sm:text-r-18-160', 'md:text-r-20-160'],
+    weight: 'font-medium'
+  },
+  B_16_140: {
+    size: ['text-r-16-140', 'sm:text-r-18-140', 'md:text-r-20-140'],
+    weight: 'font-bold'
+  },
+  M_16_140: {
+    size: ['text-r-16-140', 'sm:text-r-18-140', 'md:text-r-20-140'],
+    weight: 'font-medium'
+  },
+  B_16_120: {
+    size: ['text-r-16-120', 'sm:text-r-18-120', 'md:text-r-20-120'],
+    weight: 'font-bold'
+  },
+  M_16_120: {
+    size: ['text-r-16-120', 'sm:text-r-18-120', 'md:text-r-20-120'],
+    weight: 'font-medium'
+  },
+  B_14_140: {
+    size: ['text-r-14-140', 'sm:text-r-18-140', 'md:text-r-22-140'],
+    weight: 'font-bold'
+  },
+  B_14_160: {
+    size: ['text-r-14-160', 'sm:text-r-16-160', 'md:text-r-18-160'],
+    weight: 'font-bold'
+  },
+  M_14_160: {
+    size: ['text-r-14-160', 'sm:text-r-16-160', 'md:text-r-18-160'],
+    weight: 'font-medium'
+  },
+  M_14_140: {
+    size: ['text-r-14-140', 'sm:text-r-16-140', 'md:text-r-18-140'],
+    weight: 'font-medium'
+  },
+  B_14_120: {
+    size: ['text-r-14-120', 'sm:text-r-16-120', 'md:text-r-18-120'],
+    weight: 'font-bold'
+  },
+  M_14_120: {
+    size: ['text-r-14-120', 'sm:text-r-16-120', 'md:text-r-18-120'],
+    weight: 'font-medium'
+  },
+  B_12_140: {
+    size: ['text-r-12-140', 'sm:text-r-14-140', 'md:text-r-16-140'],
+    weight: 'font-bold'
+  },
+  M_12_140: {
+    size: ['text-r-12-140', 'sm:text-r-14-140', 'md:text-r-16-140'],
+    weight: 'font-medium'
+  },
+  B_12_120: {
+    size: ['text-r-12-120', 'sm:text-r-14-120', 'md:text-r-16-120'],
+    weight: 'font-bold'
+  },
+  M_12_120: {
+    size: ['text-r-12-120', 'sm:text-r-14-120', 'md:text-r-16-120'],
+    weight: 'font-medium'
+  },
+  B_10_120: {
+    size: ['text-r-10-120', 'sm:text-r-12-120', 'md:text-r-14-120'],
+    weight: 'font-bold'
+  },
+  M_10_120: {
+    size: ['text-r-10-120', 'sm:text-r-12-120', 'md:text-r-14-120'],
+    weight: 'font-medium'
+  }
 }
 
 const { size, weight } = fontMap[props.type] || { size: 'text-base', weight: '' }

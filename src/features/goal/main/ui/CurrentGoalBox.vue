@@ -5,14 +5,14 @@
         목표 달성 현황
       </IconLabel>
       <RouterLink to="/goal">
-        <component :is="ChevronRight" class="text-gray-400" />
+        <component :is="ChevronRight" class="text-gray-500" />
       </RouterLink>
     </div>
 
     <div
       v-for="goal in goals"
       :key="goal.id"
-      class="w-full mt-4"
+      class="w-full"
     >
       <CurrentGoal
         :label="goal.goalName"

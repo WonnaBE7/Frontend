@@ -14,7 +14,7 @@
             <Typography type="M_12_140">주요 혜택(prefer)</Typography>
             <Typography type="B_12_140" class="text-sub-orange-p">{{data.mainBenefit}}</Typography>
         </div>
-        <Typography type="M_12_140">{{data.benefitSummary}}</Typography>
+        <Typography type="M_12_140" class="w-full">{{data.benefitSummary}}</Typography>
     </Card>
 </template>
 <script setup lang="ts">

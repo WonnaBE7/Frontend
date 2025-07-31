@@ -1,10 +1,10 @@
 <template>
   <TotalAssets :meta="mockAssetSummaryMeta" :type="'자산'" />
-  <Card class="bg-white border border-gray-150">
+  <Card class="bg-white border border-gray-150 mt-4 sm:mt-6 md:mt-8">
     <AssetBarChart :data="chartData" />
   </Card>
 
-  <Card class="w-full mt-4 flex flex-col bg-white border border-gray-150">
+  <Card class="w-full flex flex-col bg-white border border-gray-150 mt-4 sm:mt-6 md:mt-8">
     <Typography type="B_18_120" class="w-full">
       자산 상세 내역
     </Typography>
@@ -15,7 +15,7 @@
       :assetCategory="category.assetCategory"
       :amount="`${category.amount.toLocaleString()}원`"
       :accountsCount="category.accountsCount.toString()"
-      :cardBg="'bg-gray-BGDim mb-0 mt-4'"
+      :cardBg="'bg-gray-BGDim !mb-0 mt-4'"
       :iconText="categoryLabelMap[category.assetCategory]"
     />
   </Card>

@@ -1,4 +1,3 @@
-<!-- pages/board/BoardPostPage.vue -->
 <template>
     <AppLayout>
       <BoardPostContent :post="post" />

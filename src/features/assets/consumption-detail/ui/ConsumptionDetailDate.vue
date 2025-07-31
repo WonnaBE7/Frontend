@@ -1,9 +1,9 @@
 <template>
-    <div class="space-y-6">
-        <Typography type="B_18_120" class="mb-4">
-            {{date}} 거래 내역
-        </Typography>
-  
+    <div class="space-y-3 sm:space-y-5">
+      <!-- <Typography type="B_18_120" class="mb-4 sm:mb-6">
+          {{date}} 거래 내역
+      </Typography>
+   -->
       <ConsumptionDetailBar
         :category="type"
         :transactions="data.transactions"
@@ -13,14 +13,14 @@
   
   <script setup lang="ts">
   import { computed } from 'vue'
-  import Typography from '@/shared/ui/atoms/Typography.vue'
+  // import Typography from '@/shared/ui/atoms/Typography.vue'
   import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
   import {
     mockCurrentDateTransactions,
     mockTodayTransactions,
   } from '@/entities/assets/consumption/consumption.mock'
   import type { ConsumptionDateSummary } from '@/entities/assets/consumption/consumption.entity'
-  import { formatDateLabel } from '@/shared/utils/formatDateLabel.ts'
+  // import { formatDateLabel } from '@/shared/utils/formatDateLabel.ts'
   
   const props = defineProps<{ type: 'current' | 'today' }>()
   
@@ -30,5 +30,5 @@
   }
   
   const data = computed(() => mockMap[props.type])
-  const date = computed(() => formatDateLabel(data.value.date))
+  // const date = computed(() => formatDateLabel(data.value.date))
   </script>

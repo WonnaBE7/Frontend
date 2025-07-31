@@ -49,7 +49,7 @@
     </Card>
 
     <Card class="w-full mb-4 bg-white border border-gray-150">
-      <Typography type="B_16_120" class="mb-2">📆 목표 기간 (개월 수)</Typography>
+      <Typography type="B_16_120" class="mb-2 w-full">📆 목표 기간 (개월 수)</Typography>
       <Input
         v-model="goalDurationMonthsStr"
         label="기간"
@@ -57,7 +57,7 @@
         class="w-full mt-2"
       />
       <Typography type="M_12_120" class="w-full text-sub-orange-p mt-1 p-2 bg-sub-orange-bg border border-sub-orange-p">
-        목표 개월 : {{ parseInt(goalDurationMonthsStr || '0').toLocaleString() }}월
+        목표 개월 : {{ parseInt(goalDurationMonthsStr || '0').toLocaleString() }}개월
       </Typography>
     </Card>
 

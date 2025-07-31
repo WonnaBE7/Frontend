@@ -22,7 +22,6 @@ export interface RecommendedProduct {
   id: number
   name: string
   bank: string
-  tag: string[]
   interestRate: number
   achievementRate: number
   monthlyDepositAmount: number

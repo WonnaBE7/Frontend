@@ -1,6 +1,6 @@
 <template>
-    <Typography type="B_18_120" class="mb-4">자산 상세 내역</Typography>
-    <Card class="bg-sub-yellow-bg mb-6 border border-sub-yellow-c">
+    <!-- <Typography type="B_18_120" class="mb-4 sm:mb-6 md:mb-8">자산 상세 내역</Typography> -->
+    <Card class="bg-sub-yellow-bg mb-4 sm:mb-6 md:mb-8 border border-sub-yellow-c">
       <Typography type="M_16_120" class="w-full">
         총 {{ label }} 금액
       </Typography>
@@ -9,13 +9,13 @@
       </Typography>
     </Card>
   
-    <Typography type="B_18_120" class="mb-3">보유 계좌</Typography>
+    <Typography type="B_18_120" class="mb-4 sm:mb-6 md:mb-8">보유 계좌</Typography>
   
-    <div v-for="account in details.accounts" :key="account.accountNumber" class="mb-3">
+    <div v-for="account in details.accounts" :key="account.accountNumber" class="mb-4 sm:mb-6 md:mb-8">
       <Card class="border border-gray-150">
         <div class="flex flex-row w-full justify-between items-center">
             <div>
-                <Typography type="M_14_140" class="text-gray-800 mb-2">
+                <Typography type="M_14_140" class="text-gray-800 ">
                   {{ account.bankName }}
                 </Typography>
                 <Typography type="M_12_120" class="text-gray-200">

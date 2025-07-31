@@ -1,6 +1,6 @@
 <template>
     <div>
-      <Card class="mb-4 bg-white">
+      <Card class="mb-4 bg-white border border-gray-150">
         <Typography type="B_14_140" class="w-full">게시판 선택</Typography>
         <select v-model="selectedCategory" class="form-select w-full border rounded p-2">
           <option disabled value="">게시판을 선택해주세요</option>
@@ -20,17 +20,17 @@
         </select>
       </Card>
   
-      <Card class="mb-4 bg-white">
-        <Typography type="B_14_140" class="w-full">제목</Typography>
+      <Card class="mb-4 bg-white border border-gray-150">
+        <Typography type="B_14_140" class="w-full mb-2">제목</Typography>
         <Input v-model="title" label="제목" />
       </Card>
   
-      <Card class="mb-4 bg-white">
-        <Typography type="B_14_140" class="w-full">내용</Typography>
+      <Card class="mb-4 bg-white border border-gray-150">
+        <Typography type="B_14_140" class="w-full mb-2">내용</Typography>
         <textarea
           v-model="content"
           placeholder="내용을 입력해주세요..."
-          class="form-textarea w-full border rounded p-2"
+          class="form-textarea w-full border border-gray-150 rounded p-2"
           style="min-height: 200px; resize: none;"
         />
       </Card>

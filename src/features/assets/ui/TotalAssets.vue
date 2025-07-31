@@ -2,7 +2,7 @@
   <Card class="bg-sub-yellow-bg border border-sub-yellow-c">
     <div class="w-full">
       <div class="flex flex-row w-full justify-between">
-        <Typography type="M_16_120" class="w-full mb-2 text-gray-400">
+        <Typography type="M_16_120" class="w-full mb-2 sm:mb-3 text-gray-400">
           {{ type === '자산' ? '총 자산 현황' : '총 소비 현황' }}
         </Typography>
 
@@ -15,7 +15,7 @@
         </IconLabel>
       </div>
 
-      <Typography type="B_22_160" class="mb-2">
+      <Typography type="B_22_160" class="mb-2 sm:mb-3">
         {{ formattedAmount }}
       </Typography>
 
@@ -43,8 +43,8 @@ const props = defineProps<{
 
 // 변화율 색상 분기 처리 (숫자 기반)
 const rateColorClass = computed(() => {
-  if (props.meta.changeRate > 0) return 'text-blue-500'
-  if (props.meta.changeRate < 0) return 'text-red-500'
+  if (props.meta.changeRate > 0) return 'text-sub-aqua-p'
+  if (props.meta.changeRate < 0) return 'text-sub-red-p'
   return 'text-gray-500'
 })
 
