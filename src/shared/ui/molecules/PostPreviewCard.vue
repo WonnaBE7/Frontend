@@ -52,7 +52,6 @@
   import { ref, computed } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
   import Typography from '@/shared/ui/atoms/Typography.vue'
-
   import { HeartIcon, BookmarkIcon, Trash2Icon, MessageCircle } from 'lucide-vue-next'
   import NoBorderTag from '../atoms/NoBorderTag.vue'
   import Card from '../atoms/Card.vue'
@@ -87,5 +86,10 @@
   const toggleScrap = () => {
     isScrapped.value = !isScrapped.value
   }
-  const goToPost = () => router.push(`/board/post/${props.boardId}`)
+  const goToPost = () => {
+  router.push({
+    path: `/board/post/${props.boardId}`,
+    query: { category: props.category }
+  })
+}
   </script>
