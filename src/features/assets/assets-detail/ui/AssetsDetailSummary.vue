@@ -1,5 +1,5 @@
 <template>
-    <Typography type="B_18_120" class="mb-4 sm:mb-6 md:mb-8">자산 상세 내역</Typography>
+    <!-- <Typography type="B_18_120" class="mb-4 sm:mb-6 md:mb-8">자산 상세 내역</Typography> -->
     <Card class="bg-sub-yellow-bg mb-4 sm:mb-6 md:mb-8 border border-sub-yellow-c">
       <Typography type="M_16_120" class="w-full">
         총 {{ label }} 금액

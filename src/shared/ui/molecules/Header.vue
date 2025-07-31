@@ -1,22 +1,21 @@
 <template>
   <header
-    class="w-full md:max-w-[768px] h-16 px-4 md:px-8 flex items-center justify-between fixed top-0 z-10 left-1/2 -translate-x-1/2 bg-white"
+    class="w-full md:max-w-[768px] h-16 md:h-20 px-4 md:px-8 flex items-center justify-between fixed top-0 z-10 left-1/2 -translate-x-1/2 bg-white"
   >
     <div class="flex items-center w-full relative">
-      <!-- ← 버튼 -->
       <button v-if="showBackButton" @click="goBack" class="mr-2 z-10">
-        <span class="text-xl">&lt;</span>
+        <component
+          :is="ChevronLeft"
+          class="w-7 h-7 sm:w-9 sm:h-9"
+        />
       </button>
 
-      <!-- 왼쪽 로고 -->
       <img
         v-if="isBasePath"
         src="/header-icon.png"
         alt="WonnaBE Logo"
-        class="h-6"
+        class="h-6 md:h-8"
       />
-
-      <!-- 가운데 타이틀 + 아이콘 -->
       <div
         v-else
         class="text-center flex items-center gap-2"
@@ -24,17 +23,15 @@
         <component
           v-if="isLucideIcon"
           :is="lucideIcons[routeIcon?.value]"
-          class="w-5 h-5 sm:w-7 sm:h-7"
+          class="w-7 h-7 sm:w-9 sm:h-9"
         />
-        <span v-else-if="isEmojiIcon" class="text-base">
+        <Typography type="B_18_120" v-else-if="isEmojiIcon" class="text-base">
           {{ routeIcon?.value }}
-        </span>
-        <span class="font-bold text-base">{{ routeTitle }}</span>
+        </Typography>
+        <Typography type="B_18_120" class="font-bold text-base">{{ routeTitle }}</Typography>
       </div>
-
-      <!-- 우측 프로필 아이콘 -->
       <RouterLink to="/user" class="ml-auto text-gray-900 z-10">
-        <User class="w-5 h-5 sm:w-7 sm:h-7" />
+        <User class="w-7 h-7 sm:w-9 sm:h-9" />
       </RouterLink>
     </div>
   </header>
@@ -53,23 +50,19 @@ import {
   BookOpenCheck,
   BookmarkIcon,
   CreditCard,
-  Pen
+  Pen,
+  ChevronLeft
 } from 'lucide-vue-next'
+import Typography from '../atoms/Typography.vue'
 
 const route = useRoute()
 const router = useRouter()
 
-// ✅ 루트 경로인지 여부
 const basePaths = ['/', '/assets', '/recommend', '/goal', '/user', '/board']
 const isBasePath = computed(() => basePaths.includes(route.path))
 
-// ✅ 뒤로가기 버튼은 루트 경로가 아닐 때만 보이도록
 const showBackButton = computed(() => !isBasePath.value)
-
-// ✅ 라우트 제목
 const routeTitle = computed(() => route.meta?.title || '')
-
-// ✅ meta.icon 처리
 const routeIcon = computed(
   () =>
     (route.meta?.icon as { type: 'lucide' | 'emoji'; value: string }) || null
@@ -77,11 +70,10 @@ const routeIcon = computed(
 const isLucideIcon = computed(() => routeIcon.value?.type === 'lucide')
 const isEmojiIcon = computed(() => routeIcon.value?.type === 'emoji')
 
-
-// ✅ 지원하는 Lucide 아이콘 등록
 const lucideIcons: Record<string, any> = {
   Star,
   Home,
+  User,
   FolderKanban,
   ListTodo,
   BadgePercent,

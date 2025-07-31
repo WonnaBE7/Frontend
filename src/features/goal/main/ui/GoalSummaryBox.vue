@@ -74,8 +74,8 @@
   
   // 드롭다운 옵션들
   const sortOptions = [
-    { value: 'dateAsc', label: '오름차순' },
-    { value: 'dateDesc', label: '내림차순' },
+    // { value: 'dateAsc', label: '오름차순' },
+    // { value: 'dateDesc', label: '내림차순' },
     { value: 'statusProgress', label: '진행중' },
     { value: 'statusComplete', label: '완료' }
   ]
@@ -92,10 +92,10 @@
   const sortedGoals = computed(() => {
     const list = [...props.goals]
     switch (selectedSort.value) {
-      case 'dateAsc':
-        return list.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
-      case 'dateDesc':
-        return list.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
+      // case 'dateAsc':
+      //   return list.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
+      // case 'dateDesc':
+      //   return list.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
       case 'statusProgress':
         return list.filter(goal => goal.status === 'PUBLISHED')
       case 'statusComplete':

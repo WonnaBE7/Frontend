@@ -57,7 +57,7 @@
         class="w-full mt-2"
       />
       <Typography type="M_12_120" class="w-full text-sub-orange-p mt-1 p-2 bg-sub-orange-bg border border-sub-orange-p">
-        목표 개월 : {{ parseInt(goalDurationMonthsStr || '0').toLocaleString() }}월
+        목표 개월 : {{ parseInt(goalDurationMonthsStr || '0').toLocaleString() }}개월
       </Typography>
     </Card>
 

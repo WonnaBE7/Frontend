@@ -1,10 +1,10 @@
-import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import type { RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
+import { mockMonthlyConsumptionSummary, mockEstimatedAndTodayConsumption } from '@/entities/assets/consumption/consumption.mock'
 import BoardCategoryDetailPage from '@/pages/board/BoardCategoryDetailPage.vue'
 import { finTypeIcons } from '@/shared/constants/finTypes.constants'
-import { createRouter, createWebHistory } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
-  // 홈
   {
     path: '/',
     name: 'Home',
@@ -21,8 +21,14 @@ const routes: RouteRecordRaw[] = [
     name: 'AssetsDetail',
     component: () => import('@/pages/assets/AssetsDetailPage.vue'),
     meta: {
-      title: '자산 상세',
       icon: { type: 'lucide', value: 'CreditCard' }
+    },
+    beforeEnter: async (to, _from, next) => {
+      const { categoryLabelMap } = await import('@/entities/assets/assets.constants')
+      const category = to.query.category as string
+      const label = categoryLabelMap[category]
+      to.meta.title = label ? `${label} 상세내역` : '자산 상세'
+      next()
     }
   },
   {
@@ -30,12 +36,32 @@ const routes: RouteRecordRaw[] = [
     name: 'ConsumptionDetail',
     component: () => import('@/pages/assets/ConsumptionDetailPage.vue'),
     meta: {
-      title: '소비 상세',
       icon: { type: 'lucide', value: 'CreditCard' }
+    },
+    beforeEnter: async (to, _from, next) => {
+      const type = to.query.type as string
+      const categoryLabel = to.query.label as string // 예: 식비
+  
+      // ✅ 날짜 추출
+      let dateTitle = ''
+      if (type === 'current') {
+        const yearMonth = mockMonthlyConsumptionSummary.yearMonth // '2025-07'
+        const month = yearMonth?.split('-')[1] ?? 'MM'
+        dateTitle = `${month}월`
+      } else if (type === 'today') {
+        const date = mockEstimatedAndTodayConsumption.todayConsumption.calculatedDate // '2025-07-16'
+        const [_, mm, dd] = date?.split('-') ?? ['2025', 'MM', 'DD']
+        dateTitle = `${mm}/${dd}`
+      }
+  
+      const title = categoryLabel
+        ? `${dateTitle} ${categoryLabel} 거래 내역`
+        : `${dateTitle} 거래 내역`
+  
+      to.meta.title = title
+      next()
     }
   },
-
-  // 상품 추천
   {
     path: '/recommend',
     name: 'Recommend',
@@ -78,8 +104,6 @@ const routes: RouteRecordRaw[] = [
       icon: { type: 'lucide', value: 'Star' }
     }
   },
-
-  // 게시판
   {
     path: '/board',
     name: 'Board',
@@ -101,17 +125,15 @@ const routes: RouteRecordRaw[] = [
     component: BoardCategoryDetailPage,
     meta: {
       title: '커뮤니티',
-      icon: { type: 'emoji', value: '' } // 초기값 비워놓음
+      icon: { type: 'emoji', value: '' }
     },
-    beforeEnter: (to, from, next) => {
+    beforeEnter: (to, _from, next) => {
       const category = to.params.category as string
-      if (finTypeIcons[category]) {
-        to.meta.icon = { type: 'emoji', value: finTypeIcons[category] }
-        to.meta.title = category
-      } else {
-        to.meta.icon = { type: 'emoji', value: '❓' }
-        to.meta.title = '알 수 없음'
+      to.meta.icon = {
+        type: 'emoji',
+        value: finTypeIcons[category] || '❓'
       }
+      to.meta.title = category || '알 수 없음'
       next()
     }
   },
@@ -148,65 +170,31 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/board/BoardPostPage.vue'),
     meta: {
       title: '게시글',
-      icon: { type: 'emoji', value: '📝' } // 기본 fallback 이모지
-    },beforeEnter: async (to, from, next) => {
+      icon: { type: 'emoji', value: '📝' }
+    },
+    beforeEnter: async (to, _from, next) => {
       try {
         const postId = Number(to.params.id)
-  
-        // ✅ 현재는 mock 데이터에서 찾기
         const { mockBoards } = await import('@/entities/board/board.mock')
         const postData = mockBoards.find((b) => b.boardId === postId)
-  
         if (!postData) {
-          console.warn(`게시글 ${postId}를 mock에서 찾을 수 없습니다.`)
-          next() // fallback
+          console.warn(`게시글 ${postId}을 찾을 수 없습니다.`)
+          next()
           return
         }
-  
         const category = postData.category
-        const { finTypeIcons } = await import('@/shared/constants/finTypes.constants')
-  
         to.meta.icon = {
           type: 'emoji',
           value: finTypeIcons[category] || '📝'
         }
         to.meta.title = category || '게시글'
-  
         next()
-      } catch (error) {
-        console.error('게시글 정보를 불러오는 중 오류 발생:', error)
-        next() // fallback
+      } catch (e) {
+        console.error(e)
+        next()
       }
     }
   },
-  //   beforeEnter: async (to, from, next) => {
-  //     try {
-  //       const postId = to.params.id
-  //       // 예시용: 게시글 상세 데이터 가져오는 API 호출
-  //       const response = await fetch(`/api/board/posts/${postId}`)
-  //       const postData = await response.json()
-  
-  //       const category = postData.category as string
-  
-  //       // 이모지 매핑 가져오기
-  //       const { finTypeIcons } = await import('@/shared/constants/finTypes.constants')
-  
-  //       // 메타 정보 덮어쓰기
-  //       to.meta.icon = {
-  //         type: 'emoji',
-  //         value: finTypeIcons[category] || '📝'
-  //       }
-  //       to.meta.title = category || '게시글'
-  
-  //       next()
-  //     } catch (error) {
-  //       console.error('게시글 정보를 불러오지 못했습니다:', error)
-  //       next() // 에러가 나도 그냥 진행
-  //     }
-  //   }
-  // },
-
-  // 목표
   {
     path: '/goal',
     name: 'Goal',
@@ -240,8 +228,6 @@ const routes: RouteRecordRaw[] = [
       icon: { type: 'lucide', value: 'ListTodo' }
     }
   },
-
-  // 유저
   {
     path: '/user',
     name: 'User',
@@ -252,58 +238,56 @@ const routes: RouteRecordRaw[] = [
     path: '/user/login',
     name: 'UserLoginPage',
     component: () => import('@/pages/user/UserLoginPage.vue'),
-    meta: {
-      title: '로그인',
-      icon: { type: 'lucide', value: 'User' }
-    }
+    // meta: {
+    //   title: '로그인',
+    //   icon: { type: 'lucide', value: 'User' }
+    // }
   },
   {
     path: '/user/signup',
     name: 'UserSignupPage',
     component: () => import('@/pages/user/UserSignupPage.vue'),
-    meta: {
-      title: '회원 가입',
-      icon: { type: 'lucide', value: 'User' }
-    }
+    // meta: {
+    //   title: '회원 가입',
+    //   icon: { type: 'lucide', value: 'User' }
+    // }
   },
   {
     path: '/user/profile-edit',
     name: 'UserProfileEditPage',
     component: () => import('@/pages/user/UserProfileEditPage.vue'),
-    meta: {
-      title: '회원 정보 수정',
-      icon: { type: 'lucide', value: 'User' }
-    }
+    // meta: {
+    //   title: '회원정보 수정',
+    //   icon: { type: 'lucide', value: 'User' }
+    // }
   },
   {
     path: '/user/choose-wonnabe',
     name: 'UserChooseWonnabePage',
     component: () => import('@/pages/user/UserChooseWonnabePage.vue'),
-    meta: {
-      title: '워버니 선택',
-      icon: { type: 'lucide', value: 'User' }
-    }
+    // meta: {
+    //   title: '워너비 선택',
+    //   icon: { type: 'lucide', value: 'User' }
+    // }
   },
   {
     path: '/user/diagnosis',
     name: 'UserDiagnosisPage',
     component: () => import('@/pages/user/UserDiagnosisPage.vue'),
-    meta: {
-      title: '유저 금융 상태 진단',
-      icon: { type: 'lucide', value: 'User' }
-    }
+    // meta: {
+    //   title: '유저 금융 상태 진단',
+    //   icon: { type: 'lucide', value: 'User' }
+    // }
   },
   {
     path: '/user/history',
     name: 'UserHistoryPage',
     component: () => import('@/pages/user/UserHistoryPage.vue'),
-    meta: {
-      title: '나의 금융 히스토리',
-      icon: { type: 'lucide', value: 'User' }
-    }
+    // meta: {
+    //   title: '나의 금융 히스토리',
+    //   icon: { type: 'lucide', value: 'User' }
+    // }
   },
-
-  // 404 fallback
   {
     path: '/:pathMatch(.*)*',
     redirect: '/'
@@ -318,9 +302,10 @@ export const router = createRouter({
   }
 })
 
-router.beforeEach((to, _from, next) => {
+// ✅ from에 타입 명시 (RouteLocationNormalized)
+router.beforeEach((to: RouteLocationNormalized, _from: RouteLocationNormalized, next: NavigationGuardNext) => {
   if (to.meta?.title) {
-    document.title = `${to.meta.title}`
+    document.title = to.meta.title as string
   }
   next()
 })

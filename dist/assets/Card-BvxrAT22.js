@@ -1,1 +1,0 @@
-import{g as c,o as n,P as l}from"./index-DcTUbPG3.js";const a=(e,t)=>{const o=e.__vccOpts||e;for(const[r,s]of t)o[r]=s;return o},_={},f={class:"flex flex-col items-center justify-center rounded-2xl p-5 mb-4 w-full"};function d(e,t){return n(),c("div",f,[l(e.$slots,"default")])}const u=a(_,[["render",d]]);export{u as C,a as _};

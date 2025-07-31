@@ -64,12 +64,12 @@ function goToDetail(category: string) {
   if (store.selectedTab === 'estimated') return // 이동 막기
 
   router.push({
-  path: '/assets/consumption/detail',
-  query: {
-    category: category,
-    label: categoryLabelMap[category],
-    type: store.selectedTab === 'today' ? 'today' : 'current',
-  },
-})
+    path: '/assets/consumption/detail',
+    query: {
+      category: category,
+      label: categoryLabelMap[category],
+      type: store.selectedTab === 'today' ? 'today' : 'current',
+    },
+  })
 }
 </script>

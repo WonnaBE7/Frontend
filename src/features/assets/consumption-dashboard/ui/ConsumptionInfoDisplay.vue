@@ -1,10 +1,10 @@
 <template>
   <div
     class="text-center w-full mb-2 sm:mb-4"
-    :class="type !== 'estimated' ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'"
+    :class="type !== 'estimated' ? 'cursor-pointer' : 'cursor-not-allowed'"
     @click="handleClick"
   >
-    <Typography type="B_22_160" class="text-black mb-2 sm:mb-3 md:mb-4">
+    <Typography type="B_22_160" class="text-gray-900 mb-2 sm:mb-3 md:mb-4">
       {{ amount }}
     </Typography>
     <Typography type="M_12_120" class="text-gray-500">

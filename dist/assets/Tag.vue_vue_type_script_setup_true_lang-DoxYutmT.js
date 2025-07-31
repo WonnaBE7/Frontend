@@ -1,0 +1,1 @@
+import{d as a,g as s,o as t,b as o,t as r,w as n,aw as _}from"./index-BQpc_P69.js";const c={class:"inline-flex items-center px-4 py-1 rounded-full border border-gray-150"},i=a({__name:"Tag",setup(l){return(e,p)=>(t(),s("span",c,[o(r,{type:"M_12_140",class:"whitespace-nowrap"},{default:n(()=>[_(e.$slots,"default")]),_:3})]))}});export{i as _};

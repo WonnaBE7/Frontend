@@ -43,7 +43,6 @@ const emit = defineEmits<{
 const goPrevMonth = () => emit('prev')
 const goNextMonth = () => emit('next')
 
-
 const disableNavigation = computed(() => props.displayedLabel === '예상 월 소비' || props.displayedLabel === '오늘의 소비')
 const isCurrentMonth = computed(() => dayjs().isSame(baseDate.value, 'month'))
 
