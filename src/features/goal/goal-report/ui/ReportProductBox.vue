@@ -1,7 +1,7 @@
 <!-- GoalProductList.vue -->
 <template>
     <Card class="bg-white  border border-gray-150">
-        <IconLabel IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'" class="mb-4" >
+        <IconLabel IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'" >
             사용 중인 상품
         </IconLabel>
       <GoalProductCard
@@ -11,7 +11,7 @@
         :isCurrentPageSimulation="isSimulationPage"
       />
     </Card>
-    <Card class="bg-white  border border-gray-150">
+    <!-- <Card class="bg-white  border border-gray-150">
         <IconLabel IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'" class="mb-4" >
             추천 상품
         </IconLabel>
@@ -23,7 +23,7 @@
             :isCurrentPageSimulation="isSimulationPage"
             class="mb-4"
         />
-    </Card>
+    </Card> -->
   </template>
   
   <script setup lang="ts">
@@ -46,7 +46,7 @@
     const selectedProduct = computed(() =>
         props.products.find(p => p.id === props.selectedProductId)
     )
-    const otherProducts = computed(() =>
-        props.products.filter(p => p.id !== props.selectedProductId)
-    )
+    // const otherProducts = computed(() =>
+    //     props.products.filter(p => p.id !== props.selectedProductId)
+    // )
   </script>

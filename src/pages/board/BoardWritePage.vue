@@ -1,7 +1,7 @@
 <template>
   <AppLayout>
-    <WriteForm />
-    <ExplainBox></ExplainBox>
+    <WriteForm/>
+    <ExplainBox/>
   </AppLayout>
 </template>
 

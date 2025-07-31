@@ -14,7 +14,7 @@
     </div>
   </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   import { ref } from 'vue'
   import Button from '@/shared/ui/atoms/Button.vue'
   import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
@@ -27,4 +27,4 @@
     console.log('이메일:', email.value)
     console.log('비밀번호:', password.value)
   }
-  </script>
+</script>

@@ -1,7 +1,7 @@
 <template>
-    <Card class="bg-white border border-gray-150">
+    <Card class="bg-white border border-gray-150 sm:mb-4">
       <div class="w-full flex flex-row">
-        <IconLabel IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'" class="mb-4" >
+        <IconLabel IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'">
             워너비 게시판 인기글
         </IconLabel>
         <RouterLink

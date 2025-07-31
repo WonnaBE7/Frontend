@@ -25,8 +25,8 @@
   import {mockGoalSummary} from '@/entities/goal/goal.mock'
   import GoalSummaryBox from '@/features/goal/main/ui/GoalSummaryBox.vue';
   import { Target, CircleDollarSign } from 'lucide-vue-next';
-import Card from '@/shared/ui/atoms/Card.vue';
-import Typography from '@/shared/ui/atoms/Typography.vue';
+  import Card from '@/shared/ui/atoms/Card.vue';
+  import Typography from '@/shared/ui/atoms/Typography.vue';
 
   const data = mockGoalSummary
 

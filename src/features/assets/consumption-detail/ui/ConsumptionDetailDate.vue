@@ -1,8 +1,8 @@
 <template>
-    <div class="space-y-6">
-        <Typography type="B_18_120" class="mb-4">
-            {{date}} 거래 내역
-        </Typography>
+    <div class="space-y-3 sm:space-y-5">
+      <Typography type="B_18_120" class="mb-4 sm:mb-6">
+          {{date}} 거래 내역
+      </Typography>
   
       <ConsumptionDetailBar
         :category="type"

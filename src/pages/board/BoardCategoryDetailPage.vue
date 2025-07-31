@@ -7,13 +7,19 @@
         v-bind="post"
         class="bg-white"
       />
-      <Button @click="goToWrite">
-        ✏️ 글쓰기
+
+      <Button
+        class="fixed bottom-24 right-4 z-40 bg-sub-yellow-p hover:bg-sub-yellow-d text-white 
+              rounded-full flex items-center justify-center max-w-[56px] max-h-[56px] w-14 h-14"
+        @click="goToWrite"
+      >
+        <component :is="FilePlus" class="w-5 h-5 sm:w-7 sm:h-7" />
       </Button>
     </AppLayout>
   </template>
   
   <script setup lang="ts">
+  import {FilePlus} from 'lucide-vue-next'
   import Button from '@/shared/ui/atoms/Button.vue'
   import { useRoute, useRouter } from 'vue-router'
   import { computed } from 'vue'
@@ -31,6 +37,6 @@
     router.push({
       path: '/board/write',
       query: { category }
-  })
-}
+    })
+  } 
   </script>

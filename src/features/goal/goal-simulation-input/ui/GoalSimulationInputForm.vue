@@ -49,7 +49,7 @@
     </Card>
 
     <Card class="w-full mb-4 bg-white border border-gray-150">
-      <Typography type="B_16_120" class="mb-2">📆 목표 기간 (개월 수)</Typography>
+      <Typography type="B_16_120" class="mb-2 w-full">📆 목표 기간 (개월 수)</Typography>
       <Input
         v-model="goalDurationMonthsStr"
         label="기간"

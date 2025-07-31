@@ -13,7 +13,7 @@
         'hover:text-sub-yellow-c'
       ]"
     >
-      <component :is="item.icon" class="w-5 h-5 mb-1" />
+      <component :is="item.icon" class="w-5 h-5 sm:w-7 sm:h-7 mb-1" />
       <span class="text-xs mb-4">{{ item.label }}</span>
     </RouterLink>
   </nav>

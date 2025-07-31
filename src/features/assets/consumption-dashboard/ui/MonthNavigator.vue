@@ -1,9 +1,9 @@
 <template>
-  <div class="flex justify-center items-center gap-4 mt-4 mb-2">
+  <div class="flex justify-center items-center gap-4 sm:gap-6 mt-4 mb-2">
     <button v-if="!disableNavigation" @click="goPrevMonth">
       <component
         :is="ChevronLeft"
-        class="w-5 h-5"
+        class="w-5 h-5 sm:w-7 sm:h-7"
         :class="{ 'opacity-30': disableNavigation }"
       />
     </button>
@@ -15,7 +15,7 @@
     <button v-if="!disableNavigation" @click="goNextMonth" :disabled="isCurrentMonth">
       <component
         :is="ChevronRight"
-        class="w-5 h-5"
+        class="w-5 h-5 sm:w-7 sm:h-7"
         :class="{ 'opacity-30': isCurrentMonth }"
       />
     </button>

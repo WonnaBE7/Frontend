@@ -22,7 +22,7 @@
         <Typography 
           type="M_14_120"
           class="ml-2 mb-2"
-          :class="term.required ? 'text-red-500' : 'text-blue-500'"
+          :class="term.required ? 'text-sub-red-p' : 'text-sub-aqua-p'"
         >
           [{{ term.required ? '필수' : '선택' }}] 
         </Typography>

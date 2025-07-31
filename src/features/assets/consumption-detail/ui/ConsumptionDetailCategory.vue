@@ -1,5 +1,5 @@
 <template>
-    <Typography type="B_18_120" class="mb-4">
+    <Typography type="B_18_120" class="mb-4 sm:mb-6">
       {{ categoryLabelMap[data.consumptionCategory] }} 상세 내역
     </Typography>
     <ConsumptionDetailBar

@@ -1,6 +1,6 @@
 <template>
     <Card class="bg-white border border-gray-150">
-      <IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'" class="mb-4">
+      <IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'">
         {{user.nowME}} 추천 상품
       </IconLabel>
       <GoalProductCard
@@ -10,7 +10,6 @@
         :isSelected="selectedProductId === product.id"
         :isCurrentPageSimulation="isSimulationPage"
         @select="handleSelect"
-        class="mb-4"
         />
     </Card>
   

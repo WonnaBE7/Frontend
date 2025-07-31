@@ -4,7 +4,7 @@
       class="bg-white flex flex-row items-center justify-center w-full border border-gray-150 hover:bg-gray-50 transition-colors mb-4"
       :disabled="mockWishlist.totalCount === 0"
     >
-    <IconLabel :icon="Heart" iconClass="w-4 h-4 mr-2 text-red-500" class="!font-medium">관심상품 보기 ({{ mockWishlist.totalCount || 0 }})</IconLabel>
+    <IconLabel :icon="Heart" iconClass="w-4 h-4 mr-2 text-sub-red-p" class="!font-medium">관심상품 보기 ({{ mockWishlist.totalCount || 0 }})</IconLabel>
       
     </Button>
   </template>

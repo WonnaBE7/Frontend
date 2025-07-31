@@ -1,13 +1,13 @@
 <template>
   <div
-    class="text-center w-full"
+    class="text-center w-full mb-2 sm:mb-4"
     :class="type !== 'estimated' ? 'cursor-pointer' : 'cursor-not-allowed opacity-60'"
     @click="handleClick"
   >
-    <Typography type="B_22_160" class="text-black mb-2">
+    <Typography type="B_22_160" class="text-black mb-2 sm:mb-3 md:mb-4">
       {{ amount }}
     </Typography>
-    <Typography type="M_12_120" class="text-gray-400">
+    <Typography type="M_12_120" class="text-gray-500">
       {{ date }} 기준
     </Typography>
   </div>

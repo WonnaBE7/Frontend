@@ -10,7 +10,7 @@
           <Typography type="M_14_140">{{ label }}</Typography>
         </div>
         <Typography type="M_14_140">
-          <ChevronRight class="w-5 h-5" />
+          <ChevronRight class="w-5 h-5 sm:w-7 sm:h-7" />
         </Typography>
       </div>
     </Card>
