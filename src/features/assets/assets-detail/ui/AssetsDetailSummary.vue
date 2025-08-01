@@ -31,15 +31,25 @@
   </template>
   
   <script setup lang="ts">
-  import Card from '@/shared/ui/atoms/Card.vue'
+  import { ref, onMounted } from 'vue'
   import { useRoute } from 'vue-router'
-  import { mockCategoryDetailMap } from '@/entities/assets/assets.mock'
-  import { categoryLabelMap } from '@/entities/assets/assets.constants'
   import Typography from '@/shared/ui/atoms/Typography.vue'
+  import Card from '@/shared/ui/atoms/Card.vue'
+  import { categoryLabelMap } from '@/entities/assets/assets.constants'
+  import type { AssetCategoryDetailResponse } from '@/entities/assets/assets.entity'
+  import { getAssetCategoryDetail } from '../service/assets-detail.service'
   
   const route = useRoute()
   const category = route.query.category as string
   const label = categoryLabelMap[category] || '자산'
-  const details = mockCategoryDetailMap[category] || { totalAmount: '0', accounts: [] }
-
+  
+  const details = ref<AssetCategoryDetailResponse>({
+    assetCategory: category,
+    totalAmount: 0,
+    accounts: [],
+  })
+  
+  onMounted(async () => {
+    details.value = await getAssetCategoryDetail(category)
+  })
   </script>

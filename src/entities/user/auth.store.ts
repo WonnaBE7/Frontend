@@ -33,6 +33,7 @@ export const useAuthStore = defineStore('auth', {
       localStorage.removeItem('user')
     },
 
+    // 앱 실행시켰을 때 로컬에 저장된거 있으면 refresh 발동시켜서 가지고 있기
     async restore() {
       const token = localStorage.getItem('accessToken')
       const user = localStorage.getItem('user')

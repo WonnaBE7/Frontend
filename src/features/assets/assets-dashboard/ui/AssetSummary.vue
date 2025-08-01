@@ -1,5 +1,5 @@
 <template>
-  <TotalAssets :meta="mockAssetSummaryMeta" :type="'자산'" />
+  <TotalAssets v-if="assetsData" :meta="assetsData" :type="'자산'" />
   <Card class="bg-white border border-gray-150 mt-4 sm:mt-6 md:mt-8">
     <AssetBarChart :data="chartData" />
   </Card>
@@ -10,7 +10,8 @@
     </Typography>
 
     <AssetDetailBar
-      v-for="category in mockAssetCategoryDetailResponse.categories"
+      v-if="assetsSummary"
+      v-for="category in assetsSummary.categories"
       :key="category.assetCategory"
       :assetCategory="category.assetCategory"
       :amount="`${category.amount.toLocaleString()}원`"
@@ -22,24 +23,34 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import TotalAssets from '../../ui/TotalAssets.vue'
 import AssetBarChart from './AssetBarChart.vue'
 import AssetDetailBar from './AssetDetailBar.vue'
 import { categoryLabelMap } from '@/entities/assets/assets.constants'
-import {
-  mockAssetSummaryMeta,
-  mockAssetCategoryRatio,
-  mockAssetCategoryDetailResponse
-} from '@/entities/assets/assets.mock'
+import { getAssets } from '@/entities/assets/assets.api'
+import type { AssetSummaryMeta, AssetCategoryRatioResponse, AssetDetailResponse } from '@/entities/assets/assets.entity'
+import { getAssetsCategoryRatio, getAssetsSummary } from '../service/\bassets-dashboard.service'
 
-const chartData = computed(() =>
-  mockAssetCategoryRatio.categories.map(category => ({
+const assetsData = ref<AssetSummaryMeta | null>(null)
+const assetsCategoryRatio = ref<AssetCategoryRatioResponse|null>(null)
+const assetsSummary = ref<AssetDetailResponse | null>(null)
+
+onMounted(async () => {
+  assetsData.value = await getAssets()
+  assetsCategoryRatio.value = await getAssetsCategoryRatio()
+  assetsSummary.value = await getAssetsSummary()
+}) 
+
+const chartData = computed(() => {
+  if (!assetsCategoryRatio.value) return []
+
+  return assetsCategoryRatio.value.categories.map(category => ({
     type: category.assetCategory,
     label: categoryLabelMap[category.assetCategory],
     percentage: category.percentage
   }))
-)
+})
 </script>

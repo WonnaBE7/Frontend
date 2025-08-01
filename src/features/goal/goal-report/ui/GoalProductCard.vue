@@ -22,7 +22,7 @@
         <div class="flex flex-row w-full gap-2"> 
           <Card class="bg-white border border-gray-150">
             <Typography type="B_10_120" class="text-gray-500 w-full mb-2">{{ product.category === '적금' ? '월 납입액' : '예치금' }}</Typography>
-            <Typography type="B_10_120" class="text-gray-900 w-full">{{ product.monthlyDepositAmount.toLocaleString()}}원</Typography>
+            <Typography type="B_10_120" class="text-gray-900 w-full">{{ product.saveAmount.toLocaleString()}}원</Typography>
           </Card>
           <Card class="bg-white border border-gray-150">
             <Typography type="B_10_120" class="text-gray-500 w-full mb-2">예상 달성일</Typography>

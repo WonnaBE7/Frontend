@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
-import { mockMonthlyConsumptionSummary, mockEstimatedAndTodayConsumption } from '@/entities/assets/consumption/consumption.mock'
+import { mockMonthlyConsumptionSummary, mockEstimatedAndTodayConsumption } from '@/entities/consumption/consumption.mock'
 import BoardCategoryDetailPage from '@/pages/board/BoardCategoryDetailPage.vue'
 import { finTypeIcons } from '@/shared/constants/finTypes.constants'
 

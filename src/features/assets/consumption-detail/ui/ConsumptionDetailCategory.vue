@@ -1,56 +1,40 @@
 <template>
-    <Typography type="B_18_120" class="mb-4 sm:mb-6">
+    <Typography v-if="data" type="B_18_120" class="mb-4 sm:mb-6">
       {{ categoryLabelMap[data.consumptionCategory] }} 상세 내역
     </Typography>
     <ConsumptionDetailBar
+      v-if="data"
       :category="data.consumptionCategory"
       :transactions="data.transactions"
     />
   </template>
   
  <script setup lang="ts">
-import { computed } from 'vue'
+import { onMounted, ref, watchEffect } from 'vue'
 import { categoryLabelMap } from '@/entities/assets/assets.constants'
 import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
-
-import {
-  mockFoodTransactions,
-  mockShoppingTransactions,
-  mockTransportTransactions,
-  mockFinancialTransactions,
-  mockOtherTransactions,
-  mockTodayFoodTransactions,
-  mockTodayShoppingTransactions,
-  mockTodayTransportTransactions,
-  mockTodayFinancialTransactions,
-  mockTodayOtherTransactions,
-} from '@/entities/assets/consumption/consumption.mock'
-
-import type { ConsumptionCategoryDetail } from '@/entities/assets/consumption/consumption.entity'
+import type { ConsumptionCategoryDetail } from '@/entities/consumption/consumption.entity';
+import { getMonthlyCategoryDetail, getTodayCategoryDetail } from '../service/\bconsumption-detail.service';
 
 const props = defineProps<{
   category: string
   type: 'current' | 'today'
 }>()
 
-const monthlyMap: Record<string, ConsumptionCategoryDetail> = {
-  food: mockFoodTransactions,
-  shopping: mockShoppingTransactions,
-  transport: mockTransportTransactions,
-  financial: mockFinancialTransactions,
-  other: mockOtherTransactions,
-}
+const data = ref<ConsumptionCategoryDetail | null>(null)
 
-const todayMap: Record<string, ConsumptionCategoryDetail> = {
-  food: mockTodayFoodTransactions,
-  shopping: mockTodayShoppingTransactions,
-  transport: mockTodayTransportTransactions,
-  financial: mockTodayFinancialTransactions,
-  other: mockTodayOtherTransactions,
+const fetchDetail = async () => {
+  if (props.type === 'today') {
+    data.value = await getTodayCategoryDetail(props.category)
+  } else {
+    data.value = await getMonthlyCategoryDetail(props.category)
+  }
 }
-
-const data = computed(() => {
-  return props.type === 'today' ? todayMap[props.category] : monthlyMap[props.category]
+onMounted(
+  fetchDetail
+)
+watchEffect(() => {
+  fetchDetail()
 })
 </script>

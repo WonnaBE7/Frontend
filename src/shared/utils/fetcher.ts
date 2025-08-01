@@ -1,4 +1,3 @@
-// types.ts 또는 fetcher.ts 상단에 공통 응답 타입 정의
 export interface BaseResponse<T> {
   code: number
   message: string
@@ -6,30 +5,39 @@ export interface BaseResponse<T> {
 }
 
 export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
+import { useAuthStore } from '@/entities/user/auth.store'
 
 export interface RequestOptions {
   url: string
   method: Method
   body?: any
-  headers?: Record<string, string>
-  credentials?: RequestCredentials // 'include', 'same-origin', 'omit'
+  credentials?: RequestCredentials
+  auth?: boolean // 🔸 추가
 }
 
-// fetcher 함수 정의
 export const fetcher = async <T = any>({
   url,
   method,
   body,
-  headers = {},
   credentials = 'same-origin',
+  auth = false, 
 }: RequestOptions): Promise<BaseResponse<T>> => {
   try {
+    const finalHeaders: Record<string, string> = {
+      'Content-Type': 'application/json',
+    }
+    
+    if (auth) {
+      const authStore = useAuthStore()
+      const token = authStore.accessToken
+      if (token) {
+        finalHeaders['Authorization'] = `Bearer ${token}`
+      }
+    }
+
     const response = await fetch(url, {
       method,
-      headers: {
-        'Content-Type': 'application/json',
-        ...headers,
-      },
+      headers: finalHeaders,
       body: body ? JSON.stringify(body) : undefined,
       credentials,
     })

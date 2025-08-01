@@ -13,10 +13,13 @@ import AppLayout from '@/shared/layout/AppLayout.vue'
 import TitleTab from '@/features/assets/ui/TitleTab.vue'
 import AssetSummary from '@/features/assets/assets-dashboard/ui/AssetSummary.vue'
 import ConsumptionSummary from '@/features/assets/consumption-dashboard/ui/ConsumptionSummary.vue'
-import { ref } from 'vue'
 import type {AssetTabKey } from '@/entities/assets/assets.entity'
+import { useAssetTabStore } from '@/entities/assets/assets.store'
+import { storeToRefs } from 'pinia'
 
-const selectedTab = ref<AssetTabKey>('자산 현황')
+const assetTabStore = useAssetTabStore()
+const { selectedTab } = storeToRefs(assetTabStore)
+
 function onTabChange(tab: AssetTabKey) {
   selectedTab.value = tab
 }

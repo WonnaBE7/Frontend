@@ -23,7 +23,7 @@
         지난달 대비 {{ formattedChangeAmount }}원
       </Typography>
 
-      <Typography type="M_10_120" class="flex flex-row items-center gap-2 text-sub-orange-s">
+      <Typography v-if="route.path.startsWith('/assets')" type="M_10_120" class="flex flex-row items-center gap-2 text-sub-orange-s">
          <component :is="MessageCircleWarning" class="w-4"/> 보험은 총자산에 들어가지 않습니다
       </Typography> 
     </div>
@@ -31,40 +31,40 @@
 </template>
 
 <script setup lang="ts">
-import type { AssetSummaryMeta, ConsumptionSummaryMeta } from '@/entities/assets/assets.entity'
+import type { ConsumptionSummaryMeta } from '@/entities/consumption/consumption.entity'
+import type { AssetSummaryMeta } from '@/entities/assets/assets.entity'
 import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import { TrendingUp, TrendingDown, MessageCircleWarning } from 'lucide-vue-next'
 import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 type SummaryType = '자산' | '소비'
+
+const route = useRoute()
 
 const props = defineProps<{
   meta: AssetSummaryMeta | ConsumptionSummaryMeta
   type: SummaryType
 }>()
 
-// 변화율 색상 분기 처리 (숫자 기반)
 const rateColorClass = computed(() => {
   if (props.meta.changeRate > 0) return 'text-sub-aqua-p'
   if (props.meta.changeRate < 0) return 'text-sub-red-p'
   return 'text-gray-500'
 })
 
-// 변화율에 따른 아이콘 변경
 const trendIcon = computed(() => {
   return props.meta.changeRate >= 0 ? TrendingUp : TrendingDown
 })
 
-// 변화율 포맷팅 (부호 포함)
 const formattedChangeRate = computed(() => {
   const rate = props.meta.changeRate
   if (rate > 0) return `+${rate}`
   return rate.toString()
 })
 
-// 변화 금액 포맷팅 (부호 포함)
 const formattedChangeAmount = computed(() => {
   const amount = props.meta.changeAmount
   const formattedNumber = Math.abs(amount).toLocaleString()
@@ -74,7 +74,6 @@ const formattedChangeAmount = computed(() => {
   return formattedNumber
 })
 
-// 총 금액 (자산: totalAmount, 소비: monthlyConsumption)
 const formattedAmount = computed(() => {
   const amount =
     props.type === '자산'

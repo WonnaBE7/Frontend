@@ -7,8 +7,8 @@
         <component :is="ChevronRight"></component>
       </RouterLink>
     </div>
-    <TotalAssets :meta="mockAssetSummaryMeta" :type="'자산'"/>
-    <TotalAssets :meta="mockConsumptionSummaryMeta" :type="'소비'" class="!mb-0"/>
+    <TotalAssets v-if="assetsData" :meta="assetsData" :type="'자산'"/>
+    <TotalAssets v-if="conusmptionData" :meta="conusmptionData" :type="'소비'" class="!mb-0"/>
   </Card>
   </template>
   
@@ -17,5 +17,18 @@ import Card from '@/shared/ui/atoms/Card.vue'
 import TotalAssets from '@/features/assets/ui/TotalAssets.vue'
 import { Wallet, ChevronRight } from 'lucide-vue-next'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
-import { mockAssetSummaryMeta, mockConsumptionSummaryMeta } from '@/entities/assets/assets.mock'
+import { getAssets } from '@/entities/assets/assets.api'
+import { getConsumption } from '@/entities/consumption/comsumption.api'
+import type { AssetSummaryMeta } from '@/entities/assets/assets.entity'
+import type { ConsumptionSummaryMeta } from '@/entities/consumption/consumption.entity'
+import { onMounted, ref } from 'vue'
+
+
+const assetsData = ref<AssetSummaryMeta | null>(null)
+const conusmptionData = ref<ConsumptionSummaryMeta | null>(null)
+onMounted(async () => {
+  assetsData.value = await getAssets()
+  conusmptionData.value = await getConsumption()
+})
+
 </script>

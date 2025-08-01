@@ -25,7 +25,7 @@ export interface RecommendedProduct {
   category: string,
   interestRate: number
   achievementRate: number
-  monthlyDepositAmount: number
+  saveAmount: number
   expectedAchievementDate: string // YYYY-MM
   expectedTotalAmount: number
 }
@@ -41,7 +41,7 @@ export interface GoalReport {
   currentAmount: number
   goalDurationMonths: number
   remainingMonths: number
-  monthlySaveAmount: number
+  saveAmount: number
   futureMeMessage: string
   selectedProductId: number
   recommendedProducts: RecommendedProduct[]

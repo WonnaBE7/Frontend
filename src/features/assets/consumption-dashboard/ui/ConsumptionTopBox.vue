@@ -27,7 +27,7 @@
   import ConsumptionTabs from './CunsumptionTabs.vue'
   import MonthNavigator from './MonthNavigator.vue'
   import ConsumptionInfoDisplay from './ConsumptionInfoDisplay.vue'
-  import { useConsumptionStore } from '@/entities/assets/consumption/consumption.store.ts'
+  import { useConsumptionStore } from '@/entities/consumption/consumption.store'
 
   const store = useConsumptionStore()
 
