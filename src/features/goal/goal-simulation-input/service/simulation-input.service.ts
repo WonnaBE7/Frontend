@@ -9,6 +9,7 @@ export const postGoalSimulation = async (
   const res = await fetcher<GoalSimulationResponse>({
     url: `${BASE_URL}/api/goals`,
     method: 'POST',
+    auth: true,
     body: input,
   })
 

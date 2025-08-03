@@ -3,7 +3,11 @@
     <Typography type="M_10_120" class="text-gray-500">확인하고 싶은 WonnaBE 선택해보세요</Typography>
   
     <div class="grid grid-cols-3 gap-4 mt-4">
-      <Card v-for="type in user.wonnaBE" :key="type" class="bg-white border border-gray-150">
+      <Card 
+        v-for="type in userProfile?.wonnaBE" 
+        @click="selectWonnaBE(type)"
+        :key="type" 
+        class="bg-white border border-gray-150">
         <FinTypeColCard
           :label="type"
           :descript="finTypeDescriptMap[type]"
@@ -17,15 +21,34 @@
   <script setup lang="ts">
   import Typography from '@/shared/ui/atoms/Typography.vue'
   import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue'
-  import { mockUserProfile } from '@/entities/user/user.mock'
-  import { finTypes, finTypeIcons } from '@/shared/constants/finTypes.constants'
-import Card from '@/shared/ui/atoms/Card.vue'
+  import { financialTendencyList, finTypeIcons } from '@/shared/constants/finTypes.constants'
+  import Card from '@/shared/ui/atoms/Card.vue'
+  import { useUserProfileStore } from '@/entities/user/user.store'
+  import { computed, onMounted } from 'vue'
   
-  // 유저 정보
-  const user = mockUserProfile
+  const userStore = useUserProfileStore()
+  onMounted(() => {
+    userStore.fetchUserProfile()
+  })
   
-  // label -> descript 매핑 객체 생성
+  const userProfile = computed(() => userStore.profile)
   const finTypeDescriptMap: Record<string, string> = Object.fromEntries(
-    finTypes.map(item => [item.label, item.descript])
+    financialTendencyList.map(item => [item.name, item.description])
   )
+
+  const finTypeIdMap: Record<string, number> = Object.fromEntries(
+    financialTendencyList.map((item) => [item.name, item.id])
+  )
+
+  function selectWonnaBE(typeName: string) {
+    const typeId = finTypeIdMap[typeName]
+    if (!typeId) {
+      console.warn(`❌ 해당 name에 대응되는 id가 없습니다: ${typeName}`)
+      return
+    }
+    userStore.setSelectedFinType({
+      id: typeId,
+      name: typeName,
+    })
+  }
   </script>

@@ -11,6 +11,7 @@ export const patchGoalSelection = async (
     return await fetcher({
       url: `${BASE_URL}/api/goals/${goalId}`,
       method: 'PATCH',
+      auth: true,
       body: payload,
     })
   }

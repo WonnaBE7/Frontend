@@ -4,7 +4,6 @@ import type {
   InsuranceDetailResponse,
   CardDetailResponse,
   SavingsRecommendationResponse,
-  InsuranceRecommendationResponse,
   CardRecommendationResponse,
   WishlistResponse,
   WishlistActionResponse,
@@ -13,7 +12,8 @@ import type {
   SavingsApplicationRequest,
   InsuranceApplicationRequest,
   CardApplicationRequest,
-  InsurancesDetailPageResponse
+  InsurancesDetailPageResponse,
+  InsuranceRecommendationResponse
 } from './recommend.entity'
 
 // 현재 보유상품 조회
@@ -119,76 +119,526 @@ export const mockCardDetail: CardDetailResponse = {
 
 // 예적금 추천 상품
 export const mockSavingsRecommendation: SavingsRecommendationResponse = {
-  totalProducts: 4,
-  products: [
+  userId: 'a1b2c3d4-e5f6-7890-ab12-cd34ef56gh78',
+  recommendationsByPersona: [
     {
-      productType: "savings",
-      productId: "200",
-      productName: "카카오뱅크 세이브 적금",
-      bankName: "카카오뱅크",
-      type: "정기적금",
-      interestRate: 3.5,
-      matchScore: 95
+      personaId: 1,
+      personaName: '자린고비형',
+      products: [
+        {
+          productType: 'savings',
+          productId: '101',
+          productName: '알뜰 저축 예금',
+          bankName: 'KB국민은행',
+          type: '예금',
+          interestRate: 3.4,
+          matchScore: 96,
+          maxLimit: 30000000
+        },
+        {
+          productType: 'savings',
+          productId: '102',
+          productName: '절약형 정기예금',
+          bankName: '신한은행',
+          type: '예금',
+          interestRate: 3.1,
+          matchScore: 92,
+          maxLimit: 20000000
+        },
+        {
+          productType: 'savings',
+          productId: '103',
+          productName: '하나 알뜰 저축',
+          bankName: '하나은행',
+          type: '적금',
+          interestRate: 3.6,
+          matchScore: 90,
+          maxLimit: 15000000
+        },
+        {
+          productType: 'savings',
+          productId: '104',
+          productName: '우리 적금 플랜',
+          bankName: '우리은행',
+          type: '적금',
+          interestRate: 3.7,
+          matchScore: 88,
+          maxLimit: 12000000
+        },
+        {
+          productType: 'savings',
+          productId: '105',
+          productName: '카카오 절약 저축',
+          bankName: '카카오뱅크',
+          type: '예금',
+          interestRate: 3.2,
+          matchScore: 85,
+          maxLimit: 10000000
+        }
+      ]
     },
     {
-      productId: "TOSS_BANK_SAVE_001",
-      productName: "토스뱅크 먼치 적금",
-      bankName: "토스뱅크",
-      type: "정기적금",
-      interestRate: 3.5,
-      matchScore: 92
+      personaId: 11,
+      personaName: '균형 성장형',
+      products: [
+        {
+          productType: 'savings',
+          productId: '201',
+          productName: '밸런스 예금',
+          bankName: 'KB국민은행',
+          type: '예금',
+          interestRate: 3.0,
+          matchScore: 93,
+          maxLimit: 25000000
+        },
+        {
+          productType: 'savings',
+          productId: '202',
+          productName: '스마트 적금 플랜',
+          bankName: '신한은행',
+          type: '적금',
+          interestRate: 3.3,
+          matchScore: 91,
+          maxLimit: 20000000
+        },
+        {
+          productType: 'savings',
+          productId: '203',
+          productName: '균형 투자 저축',
+          bankName: '하나은행',
+          type: '예금',
+          interestRate: 3.5,
+          matchScore: 89,
+          maxLimit: 22000000
+        },
+        {
+          productType: 'savings',
+          productId: '204',
+          productName: '우리 밸런스 저축',
+          bankName: '우리은행',
+          type: '적금',
+          interestRate: 3.4,
+          matchScore: 87,
+          maxLimit: 18000000
+        },
+        {
+          productType: 'savings',
+          productId: '205',
+          productName: '카카오 균형 플랜',
+          bankName: '카카오뱅크',
+          type: '예금',
+          interestRate: 3.2,
+          matchScore: 86,
+          maxLimit: 16000000
+        }
+      ]
     },
     {
-      productId: "KB_STAR_FLEX_001",
-      productName: "KB Star 정기적금",
-      bankName: "KB국민은행",
-      type: "정기적금",
-      interestRate: 3.4,
-      matchScore: 89
+      personaId: 5,
+      personaName: '새싹 투자형',
+      products: [
+        {
+          productType: 'savings',
+          productId: '301',
+          productName: '첫걸음 적금',
+          bankName: 'KB국민은행',
+          type: '적금',
+          interestRate: 3.8,
+          matchScore: 95,
+          maxLimit: 10000000
+        },
+        {
+          productType: 'savings',
+          productId: '302',
+          productName: '신한 스타터 예금',
+          bankName: '신한은행',
+          type: '예금',
+          interestRate: 3.5,
+          matchScore: 90,
+          maxLimit: 15000000
+        },
+        {
+          productType: 'savings',
+          productId: '303',
+          productName: '하나 새싹 플랜',
+          bankName: '하나은행',
+          type: '적금',
+          interestRate: 3.6,
+          matchScore: 89,
+          maxLimit: 14000000
+        },
+        {
+          productType: 'savings',
+          productId: '304',
+          productName: '우리 첫 투자 적금',
+          bankName: '우리은행',
+          type: '적금',
+          interestRate: 3.9,
+          matchScore: 92,
+          maxLimit: 12000000
+        },
+        {
+          productType: 'savings',
+          productId: '305',
+          productName: '카카오 새싹 예금',
+          bankName: '카카오뱅크',
+          type: '예금',
+          interestRate: 3.4,
+          matchScore: 88,
+          maxLimit: 13000000
+        }
+      ]
     }
   ]
 }
 
 // 보험 추천 상품
 export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
-  totalProducts: 1,
-  products: [
+  userId: 'a1b2c3d4-e5f6-7890-ab12-cd34ef56gh78',
+  recommendationsByPersona: [
     {
-      productId: "3111",
-      insuranceName: "토스 간편보험",
-      insuranceCompany: "토스",
-      matchScore: 93,
-      mainCoverage: "월 1.5만원",
-      monthlyPremium: 15000
+      personaId: 1,
+      personaName: '자린고비형',
+      products: [
+        {
+          productType: 'insurance',
+          productId: 'I101',
+          insuranceName: '절약 플랜 보험',
+          insuranceCompany: 'KB손해보험',
+          matchScore: 91,
+          mainCoverage: '필수 항목 중심 보장',
+          monthlyPremium: 9000,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I102',
+          insuranceName: '최소보장 건강보험',
+          insuranceCompany: 'DB손해보험',
+          matchScore: 88,
+          mainCoverage: '입원비, 진단비만 보장',
+          monthlyPremium: 8500,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I103',
+          insuranceName: '가성비 의료실비',
+          insuranceCompany: '메리츠화재',
+          matchScore: 90,
+          mainCoverage: '의료실비 집중 보장',
+          monthlyPremium: 9500,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I104',
+          insuranceName: '미니 생명보험',
+          insuranceCompany: '교보생명',
+          matchScore: 87,
+          mainCoverage: '저렴한 생명보험 패키지',
+          monthlyPremium: 9800,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I105',
+          insuranceName: '토스 간편보험',
+          insuranceCompany: '토스',
+          matchScore: 93,
+          mainCoverage: '월 1.5만원',
+          monthlyPremium: 15000,
+        }
+      ]
+    },
+    {
+      personaId: 11,
+      personaName: '균형 성장형',
+      products: [
+        {
+          productType: 'insurance',
+          productId: 'I201',
+          insuranceName: '종합보장 패키지',
+          insuranceCompany: '삼성생명',
+          matchScore: 92,
+          mainCoverage: '건강+사고 종합보장',
+          monthlyPremium: 19000,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I202',
+          insuranceName: '미래플랜 보험',
+          insuranceCompany: '한화생명',
+          matchScore: 90,
+          mainCoverage: '은퇴·자녀 대비 보장',
+          monthlyPremium: 21000,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I203',
+          insuranceName: '밸런스 케어 보험',
+          insuranceCompany: '현대해상',
+          matchScore: 89,
+          mainCoverage: '건강과 자산 균형보장',
+          monthlyPremium: 20000,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I204',
+          insuranceName: '적립형 건강보험',
+          insuranceCompany: '롯데손보',
+          matchScore: 91,
+          mainCoverage: '보장+적립 기능 포함',
+          monthlyPremium: 22000,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I205',
+          insuranceName: '마이플랜 생명보험',
+          insuranceCompany: 'KB생명',
+          matchScore: 88,
+          mainCoverage: '생명+상해 종합보장',
+          monthlyPremium: 18000,
+        }
+      ]
+    },
+    {
+      personaId: 5,
+      personaName: '새싹 투자형',
+      products: [
+        {
+          productType: 'insurance',
+          productId: 'I301',
+          insuranceName: '투자 입문 보험',
+          insuranceCompany: '카카오손보',
+          matchScore: 87,
+          mainCoverage: '소액 보험 + 재테크 정보 제공',
+          monthlyPremium: 12500,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I302',
+          insuranceName: '기초 건강플랜',
+          insuranceCompany: '메트라이프',
+          matchScore: 86,
+          mainCoverage: '입문자용 건강보험',
+          monthlyPremium: 13500,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I303',
+          insuranceName: '소액 저축 보험',
+          insuranceCompany: 'AIA생명',
+          matchScore: 85,
+          mainCoverage: '월 1만원 적립 기능 포함',
+          monthlyPremium: 10000,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I304',
+          insuranceName: '비상금 보험',
+          insuranceCompany: '라이나생명',
+          matchScore: 89,
+          mainCoverage: '위급상황 대비 소액보장',
+          monthlyPremium: 12000,
+        },
+        {
+          productType: 'insurance',
+          productId: 'I305',
+          insuranceName: '토스 간편보험',
+          insuranceCompany: '토스',
+          matchScore: 93,
+          mainCoverage: '월 1.5만원',
+          monthlyPremium: 15000,
+        }
+      ]
     }
   ]
 }
 
+
 // 카드 추천 상품
-export const mockCardRecommendation: CardRecommendationResponse = {
-  totalProducts: 2,
-  products: [
+export const mockCardRecommendation:CardRecommendationResponse = {
+  userId: 'a1b2c3d4-e5f6-7890-ab12-cd34ef56gh78',
+  recommendationsByPersona: [
     {
-      productType: "card",
-      cardId: "10001",
-      cardName: "카카오페이 카드",
-      cardCompany: "카카오페이",
-      cardType: "체크카드",
-      matchScore: 94,
-      mainBenefit: "간편결제 5% 적립",
-      annualFeeDomestic: 0,
-      annualFeeOverSeas: 5000
+      personaId: 1,
+      personaName: '자린고비형',
+      products: [
+        {
+          productType: 'card',
+          cardId: 'C1001',
+          cardName: 'KB절약카드',
+          cardCompany: '국민카드',
+          cardType: '체크카드',
+          matchScore: 95,
+          mainBenefit: '생활비 캐시백 5%',
+          annualFeeDomestic: '없음',
+          annualFeeOverSeas: '없음'
+        },
+        {
+          productType: 'card',
+          cardId: 'C1002',
+          cardName: '신한 짠테크 카드',
+          cardCompany: '신한카드',
+          cardType: '체크카드',
+          matchScore: 91,
+          mainBenefit: '저축 자동이체 시 포인트 적립',
+          annualFeeDomestic: '면제',
+          annualFeeOverSeas: '없음'
+        },
+        {
+          productType: 'card',
+          cardId: 'C1003',
+          cardName: '우리 절약형 카드',
+          cardCompany: '우리카드',
+          cardType: '체크카드',
+          matchScore: 89,
+          mainBenefit: '공과금 할인',
+          annualFeeDomestic: '없음',
+          annualFeeOverSeas: '없음'
+        },
+        {
+          productType: 'card',
+          cardId: 'C1004',
+          cardName: '하나 알뜰카드',
+          cardCompany: '하나카드',
+          cardType: '체크카드',
+          matchScore: 87,
+          mainBenefit: '지하철/버스 할인',
+          annualFeeDomestic: '면제',
+          annualFeeOverSeas: '면제'
+        },
+        {
+          productType: 'card',
+          cardId: 'C1005',
+          cardName: '카카오 절약카드',
+          cardCompany: '카카오페이',
+          cardType: '체크카드',
+          matchScore: 90,
+          mainBenefit: '카카오페이 결제시 적립',
+          annualFeeDomestic: '없음',
+          annualFeeOverSeas: '5,000'
+        }
+      ]
     },
     {
-      productType: "card",
-      cardId: "10001", // 동일한 데이터 (API에서 중복)
-      cardName: "카카오페이 카드",
-      cardCompany: "카카오페이",
-      cardType: "체크카드",
-      matchScore: 94,
-      mainBenefit: "간편결제 5% 적립",
-      annualFeeDomestic: 0,
-      annualFeeOverSeas: 5000
+      personaId: 11,
+      personaName: '균형 성장형',
+      products: [
+        {
+          productType: 'card',
+          cardId: 'C1101',
+          cardName: '삼성 밸런스 카드',
+          cardCompany: '삼성카드',
+          cardType: '신용카드',
+          matchScore: 92,
+          mainBenefit: '쇼핑/여행/저축 균형 적립',
+          annualFeeDomestic: '10,000',
+          annualFeeOverSeas: '15,000'
+        },
+        {
+          productType: 'card',
+          cardId: 'C1102',
+          cardName: '롯데 스마트밸런스',
+          cardCompany: '롯데카드',
+          cardType: '신용카드',
+          matchScore: 90,
+          mainBenefit: '생활/금융 포인트 자동 분배',
+          annualFeeDomestic: '8,000',
+          annualFeeOverSeas: '12,000'
+        },
+        {
+          productType: 'card',
+          cardId: 'C1103',
+          cardName: '하나 균형잡힌 카드',
+          cardCompany: '하나카드',
+          cardType: '체크카드',
+          matchScore: 88,
+          mainBenefit: '카테고리별 할인 균등 제공',
+          annualFeeDomestic: '없음',
+          annualFeeOverSeas: '없음'
+        },
+        {
+          productType: 'card',
+          cardId: 'C1104',
+          cardName: '우리 성장형 카드',
+          cardCompany: '우리카드',
+          cardType: '신용카드',
+          matchScore: 85,
+          mainBenefit: '적립과 할인 동시 제공',
+          annualFeeDomestic: '10,000',
+          annualFeeOverSeas: '15,000'
+        },
+        {
+          productType: 'card',
+          cardId: 'C1105',
+          cardName: '토스 밸런스 카드',
+          cardCompany: '토스',
+          cardType: '체크카드',
+          matchScore: 89,
+          mainBenefit: '월 소비 패턴 기반 리워드',
+          annualFeeDomestic: '무료',
+          annualFeeOverSeas: '5,000'
+        }
+      ]
+    },
+    {
+      personaId: 5,
+      personaName: '새싹 투자형',
+      products: [
+        {
+          productType: 'card',
+          cardId: 'C0501',
+          cardName: '신한 투자 첫걸음 카드',
+          cardCompany: '신한카드',
+          cardType: '신용카드',
+          matchScore: 93,
+          mainBenefit: '증권사 자동이체 2% 적립',
+          annualFeeDomestic: '5,000',
+          annualFeeOverSeas: '5,000'
+        },
+        {
+          productType: 'card',
+          cardId: 'C0502',
+          cardName: 'NH 투자응원 카드',
+          cardCompany: 'NH카드',
+          cardType: '체크카드',
+          matchScore: 91,
+          mainBenefit: '주식 투자시 캐시백 제공',
+          annualFeeDomestic: '없음',
+          annualFeeOverSeas: '없음'
+        },
+        {
+          productType: 'card',
+          cardId: 'C0503',
+          cardName: '토스 주식카드',
+          cardCompany: '토스',
+          cardType: '체크카드',
+          matchScore: 89,
+          mainBenefit: '증권계좌 연동 시 혜택',
+          annualFeeDomestic: '없음',
+          annualFeeOverSeas: '없음'
+        },
+        {
+          productType: 'card',
+          cardId: 'C0504',
+          cardName: '삼성 새싹 투자카드',
+          cardCompany: '삼성카드',
+          cardType: '신용카드',
+          matchScore: 86,
+          mainBenefit: '금융앱 연동 포인트 적립',
+          annualFeeDomestic: '8,000',
+          annualFeeOverSeas: '10,000'
+        },
+        {
+          productType: 'card',
+          cardId: 'C0505',
+          cardName: '카카오 주린이카드',
+          cardCompany: '카카오뱅크',
+          cardType: '체크카드',
+          matchScore: 90,
+          mainBenefit: '소액 투자 시 매월 리워드',
+          annualFeeDomestic: '없음',
+          annualFeeOverSeas: '5,000'
+        }
+      ]
     }
   ]
 }

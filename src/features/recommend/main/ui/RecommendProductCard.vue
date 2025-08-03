@@ -13,12 +13,10 @@
             <Typography type="M_12_120" class="text-gray-500 mb-1">
             {{ companyName }}
             </Typography>
-            <!-- 혜택/특징 표시 -->
-            <Typography v-if="benefit" type="M_10_120" class="justify-start mb-1 text-sub-yellow-p bg-sub-yellow-bg px-2 py-1 rounded">
+            <Typography v-if="benefit" type="M_10_120" class="justify-start mb-1  text-sub-yellow-p bg-sub-yellow-bg px-2 py-1 rounded">
                 {{ benefit }}
             </Typography>
         </div>
-        <!-- 상품별 특성 정보 -->
         <div class="flex flex-row items-center justify-between w-full">
           <div class="flex flex-row">
             <Typography type="M_12_120" class="text-gray-500 mr-1">
@@ -83,7 +81,7 @@
     return ''
   })
   
-  // 상품 타입별 요율 값
+  // 상품 타입별 값
   const rateValue = computed(() => {
     if ('interestRate' in props.product) return `연 ${props.product.interestRate}%`
     if ('mainBenefit' in props.product) return props.product.mainBenefit

@@ -8,13 +8,14 @@
         <div class="flex flex-row items-center gap-2 mb-2">
           <PiggyBankIcon class="w-4 h-4 text-blue-500" />
           <Typography type="M_14_120" class="text-gray-700">예적금</Typography>
-          <Typography type="B_14_120" class="text-blue-500">
+          <Typography v-if="currentProducts" type="B_14_120" class="text-blue-500">
             {{ currentProducts.deposits.count }}개
           </Typography>
         </div>
 
-        <div v-if="currentProducts.deposits.count > 0" class="space-y-2">
+        <div v-if="currentProducts" class="space-y-2">
           <div
+          v-if="currentProducts.deposits.count > 0"
             v-for="product in currentProducts.deposits.products"
             :key="product.productId"
             @click="openProductDetail(product, 'savings')"
@@ -37,13 +38,14 @@
         <div class="flex items-center gap-2 mb-2">
           <CreditCardIcon class="w-4 h-4 text-green-500" />
           <Typography type="M_14_120" class="text-gray-700">카드</Typography>
-          <Typography type="B_14_120" class="text-green-500">
+          <Typography v-if="currentProducts" type="B_14_120" class="text-green-500">
             {{ currentProducts.cards.count }}개
           </Typography>
         </div>
 
-        <div v-if="currentProducts.cards.count > 0" class="space-y-2">
+        <div v-if="currentProducts" class="space-y-2">
           <div
+            v-if="currentProducts.cards.count > 0"
             v-for="card in currentProducts.cards.products"
             :key="card.cardId"
             @click="openProductDetail(card, 'card')"
@@ -66,13 +68,14 @@
         <div class="flex items-center gap-2 mb-2">
           <ShieldIcon class="w-4 h-4 text-purple-500" />
           <Typography type="M_14_120" class="text-gray-700">보험</Typography>
-          <Typography type="B_14_120" class="text-purple-500">
+          <Typography v-if="currentProducts" type="B_14_120" class="text-purple-500">
             {{ currentProducts.insurances.count }}개
           </Typography>
         </div>
 
-        <div v-if="currentProducts.insurances.count > 0" class="space-y-2">
+        <div v-if="currentProducts" class="space-y-2">
           <div
+            v-if="currentProducts.insurances.count > 0"
             v-for="insurance in currentProducts.insurances.products"
             :key="insurance.productId"
             @click="openProductDetail(insurance, 'insurance')"
@@ -102,7 +105,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
@@ -112,21 +115,22 @@ import {
   CreditCard as CreditCardIcon,
   Shield as ShieldIcon
 } from 'lucide-vue-next'
-import {
-  mockCurrentProducts,
-  mockSavingsDetail,
-  mockCardDetail,
-  mockInsuranceDetail
-} from '@/entities/recommend/recommend.mock'
 import ProductDetailModal from './ProductDetailModal.vue'
 import type {
   SavingsDetailResponse,
   CardDetailResponse,
   InsuranceDetailResponse
 } from '@/entities/recommend/recommend.entity'
+import type { CurrentProductsResponse } from '@/entities/recommend/recommend.entity'
+import { getCurrentSummmary, getUserCards, getUserInsurnaces, getUserSavings } from '../service/current-product.service'
 
-const currentProducts = mockCurrentProducts
 
+// 바뀌어야할 것 - 여기 추천하는거 대 격변이 있을 예정..
+const currentProducts = ref<CurrentProductsResponse | null>(null)
+
+onMounted(async () => {
+    currentProducts.value  = await getCurrentSummmary()
+})
 const isModalOpen = ref(false)
 const selectedProductDetail = ref<SavingsDetailResponse | CardDetailResponse | InsuranceDetailResponse | null>(null)
 const selectedProductType = ref<'savings' | 'card' | 'insurance'>('savings')
@@ -137,11 +141,14 @@ function getProductId(item: any, type: 'savings' | 'card' | 'insurance'): string
 }
 
 // 모달 오픈
-function openProductDetail(item: any, type: 'savings' | 'card' | 'insurance') {
+async function openProductDetail(item: any, type: 'savings' | 'card' | 'insurance') {
   const productId = getProductId(item, type)
-  selectedProductDetail.value = getProductDetail(productId, type)
-  selectedProductType.value = type
-  isModalOpen.value = true
+  const detail = await getProductDetail(productId, type)
+  if (detail) {
+    selectedProductDetail.value = detail
+    selectedProductType.value = type
+    isModalOpen.value = true
+  }
 }
 
 // 모달 닫기
@@ -151,16 +158,21 @@ function closeModal() {
 }
 
 // 현재는 mock 기반 조회
-function getProductDetail(_productId: string, type: 'savings' | 'card' | 'insurance') {
-  switch (type) {
-    case 'savings':
-      return mockSavingsDetail
-    case 'card':
-      return mockCardDetail
-    case 'insurance':
-      return mockInsuranceDetail
-    default:
-      return null
+async function getProductDetail(productId: string, type: 'savings' | 'card' | 'insurance') {
+  try {
+    switch (type) {
+      case 'savings':
+        return await getUserSavings(Number(productId))
+      case 'card':
+        return await getUserCards(Number(productId))
+      case 'insurance':
+        return await getUserInsurnaces(Number(productId))
+      default:
+        return null
+    }
+  } catch (e) {
+    console.error('상세 조회 실패:', e)
+    return null
   }
 }
 </script>

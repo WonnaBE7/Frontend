@@ -45,7 +45,7 @@ const checkForUpdates = () => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       // 새 서비스 워커가 활성화되면 페이지 새로고침
-      //window.location.reload()
+      window.location.reload()
     })
     
     // 서비스 워커 업데이트 확인

@@ -16,11 +16,18 @@
 import Button from '@/shared/ui/atoms/Button.vue';
 import { Heart } from 'lucide-vue-next';
 import { useRoute } from 'vue-router';
+import { fetchWish } from '../../wish-list/service/add-remove-wish.service';
 
 const route = useRoute()
 const savingsId = route.query.productId as string
-
-function test(){
-    console.log(savingsId)
+const type = route.query.productType as string
+async function test() {
+    console.log(savingsId, type)
+    const wishdata = {
+        action: 'add', //바꿔야할 것 이것도 상품에 추가하는 boolean 값 들어오도록 하면 바꾸기
+        productType: type,
+        productId: savingsId
+    }
+    await fetchWish(wishdata)
 }
 </script>

@@ -12,7 +12,7 @@ export interface RequestOptions {
   method: Method
   body?: any
   credentials?: RequestCredentials
-  auth?: boolean // 🔸 추가
+  auth?: boolean 
 }
 
 export const fetcher = async <T = any>({
