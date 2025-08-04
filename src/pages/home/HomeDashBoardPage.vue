@@ -13,5 +13,10 @@ import CurrentGoalBox from '@/features/goal/main/ui/CurrentGoalBox.vue';
 import FinTypeBox from '@/features/assets/main/ui/FinTypeBox.vue';
 import Top3PostBox from '@/features/assets/main/ui/Top3PostBox.vue';
 import AppLayout from '@/shared/layout/AppLayout.vue'
+import { onMounted } from 'vue';
+import { initUserData } from '@/features/init/initUserData';
 
+onMounted(() => {
+  initUserData()
+})
 </script>

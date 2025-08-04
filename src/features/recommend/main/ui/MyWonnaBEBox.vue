@@ -24,13 +24,9 @@
   import { financialTendencyList, finTypeIcons } from '@/shared/constants/finTypes.constants'
   import Card from '@/shared/ui/atoms/Card.vue'
   import { useUserProfileStore } from '@/entities/user/user.store'
-  import { computed, onMounted } from 'vue'
+  import { computed } from 'vue'
   
   const userStore = useUserProfileStore()
-  onMounted(() => {
-    userStore.fetchUserProfile()
-  })
-  
   const userProfile = computed(() => userStore.profile)
   const finTypeDescriptMap: Record<string, string> = Object.fromEntries(
     financialTendencyList.map(item => [item.name, item.description])

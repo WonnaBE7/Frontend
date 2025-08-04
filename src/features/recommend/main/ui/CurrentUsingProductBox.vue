@@ -123,13 +123,14 @@ import type {
 } from '@/entities/recommend/recommend.entity'
 import type { CurrentProductsResponse } from '@/entities/recommend/recommend.entity'
 import { getCurrentSummmary, getUserCards, getUserInsurnaces, getUserSavings } from '../service/current-product.service'
+import { useRecommendationStore } from '@/entities/recommend/recommend.store'
 
 
 // 바뀌어야할 것 - 여기 추천하는거 대 격변이 있을 예정..
 const currentProducts = ref<CurrentProductsResponse | null>(null)
-
+const store = useRecommendationStore()
 onMounted(async () => {
-    currentProducts.value  = await getCurrentSummmary()
+    currentProducts.value  = store.currentProducts
 })
 const isModalOpen = ref(false)
 const selectedProductDetail = ref<SavingsDetailResponse | CardDetailResponse | InsuranceDetailResponse | null>(null)
@@ -157,7 +158,6 @@ function closeModal() {
   selectedProductDetail.value = null
 }
 
-// 현재는 mock 기반 조회
 async function getProductDetail(productId: string, type: 'savings' | 'card' | 'insurance') {
   try {
     switch (type) {

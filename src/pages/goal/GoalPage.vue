@@ -1,7 +1,7 @@
 <template>
     <AppLayout>
       <Card class="bg-white border border-gray-150">
-        <Typography type="B_16_120" class="w-full mb-4">총 목표 현황</Typography>
+        <Typography type="B_16_120" class="w-full mb-4">현재 목표 현황</Typography>
         <AllGoalBox 
           :color1="'bg-sub-yellow-p'"
           :color2="'bg-sub-orange-p'"
@@ -24,23 +24,12 @@
   import { Target, CircleDollarSign } from 'lucide-vue-next';
   import Card from '@/shared/ui/atoms/Card.vue';
   import Typography from '@/shared/ui/atoms/Typography.vue';
-  import { fetchGoals } from '@/entities/goal/goal.api';
-  import { onMounted, ref } from 'vue';
+  import { computed } from 'vue';
+  import { useGoalStore } from '@/entities/goal/goal.store';
 
-  const totalGoalCount = ref(0)
-  const totalTargetAmount = ref(0)
+  const store = useGoalStore()
 
-  const loadGoals = async () => {
-    try {
-      const { totalGoalCount: count, totalTargetAmount: amount } = await fetchGoals()
-      totalGoalCount.value = count
-      totalTargetAmount.value = amount
-    } catch (err) {
-      console.error('목표 불러오기 실패:', err)
-    }
-  }
+  const totalGoalCount = computed(() => store.totalGoalCount)
+  const totalTargetAmount = computed(() => store.totalTargetAmount)
 
-  onMounted(() => {
-    loadGoals()
-  })
   </script>

@@ -52,14 +52,9 @@ import { colorMap, categoryLabelMap } from '@/entities/assets/assets.constants'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import { useRouter } from 'vue-router'
-import { onMounted } from 'vue'
 
 const store = useConsumptionStore()
 const router = useRouter()
-
-onMounted(() => {
-  store.fetchConsumptionData()
-})
 
 function goToDetail(category: string) {
   if (store.selectedTab === 'estimated') return

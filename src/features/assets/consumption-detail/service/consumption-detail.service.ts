@@ -46,7 +46,7 @@ export const getMonthlyCategoryDetail = async (consumptionDetailCategory: string
 export const getTodayCategoryDetail = async (consumptionDetailCategory: string) => {
     try{
         const res = await fetcher<ConsumptionCategoryDetail>({
-            url: `${BASE_URL}/api/assets/consumption/transactions/category?category=${consumptionDetailCategory}`,
+            url: `${BASE_URL}/api/assets/consumption/transactions/today/category?category=${consumptionDetailCategory}`,
             method: 'GET',
             auth: true,
         })

@@ -12,28 +12,17 @@
 import { ref, onMounted } from 'vue'
 import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
 import type { MonthlyTransactionDetail, TodayTransactionDetail } from '@/entities/consumption/consumption.entity'
-import { getMonthlyTransactionDetail, getTodayTransactionDetail } from '../service/\bconsumption-detail.service'
-import { useConsumptionStore } from '@/entities/consumption/consumption.store'
+import { useTransactionDetailStore } from '@/entities/consumption/consumption.store'
 
 const props = defineProps<{ type: 'current' | 'today' }>()
-
-const store = useConsumptionStore()
 const data = ref<MonthlyTransactionDetail | TodayTransactionDetail | null>(null)
 
-onMounted(async () => {
+const store = useTransactionDetailStore()
+onMounted(() => {
   if (props.type === 'today') {
-    const res = await getTodayTransactionDetail()
-    data.value = {
-      date: res.date,
-      transactions: res.transactions,
-    }
+    data.value = store.todayTransactionDetail
   } else {
-    const yearMonth = store.baseDate.format('YYYY-MM')
-    const res = await getMonthlyTransactionDetail(yearMonth)
-    data.value = {
-      date: res.yearMonth,
-      transactions: res.transactions,
-    }
+    data.value = store.monthlyTransactionDetail
   }
 })
 </script>

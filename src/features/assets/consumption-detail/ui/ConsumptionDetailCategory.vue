@@ -10,31 +10,23 @@
   </template>
   
  <script setup lang="ts">
-import { onMounted, ref, watchEffect } from 'vue'
+import { computed} from 'vue'
 import { categoryLabelMap } from '@/entities/assets/assets.constants'
 import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
-import type { ConsumptionCategoryDetail } from '@/entities/consumption/consumption.entity';
-import { getMonthlyCategoryDetail, getTodayCategoryDetail } from '../service/\bconsumption-detail.service';
+import { useTransactionCategoryDetailStore, type ConsumptionCategoryKey } from '@/entities/consumption/consumption.store';
 
 const props = defineProps<{
-  category: string
+  category: ConsumptionCategoryKey
   type: 'current' | 'today'
 }>()
 
-const data = ref<ConsumptionCategoryDetail | null>(null)
-
-const fetchDetail = async () => {
-  if (props.type === 'today') {
-    data.value = await getTodayCategoryDetail(props.category)
-  } else {
-    data.value = await getMonthlyCategoryDetail(props.category)
-  }
-}
-onMounted(
-  fetchDetail
-)
-watchEffect(() => {
-  fetchDetail()
+const store = useTransactionCategoryDetailStore()
+const data = computed(() => {
+  return props.type === 'today'
+    ? store.getTodayDetail(props.category)
+    : store.getMonthlyDetail(props.category)
 })
+
+
 </script>

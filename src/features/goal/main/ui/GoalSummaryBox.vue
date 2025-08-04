@@ -10,7 +10,7 @@
   <div class="w-full flex flex-row justify-between mb-4 items-center">
     <IconLabel :icon="Target">목표 리스트</IconLabel>
     <CustomDropdown
-      v-model="selectedStatus"
+      v-model="selectedType"
       :options="sortOptions"
     />
   </div>
@@ -52,11 +52,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { fetchGoals } from '@/entities/goal/goal.api'
-import type { Goal } from '@/entities/goal/goal.entity'
-
 import Card from '@/shared/ui/atoms/Card.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
@@ -64,14 +61,15 @@ import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import CurrentGoal from '@/shared/ui/molecules/CurrentGoal.vue'
 import CustomDropdown from '@/shared/ui/atoms/CustomDropdown.vue'
 import { Calendar, FilePlus, Target } from 'lucide-vue-next'
+import { useGoalStore } from '@/entities/goal/goal.store'
 
-const selectedStatus = ref<'PUBLISHED' | 'ACHIEVED'>('PUBLISHED')
+const store = useGoalStore()
+const selectedType = ref<'PUBLISHED' | 'ACHIEVED'>('PUBLISHED')
 const sortOptions = [
   { value: 'PUBLISHED', label: '진행중' },
   { value: 'ACHIEVED', label: '완료' }
 ]
 
-const goals = ref<Goal[]>([])
 const router = useRouter()
 
 function goToReport(goalId: number) {
@@ -82,20 +80,9 @@ function goToSimulation() {
   router.push({ path: '/goal/simulation/input' })
 }
 
-const loadGoals = async () => {
-  try {
-    const res = await fetchGoals(selectedStatus.value)
-    goals.value = res.goals
-  } catch (err) {
-    console.error('목표 불러오기 실패:', err)
-  }
-}
-
-onMounted(async () => {
-  await loadGoals()
-})
-
-watch(selectedStatus, () => {
-  loadGoals()
-})
+const goals = computed(() =>
+  selectedType.value === 'PUBLISHED'
+    ? store.publishedGoals
+    : store.achievedGoals
+)
 </script>

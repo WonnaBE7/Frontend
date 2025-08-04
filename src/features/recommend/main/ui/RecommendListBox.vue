@@ -50,7 +50,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { useQuery } from '@tanstack/vue-query'
 import Card from '@/shared/ui/atoms/Card.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'

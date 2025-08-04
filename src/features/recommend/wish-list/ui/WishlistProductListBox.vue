@@ -18,18 +18,15 @@
   <script setup lang="ts">
   import Typography from '@/shared/ui/atoms/Typography.vue'
   import RecommendProductCard from '../../main/ui/RecommendProductCard.vue'
-  import type { WishlistProduct, WishlistResponse } from '@/entities/recommend/recommend.entity'
+  import type { WishlistProduct } from '@/entities/recommend/recommend.entity'
   import Card from '@/shared/ui/atoms/Card.vue'
   import { useRouter } from 'vue-router'
-  import { getWishlist } from '../../main/service/current-product.service'
-  import { onMounted, ref } from 'vue'
+  import { computed, } from 'vue'
+  import { useRecommendationStore } from '@/entities/recommend/recommend.store'
 
   const router = useRouter()
-  const wishList = ref<WishlistResponse| null>(null)
-
-  onMounted(async () =>{
-      wishList.value = await getWishlist()
-  })
+  const store = useRecommendationStore()
+  const wishList = computed(() => store.wishlist)
 
   function getProductKey(product: WishlistProduct) {
     if (product.productType === 'card') return product.cardId

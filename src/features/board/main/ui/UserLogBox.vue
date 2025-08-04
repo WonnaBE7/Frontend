@@ -1,13 +1,13 @@
 <template>
     <IconLabel :icon="MonitorDot" iconClass="text-sub-yellow-p" class="mt-8 mb-4">내 활동</IconLabel>
     <div class="flex flex-row grid-flow-row-2 gap-4 w-full">
-        <Card class="border bg-white" @click="goToWrite">
+        <Card class="border bg-white gap-2" @click="goToWrite">
             <IconLabel :icon="Pen" iconClass="text-sub-red-p" class="flex justify-center items-center">{{myWriteScrap.write}}</IconLabel>
-            <Typography type="M_14_140" class="mt-4 text-gray-500">내가 쓴 글</Typography>
+            <Typography type="M_14_140" class=" text-gray-500">내가 쓴 글</Typography>
         </Card>
-        <Card class="border bg-white" @click="goToScrap">
+        <Card class="border bg-white gap-2" @click="goToScrap">
             <IconLabel :icon="BookmarkIcon" iconClass="text-sub-yellow-p" class="flex justify-center items-center">{{myWriteScrap.scrap}}</IconLabel>
-            <Typography type="M_14_140" class="mt-4 text-gray-500">스크랩한 글</Typography>
+            <Typography type="M_14_140" class=" text-gray-500">스크랩한 글</Typography>
         </Card>
     </div>
 </template>

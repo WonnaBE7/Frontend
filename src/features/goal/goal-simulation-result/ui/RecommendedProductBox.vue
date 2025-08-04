@@ -63,11 +63,8 @@ async function submitSelectedProduct() {
 
   try {
     await patchGoalSelection(goalId, payload)
-    console.log(goalId, payload)
-    console.log('목표 저장 성공')
     router.push('/goal')
   } catch (e) {
-    console.log(goalId, payload)
     console.error('목표 저장 실패:', e)
     router.push('/goal')
   }

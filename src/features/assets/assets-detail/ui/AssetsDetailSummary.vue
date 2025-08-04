@@ -1,17 +1,17 @@
-<template>
+<template >
     <!-- <Typography type="B_18_120" class="mb-4 sm:mb-6 md:mb-8">자산 상세 내역</Typography> -->
     <Card class="bg-sub-yellow-bg mb-4 sm:mb-6 md:mb-8 border border-sub-yellow-c">
       <Typography type="M_16_120" class="w-full">
         총 {{ label }} 금액
       </Typography>
-      <Typography type="B_22_160" class="w-full">
+      <Typography v-if="details"  type="B_22_160" class="w-full">
         {{ details.totalAmount.toLocaleString() }}원
       </Typography>
     </Card>
   
     <Typography type="B_18_120" class="mb-4 sm:mb-6 md:mb-8">보유 계좌</Typography>
   
-    <div v-for="account in details.accounts" :key="account.accountNumber" class="mb-4 sm:mb-6 md:mb-8">
+    <div v-if="details" v-for="account in details.accounts" :key="account.accountNumber" class="mb-4 sm:mb-6 md:mb-8">
       <Card class="border border-gray-150">
         <div class="flex flex-row w-full justify-between items-center">
             <div>
@@ -31,25 +31,17 @@
   </template>
   
   <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { computed } from 'vue'
   import { useRoute } from 'vue-router'
   import Typography from '@/shared/ui/atoms/Typography.vue'
   import Card from '@/shared/ui/atoms/Card.vue'
   import { categoryLabelMap } from '@/entities/assets/assets.constants'
-  import type { AssetCategoryDetailResponse } from '@/entities/assets/assets.entity'
-  import { getAssetCategoryDetail } from '../service/assets-detail.service'
+  import { useAssetCategoryDetailStore } from '@/entities/assets/assets.store'
   
   const route = useRoute()
-  const category = route.query.category as string
+  const category = route.query.category as "checking" | "savings" | "investment" | "insurance" | "other"
   const label = categoryLabelMap[category] || '자산'
   
-  const details = ref<AssetCategoryDetailResponse>({
-    assetCategory: category,
-    totalAmount: 0,
-    accounts: [],
-  })
-  
-  onMounted(async () => {
-    details.value = await getAssetCategoryDetail(category)
-  })
+  const store = useAssetCategoryDetailStore()
+  const details = computed(() => store.getCategoryDetail(category))
   </script>
