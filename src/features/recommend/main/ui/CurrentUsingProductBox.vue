@@ -105,7 +105,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
@@ -121,17 +121,13 @@ import type {
   CardDetailResponse,
   InsuranceDetailResponse
 } from '@/entities/recommend/recommend.entity'
-import type { CurrentProductsResponse } from '@/entities/recommend/recommend.entity'
-import { getCurrentSummmary, getUserCards, getUserInsurnaces, getUserSavings } from '../service/current-product.service'
+import { getUserCards, getUserInsurnaces, getUserSavings } from '@/entities/recommend/recommend.api'
 import { useRecommendationStore } from '@/entities/recommend/recommend.store'
+import { storeToRefs } from 'pinia'
 
-
-// 바뀌어야할 것 - 여기 추천하는거 대 격변이 있을 예정..
-const currentProducts = ref<CurrentProductsResponse | null>(null)
 const store = useRecommendationStore()
-onMounted(async () => {
-    currentProducts.value  = store.currentProducts
-})
+const { currentProducts } = storeToRefs(store)
+
 const isModalOpen = ref(false)
 const selectedProductDetail = ref<SavingsDetailResponse | CardDetailResponse | InsuranceDetailResponse | null>(null)
 const selectedProductType = ref<'savings' | 'card' | 'insurance'>('savings')

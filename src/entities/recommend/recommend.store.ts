@@ -14,7 +14,7 @@ import {
   mockCardRecommendation,
   mockInsuranceRecommendation,
 } from './recommend.mock'
-import { getCardRecommendation, getCurrentSummmary, getInsuranceRecommendation, getSavingsRecommendation, getWishlist } from '@/features/recommend/main/service/current-product.service'
+import { getCardRecommendation, getCurrentSummmary, getInsuranceRecommendation, getSavingsRecommendation, getWishlist } from '@/entities/recommend/recommend.api'
 
 export const useRecommendationStore = defineStore('recommendation', {
   state: () => ({

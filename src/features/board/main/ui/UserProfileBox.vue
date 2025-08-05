@@ -28,14 +28,17 @@
 </template>
 <script setup lang="ts">
 import Tag from '@/shared/ui/atoms/Tag.vue'
-import { mockGoalSummary } from '@/entities/goal/goal.mock';
 import UserProfileCard from '@/shared/ui/molecules/UserProfileCard.vue';
 import Card from '@/shared/ui/atoms/Card.vue';
 import Typography from '@/shared/ui/atoms/Typography.vue';
 import { useRouter } from 'vue-router';
+import { useGoalStore } from '@/entities/goal/goal.store';
+import { storeToRefs } from 'pinia';
 
-const goals= mockGoalSummary.goals;
-const router =useRouter()
+const store = useGoalStore()
+const goals= storeToRefs(store).publishedGoals
+
+const router = useRouter()
 function goToReport(goalId: number) {
   router.push({ path: '/goal/report', query: { goalId: goalId.toString() } })
 }

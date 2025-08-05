@@ -21,6 +21,7 @@ export const useUserProfileStore = defineStore('userProfile', {
         const res = await fetcher<UserProfile>({
           url: `${BASE_URL}/api/user/me`,
           method: 'GET',
+          auth: true,
         })
         this.profile = res.data
         const firstFinTypeName = this.profile?.wonnaBE?.[0]

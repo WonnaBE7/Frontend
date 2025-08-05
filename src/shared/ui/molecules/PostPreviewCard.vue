@@ -24,7 +24,7 @@
         <div class="flex flex-row items-center justify-between w-full">
           <div class="flex items-center gap-2">
             <Typography type="M_12_120">{{ userName }}</Typography>
-            <NoBorderTag color="bg-gray-100">{{ category }}</NoBorderTag>
+            <NoBorderTag color="bg-gray-100">{{ categoryName }}</NoBorderTag>
           </div>
       
           <div class="flex items-center gap-4 text-sm text-gray-500">
@@ -62,9 +62,13 @@
     title: string
     content: string
     userName: string
-    category: string
+    categoryId:number
+    categoryName: string
     likeCount: number
     commentCount: number
+    isScraped : boolean
+    isLiked:boolean
+    createdAt:string
   }>()
   
   const emit = defineEmits<{
@@ -87,9 +91,9 @@
     isScrapped.value = !isScrapped.value
   }
   const goToPost = () => {
-  router.push({
-    path: `/board/post/${props.boardId}`,
-    query: { category: props.category }
-  })
-}
+    router.push({
+      path: `/board/post/${props.boardId}`,
+      query: { category: props.categoryName }
+    })
+  }
   </script>

@@ -1,7 +1,7 @@
 <template>
     <AppLayout>
       <IntroduceBox :productInfo="savingsData.productInfo"/>
-      <ChartBox :comparisonChart="savingsData.comparisonChart"/>
+      <ChartBox :comparisonChart="savingsData.comparisonCharts"/>
       <MainFeaturesBox :mainFeatures="savingsData.mainFeatures"/>
       <TermsAndConditionsBox :termsAndConditions="savingsData.termsAndConditions"/>
       <ProductButtonBox/>

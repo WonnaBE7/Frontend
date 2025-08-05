@@ -1,0 +1,11 @@
+import{v as f,d as x,l as n,c as u,o as m,C as v,w as s,a as d,e as r,b as C,f as o,A as c,z as l,y as M,_ as k,u as i,H as A,g as R}from"./index-CD8D75b0.js";import{T as $}from"./trending-up-D47y36hs.js";/**
+ * @license lucide-vue-next v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const L=f("message-circle-warning",[["path",{d:"M7.9 20A9 9 0 1 0 4 16.1L2 22Z",key:"vv11sd"}],["path",{d:"M12 8v4",key:"1got3b"}],["path",{d:"M12 16h.01",key:"1drbdi"}]]);/**
+ * @license lucide-vue-next v0.525.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const N=f("trending-down",[["path",{d:"M16 17h6v-6",key:"t6n2it"}],["path",{d:"m22 17-8.5-8.5-5 5L2 7",key:"x473p"}]]),T={class:"w-full"},B={class:"flex flex-row w-full justify-between"},D=x({__name:"TotalAssets",props:{meta:{},type:{}},setup(p){const _=A(),t=p,g=n(()=>t.meta.changeRate>0?"text-sub-aqua-p":t.meta.changeRate<0?"text-sub-red-p":"text-gray-500"),y=n(()=>t.meta.changeRate>=0?$:N),b=n(()=>{const e=t.meta.changeRate;return e>0?`+${e}`:e.toString()}),h=n(()=>{const e=t.meta.changeAmount,a=Math.abs(e).toLocaleString();return e>0?`+${a}`:e<0?`-${a}`:a}),w=n(()=>`${(t.type==="자산"?t.meta.totalAmount:t.meta.monthlyConsumption).toLocaleString()}원`);return(e,a)=>(m(),u(v,{class:"bg-sub-yellow-bg border border-sub-yellow-c"},{default:s(()=>[d("div",T,[d("div",B,[r(l,{type:"M_16_120",class:"w-full mb-2 sm:mb-3 text-gray-400"},{default:s(()=>[o(c(e.type==="자산"?"총 자산 현황":"총 소비 현황"),1)]),_:1}),r(k,{icon:y.value,class:M(["w-full flex justify-end",g.value])},{default:s(()=>[o(c(b.value)+"% ",1)]),_:1},8,["icon","class"])]),r(l,{type:"B_22_160",class:"mb-2 sm:mb-3"},{default:s(()=>[o(c(w.value),1)]),_:1}),r(l,{type:"M_12_140",class:"text-gray-400 mb-2 sm:mb-3"},{default:s(()=>[o(" 지난달 대비 "+c(h.value)+"원 ",1)]),_:1}),i(_).path.startsWith("/assets")?(m(),u(l,{key:0,type:"M_10_120",class:"flex flex-row items-center gap-2 text-sub-orange-s"},{default:s(()=>[(m(),u(R(i(L)),{class:"w-4"})),a[0]||(a[0]=o(" 보험은 총자산에 들어가지 않습니다 "))]),_:1,__:[0]})):C("",!0)])]),_:1}))}});export{D as _};

@@ -19,9 +19,9 @@ import {
   getEstimatedAndTodayConsumption,
   getMonthlyCategoryConsumption,
   getTodayCategoryConsumption
-} from '@/features/assets/consumption-dashboard/service/consumption-dashboard.service'
+} from '@/entities/consumption/comsumption.api'
 import { getConsumption } from './comsumption.api'
-import { getMonthlyCategoryDetail, getMonthlyTransactionDetail, getTodayCategoryDetail, getTodayTransactionDetail } from '@/features/assets/consumption-detail/service/consumption-detail.service'
+import { getMonthlyCategoryDetail, getMonthlyTransactionDetail, getTodayCategoryDetail, getTodayTransactionDetail } from '@/entities/consumption/comsumption.api'
 
 export type TabType = 'current' | 'estimated' | 'today'
 

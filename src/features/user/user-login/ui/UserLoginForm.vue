@@ -13,7 +13,12 @@
         </div>
       </Button>
 
-      <Typography type="M_12_120" class="w-full flex justify-center mt-4 text-gray-500">회원가입 하러가기</Typography>
+      <Typography 
+        @click="goSignup"
+        type="M_12_120" 
+        class="w-full flex justify-center mt-4 text-gray-500">
+          회원가입 하러가기
+      </Typography>
     </div>
   </div>
 </template>
@@ -24,7 +29,7 @@ import { useRouter } from 'vue-router'
 import Button from '@/shared/ui/atoms/Button.vue'
 import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
 import { MessageCircle } from 'lucide-vue-next'
-import { login } from '@/features/user/user-login/services/login.service'
+import { userLogin } from '@/features/user/user-login/services/login.service'
 import { useAuthStore } from '@/entities/user/auth.store'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 
@@ -35,8 +40,8 @@ const router = useRouter()
 
 const handleLogin = async () => {
   try {
-    const res = await login({ email: email.value, password: password.value })
-    const { accessToken, user } = res.data
+    const res = await userLogin({ email: email.value, password: password.value })
+    const { accessToken, user } = res
 
     authStore.login(accessToken, user)
 
@@ -44,5 +49,8 @@ const handleLogin = async () => {
   } catch (err: any) {
     alert(err.message || '로그인에 실패했습니다.')
   }
+}
+function goSignup(){
+  router.push('/user/signup')
 }
 </script>

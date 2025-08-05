@@ -37,7 +37,7 @@
   
         <div v-if="isCurrentPageSimulation" class="mt-4 w-full flex flex-row gap-2">
           <Button @click="selectProduct">상품 선택하기</Button>
-          <Button>상품 상세보기</Button>
+          <!-- <Button>상품 상세보기</Button> -->
         </div>
         
       </Card>

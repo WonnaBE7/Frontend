@@ -94,10 +94,9 @@ export interface RecommendedSavingsProduct {
   productId: string
   productName: string
   bankName: string
-  type: string
-  interestRate: number
-  matchScore: number
-  maxLimit: number
+  baseRate: number
+  maxRate: number
+  totalScore: number
 }
 
 export interface SavingsRecommendationResponse {
@@ -112,11 +111,11 @@ export interface SavingsRecommendationResponse {
 export interface RecommendedInsuranceProduct {
   productType: 'insurance'
   productId: string
-  insuranceName: string
-  insuranceCompany: string
-  matchScore: number
-  mainCoverage: string
-  monthlyPremium: number
+  productName: string
+  providerName: string
+  coverageType: string
+  coverageLimit:string
+  totalScore:number
 }
 
 export interface InsuranceRecommendationResponse {
@@ -150,37 +149,7 @@ export interface CardRecommendationResponse {
 }
 
 // 관심상품 목록
-export interface WishlistSavingsProduct {
-  productType: 'savings'
-  productId: string
-  productName: string
-  bankName: string
-  interestRate: number
-  matchScore: number
-}
-
-export interface WishlistCardProduct {
-  productType: 'card'
-  cardId: string
-  cardName: string
-  cardCompany: string
-  cardType: string
-  matchScore: number
-  mainBenefit: string
-  annualFee: number
-}
-
-export interface WishlistInsuranceProduct {
-  productType: 'insurance'
-  productId: string
-  insuranceName: string
-  insuranceCompany: string
-  matchScore: number
-  mainCoverage: string
-  monthlyPremium: number
-}
-
-export type WishlistProduct = WishlistSavingsProduct | WishlistCardProduct | WishlistInsuranceProduct
+export type WishlistProduct = RecommendedSavingsProduct | RecommendedCardProduct | RecommendedInsuranceProduct
 
 export interface WishlistResponse {
   totalCount: number
@@ -261,7 +230,7 @@ export interface SavingsTermsAndConditions {
 
 export interface SavingsDetailPageResponse {
   productInfo: SavingsProductInfo
-  comparisonChart: ComparisonChart
+  comparisonCharts: ComparisonChart
   mainFeatures: MainFeature[]
   termsAndConditions: SavingsTermsAndConditions
 }
@@ -291,7 +260,7 @@ export interface CardNote {
 
 export interface CardDetailPageResponse {
   productInfo: CardProductInfo
-  comparisonChart: ComparisonChart
+  comparisonCharts: ComparisonChart
   note: CardNote
 }
 
@@ -308,7 +277,7 @@ export interface InsuranceProductInfo {
 
 export interface InsurancesDetailPageResponse {
   productInfo: InsuranceProductInfo
-  comparisonChart: ComparisonChart
+  comparisonCharts: ComparisonChart
   mainFeatures: MainFeature[]
   termsAndConditions: InsurancesTermsAndConditions
 }

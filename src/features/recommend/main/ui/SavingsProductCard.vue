@@ -5,27 +5,27 @@
           <Typography type="B_16_140">{{ product.productName }}</Typography>
           <Typography type="B_14_120" class="flex items-center gap-2">
             <Star class="fill-sub-yellow-p text-sub-yellow-p w-4" />
-            {{ product.matchScore }}
+            {{ product.totalScore }}
           </Typography>
         </div>
         <div class="flex flex-row items-center w-full gap-2 mb-2">
             <Typography type="M_12_120" class="text-gray-500 mb-1">
               {{ product.bankName }}
             </Typography>
-            <Typography type="M_10_120" class="justify-start mb-1  text-sub-yellow-p bg-sub-yellow-bg px-2 py-1 rounded">
+            <!-- <Typography type="M_10_120" class="justify-start mb-1  text-sub-yellow-p bg-sub-yellow-bg px-2 py-1 rounded">
               {{ product.type }}
-            </Typography>
+            </Typography> -->
         </div>
   
         <div class="flex justify-between w-full">
           <div class="flex items-center gap-1">
             <Typography type="M_12_120" class="text-gray-500">금리:</Typography>
             <Typography type="M_12_120" class="text-sub-green-p">
-              연 {{ product.interestRate }}%
+              연 {{ product.baseRate }}%
             </Typography>
             <Typography type="M_12_120" class="text-gray-500 ml-2">최대:</Typography>
             <Typography type="M_12_120" class="text-sub-green-p">
-              {{ product.maxLimit.toLocaleString() }}
+              {{ product.maxRate}}%
             </Typography>
           </div>
           <ChevronRight />

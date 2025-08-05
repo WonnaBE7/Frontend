@@ -1,9 +1,12 @@
 <template>
-    <BoardCategory :communities="mockCommunities"></BoardCategory>
+    <BoardCategory v-if="store.all" :communities="store.all"></BoardCategory>
 </template>
 
 <script setup lang="ts">
+import { useCommunityListStore } from '@/entities/board/community/community.store';
 import BoardCategory from '@/features/board/board-community/ui/BoardCategory.vue'
-import {mockCommunities }from '@/entities/board/community/community.mock'
+
+const store = useCommunityListStore()
+
 
 </script>

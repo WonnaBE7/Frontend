@@ -25,7 +25,8 @@
     import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
     import { MessageCircleIcon, ChevronRight } from 'lucide-vue-next';
     import { usePostPreviewStore } from '@/entities/board/board.store'
+    
     const postStore = usePostPreviewStore() 
-    const topPosts = computed(() => postStore.top3Posts)
+    const topPosts = computed(() => postStore.posts)
   
   </script>

@@ -24,12 +24,24 @@
   import { Target, CircleDollarSign } from 'lucide-vue-next';
   import Card from '@/shared/ui/atoms/Card.vue';
   import Typography from '@/shared/ui/atoms/Typography.vue';
-  import { computed } from 'vue';
+  import { computed, onMounted } from 'vue';
   import { useGoalStore } from '@/entities/goal/goal.store';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/entities/user/auth.store';
+import { initGoalData } from '@/features/init/initGoalData';
+
 
   const store = useGoalStore()
-
+  const router = useRouter()
+  const authStore = useAuthStore()
   const totalGoalCount = computed(() => store.totalGoalCount)
   const totalTargetAmount = computed(() => store.totalTargetAmount)
 
+  onMounted(() => {
+    if (!authStore.accessToken) {
+      router.push('/user/login')
+    }
+
+    initGoalData()
+  })
   </script>

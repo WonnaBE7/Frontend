@@ -1,6 +1,6 @@
 import { fetcher } from "@/shared/utils/fetcher"
-import type { ConsumptionSummaryMeta } from "./consumption.entity"
-import { mockConsumptionSummaryMeta } from "./consumption.mock"
+import type { ConsumptionCategoryDetail, ConsumptionSummaryMeta, EstimatedAndTodayConsumption, MonthlyCategoryConsumption, MonthlyConsumptionSummary, MonthlyTransactionDetail, TodayCategoryConsumption, TodayTransactionDetail } from "./consumption.entity"
+import { mockConsumptionSummaryMeta, mockEstimatedAndTodayConsumption, mockMonthlyCategoryConsumption, mockMonthlyCategoryDetailMap, mockMonthlyConsumptionSummary, mockMonthlyTransactionDetail, mockTodayCategoryConsumption, mockTodayCategoryDetailMap, mockTodayTransactionDetail } from "./consumption.mock"
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
@@ -16,4 +16,112 @@ export const getConsumption = async () => {
     }catch{
         return mockConsumptionSummaryMeta
     }
+}
+
+
+export const getMonthlyConsumptionSummary = async (yearMonth: string) => {
+    try{
+        const res = await fetcher<MonthlyConsumptionSummary>({
+            url: `${BASE_URL}/api/assets/consumption/monthly?yearMonth=${yearMonth}`,
+            method: 'GET',
+            auth: true,
+        })
+
+        return res.data
+    }catch{
+        return mockMonthlyConsumptionSummary
+  }
+}
+
+export const getEstimatedAndTodayConsumption = async () => {
+    try{
+        const res = await fetcher<EstimatedAndTodayConsumption>({
+            url: `${BASE_URL}/api/assets/consumption/overview`,
+            method: 'GET',
+            auth: true,
+        })
+        return res.data
+    }catch{
+        return mockEstimatedAndTodayConsumption
+  }
+}
+
+export const getMonthlyCategoryConsumption = async (yearMonth: string) => {
+    try{
+        const res = await fetcher<MonthlyCategoryConsumption>({
+            url: `${BASE_URL}/api/assets/consumption/categories?yearMonth=${yearMonth}`,
+            method: 'GET',
+            auth: true,
+        })
+        return res.data
+    }catch{
+        return mockMonthlyCategoryConsumption
+  }
+}
+
+export const getTodayCategoryConsumption = async () => {
+    try{
+        const res = await fetcher<TodayCategoryConsumption>({
+            url: `${BASE_URL}/api/assets/consumption/today/categories`,
+            method: 'GET',
+            auth: true,
+        })
+        return res.data
+    }catch{
+        return mockTodayCategoryConsumption
+  }
+}
+
+
+export const getMonthlyTransactionDetail = async (yearMonth: string) => {
+    try{
+        const res = await fetcher<MonthlyTransactionDetail>({
+            url: `${BASE_URL}/api/assets/consumption/transactions?yearMonth=${yearMonth}`,
+            method: 'GET',
+            auth: true,
+        })
+        return res.data
+    }catch{
+        return mockMonthlyTransactionDetail
+  }
+}
+
+export const getTodayTransactionDetail = async () => {
+    try{
+        const res = await fetcher<TodayTransactionDetail>({
+            url: `${BASE_URL}/api/assets/consumption/transactions/today`,
+            method: 'GET',
+            auth: true,
+        })
+        return res.data
+    }catch{
+        return mockTodayTransactionDetail
+  }
+}
+
+export const getMonthlyCategoryDetail = async (consumptionDetailCategory: string) => {
+    try {
+      const res = await fetcher<ConsumptionCategoryDetail>({
+        url: `${BASE_URL}/api/assets/consumption/transactions/category?category=${consumptionDetailCategory}`,
+        method: 'GET',
+        auth: true,
+      })
+      return res.data
+    } catch { 
+      return mockMonthlyCategoryDetailMap[consumptionDetailCategory as keyof typeof mockMonthlyCategoryDetailMap]
+    }
+  }
+
+export const getTodayCategoryDetail = async (consumptionDetailCategory: string) => {
+    try{
+        const res = await fetcher<ConsumptionCategoryDetail>({
+            url: `${BASE_URL}/api/assets/consumption/transactions/today/category?category=${consumptionDetailCategory}`,
+            method: 'GET',
+            auth: true,
+        })
+
+        return res.data
+    }catch{
+        return mockTodayCategoryDetailMap[consumptionDetailCategory as keyof typeof mockTodayCategoryDetailMap]
+  }
 }

@@ -24,7 +24,7 @@
             class="mb-4"
           />
           <SavingsProductCard
-            v-else-if="'interestRate' in product"
+            v-else-if="'bankName' in product"
             :product="product"
             @click="goToDetail(product)"
             class="mb-4"

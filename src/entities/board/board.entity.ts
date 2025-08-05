@@ -4,7 +4,8 @@ export interface Board {
   title: string
   content: string
   userName: string
-  category: string
+  categoryId:number
+  categoryName:string
   likeCount: number
   commentCount: number
   isScraped: boolean

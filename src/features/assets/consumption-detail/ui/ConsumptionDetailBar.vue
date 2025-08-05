@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-3 sm:space-y-5">
     <Card
-      v-for="tx in transactions"
-      :key="tx.transactionName + tx.transactionTime"
+      v-for="ts in transactions"
+      :key="ts.transactionName + ts.transactionTime"
       class="border border-gray-150 bg-white"
     >
       <div class="flex items-center gap-3 sm:gap-4 w-full justify-between">
@@ -12,18 +12,19 @@
           </div>
           <div>
             <Typography type="M_16_140" class="text-gray-900 mb-2 sm:mb-3 md:mb-4">
-              {{ tx.transactionName }}
+              {{ ts.transactionName }}
             </Typography>
             <Typography type="M_12_120" class="text-gray-500">
-              <span>{{ formatTime(tx.transactionDate, tx.transactionTime) }}</span>
+              <span>{{ formatTime(ts.transactionDate, ts.transactionTime) }}</span>
               <span class="mx-1">•</span>
-              <span>{{ tx.accountName }} 결제</span>
+              <span>{{ ts.accountName }} 결제</span>
             </Typography>
           </div>
         </div>
 
-        <Typography type="B_16_140" class="text-sub-red-p">
-          {{ tx.amount }}원
+        <Typography type="B_16_140" 
+        :class= "ts.amount > 0 ? 'text-sub-aqua-p' : 'text-sub-red-p'">
+          {{ ts.amount.toLocaleString() }}원
         </Typography>
       </div>
     </Card>

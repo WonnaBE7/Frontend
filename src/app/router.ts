@@ -181,7 +181,7 @@ const routes: RouteRecordRaw[] = [
           next()
           return
         }
-        const category = postData.category
+        const category = postData.categoryName
         to.meta.icon = {
           type: 'emoji',
           value: finTypeIcons[category] || '📝'

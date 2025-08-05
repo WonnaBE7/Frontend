@@ -4,7 +4,7 @@
       
       <div class="flex w-full items-center gap-2 md:gap-4 mt-4 md:mt-6">
         <Typography type="M_12_140">{{ post.userName }}</Typography>
-        <NoBorderTag :color="'bg-gray-100'">{{ post.category }}</NoBorderTag>
+        <NoBorderTag :color="'bg-gray-100'">{{ post.categoryName }}</NoBorderTag>
       </div>
       <Typography type="M_12_140" class="text-gray-600 mt-4 w-full border-b border-gray-150 pb-4 md:pb-6">{{ post.content }}</Typography>
       <div class="flex flex-row w-full items-center justify-between mt-4 md:mt-6">

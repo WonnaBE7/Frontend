@@ -130,50 +130,45 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           productId: '101',
           productName: '알뜰 저축 예금',
           bankName: 'KB국민은행',
-          type: '예금',
-          interestRate: 3.4,
-          matchScore: 96,
-          maxLimit: 30000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '102',
           productName: '절약형 정기예금',
           bankName: '신한은행',
-          type: '예금',
-          interestRate: 3.1,
-          matchScore: 92,
-          maxLimit: 20000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '103',
           productName: '하나 알뜰 저축',
           bankName: '하나은행',
-          type: '적금',
-          interestRate: 3.6,
-          matchScore: 90,
-          maxLimit: 15000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '104',
           productName: '우리 적금 플랜',
           bankName: '우리은행',
-          type: '적금',
-          interestRate: 3.7,
-          matchScore: 88,
-          maxLimit: 12000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '105',
           productName: '카카오 절약 저축',
           bankName: '카카오뱅크',
-          type: '예금',
-          interestRate: 3.2,
-          matchScore: 85,
-          maxLimit: 10000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         }
       ]
     },
@@ -186,50 +181,45 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           productId: '201',
           productName: '밸런스 예금',
           bankName: 'KB국민은행',
-          type: '예금',
-          interestRate: 3.0,
-          matchScore: 93,
-          maxLimit: 25000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '202',
           productName: '스마트 적금 플랜',
           bankName: '신한은행',
-          type: '적금',
-          interestRate: 3.3,
-          matchScore: 91,
-          maxLimit: 20000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '203',
           productName: '균형 투자 저축',
           bankName: '하나은행',
-          type: '예금',
-          interestRate: 3.5,
-          matchScore: 89,
-          maxLimit: 22000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '204',
           productName: '우리 밸런스 저축',
           bankName: '우리은행',
-          type: '적금',
-          interestRate: 3.4,
-          matchScore: 87,
-          maxLimit: 18000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '205',
           productName: '카카오 균형 플랜',
           bankName: '카카오뱅크',
-          type: '예금',
-          interestRate: 3.2,
-          matchScore: 86,
-          maxLimit: 16000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         }
       ]
     },
@@ -242,50 +232,45 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           productId: '301',
           productName: '첫걸음 적금',
           bankName: 'KB국민은행',
-          type: '적금',
-          interestRate: 3.8,
-          matchScore: 95,
-          maxLimit: 10000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '302',
           productName: '신한 스타터 예금',
           bankName: '신한은행',
-          type: '예금',
-          interestRate: 3.5,
-          matchScore: 90,
-          maxLimit: 15000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '303',
           productName: '하나 새싹 플랜',
           bankName: '하나은행',
-          type: '적금',
-          interestRate: 3.6,
-          matchScore: 89,
-          maxLimit: 14000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '304',
           productName: '우리 첫 투자 적금',
           bankName: '우리은행',
-          type: '적금',
-          interestRate: 3.9,
-          matchScore: 92,
-          maxLimit: 12000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         },
         {
           productType: 'savings',
           productId: '305',
           productName: '카카오 새싹 예금',
           bankName: '카카오뱅크',
-          type: '예금',
-          interestRate: 3.4,
-          matchScore: 88,
-          maxLimit: 13000000
+          baseRate: 3.10,
+          maxRate: 4.10,
+          totalScore: 86.0
         }
       ]
     }
@@ -303,47 +288,47 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         {
           productType: 'insurance',
           productId: 'I101',
-          insuranceName: '절약 플랜 보험',
-          insuranceCompany: 'KB손해보험',
-          matchScore: 91,
-          mainCoverage: '필수 항목 중심 보장',
-          monthlyPremium: 9000,
+          productName: '절약 플랜 보험',
+          providerName: 'KB손해보험',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I102',
-          insuranceName: '최소보장 건강보험',
-          insuranceCompany: 'DB손해보험',
-          matchScore: 88,
-          mainCoverage: '입원비, 진단비만 보장',
-          monthlyPremium: 8500,
+          productName: '최소보장 건강보험',
+          providerName: 'DB손해보험',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I103',
-          insuranceName: '가성비 의료실비',
-          insuranceCompany: '메리츠화재',
-          matchScore: 90,
-          mainCoverage: '의료실비 집중 보장',
-          monthlyPremium: 9500,
+          productName: '가성비 의료실비',
+          providerName: '메리츠화재',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I104',
-          insuranceName: '미니 생명보험',
-          insuranceCompany: '교보생명',
-          matchScore: 87,
-          mainCoverage: '저렴한 생명보험 패키지',
-          monthlyPremium: 9800,
+          productName: '미니 생명보험',
+          providerName: '교보생명',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I105',
-          insuranceName: '토스 간편보험',
-          insuranceCompany: '토스',
-          matchScore: 93,
-          mainCoverage: '월 1.5만원',
-          monthlyPremium: 15000,
+          productName: '토스 간편보험',
+          providerName: '토스',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         }
       ]
     },
@@ -354,47 +339,47 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         {
           productType: 'insurance',
           productId: 'I201',
-          insuranceName: '종합보장 패키지',
-          insuranceCompany: '삼성생명',
-          matchScore: 92,
-          mainCoverage: '건강+사고 종합보장',
-          monthlyPremium: 19000,
+          productName: '종합보장 패키지',
+          providerName: '삼성생명',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I202',
-          insuranceName: '미래플랜 보험',
-          insuranceCompany: '한화생명',
-          matchScore: 90,
-          mainCoverage: '은퇴·자녀 대비 보장',
-          monthlyPremium: 21000,
+          productName: '미래플랜 보험',
+          providerName: '한화생명',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I203',
-          insuranceName: '밸런스 케어 보험',
-          insuranceCompany: '현대해상',
-          matchScore: 89,
-          mainCoverage: '건강과 자산 균형보장',
-          monthlyPremium: 20000,
+          productName: '밸런스 케어 보험',
+          providerName: '현대해상',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I204',
-          insuranceName: '적립형 건강보험',
-          insuranceCompany: '롯데손보',
-          matchScore: 91,
-          mainCoverage: '보장+적립 기능 포함',
-          monthlyPremium: 22000,
+          productName: '적립형 건강보험',
+          providerName: '롯데손보',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I205',
-          insuranceName: '마이플랜 생명보험',
-          insuranceCompany: 'KB생명',
-          matchScore: 88,
-          mainCoverage: '생명+상해 종합보장',
-          monthlyPremium: 18000,
+          productName: '마이플랜 생명보험',
+          providerName: 'KB생명',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         }
       ]
     },
@@ -405,47 +390,47 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         {
           productType: 'insurance',
           productId: 'I301',
-          insuranceName: '투자 입문 보험',
-          insuranceCompany: '카카오손보',
-          matchScore: 87,
-          mainCoverage: '소액 보험 + 재테크 정보 제공',
-          monthlyPremium: 12500,
+          productName: '투자 입문 보험',
+          providerName: '카카오손보',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I302',
-          insuranceName: '기초 건강플랜',
-          insuranceCompany: '메트라이프',
-          matchScore: 86,
-          mainCoverage: '입문자용 건강보험',
-          monthlyPremium: 13500,
+          productName: '기초 건강플랜',
+          providerName: '메트라이프',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I303',
-          insuranceName: '소액 저축 보험',
-          insuranceCompany: 'AIA생명',
-          matchScore: 85,
-          mainCoverage: '월 1만원 적립 기능 포함',
-          monthlyPremium: 10000,
+          productName: '소액 저축 보험',
+          providerName: 'AIA생명',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I304',
-          insuranceName: '비상금 보험',
-          insuranceCompany: '라이나생명',
-          matchScore: 89,
-          mainCoverage: '위급상황 대비 소액보장',
-          monthlyPremium: 12000,
+          productName: '비상금 보험',
+          providerName: '라이나생명',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         },
         {
           productType: 'insurance',
           productId: 'I305',
-          insuranceName: '토스 간편보험',
-          insuranceCompany: '토스',
-          matchScore: 93,
-          mainCoverage: '월 1.5만원',
-          monthlyPremium: 15000,
+          productName: '토스 간편보험',
+          providerName: '토스',
+          coverageType: "상해급여",
+          coverageLimit: "연간 5천만원",
+          totalScore: 96.4
         }
       ]
     }
@@ -649,30 +634,32 @@ export const mockWishlist: WishlistResponse = {
   products: [
     {
       productType: "savings",
-      productId: "300011",
-      productName: "카카오뱅크 세이브업 적금",
-      bankName: "카카오뱅크",
-      interestRate: 3.5,
-      matchScore: 95
+      productId: "TEST001",
+      productName: "테스트 적금 상품 1",
+      bankName: "테스트은행1",
+      baseRate: 3.10,
+      maxRate: 4.10,
+      totalScore: 86.0
     },
     {
       productType: "card",
-      cardId: "1001",
+      cardId: "2001",
       cardName: "카카오페이 카드",
       cardCompany: "카카오페이",
       cardType: "체크카드",
       matchScore: 94,
       mainBenefit: "간편결제 5% 적립",
-      annualFee: 0
+      annualFeeDomestic: "해당안함",
+      annualFeeOverSeas: "5000"
     },
     {
       productType: "insurance",
-      productId: "100003",
-      insuranceName: "토스 간편보험",
-      insuranceCompany: "토스",
-      matchScore: 93,
-      mainCoverage: "월 1.5만원",
-      monthlyPremium: 15000
+      productId: "3001",
+      productName: "실손의료비보험2507",
+      providerName: "DB손보",
+      coverageType: "상해급여",
+      coverageLimit: "연간 5천만원",
+      totalScore: 96.4
     }
   ]
 }
@@ -730,7 +717,7 @@ export const mockSavingsDetailPage: SavingsDetailPageResponse = {
     interestRate: "연 3.9%",
     description: "카카오뱅크 세이브업 적금은 모바일 특화 금융서비스로, 간편한 앱 인터페이스를 통해 누구나 쉽게 적금을 시작할 수 있습니다. 소액부터 시작 가능하며 금융 초보자에게 적합합니다."
   },
-  comparisonChart: {
+  comparisonCharts: {
     labels: ["금리", "혜택", "편의성", "안정성", "접근성"],
     currentUserData: [3, 3, 2, 4, 3],
     recommendedProductData: [4, 4, 5, 4, 5]
@@ -765,7 +752,7 @@ export const mockCardDetailPage: CardDetailPageResponse = {
     mainBenefit: "간편결제 5% 적립",
     benefitSummary: "스타벅스 50% 할인\n대중교통 10% 할인\nCGV, 롯데시네마 5,000원 할인"
   },
-  comparisonChart: {
+  comparisonCharts: {
     labels: ["혜택", "적절성", "편의성", "안정성", "접근성"],
     currentUserData: [3, 3, 3, 4, 4],
     recommendedProductData: [5, 4, 5, 4, 5]
@@ -789,7 +776,7 @@ export const mockInsuranesDetailPage : InsurancesDetailPageResponse={
       benefitRate: "최대 5%",
       description: "카카오페이 카드는 간편결제 시장을 선도하는 카드로, 일상 속 모든 결제를 더욱 편리하고 혜택있게 만들어줍니다. 특히 온라인 쇼핑과 배달앱 사용이 많은 분들께 최적화된 카드입니다."
     },
-    comparisonChart: {
+    comparisonCharts: {
       labels: ["혜택", "적절성", "편의성", "안정성", "접근성"],
       currentUserData: [3, 3, 3, 4, 4],
       recommendedProductData: [5, 4, 5, 4, 5]

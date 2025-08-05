@@ -8,18 +8,17 @@
       @click="goToCategory"
     />
   </div>
-  <BoardCategory :communities="top3Communities"></BoardCategory>
+  <BoardCategory v-if="store.top3" :communities="store.top3"></BoardCategory>
 </template>
   
   <script setup lang="ts">
   import { Star , ChevronRight} from 'lucide-vue-next'
   import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
-  import { mockCommunities } from '@/entities/board/community/community.mock';
   import BoardCategory from '../../board-community/ui/BoardCategory.vue';
   import { useRouter } from 'vue-router';
+  import { useCommunityListStore } from '@/entities/board/community/community.store';
 
-  const top3Communities = mockCommunities.slice(0, 3)
-
+  const store = useCommunityListStore()
   const router = useRouter()
 
     function goToCategory() {

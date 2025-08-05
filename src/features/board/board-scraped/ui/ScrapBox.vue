@@ -1,6 +1,6 @@
 <template>
     <PostPreviewCard
-        v-for="post in mockScrapedBoards"
+        v-for="post in store.scraped"
         :key="post.boardId"
         v-bind="post"
         class="bg-white"
@@ -9,5 +9,7 @@
 
 <script setup lang="ts">
 import PostPreviewCard from '@/shared/ui/molecules/PostPreviewCard.vue'
-import { mockScrapedBoards } from '@/entities/board/board.mock'
+import { usePostPreviewStore } from '@/entities/board/board.store';
+
+const store = usePostPreviewStore()
 </script>

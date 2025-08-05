@@ -18,12 +18,12 @@
           <div class="text-right">
             <Typography type="B_14_160">{{ item.amount.toLocaleString() }}원</Typography>
             <Typography type="M_12_140"
-              :class="store.diffValue(item) > 0 ? 'text-sub-red-p' : 'text-sub-aqua-p'"
+              :class="store.diffValue(item) > 0 ?  'text-sub-aqua-p' :'text-sub-red-p'"
             >
               {{ store.diffLabel }}
             </Typography>
             <Typography type="M_12_140"
-              :class="store.diffValue(item) > 0 ? 'text-sub-red-p' : 'text-sub-aqua-p'"
+              :class="store.diffValue(item) > 0 ? 'text-sub-aqua-p' :'text-sub-red-p'"
             >
               {{ store.diffValue(item) > 0 ? '+' : '' }}{{ store.diffValue(item).toLocaleString() }}원
             </Typography>

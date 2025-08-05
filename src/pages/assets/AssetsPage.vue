@@ -16,6 +16,10 @@ import ConsumptionSummary from '@/features/assets/consumption-dashboard/ui/Consu
 import type {AssetTabKey } from '@/entities/assets/assets.entity'
 import { useAssetTabStore } from '@/entities/assets/assets.store'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/entities/user/auth.store'
+import { onMounted } from 'vue'
+import { initAssetsData } from '@/features/init/initAssetsData'
 
 const assetTabStore = useAssetTabStore()
 const { selectedTab } = storeToRefs(assetTabStore)
@@ -23,4 +27,15 @@ const { selectedTab } = storeToRefs(assetTabStore)
 function onTabChange(tab: AssetTabKey) {
   selectedTab.value = tab
 }
+
+const router = useRouter()
+const authStore = useAuthStore()
+
+onMounted(() => {
+  if (!authStore.accessToken) {
+    router.push('/user/login')
+  }
+  initAssetsData()
+})
+
 </script>

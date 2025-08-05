@@ -50,6 +50,7 @@
   import Button from '@/shared/ui/atoms/Button.vue'
   import { finTypes, finTypeIcons } from '@/shared/constants/finTypes.constants'
   import type { CreatePostPayload } from '@/entities/board/board.entity'
+import { postCreateBoard } from '../service/board-write.service'
   
   const selectedCategory = ref('')
   const title = ref('')
@@ -73,18 +74,19 @@
     return finTypes.findIndex(type => type.label === label) + 1
   }
   
-  function submit() {
+  async function submit() {
     if (!selectedCategory.value || !title.value || !content.value) {
       alert('모든 필드를 입력해주세요!')
       return
     }
-  
+    const categoryId = getCommunityIdByLabel(selectedCategory.value)
     const payload: CreatePostPayload = {
-      communityId: getCommunityIdByLabel(selectedCategory.value),
+      communityId: categoryId,
       title: title.value,
       content: content.value,
     }
-  
+    await postCreateBoard(categoryId, payload);
+    
     console.log('📦 전송할 데이터:', payload)
     router.back()
   }

@@ -21,12 +21,23 @@ import UserLogBox from '@/features/board/main/ui/UserLogBox.vue';
 import UserProfileBox from '@/features/board/main/ui/UserProfileBox.vue';
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/entities/user/auth.store';
+import { onMounted } from 'vue';
+import { initBoardData } from '@/features/init/initBoardData';
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 function goToWrite() {
     router.push({
       path: '/board/write',
     })
   } 
+
+onMounted(() => {
+  if (!authStore.accessToken) {
+    router.push('/user/login')
+  }
+  initBoardData()
+})
 </script>

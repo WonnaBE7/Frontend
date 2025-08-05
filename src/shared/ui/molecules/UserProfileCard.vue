@@ -20,18 +20,17 @@
   </template>
   
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useUserProfileStore } from '@/entities/user/user.store'
 import { finTypeImages } from '@/shared/assets/fintype'
 import { formatKoreanMoney } from '@/shared/utils/formatMoney'
+import Typography from '../atoms/Typography.vue'
+import NoBorderTag from '../atoms/NoBorderTag.vue'
+import { useAuthStore } from '@/entities/user/auth.store'
 
 const userProfileStore = useUserProfileStore()
-
-onMounted(() => {
-  userProfileStore.fetchUserProfile()
-})
-
-const isLoggedIn = computed(() => !!userProfileStore.profile)
+const auth = useAuthStore()
+const isLoggedIn = computed(() => auth.accessToken)
 const userProfile = computed(() => userProfileStore.profile)
 
 const formattedIncome = computed(() =>

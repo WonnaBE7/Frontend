@@ -13,21 +13,19 @@ import CurrentUsingProductBox from '@/features/recommend/main/ui/CurrentUsingPro
 import MyWonnaBEBox from '@/features/recommend/main/ui/MyWonnaBEBox.vue';
 import RecommendListBox from '@/features/recommend/main/ui/RecommendListBox.vue';
 import AppLayout from '@/shared/layout/AppLayout.vue'
-import { useRecommendationStore } from '@/entities/recommend/recommend.store';
-import { useUserProfileStore } from '@/entities/user/user.store';
 import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/entities/user/auth.store';
+import { initRecommendData } from '@/features/init/initRecommendData';
 
-const recommendStore = useRecommendationStore()
-const userStore = useUserProfileStore()
+const router = useRouter()
+const authStore = useAuthStore()
 
-onMounted(async () => {
-  await userStore.fetchUserProfile()
-
-  await Promise.all([
-    recommendStore.fetchSavingsRecommendation(),
-    recommendStore.fetchCardRecommendation(),
-    recommendStore.fetchInsuranceRecommendation(),
-  ])
+onMounted(() => {
+  if (!authStore.accessToken) {
+    router.push('/user/login')
+  }
+  initRecommendData()
 })
 
 </script>
