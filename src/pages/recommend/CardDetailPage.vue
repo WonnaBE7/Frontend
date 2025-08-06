@@ -3,22 +3,28 @@
         <IntroduceBox :productInfo="cardsData.productInfo"/>
         <ChartBox :comparisonChart="cardsData.comparisonCharts"/>
         <NoteBox :note="cardsData.note"/>
-        <InputAccount/>
-        <ProductButtonBox/>
+        <InputAccount v-model="linkedAccount"/>
+        <ProductButtonBox :request="requestCard"/>
     </AppLayout>
 </template>
 <script setup lang="ts">
 import ChartBox from '@/features/recommend/ui/ChartBox.vue';
-
 import NoteBox from '@/features/recommend/card-detail/ui/NoteBox.vue';
 import AppLayout from '@/shared/layout/AppLayout.vue';
 import { mockCardDetailPage } from '@/entities/recommend/recommend.mock';
-import ProductButtonBox from '@/features/recommend/main/ui/ProductButtonBox.vue';
+import ProductButtonBox from '@/features/recommend/card-detail/ui/ProductButtonBox.vue';
 import IntroduceBox from '@/features/recommend/card-detail/ui/IntroduceBox.vue';
 import InputAccount from '@/features/recommend/card-detail/ui/InputAccount.vue';
+import { computed, ref } from 'vue';
+import type { CardApplicationRequest } from '@/entities/recommend/recommend.entity';
 
 const cardsData =mockCardDetailPage
-//바꿔야할 것 - 여기 query통해서 오는게 type이랑 id니까 활용 할 것
+const linkedAccount = ref('')
 
-
+const requestCard = computed<CardApplicationRequest>(() => ({
+  productType: 'card',
+  cardId: cardsData.productInfo.cardId,
+  cardType: cardsData.productInfo.cardType,
+  linkedAccount: linkedAccount.value.toString(), 
+}))
 </script>

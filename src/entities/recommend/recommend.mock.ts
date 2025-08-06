@@ -750,6 +750,7 @@ export const mockCardDetailPage: CardDetailPageResponse = {
     cardCompany: "카카오페이",
     matchScore: 94,
     mainBenefit: "간편결제 5% 적립",
+    cardType: "debit",
     benefitSummary: "스타벅스 50% 할인\n대중교통 10% 할인\nCGV, 롯데시네마 5,000원 할인"
   },
   comparisonCharts: {

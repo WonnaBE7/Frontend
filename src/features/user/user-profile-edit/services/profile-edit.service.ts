@@ -5,19 +5,14 @@ interface ProfileEditRequest {
   password: string
 }
 
-interface ProfileEditResponse {
-  code: number
-  message: string
-}
-
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const updateUserProfile = async (
-  payload: ProfileEditRequest
+  input: ProfileEditRequest
 ) => {
-  return await fetcher<ProfileEditResponse>({
+  return await fetcher({
     url: `${BASE_URL}/api/user/me`,
     method: 'PUT',
-    body: payload,
+    body: input,
   })
 }

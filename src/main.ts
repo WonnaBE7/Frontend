@@ -17,6 +17,12 @@ app.use(pinia)
 const authStore = useAuthStore()
 await authStore.restore()
 
+authStore.$subscribe((_mutation, state) => {
+    if (!state.accessToken) {
+      router.push('/user/login')
+    }
+})
+
 app.use(router)
 app.use(VueQueryPlugin)
 app.mount('#app')

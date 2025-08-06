@@ -240,6 +240,7 @@ export interface CardProductInfo {
   cardId: string          // 오타로 보이는 필드
   cardName: string
   cardCompany: string
+  cardType:string
   matchScore: number
   mainBenefit: string
   benefitSummary: string

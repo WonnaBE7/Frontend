@@ -7,9 +7,16 @@ interface DiagnosisRequest {
 }
 
 export const submitNowmeDiagnosis = async (payload: DiagnosisRequest) => {
-  await fetcher({
-    url: `${BASE_URL}/api/mypage/nowme/diagnosis`,
+  const purifiedPayload: DiagnosisRequest = {
+    diagnosis_answers: [...payload.diagnosis_answers]
+  }
+
+  const res = await fetcher({
+    url: `${BASE_URL}/api/nowme/diagnosis`,
     method: 'POST',
-    body: payload,
+    body: purifiedPayload,
+    auth: true,
   })
+
+  return res.data
 }

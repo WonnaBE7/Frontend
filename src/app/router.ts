@@ -237,55 +237,36 @@ const routes: RouteRecordRaw[] = [
     path: '/user/login',
     name: 'UserLoginPage',
     component: () => import('@/pages/user/UserLoginPage.vue'),
-    // meta: {
-    //   title: '로그인',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/user/signup',
     name: 'UserSignupPage',
     component: () => import('@/pages/user/UserSignupPage.vue'),
-    // meta: {
-    //   title: '회원 가입',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/user/profile-edit',
     name: 'UserProfileEditPage',
     component: () => import('@/pages/user/UserProfileEditPage.vue'),
-    // meta: {
-    //   title: '회원정보 수정',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/user/choose-wonnabe',
     name: 'UserChooseWonnabePage',
     component: () => import('@/pages/user/UserChooseWonnabePage.vue'),
-    // meta: {
-    //   title: '워너비 선택',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/user/diagnosis',
     name: 'UserDiagnosisPage',
     component: () => import('@/pages/user/UserDiagnosisPage.vue'),
-    // meta: {
-    //   title: '유저 금융 상태 진단',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
+  },
+  {
+    path:'/user/survey',
+    name:'UserAdditionalSurveyPage',
+    component: () => import('@/pages/user/UserAdditionalSurveyPage.vue')
   },
   {
     path: '/user/history',
     name: 'UserHistoryPage',
     component: () => import('@/pages/user/UserHistoryPage.vue'),
-    // meta: {
-    //   title: '나의 금융 히스토리',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/:pathMatch(.*)*',

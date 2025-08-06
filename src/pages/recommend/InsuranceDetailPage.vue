@@ -12,7 +12,7 @@
   import ChartBox from '@/features/recommend/ui/ChartBox.vue';
   import IntroduceBox from '@/features/recommend/insurance-detail/ui/IntroduceBox.vue';
   import MainFeaturesBox from '@/features/recommend/insurance-detail/ui/MainFeaturesBox.vue';
-  import ProductButtonBox from '@/features/recommend/main/ui/ProductButtonBox.vue';
+  import ProductButtonBox from '@/features/recommend/insurance-detail/ui/ProductButtonBox.vue';
   import TermsAndConditionsBox from '@/features/recommend/insurance-detail/ui/TermsAndConditionsBox.vue';
   import AppLayout from '@/shared/layout/AppLayout.vue'
   import { mockInsuranesDetailPage } from '@/entities/recommend/recommend.mock';

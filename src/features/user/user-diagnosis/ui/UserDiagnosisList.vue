@@ -25,7 +25,6 @@ import { useRouter } from 'vue-router'
 const answers = ref<(number | null)[]>(Array(questions.length).fill(null))
 const router = useRouter()
 
-
 const submitAnswers = async () => {
   const completed = answers.value.every(answer => answer !== null)
   if (!completed) {
@@ -33,19 +32,29 @@ const submitAnswers = async () => {
     return
   }
 
+  const values = answers.value.map((id) => {
+    const match = choices.find(choice => choice.id === id)
+    return match?.value ?? null
+  })
+
+  if (values.includes(null)) {
+    alert('유효하지 않은 선택이 포함되어 있습니다.')
+    return
+  }
+
   const payload = {
-    diagnosis_answers: answers.value as number[]
+    diagnosis_answers: values as number[]
   }
 
   try {
+    console.log(payload)
     await submitNowmeDiagnosis(payload)
     alert('진단 결과가 저장되었습니다.')
-    router.push('/user')
+    router.push('/user/survey')
   } catch (err: any) {
     console.error('❌ 제출 실패:', err.message)
     alert('저장 중 오류가 발생했습니다.')
   }
 }
-
 
 </script>
