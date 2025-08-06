@@ -287,7 +287,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
       products: [
         {
           productType: 'insurance',
-          productId: 'I101',
+          productId: '101',
           productName: '절약 플랜 보험',
           providerName: 'KB손해보험',
           coverageType: "상해급여",
@@ -296,7 +296,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I102',
+          productId: '102',
           productName: '최소보장 건강보험',
           providerName: 'DB손해보험',
           coverageType: "상해급여",
@@ -305,7 +305,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I103',
+          productId: '103',
           productName: '가성비 의료실비',
           providerName: '메리츠화재',
           coverageType: "상해급여",
@@ -323,7 +323,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I105',
+          productId: '105',
           productName: '토스 간편보험',
           providerName: '토스',
           coverageType: "상해급여",
@@ -338,7 +338,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
       products: [
         {
           productType: 'insurance',
-          productId: 'I201',
+          productId: '201',
           productName: '종합보장 패키지',
           providerName: '삼성생명',
           coverageType: "상해급여",
@@ -347,7 +347,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I202',
+          productId: '202',
           productName: '미래플랜 보험',
           providerName: '한화생명',
           coverageType: "상해급여",
@@ -365,7 +365,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I204',
+          productId: '204',
           productName: '적립형 건강보험',
           providerName: '롯데손보',
           coverageType: "상해급여",
@@ -374,7 +374,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I205',
+          productId: '205',
           productName: '마이플랜 생명보험',
           providerName: 'KB생명',
           coverageType: "상해급여",
@@ -389,7 +389,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
       products: [
         {
           productType: 'insurance',
-          productId: 'I301',
+          productId: '301',
           productName: '투자 입문 보험',
           providerName: '카카오손보',
           coverageType: "상해급여",
@@ -398,7 +398,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I302',
+          productId: '302',
           productName: '기초 건강플랜',
           providerName: '메트라이프',
           coverageType: "상해급여",
@@ -407,7 +407,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I303',
+          productId: '303',
           productName: '소액 저축 보험',
           providerName: 'AIA생명',
           coverageType: "상해급여",
@@ -416,7 +416,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I304',
+          productId: '304',
           productName: '비상금 보험',
           providerName: '라이나생명',
           coverageType: "상해급여",
@@ -425,7 +425,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
         },
         {
           productType: 'insurance',
-          productId: 'I305',
+          productId: '305',
           productName: '토스 간편보험',
           providerName: '토스',
           coverageType: "상해급여",
@@ -448,7 +448,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
       products: [
         {
           productType: 'card',
-          cardId: 'C1001',
+          cardId: '1001',
           cardName: 'KB절약카드',
           cardCompany: '국민카드',
           cardType: '체크카드',
@@ -459,7 +459,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C1002',
+          cardId: '1002',
           cardName: '신한 짠테크 카드',
           cardCompany: '신한카드',
           cardType: '체크카드',
@@ -470,7 +470,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C1003',
+          cardId: '1003',
           cardName: '우리 절약형 카드',
           cardCompany: '우리카드',
           cardType: '체크카드',
@@ -481,7 +481,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C1004',
+          cardId: '1004',
           cardName: '하나 알뜰카드',
           cardCompany: '하나카드',
           cardType: '체크카드',
@@ -492,7 +492,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C1005',
+          cardId: '1005',
           cardName: '카카오 절약카드',
           cardCompany: '카카오페이',
           cardType: '체크카드',
@@ -509,7 +509,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
       products: [
         {
           productType: 'card',
-          cardId: 'C1101',
+          cardId: '1101',
           cardName: '삼성 밸런스 카드',
           cardCompany: '삼성카드',
           cardType: '신용카드',
@@ -520,7 +520,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C1102',
+          cardId: '1102',
           cardName: '롯데 스마트밸런스',
           cardCompany: '롯데카드',
           cardType: '신용카드',
@@ -531,7 +531,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C1103',
+          cardId: '1103',
           cardName: '하나 균형잡힌 카드',
           cardCompany: '하나카드',
           cardType: '체크카드',
@@ -542,7 +542,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C1104',
+          cardId: '1104',
           cardName: '우리 성장형 카드',
           cardCompany: '우리카드',
           cardType: '신용카드',
@@ -553,7 +553,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C1105',
+          cardId: '1105',
           cardName: '토스 밸런스 카드',
           cardCompany: '토스',
           cardType: '체크카드',
@@ -570,7 +570,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
       products: [
         {
           productType: 'card',
-          cardId: 'C0501',
+          cardId: '0501',
           cardName: '신한 투자 첫걸음 카드',
           cardCompany: '신한카드',
           cardType: '신용카드',
@@ -581,7 +581,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C0502',
+          cardId: '0502',
           cardName: 'NH 투자응원 카드',
           cardCompany: 'NH카드',
           cardType: '체크카드',
@@ -592,7 +592,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C0503',
+          cardId: '0503',
           cardName: '토스 주식카드',
           cardCompany: '토스',
           cardType: '체크카드',
@@ -603,7 +603,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C0504',
+          cardId: '0504',
           cardName: '삼성 새싹 투자카드',
           cardCompany: '삼성카드',
           cardType: '신용카드',
@@ -614,7 +614,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
         },
         {
           productType: 'card',
-          cardId: 'C0505',
+          cardId: '0505',
           cardName: '카카오 주린이카드',
           cardCompany: '카카오뱅크',
           cardType: '체크카드',
@@ -634,7 +634,7 @@ export const mockWishlist: WishlistResponse = {
   products: [
     {
       productType: "savings",
-      productId: "TEST001",
+      productId: "1",
       productName: "테스트 적금 상품 1",
       bankName: "테스트은행1",
       baseRate: 3.10,
@@ -666,14 +666,14 @@ export const mockWishlist: WishlistResponse = {
 
 // 관심상품 추가/제거 응답
 export const mockWishlistAddResponse: WishlistActionResponse = {
-  productId: "KAKAO_BANK_SAVE_001",
+  productId: "1",
   productType: "deposit",
   isWishlisted: true,
   totalWishlistCount: 5
 }
 
 export const mockWishlistRemoveResponse: WishlistActionResponse = {
-  productId: "KAKAO_BANK_SAVE_001",
+  productId: "1",
   productType: "deposit",
   isWishlisted: false,
   totalWishlistCount: 4
@@ -718,8 +718,8 @@ export const mockSavingsDetailPage: SavingsDetailPageResponse = {
     description: "카카오뱅크 세이브업 적금은 모바일 특화 금융서비스로, 간편한 앱 인터페이스를 통해 누구나 쉽게 적금을 시작할 수 있습니다. 소액부터 시작 가능하며 금융 초보자에게 적합합니다."
   },
   comparisonCharts: {
-    labels: ["금리", "혜택", "편의성", "안정성", "접근성"],
-    currentUserData: [3, 3, 2, 4, 3],
+    compareId : 1,
+    compareName : "KB 적금",
     recommendedProductData: [4, 4, 5, 4, 5]
   },
   mainFeatures: [
@@ -751,13 +751,23 @@ export const mockCardDetailPage: CardDetailPageResponse = {
     matchScore: 94,
     mainBenefit: "간편결제 5% 적립",
     cardType: "debit",
-    benefitSummary: "스타벅스 50% 할인\n대중교통 10% 할인\nCGV, 롯데시네마 5,000원 할인"
+    benefitSummary: "스타벅스 50% 할인\n대중교통 10% 할인\nCGV, 롯데시네마 5,000원 할인",
+    labels: ["확장성", "혜택 범위", "전월 실적", "카드 활용도", "연회비 부담"],
+    isWished: false,
+    currentUserData: [80, 60, 40, 80, 60],
   },
-  comparisonCharts: {
-    labels: ["혜택", "적절성", "편의성", "안정성", "접근성"],
-    currentUserData: [3, 3, 3, 4, 4],
-    recommendedProductData: [5, 4, 5, 4, 5]
-  },
+  comparisonCharts:  [
+    {
+      compareId : 1,
+      compareName : "삼성카드",
+      recommendedProductData: [60, 80, 100, 80, 100]
+    },
+    {
+      compareId : 4,
+      compareName : "국민카드",
+      recommendedProductData: [60, 80, 100, 80, 100]
+    }
+  ],
   note: {
       category: "혜택 적용 범위: 교통, 식비",
       previousMonthSpendig: "전월 실적: 없음",
@@ -778,8 +788,8 @@ export const mockInsuranesDetailPage : InsurancesDetailPageResponse={
       description: "카카오페이 카드는 간편결제 시장을 선도하는 카드로, 일상 속 모든 결제를 더욱 편리하고 혜택있게 만들어줍니다. 특히 온라인 쇼핑과 배달앱 사용이 많은 분들께 최적화된 카드입니다."
     },
     comparisonCharts: {
-      labels: ["혜택", "적절성", "편의성", "안정성", "접근성"],
-      currentUserData: [3, 3, 3, 4, 4],
+      compareId : 1,
+      compareName : "삼성화재",
       recommendedProductData: [5, 4, 5, 4, 5]
     },
     mainFeatures: [

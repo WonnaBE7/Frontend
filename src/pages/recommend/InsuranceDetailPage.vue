@@ -1,7 +1,7 @@
 <template>
     <AppLayout>
       <IntroduceBox :productInfo="insurancesData.productInfo"/>
-      <ChartBox :comparisonChart="insurancesData.comparisonCharts"/>
+      <!-- <ChartBox :comparisonChart="insurancesData.comparisonCharts"/> -->
       <MainFeaturesBox :mainFeatures="insurancesData.mainFeatures"/>
       <TermsAndConditionsBox :termsAndConditions="insurancesData.termsAndConditions"/>
       <ProductButtonBox/>

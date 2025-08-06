@@ -120,28 +120,28 @@ export const mockMonthlyTransactionDetail: MonthlyTransactionDetail = {
       transactionDate: "2025-07-16",
       transactionTime: "14:32",
       accountName: "ＫＢ마이핏통장",
-      amount: 5500
+      amount: -5500
     },
     {
       transactionName: "맥도날드 역삼점",
       transactionDate: "2025-07-15",
       transactionTime: "11:45",
       accountName: "신한은행",
-      amount: 8900
+      amount: -8900
     },
     {
       transactionName: "올리브영",
       transactionDate: "2025-07-15",
       transactionTime: "11:45",
       accountName: "신한은행",
-      amount: 100000
+      amount: -100000
     },
     {
       transactionName: "투썸플레이스",
       transactionDate: "2025-07-14",
       transactionTime: "15:10",
       accountName: "우리은행",
-      amount: 12000
+      amount: -12000
     }
   ]
 };

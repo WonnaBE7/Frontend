@@ -201,8 +201,8 @@ export interface CardApplicationRequest {
 
 // 상품 상세보기 페이지 공통
 export interface ComparisonChart {
-  labels: string[]
-  currentUserData: number[]
+  compareId : number
+  compareName: string
   recommendedProductData: number[]
 }
 
@@ -237,20 +237,18 @@ export interface SavingsDetailPageResponse {
 
 // 카드 상세보기 페이지 (보험상품 상세 조회에서 나온 데이터)
 export interface CardProductInfo {
-  cardId: string          // 오타로 보이는 필드
+  cardId: string          
   cardName: string
   cardCompany: string
   cardType:string
   matchScore: number
   mainBenefit: string
   benefitSummary: string
+  labels : string[]
+  isWished : boolean
+  currentUserData : number[]
 }
 
-export interface CardTermsAndConditions {
-  annualFee?: string
-  previousPerformance?: string
-  specialNotes?: string[]
-}
 
 export interface CardNote {
   category: string
@@ -261,7 +259,7 @@ export interface CardNote {
 
 export interface CardDetailPageResponse {
   productInfo: CardProductInfo
-  comparisonCharts: ComparisonChart
+  comparisonCharts: ComparisonChart[]
   note: CardNote
 }
 
@@ -287,4 +285,11 @@ export interface InsurancesTermsAndConditions {
   annualFee: string
   previousPerformance: string
   specialNotes: string[]
+}
+
+export interface CommonChartData{
+  cardName:string
+  labels: string[]
+  currentUserData: number[]
+  comparisonCharts:ComparisonChart[]
 }

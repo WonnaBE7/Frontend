@@ -10,7 +10,7 @@
   </template>
   
  <script setup lang="ts">
-import { computed} from 'vue'
+import { computed, onMounted} from 'vue'
 import { categoryLabelMap } from '@/entities/assets/assets.constants'
 import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'

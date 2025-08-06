@@ -3,10 +3,10 @@
       <IconLabel :icon="MessageCircle" iconClass="text-sub-orange-p">카드 노트</IconLabel>
   
       <div class="mt-4 w-full">
-        <Typography type="B_12_120" class="mb-1">{{datas.category}}</Typography>
-        <Typography type="B_12_120" class="mb-1">{{datas.previousMonthSpendig}}</Typography>
-        <Typography type="B_12_120" class="mb-1">{{datas.usage}}</Typography>
-        <Typography type="B_12_120" class="mb-1">{{datas.annualFee}}</Typography>
+        <Typography type="M_12_120" class="mb-1">{{datas.category}}</Typography>
+        <Typography type="M_12_120" class="mb-1">{{datas.previousMonthSpendig}}</Typography>
+        <Typography type="M_12_120" class="mb-1">{{datas.usage}}</Typography>
+        <Typography type="M_12_120" class="mb-1">{{datas.annualFee}}</Typography>
       </div>
     </Card>
   </template>
