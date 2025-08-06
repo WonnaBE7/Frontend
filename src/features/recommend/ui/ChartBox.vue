@@ -57,7 +57,7 @@ const chartData = computed(() => ({
   labels: props.commonChartData.labels,
   datasets: [
     {
-      label: props.commonChartData.cardName,
+      label: props.commonChartData.name,
       data: props.commonChartData.currentUserData,
       backgroundColor: 'rgba(0, 152, 194, 0.2)',
       borderColor: 'rgba(0, 152, 194, 1)',

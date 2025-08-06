@@ -23,8 +23,6 @@ const route = useRoute()
 const productId = computed(() => Number(route.query.productId))
 const cardsData = ref<CardDetailPageResponse | null>(null)
 
-console.log('그냥 찍었을 때',route.query.productId)
-console.log('상품 아이디', productId.value)
 onMounted(async () => {
   if (!isNaN(productId.value)) {
     cardsData.value = await getCardDetailView(productId.value)
@@ -36,7 +34,7 @@ onMounted(async () => {
 const chartData = computed<CommonChartData>(() => {
   if (!cardsData.value) return {} as CommonChartData
   return {
-    cardName: cardsData.value.productInfo.cardName,
+    name: cardsData.value.productInfo.cardName,
     labels: cardsData.value.productInfo.labels,
     currentUserData: cardsData.value.productInfo.currentUserData,
     comparisonCharts: cardsData.value.comparisonCharts

@@ -1,22 +1,54 @@
 <template>
     <AppLayout>
-      <IntroduceBox :productInfo="insurancesData.productInfo"/>
-      <!-- <ChartBox :comparisonChart="insurancesData.comparisonCharts"/> -->
-      <MainFeaturesBox :mainFeatures="insurancesData.mainFeatures"/>
-      <TermsAndConditionsBox :termsAndConditions="insurancesData.termsAndConditions"/>
-      <ProductButtonBox/>
+      <IntroduceBox v-if="insurancesData" :productInfo="insurancesData.productInfo"/>
+      <ChartBox v-if="chartData && insurancesData?.comparisonCharts" :commonChartData="chartData"/>
+      <MaturityInfoBox v-if="insurancesData?.maturityInfo" :maturityInfo="insurancesData.maturityInfo"/>
+      <ProductButtonBox :request="requestInsurance"/>
     </AppLayout>
   </template>
   
   <script setup lang="ts">
   import ChartBox from '@/features/recommend/ui/ChartBox.vue';
   import IntroduceBox from '@/features/recommend/insurance-detail/ui/IntroduceBox.vue';
-  import MainFeaturesBox from '@/features/recommend/insurance-detail/ui/MainFeaturesBox.vue';
   import ProductButtonBox from '@/features/recommend/insurance-detail/ui/ProductButtonBox.vue';
-  import TermsAndConditionsBox from '@/features/recommend/insurance-detail/ui/TermsAndConditionsBox.vue';
   import AppLayout from '@/shared/layout/AppLayout.vue'
-  import { mockInsuranesDetailPage } from '@/entities/recommend/recommend.mock';
+  import type { CommonChartData, InsuranceApplicationRequest, InsurancesDetailPageResponse } from '@/entities/recommend/recommend.entity';
+  import { useRoute } from 'vue-router';
+  import { computed, onMounted, ref } from 'vue';
+  import { getInsuranceDetailView } from '@/features/recommend/insurance-detail/service/insurance-detail.service';
+import MaturityInfoBox from '@/features/recommend/insurance-detail/ui/MaturityInfoBox.vue';
+import { useUserProfileStore } from '@/entities/user/user.store';
 
-  const insurancesData =mockInsuranesDetailPage
-  //바꿔야할 것 - 여기 query통해서 오는게 type이랑 id니까 활용 할 것
+  const route = useRoute()
+  const productId = computed(() => Number(route.query.productId))
+  const insurancesData = ref<InsurancesDetailPageResponse | null>(null)
+  const userStore = useUserProfileStore()
+
+  onMounted(async () => {
+    if (!isNaN(productId.value)) {
+      insurancesData.value = await getInsuranceDetailView(productId.value)
+    } else {
+      console.error('Invalid productId:', route.query.productId)
+    }
+  })
+
+const chartData = computed<CommonChartData>(() => {
+  if (!insurancesData.value) return {} as CommonChartData
+  return {
+    name: insurancesData.value.productInfo.productName,
+    labels: insurancesData.value.productInfo.labels,
+    currentUserData: insurancesData.value.productInfo.currentUserData,
+    comparisonCharts: insurancesData.value.comparisonCharts
+  }
+})
+
+const requestInsurance = computed<InsuranceApplicationRequest>(() => {
+  if (!insurancesData.value) return {} as InsuranceApplicationRequest
+  return {
+    productType: 'insurance',
+    productId: insurancesData.value.productInfo.productId,
+    productName: insurancesData.value.productInfo.productName,
+    userName : userStore.profile?.name
+  }
+})
   </script>

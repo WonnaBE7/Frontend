@@ -1,8 +1,11 @@
 <template>
     <div class="flex flex-row gap-4 mb-4"> 
-        <Button
+        <Button 
             class="flex-4"
-        >상품 선택하기</Button>
+            @click="requestSavings"
+            >
+            상품 선택하기
+        </Button>
         <Button 
             @click ="test"
             class="bg-white border border-gay-150 flex-1"
@@ -17,10 +20,23 @@ import Button from '@/shared/ui/atoms/Button.vue';
 import { Heart } from 'lucide-vue-next';
 import { useRoute } from 'vue-router';
 import { fetchWish } from '../../wish-list/service/add-remove-wish.service';
+import type { SavingsApplicationRequest } from '@/entities/recommend/recommend.entity';
+import { postRequestSavings } from '../service/request-savings.service';
+
+const props = defineProps<{
+    request : SavingsApplicationRequest
+}>()
 
 const route = useRoute()
 const savingsId = route.query.productId as string
 const type = route.query.productType as string
+
+async function requestSavings(){
+    console.log(props.request)
+    const res = await postRequestSavings(props.request)
+    console.log(res)
+}
+
 async function test() {
     console.log(savingsId, type)
     const wishdata = {

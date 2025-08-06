@@ -186,7 +186,6 @@ export const mockMyWriteScrap: WriteScrapedSummary={
 
 
 
-
 import { financialTendencyList } from '@/shared/constants/finTypes.constants'
 
 export const mockCommunityBoards: Board[] = (() => {

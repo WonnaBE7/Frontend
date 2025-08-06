@@ -130,7 +130,7 @@ function goToDetail(
   let routePath: string
   let productType: string
 
-  if ('productId' in product && 'interestRate' in product) {
+  if ('productId' in product && product.productType==='savings') {
     productId = product.productId
     productType = product.productType
     routePath = '/recommend/savings/detail'

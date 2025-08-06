@@ -1,5 +1,5 @@
 <template>
-    <Card class="bg-white">
+    <Card class="bg-white border border-gray-150">
         <IconLabel :icon="MessageCircle" iconClass="text-sub-orange-p" class="mb-4">연결할 계좌</IconLabel>
         <Input label="연결할 계좌" v-model="linkedAccount" class="w-full"/> 
     </Card>

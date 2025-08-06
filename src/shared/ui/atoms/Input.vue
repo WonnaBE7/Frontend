@@ -22,4 +22,5 @@ const placeholder =
     : ['비밀번호', '목표', '연결할 계좌'].includes(props.label)
       ? `${props.label}를 입력하세요`
       : `${props.label}을 입력하세요`
+
 </script>

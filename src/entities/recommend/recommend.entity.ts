@@ -176,20 +176,16 @@ export interface WishlistActionResponse {
 export interface SavingsApplicationRequest {
   productType: 'savings'
   productId: string
-  accountAlias: string
+  productName: string
   monthlyDeposit: number
-  savingPeriod: number
-  transferDate: number
+  savingsPeriod: number
 }
 
 export interface InsuranceApplicationRequest {
   productType: 'insurance'
   productId: string
-  name: string
-  birthDate: string          // "YYYY-MM-DD" 형식
-  gender: 'M' | 'F'
-  phone: string
-  transferDate: number
+  productName : string
+  userName: string | undefined
 }
 
 export interface CardApplicationRequest {
@@ -206,10 +202,6 @@ export interface ComparisonChart {
   recommendedProductData: number[]
 }
 
-export interface MainFeature {
-  title: string
-  items: string[]
-}
 
 // 예적금 상세보기 페이지
 export interface SavingsProductInfo {
@@ -217,22 +209,24 @@ export interface SavingsProductInfo {
   productName: string
   bankName: string
   matchScore: number
-  mainBenefit: string
-  interestRate: string
-  description: string
+  interestRate:string,
+  maxInterestRate: string
+  benefitSummary: string
+  isWished : boolean
+  labels : string[]
+  currentUserData : number[]
 }
 
-export interface SavingsTermsAndConditions {
-  joinConditions: string
-  requiredDocuments: string
-  specialNotes: string[]
+export interface MainFeature {
+  maxJoinPeroid : string
+  title: string
+  content: string[]
 }
 
 export interface SavingsDetailPageResponse {
   productInfo: SavingsProductInfo
-  comparisonCharts: ComparisonChart
-  mainFeatures: MainFeature[]
-  termsAndConditions: SavingsTermsAndConditions
+  comparisonCharts: ComparisonChart[]
+  maturityInfo: MainFeature
 }
 
 // 카드 상세보기 페이지 (보험상품 상세 조회에서 나온 데이터)
@@ -244,11 +238,10 @@ export interface CardProductInfo {
   matchScore: number
   mainBenefit: string
   benefitSummary: string
-  labels : string[]
   isWished : boolean
+  labels : string[]
   currentUserData : number[]
 }
-
 
 export interface CardNote {
   category: string
@@ -267,18 +260,25 @@ export interface CardDetailPageResponse {
 export interface InsuranceProductInfo {
   productId: string
   productName: string
-  productCompany: string
+  providerName: string
   matchScore: number
-  mainBenefit: string
-  benefitRate: string
-  description: string
+  coverageType:string
+  coverageLimit:string
+  deductible:string
+  average_premium:string
+  isWished : boolean
+  labels : string[]
+  currentUserData : number[]
+}
+export interface MaturityInfo{
+  coverageDesc:string,
+  note:string,
 }
 
 export interface InsurancesDetailPageResponse {
   productInfo: InsuranceProductInfo
-  comparisonCharts: ComparisonChart
-  mainFeatures: MainFeature[]
-  termsAndConditions: InsurancesTermsAndConditions
+  comparisonCharts: ComparisonChart[]
+  maturityInfo: MaturityInfo
 }
 
 export interface InsurancesTermsAndConditions {
@@ -288,7 +288,7 @@ export interface InsurancesTermsAndConditions {
 }
 
 export interface CommonChartData{
-  cardName:string
+  name: string
   labels: string[]
   currentUserData: number[]
   comparisonCharts:ComparisonChart[]

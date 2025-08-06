@@ -1,13 +1,20 @@
 <template>
     <Card class="bg-white border border-gray-150 p-4">
       <IconLabel :icon="MessageCircle" iconClass="text-sub-orange-p">카드 노트</IconLabel>
-  
-      <div class="mt-4 w-full">
-        <Typography type="M_12_120" class="mb-1">{{datas.category}}</Typography>
-        <Typography type="M_12_120" class="mb-1">{{datas.previousMonthSpendig}}</Typography>
-        <Typography type="M_12_120" class="mb-1">{{datas.usage}}</Typography>
-        <Typography type="M_12_120" class="mb-1">{{datas.annualFee}}</Typography>
-      </div>
+      <ul class="mt-4 w-full list-disc pl-4">
+        <li>
+          <Typography type="M_12_120">{{datas.category}}</Typography>
+        </li>
+        <li>
+          <Typography type="M_12_120">{{datas.previousMonthSpendig}}</Typography>
+        </li>
+        <li>
+          <Typography type="M_12_120">{{datas.usage}}</Typography>
+        </li>
+        <li>
+          <Typography type="M_12_120">{{datas.annualFee}}</Typography>
+        </li>
+      </ul>
     </Card>
   </template>
   
