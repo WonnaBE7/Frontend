@@ -1,4 +1,3 @@
-// 이미 있는 것 유지
 export const finTypes = [
   { label: '자린고비형', descript: '초절약 소비형' },
   { label: '소확행형', descript: '감성 소비형' },
@@ -14,35 +13,6 @@ export const finTypes = [
   { label: '대문자P형', descript: '직관·감정 기반형' }
 ]
 
-export const finTypeMonth = [
-  { label: '자린고비형', descript: '2024.01' },
-  { label: '소확행형', descript: '2024.02' },
-  { label: 'YOLO형', descript: '2024.03' },
-  { label: '경험 소중형', descript: '2024.04' },
-  { label: '새싹 투자형', descript: '2024.05' },
-  { label: '공격 투자형', descript: '2024.06' },
-  { label: '미래 준비형', descript: '2024.07' },
-  { label: '가족 중심형', descript: '2024.08' },
-  { label: '루틴러형', descript: '2024.09' },
-  { label: '현상 유지형', descript: '2024.10' },
-  { label: '균형 성장형', descript: '2024.11' },
-  { label: '대문자P형', descript: '2024.12' }
-]
-
-export const finTypeIcons: Record<string, string> = {
-  '자린고비형': '💰',
-  '소확행형': '🍰',
-  'YOLO형': '🛫',
-  '경험 소중형': '🎨',
-  '새싹 투자형': '🌱',
-  '공격 투자형': '📈',
-  '미래 준비형': '📅',
-  '가족 중심형': '📚',
-  '루틴러형': '🗓️',
-  '현상 유지형': '🛋️',
-  '균형 성장형': '⚖️',
-  '대문자P형': '🎯'
-}
 
 export const financialTendencyList = [
   {
@@ -118,3 +88,18 @@ export const financialTendencyList = [
     characteristics: '충동구매가 잦고 계획보다는 직관·감정적인 재무 의사결정 성향'
   }
 ]
+
+export const finTypeIcons: Record<string, string> = {
+  '자린고비형': '💰',
+  '소확행형': '🍰',
+  'YOLO형': '🛫',
+  '경험 소중형': '🎨',
+  '새싹 투자형': '🌱',
+  '공격 투자형': '📈',
+  '미래 준비형': '📅',
+  '가족 중심형': '📚',
+  '루틴러형': '🗓️',
+  '현상 유지형': '🛋️',
+  '균형 성장형': '⚖️',
+  '대문자P형': '🎯'
+}

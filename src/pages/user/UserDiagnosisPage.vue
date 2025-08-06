@@ -34,10 +34,18 @@ import UserDiagnosisList from '@/features/user/user-diagnosis/ui/UserDiagnosisLi
 import { ChevronRight } from 'lucide-vue-next';
 import Typography from '@/shared/ui/atoms/Typography.vue';
 import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
+import { useUserProfileStore } from '@/entities/user/user.store';
 
 const router = useRouter()
 
 function goSurVey(){
     router.push('/user/survey')
 }
+
+const userStore = useUserProfileStore()
+
+onMounted(async ()=>{
+  await userStore.fetchUserProfile()
+})
 </script>

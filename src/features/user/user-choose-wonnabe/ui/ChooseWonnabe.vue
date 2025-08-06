@@ -42,7 +42,7 @@ import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue'
 import Tag from '@/shared/ui/atoms/Tag.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
 import { financialTendencyList } from '@/shared/constants/finTypes.constants'
-import { updateWonnaBESelections } from '../services/choose-wannabe.service'
+import { patchWonnaBESelections } from '../services/choose-wannabe.service'
 import { router } from '@/app/router'
 
 const toggleSelect = (label: string) => {
@@ -76,7 +76,7 @@ const submit = async () => {
   const selectedIds = getSelectedIds()
   console.log(selectedIds)
   try {
-    const res = await updateWonnaBESelections({
+    const res = await patchWonnaBESelections({
       selected_wonnabe_ids: selectedIds,
     })
     console.log('워너비 선택 저장 완료:', res.message)

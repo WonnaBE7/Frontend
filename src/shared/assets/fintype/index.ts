@@ -10,5 +10,6 @@ export const finTypeImages: Record<string, string> = {
   '새싹 투자형': new URL('./새싹 투자형.png', import.meta.url).href,
   '소확행형': new URL('./소확행형.png', import.meta.url).href,
   '자린고비형': new URL('./자린고비형.png', import.meta.url).href,
-  'YOLO형': new URL('./YOLO형.png', import.meta.url).href
+  'YOLO형': new URL('./YOLO형.png', import.meta.url).href,
+  '진단 기록 없음': new URL('./없음.png', import.meta.url).href
 }

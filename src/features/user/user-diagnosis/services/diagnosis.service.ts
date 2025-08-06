@@ -3,12 +3,12 @@ import { fetcher } from '@/shared/utils/fetcher'
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 interface DiagnosisRequest {
-  diagnosis_answers: number[]
+  answers: number[]
 }
 
 export const submitNowmeDiagnosis = async (payload: DiagnosisRequest) => {
   const purifiedPayload: DiagnosisRequest = {
-    diagnosis_answers: [...payload.diagnosis_answers]
+    answers: [...payload.answers]
   }
 
   const res = await fetcher({

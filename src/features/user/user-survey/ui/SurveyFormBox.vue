@@ -26,10 +26,8 @@
     </Card>
     <Button @click="submitAnswers" class="mb-4">제출</Button>
   </div>
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
+</template><script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import Tag from '@/shared/ui/atoms/Tag.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
@@ -38,26 +36,62 @@ import UserDiagnosisItem from '../../user-diagnosis/ui/UserDiagnosisItem.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
 import { questions, choices, choices2, job } from '@/features/user/user-survey/constants/userSurvey.ts'
 
+import { useUserProfileStore } from '@/entities/user/user.store'
+import {
+  getUserSurveyData,
+  postUserSurveyData,
+  patchUserSurveyData
+} from '../service/user-survey.service.ts'
+import type { UserSurveyData } from '@/entities/user/user.entity'
+
+const userStore = useUserProfileStore()
+const userId = userStore.profile?.userId || ''
+
 const answers = ref<Record<string, string | number>>({})
 const jobAnswer = ref<string>('')
 
+const boolTags = ['술', '담배', '운동', '가족간 질병', '이전 질병']
+
 function getChoices(tag: string) {
-  const boolTags = ['술', '담배', '운동', '가족간 질병', '이전 질병']
   if (boolTags.includes(tag)) return choices2
   if (tag === '가족 구성원') return choices
-  return [] 
+  return []
 }
 
-function submitAnswers() {
-  console.log(answers.value)
-  const boolTags = ['술', '담배', '운동', '가족간 질병', '이전 질병']
-  const healthAnswers = boolTags.map(tag => answers.value[tag] === 1)
-  const etcAnswers = {
-    familySize: answers.value['가족 구성원'] ?? null,
-    job: jobAnswer.value || null,
+onMounted(async () => {
+  const existing = await getUserSurveyData()
+  if (existing) {
+    answers.value['담배'] = existing.lifestyle_smoking ? 1 : 2
+    answers.value['술'] = existing.lifestyle_drinking ? 1 : 2
+    answers.value['운동'] = existing.lifestyle_exercise ? 1 : 2
+    answers.value['가족 구성원'] = existing.household_size
+    answers.value['가족간 질병'] = existing.lifestyle_family_medical ? 1 : 2
+    answers.value['이전 질병'] = existing.lifestyle_before_diseases ? 1 : 2
+    jobAnswer.value = existing.income_job_type
+  }
+})
+
+async function submitAnswers() {
+  const payload: UserSurveyData = {
+    user_id: userId,
+    lifestyle_smoking: answers.value['담배'] === 1,
+    lifestyle_drinking: answers.value['술'] === 1,
+    lifestyle_exercise: answers.value['운동'] === 1,
+    household_size: Number(answers.value['가족 구성원']),
+    lifestyle_family_medical: answers.value['가족간 질병'] === 1,
+    lifestyle_before_diseases: answers.value['이전 질병'] === 1,
+    income_job_type: jobAnswer.value,
   }
 
-  console.log('건강 관련 ', healthAnswers)
-  console.log('기타 정보', etcAnswers)
+  const existing = await getUserSurveyData()
+  const isMock = !existing?.user_id || existing.user_id === ''
+
+  if (isMock) {
+    await postUserSurveyData(payload)
+    console.log('✅ POST: 설문 최초 제출 완료')
+  } else {
+    await patchUserSurveyData(payload)
+    console.log('✅ PATCH: 설문 수정 완료')
+  }
 }
 </script>

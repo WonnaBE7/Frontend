@@ -1,7 +1,7 @@
 <template>
     <Card class="bg-white border border-gray-150">
       <IconLabel :icon="MessageCircleIcon" :iconClass="'text-sub-yellow-p'">
-        {{user.nowME}} 추천 상품
+        {{userProfile?.nowME}} 추천 상품
       </IconLabel>
       <GoalProductCard
         v-for="product in products"
@@ -19,7 +19,7 @@
   </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import Button from '@/shared/ui/atoms/Button.vue';
 import Card from '@/shared/ui/atoms/Card.vue';
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
@@ -27,16 +27,17 @@ import { CheckCircle, MessageCircleIcon } from 'lucide-vue-next'
 import GoalProductCard from '../../goal-report/ui/GoalProductCard.vue';
 import type { GoalReportSaveRequest, RecommendedProduct } from '@/entities/goal/goal.entity';
 import { useRoute } from 'vue-router';
-import {mockUserProfile } from '@/entities/user/user.mock'
 import { useGoalSimulationStore } from '@/entities/goal/goal.store'
 import { patchGoalSelection } from '../service/simulation-result.service';
 import { router } from '@/app/router';
+import { useUserProfileStore } from '@/entities/user/user.store';
 
 defineProps<{
   products: RecommendedProduct[]
 }>()
 
-const user = mockUserProfile
+const userStore = useUserProfileStore()
+const userProfile = computed(() => userStore.profile)
 
 const route = useRoute()
 const isSimulationPage = route.path.startsWith('/goal/simulation')

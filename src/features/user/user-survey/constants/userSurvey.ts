@@ -12,14 +12,16 @@ export const choices2 = [
 ]
 
 export const job=[
-  {value : '재직', label : '재직'},
-  {value : '퇴직', label : '퇴직'},
   {value : '무직', label : '무직'},
-  {value : '전사', label : '전사' },
-  {value : '마법사', label : '마법사' },
-  {value : '궁수', label : '궁수' },
-  {value : '도적', label : '도적' },
-  {value : '해적', label : '해적' }
+  {value : '학생', label : '학생'},
+  {value : '직장인', label : '직장인'},
+  {value : '자영업자', label : '자영업자' },
+  {value : '프리랜서', label : '프리랜서' },
+  {value : '전문직', label : '전문직' },
+  {value : '개발자', label : '개발자' },
+  {value : '디자이너', label : '디자이너' },
+  {value : '공무원', label : '공무원' },
+  {value : '기타', label : '기타' }
 ]
 
 export const questions = [

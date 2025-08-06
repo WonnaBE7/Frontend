@@ -17,8 +17,8 @@
       </div>
     </Card>
     <SurveyFormBox/>
-    </AppLayout>
-  </template>
+  </AppLayout>
+</template>
   
 <script setup lang="ts">
 import SurveyFormBox from '@/features/user/user-survey/ui/SurveyFormBox.vue';
@@ -35,4 +35,13 @@ const router = useRouter()
 function goWonnaBE(){
     router.push('/user/choose-wonnabe')
 }
+import { onMounted } from 'vue';
+import { useUserProfileStore } from '@/entities/user/user.store';
+
+const userStore = useUserProfileStore()
+
+onMounted(async ()=>{
+  await userStore.fetchUserProfile()
+})
+
 </script>

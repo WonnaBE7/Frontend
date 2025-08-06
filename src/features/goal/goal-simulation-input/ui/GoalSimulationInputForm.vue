@@ -6,7 +6,7 @@
       alt="성향 이미지"
       class="w-1/3"
     />
-    <Typography type="B_20_160" class="mb-4">{{user.nowME}} 맞춤 목표 설정</Typography>
+    <Typography type="B_20_160" class="mb-4">{{userProfile?.nowME}} 맞춤 목표 설정</Typography>
 
     <Card class="w-full mb-4 bg-white border border-gray-150">
       <Typography type="B_16_120" class="mb-4 w-full">🎯 목표 카테고리를 선택해주세요</Typography>
@@ -75,7 +75,6 @@ import Card from '@/shared/ui/atoms/Card.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
 
 import { goalCategories, goalCategoryIcons } from '@/shared/constants/goalCategory.constants'
-import { mockUserProfile } from '@/entities/user/user.mock'
 import { finTypeImages } from '@/shared/assets/fintype'
 import { useGoalSimulationStore } from '@/entities/goal/goal.store'
 import { mockGoalSimulationResponse } from '@/entities/goal/goal.mock'
@@ -83,6 +82,7 @@ import { mockGoalSimulationResponse } from '@/entities/goal/goal.mock'
 import type { GoalSimulationInput, GoalSimulationResponse } from '@/entities/goal/goal.entity'
 import Tag from '@/shared/ui/atoms/Tag.vue'
 import { postGoalSimulation } from '../service/simulation-input.service'
+import { useUserProfileStore } from '@/entities/user/user.store'
 
 const selectedCategory = ref<string | null>(null)
 const goalName = ref('')
@@ -91,11 +91,13 @@ const goalDurationMonthsStr = ref('')
 
 const router = useRouter()
 const goalSimulationStore = useGoalSimulationStore()
-const user = mockUserProfile
+const userStore = useUserProfileStore()
+const userProfile = computed(() => userStore.profile)
 
 const finImage = computed(() => {
-  const image = finTypeImages[mockUserProfile.nowME || '']
-  if (!image) console.warn(`${mockUserProfile.nowME}에 대한 이미지가 없습니다.`)
+  const me = userProfile.value?.nowME
+  const image = finTypeImages[me ?? '']
+  if (!image) console.warn(`${me}에 대한 이미지가 없습니다.`)
   return image
 })
 

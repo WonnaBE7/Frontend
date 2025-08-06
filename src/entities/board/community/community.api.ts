@@ -20,7 +20,7 @@ export const getCommunity = async () => {
 export const getCommunityTop3 = async () => {
     try{
         const res = await fetcher<CommunityPreview[]>({
-            url: `${BASE_URL}/api/community/board/top3`,
+            url: `${BASE_URL}/api/community/list/top3`,
             method: 'GET',
             auth: true
         })

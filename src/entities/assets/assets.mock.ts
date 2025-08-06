@@ -6,9 +6,9 @@ import type {
 } from './assets.entity'
 
 export const mockAssetSummaryMeta: AssetSummaryMeta = {
-  totalAmount: 52000000,     
+  totalAmount: 52000000,
   changeRate: 9.5,           
-  changeAmount: 4500000      
+  changeAmount: 4500000
 }
 
 export const mockAssetCategoryDetailResponse: AssetDetailResponse = {
