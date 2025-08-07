@@ -44,7 +44,7 @@
     </div>
   </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   import {ChevronDown} from 'lucide-vue-next'
   import Card from '@/shared/ui/atoms/Card.vue';
   import { ref, defineProps, computed } from 'vue'
@@ -58,8 +58,8 @@ import Button from '@/shared/ui/atoms/Button.vue';
     isCurrentPageSimulation: boolean
   }>()
   
-  const isOpen = ref(false)
-  const isChecked = ref(false)
+  const isOpen = ref<boolean>(false)
+  const isChecked = ref<boolean>(false)
   
   function toggleDetail() {
     isOpen.value = !isOpen.value
@@ -77,9 +77,7 @@ import Button from '@/shared/ui/atoms/Button.vue';
     }
   })
 
-  const emit = defineEmits<{
-    (e: 'select', id: number): void
-  }>()
+  const emit = defineEmits<(e: 'select', id: number) => void>()
 
     function selectProduct() {
       isChecked.value = true

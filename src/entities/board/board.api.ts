@@ -2,6 +2,7 @@ import { fetcher } from '@/shared/utils/fetcher'
 import { mockMyBoards, mockMyWriteScrap, mockScrapedBoards, mockTop3Boards } from './board.mock'
 import type { Board, WriteScrapedSummary } from './board.entity'
 
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getBoardTop3 = async () => {
@@ -37,9 +38,9 @@ export const getUserWrited = async () =>{
             url: `${BASE_URL}/api/community/user/writed`,
             method: 'GET',
             auth: true,
-          })
+        })
 
-          return res.data
+        return res.data
     }catch{
         return mockMyBoards
     }

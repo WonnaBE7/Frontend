@@ -3,9 +3,9 @@
       <IntroduceBox v-if="savingsData" :productInfo="savingsData.productInfo"/>
       <ChartBox v-if="chartData && savingsData?.comparisonCharts" :commonChartData="chartData"/>
       <MaturityInfoBox v-if="savingsData?.maturityInfo" :maturityInfo="savingsData.maturityInfo"/>
-      <InputDepositBox v-model.number="monthlyDeposit"/>
-      <InputPeriodBox v-model.number="savingsPeriod"/>
-      <ProductButtonBox :request="requestSavings"/>
+      <InputDepositBox v-model="monthlyDeposit"/>
+      <InputPeriodBox v-model="savingsPeriod"/>
+      <ProductButtonBox v-if="savingsData" :request="requestSavings" :isWished="savingsData?.productInfo.isWished"/>
     </AppLayout>
   </template>
   
@@ -35,8 +35,8 @@
     }
   })
 
-  const savingsPeriod = ref(0)
-  const monthlyDeposit = ref(0)
+  const savingsPeriod = ref<string>('')
+  const monthlyDeposit = ref<string>('')
 
 const chartData = computed<CommonChartData>(() => {
   if (!savingsData.value) return {} as CommonChartData
@@ -54,8 +54,8 @@ const requestSavings = computed<SavingsApplicationRequest>(() => {
     productType: 'savings',
     productId: savingsData.value.productInfo.productId,
     productName: savingsData.value.productInfo.productName,
-    monthlyDeposit: monthlyDeposit.value,
-    savingsPeriod: savingsPeriod.value
+    monthlyDeposit: parseInt(monthlyDeposit.value),
+    savingsPeriod: parseInt(savingsPeriod.value)
   }
 })
   </script>

@@ -17,11 +17,11 @@
 
 <script setup lang="ts">
 import Card from '@/shared/ui/atoms/Card.vue';
-  import AppLayout from '@/shared/layout/AppLayout.vue'
-  import UserProfileCard from '@/shared/ui/molecules/UserProfileCard.vue';
-  import UserSettingsMenu from '@/features/user/user-profile/ui/UserSettingsMenu.vue';
-  import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
-  import { userSubTextMap } from '@/features/user/constants/userSubTextMap'
+import AppLayout from '@/shared/layout/AppLayout.vue'
+import UserProfileCard from '@/shared/ui/molecules/UserProfileCard.vue';
+import UserSettingsMenu from '@/features/user/user-profile/ui/UserSettingsMenu.vue';
+import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
+import { userSubTextMap } from '@/features/user/constants/userSubTextMap'
 import { useAuthStore } from '@/entities/user/auth.store';
 import Tag from '@/shared/ui/atoms/Tag.vue';
 import { userLogout } from '@/features/user/user-profile/services/logout.service';
@@ -30,11 +30,10 @@ import { initUserData } from '@/features/init/initUserData';
 
 const store = useAuthStore()
 async function clickLogout(){
-  await userLogout()
-  // if(code == 200) {
-  //   await store.logout()
-  // }
-  await store.logout()
+  const res = await userLogout()
+  if(res.code === 200){
+    await store.logout()
+  }
 }
 
 onMounted(() => {

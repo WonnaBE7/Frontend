@@ -38,7 +38,7 @@
 import { ref, onMounted } from 'vue'
 import Button from '../atoms/Button.vue'
 
-const showUpdatePrompt = ref(false)
+const showUpdatePrompt = ref<boolean>(false)
 
 // 간단한 PWA 업데이트 로직
 const checkForUpdates = () => {

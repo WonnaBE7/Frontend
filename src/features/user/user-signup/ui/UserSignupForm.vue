@@ -15,22 +15,25 @@
 import Button from '@/shared/ui/atoms/Button.vue'
 import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
 import { ref, watch } from 'vue'
-import { signup } from '@/features/user/user-signup/services/signup.service'
+import { userSignup } from '@/features/user/user-signup/services/signup.service'
 import { useRouter } from 'vue-router'
 import AgreeMentBox from './AgreeMentBox.vue'
 import { terms } from '../constants/terms.constants'
+import { userLogin } from '../../user-login/services/login.service'
+import { useUserProfileStore } from '@/entities/user/user.store'
 
-const name = ref('')
-const email = ref('')
-const password = ref('')
+const name = ref<string>('')
+const email = ref<string>('')
+const password = ref<string>('')
 const router = useRouter();
 
 const checked = ref<string[]>([])
-const allChecked = ref(false)
+const allChecked = ref<boolean>(false)
 
 watch(checked, (newVal) => {
   allChecked.value = newVal.length === terms.length
 })
+
 
 const onSubmit = async () => {
   const missingRequiredTerms = terms
@@ -44,14 +47,20 @@ const onSubmit = async () => {
     return
   }
   try {
-    const res = await signup({
+    const res = await userSignup({
       name: name.value,
       email: email.value,
       password: password.value,
     })
-      console.log(res.code)
+    if(res.code === 200){
       alert('회원가입이 완료되었습니다!')
-    router.push('/user/diagnosis')
+
+      const loginRes = await userLogin({ email: email.value, password: password.value })
+      if(loginRes.code === 200){
+          await useUserProfileStore().fetchUserProfile()
+          router.push('/user/diagnosis')
+      }
+    }
   } catch (error) {
       console.log(name.value, email.value, password.value)
       alert('회원가입에 실패했습니다.')

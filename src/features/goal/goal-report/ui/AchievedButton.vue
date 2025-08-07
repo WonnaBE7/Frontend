@@ -5,11 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import Button from '@/shared/ui/atoms/Button.vue';
-
-defineProps<{
-    goalId :number
-}>()
-
-
+    import Button from '@/shared/ui/atoms/Button.vue';
+    defineProps<{
+        goalId :number
+    }>()
 </script>

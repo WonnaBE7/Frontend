@@ -1,10 +1,10 @@
-
-import { mockUserProfile } from "@/entities/user/user.mock"
 import { fetcher } from "@/shared/utils/fetcher"
 import type { UserProfile } from "./user.entity"
+import { mockUserProfile } from "./user.mock"
 
 
-const BASE_URL = import.meta.env.BASE_URL
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getUserProfileData = async () => {
     try{
@@ -17,6 +17,6 @@ export const getUserProfileData = async () => {
     }
     catch{
         return mockUserProfile
-    }   
+    }
 }
 

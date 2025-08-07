@@ -20,25 +20,24 @@ export const mockConsumptionSummaryMeta: ConsumptionSummaryMeta = {
 export const mockMonthlyConsumptionSummary: MonthlyConsumptionSummary = {
   yearMonth: '2025-07',
   monthToDateConsumption: {
-    amount: '2,310,000',
+    amount: 2310000,
     calculatedUntil: '2025-07-16'
   }
 }
 
 export const mockEstimatedAndTodayConsumption: EstimatedAndTodayConsumption = {
   estimatedMonthlyConsumption: {
-    amount: '4,500,000',
+    amount: 4500000,
     calculatedUntil: '2025-07-16'
   },
   todayConsumption: {
-    amount: '80,000',
+    amount: 80000,
     calculatedDate: '2025-07-16'
   }
 }
 
 // 소비분석 페이지 월별 카테고리 비율
 export const mockMonthlyCategoryConsumption: MonthlyCategoryConsumption = {
-  yearMonth: '2025-07',
   categories: [
     {
       consumptionCategory: 'food',

@@ -21,7 +21,7 @@ export const initBoardData = async () => {
     !postPreviewStore.posts && postPreviewStore.fetchAssetsMain(),
     !postPreviewStore.scraped && postPreviewStore.fetchUserScarped(),// 내가 스크랩한 글 미리보기
     !postPreviewStore.writed && postPreviewStore.fetchUserWrited(), // 내가 작성한 글 미리보기
-    !countWriteScrap.count && countWriteScrap.fetchLikeScrap(), // 내가 스크랩한, 내가 쓴 글 갯수
+    !countWriteScrap.count && countWriteScrap.fetchWriteScrap(), // 내가 스크랩한, 내가 쓴 글 갯수
 
     // 커뮤니티
     !communtyList.all && communtyList.fetchCommunityList(),

@@ -10,9 +10,9 @@
     <TotalAssets v-if="assetsData.meta" :meta="assetsData.meta" :type="'자산'"/>
     <TotalAssets v-if="conusmptionData.meta" :meta="conusmptionData.meta" :type="'소비'" class="!mb-0"/>
   </Card>
-  </template>
+</template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   import Card from '@/shared/ui/atoms/Card.vue'
   import TotalAssets from '@/features/assets/ui/TotalAssets.vue'
   import { Wallet, ChevronRight } from 'lucide-vue-next'
@@ -20,6 +20,6 @@
   import { useAssetsMain } from '@/entities/assets/assets.store'
   import { useConsumptionMain } from '@/entities/consumption/consumption.store'
 
-const assetsData = useAssetsMain()
-const conusmptionData = useConsumptionMain()
+  const assetsData = useAssetsMain()
+  const conusmptionData = useConsumptionMain()
 </script>

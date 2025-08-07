@@ -23,7 +23,7 @@
           >
             <div class="flex flex-col">
               <Typography type="B_12_120" class="text-gray-800 truncate max-w-full">
-                {{ product.productName }}
+                {{ truncateText(product.productName, 9) }}
               </Typography>
               <Typography type="M_12_120" class="text-blue-600 truncate max-w-full">
                 연 {{ product.interestRate }}%
@@ -53,7 +53,7 @@
           >
             <div class="flex flex-col">
               <Typography type="B_12_120" class="text-gray-800 truncate max-w-full">
-                {{ card.cardName }}
+                {{ truncateText(card.cardName, 9) }}
               </Typography>
               <Typography type="M_12_120" class="text-green-600 truncate max-w-full">
                 {{ card.benefitDescription }}
@@ -83,7 +83,7 @@
           >
             <div class="flex flex-col">
               <Typography type="B_12_120" class="text-gray-800 truncate max-w-full">
-                {{ insurance.insuranceName }}
+                {{ truncateText(insurance.insuranceName, 9) }}
               </Typography>
               <Typography type="M_12_120" class="text-purple-600 truncate max-w-full">
                 {{ insurance.coverage }}
@@ -128,7 +128,7 @@ import { storeToRefs } from 'pinia'
 const store = useRecommendationStore()
 const { currentProducts } = storeToRefs(store)
 
-const isModalOpen = ref(false)
+const isModalOpen = ref<boolean>(false)
 const selectedProductDetail = ref<SavingsDetailResponse | CardDetailResponse | InsuranceDetailResponse | null>(null)
 const selectedProductType = ref<'savings' | 'card' | 'insurance'>('savings')
 
@@ -148,7 +148,12 @@ async function openProductDetail(item: any, type: 'savings' | 'card' | 'insuranc
   }
 }
 
-// 모달 닫기
+function truncateText(text: string | null | undefined, maxLength: number): string {
+  if (!text) return ''
+  if (text.length <= maxLength) return text
+  return text.substring(0, maxLength) + '...'
+}
+
 function closeModal() {
   isModalOpen.value = false
   selectedProductDetail.value = null

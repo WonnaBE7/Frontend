@@ -49,7 +49,7 @@ defineProps<{
   selected: string | number | boolean | null | undefined
 }>()
 
-const emit = defineEmits<{
-  (e: 'update:selected', value: boolean | number | string ): void
-}>()
+const emit = defineEmits<
+  (e: 'update:selected', value: boolean | number | string )=> void
+>()
 </script>

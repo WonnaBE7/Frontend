@@ -1,6 +1,7 @@
 import { mockCardDetailPage } from "@/entities/recommend/recommend.mock";
 import { fetcher } from "@/shared/utils/fetcher";
 
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getCardDetailView = async (id : number) =>{

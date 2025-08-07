@@ -1,12 +1,8 @@
 import { defineStore } from 'pinia'
 import type { UserProfile, UserSurveyData } from './user.entity'
-import { mockUserProfile } from './user.mock'
-import { fetcher } from '@/shared/utils/fetcher'
 import { financialTendencyList } from '@/shared/constants/finTypes.constants'
 import { getUserSurveyData } from '@/features/user/user-survey/service/user-survey.service'
 import { getUserProfileData } from './user.api'
-
-const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const useUserProfileStore = defineStore('userProfile', {
   state: () => ({
@@ -41,5 +37,6 @@ export const useUserProfileStore = defineStore('userProfile', {
     setSelectedFinType(fin: { id: number; name: string }) {
       this.selectedFinType = fin
     }
-  }
+  },
+  persist: true
 })

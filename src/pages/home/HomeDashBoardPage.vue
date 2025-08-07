@@ -17,6 +17,7 @@ import { onMounted } from 'vue';
 import { initMainData } from '@/features/init/initMainData';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/entities/user/auth.store';
+import { useUserProfileStore } from '@/entities/user/user.store';
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -26,6 +27,8 @@ onMounted(() => {
     router.push('/user/login')
   }
   initMainData()
+  const user = useUserProfileStore()
+  console.log('유저 프로필',user.profile)
 })
 
 

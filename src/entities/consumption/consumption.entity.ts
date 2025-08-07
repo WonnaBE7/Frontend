@@ -9,7 +9,7 @@ export interface ConsumptionSummaryMeta {
 export interface MonthlyConsumptionSummary {
     yearMonth: string
     monthToDateConsumption: {
-      amount: string
+      amount: number
       calculatedUntil: string
     }
   }
@@ -17,11 +17,11 @@ export interface MonthlyConsumptionSummary {
 // 예상 월/ 일 소비
 export interface EstimatedAndTodayConsumption {
   estimatedMonthlyConsumption: {
-    amount: string
+    amount: number
     calculatedUntil: string
   }
   todayConsumption: {
-    amount: string
+    amount: number
     calculatedDate: string
   }
 }
@@ -36,7 +36,6 @@ export interface MonthlyConsumptionCategoryItem {
 
 // 한달 소비 카테고리 모음
 export interface MonthlyCategoryConsumption {
-  yearMonth: string
   categories: MonthlyConsumptionCategoryItem[]
 }
 

@@ -3,7 +3,7 @@
       <IntroduceBox v-if="insurancesData" :productInfo="insurancesData.productInfo"/>
       <ChartBox v-if="chartData && insurancesData?.comparisonCharts" :commonChartData="chartData"/>
       <MaturityInfoBox v-if="insurancesData?.maturityInfo" :maturityInfo="insurancesData.maturityInfo"/>
-      <ProductButtonBox :request="requestInsurance"/>
+      <ProductButtonBox v-if="insurancesData" :request="requestInsurance" :isWished="insurancesData.productInfo.isWished"/>
     </AppLayout>
   </template>
   

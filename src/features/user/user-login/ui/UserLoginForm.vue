@@ -50,12 +50,12 @@ import Typography from '@/shared/ui/atoms/Typography.vue'
 import { terms } from '../../user-signup/constants/terms.constants'
 
 const authStore = useAuthStore()
-const email = ref('')
-const password = ref('')
+const email = ref<string>('')
+const password = ref<string>('')
 const router = useRouter()
-const showModal = ref(false)
+const showModal = ref<boolean>(false)
 const checked = ref<string[]>([])
-const allChecked = ref(false)
+const allChecked = ref<boolean>(false)
 
 watch(checked, (newVal) => {
   allChecked.value = newVal.length === terms.length
@@ -64,11 +64,12 @@ watch(checked, (newVal) => {
 const handleLogin = async () => {
   try {
     const res = await userLogin({ email: email.value, password: password.value })
-    const { accessToken, user } = res
-
-    authStore.login(accessToken, user)
-
-  router.push('/')
+    if(res.code === 200){
+      const { accessToken, user } = res.data
+      authStore.login(accessToken, user)
+      
+      router.push('/')
+    }
   } catch (err: any) {
     alert(err.message || '로그인에 실패했습니다.')
   }
@@ -84,8 +85,6 @@ function toggleModal(){
 
 function goKakao() {
   showModal.value = false
-  // 여기에 실제 카카오 로그인 리다이렉션 또는 로직
   alert('카카오 로그인 실행')
-  // ex: window.location.href = kakaoLoginUrl
 }
 </script>

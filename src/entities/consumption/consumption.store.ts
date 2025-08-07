@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import dayjs from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs'
 import type {
   MonthlyConsumptionSummary,
   EstimatedAndTodayConsumption,
@@ -27,7 +27,7 @@ export type TabType = 'current' | 'estimated' | 'today'
 
 export const useConsumptionStore = defineStore('consumption', () => {
   const selectedTab = ref<TabType>('current')
-  const baseDate = ref(dayjs())
+  const baseDate = ref<Dayjs>(dayjs())
 
   const monthlySummary = ref<MonthlyConsumptionSummary | null>(null)
   const estimatedAndToday = ref<EstimatedAndTodayConsumption | null>(null)
@@ -51,11 +51,11 @@ export const useConsumptionStore = defineStore('consumption', () => {
   const displayedAmount = computed(() => {
     switch (selectedTab.value) {
       case 'current':
-        return `${monthlySummary.value?.monthToDateConsumption.amount}원`
+        return `${monthlySummary.value?.monthToDateConsumption.amount.toLocaleString()}원`
       case 'estimated':
-        return `${estimatedAndToday.value?.estimatedMonthlyConsumption.amount}원`
+        return `${estimatedAndToday.value?.estimatedMonthlyConsumption.amount.toLocaleString()}원`
       case 'today':
-        return `${estimatedAndToday.value?.todayConsumption.amount}원`
+        return `${estimatedAndToday.value?.todayConsumption.amount.toLocaleString()}원`
     }
   })
 
@@ -141,7 +141,8 @@ export const useConsumptionMain = defineStore('consumptionMain', {
     async fetchConsumptionMain() {
       this.meta = await getConsumption()
     }
-  }
+  },
+  persist :true
 })
 
 
@@ -161,6 +162,7 @@ export const useTransactionDetailStore = defineStore('consumptionDetailStore', {
       this.monthlyTransactionDetail = await getMonthlyTransactionDetail(yearMonth)
     },
   },
+  persist: true
 })
 
 
@@ -197,4 +199,5 @@ export const useTransactionCategoryDetailStore = defineStore('consumptionCategor
       return this.monthlyDetails[category] ?? null
     },
   },
+  persist: true
 })

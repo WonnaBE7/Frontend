@@ -23,26 +23,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import Card from '@/shared/ui/atoms/Card.vue'
-import Typography from '@/shared/ui/atoms/Typography.vue'
-import TotalAssets from '../../ui/TotalAssets.vue'
-import AssetBarChart from './AssetBarChart.vue'
-import AssetDetailBar from './AssetDetailBar.vue'
-import { categoryLabelMap } from '@/entities/assets/assets.constants'
-import { useAssetsCategoryRatio, useAssetsDetail, useAssetsMain } from '@/entities/assets/assets.store'
+  import { computed } from 'vue'
+  import Card from '@/shared/ui/atoms/Card.vue'
+  import Typography from '@/shared/ui/atoms/Typography.vue'
+  import TotalAssets from '../../ui/TotalAssets.vue'
+  import AssetBarChart from './AssetBarChart.vue'
+  import AssetDetailBar from './AssetDetailBar.vue'
+  import { categoryLabelMap } from '@/entities/assets/assets.constants'
+  import { useAssetsCategoryRatio, useAssetsDetail, useAssetsMain } from '@/entities/assets/assets.store'
 
-const assetsData = useAssetsMain()
-const assetsCategoryRatio = useAssetsCategoryRatio()
-const assetsSummary = useAssetsDetail()
+  const assetsData = useAssetsMain()
+  const assetsCategoryRatio = useAssetsCategoryRatio()
+  const assetsSummary = useAssetsDetail()
 
-const chartData = computed(() => {
-  if (!assetsCategoryRatio.meta) return []
+  const chartData = computed(() => {
+    if (!assetsCategoryRatio.meta) return []
 
-  return assetsCategoryRatio.meta.categories.map(category => ({
-    type: category.assetCategory,
-    label: categoryLabelMap[category.assetCategory],
-    percentage: category.percentage
-  }))
-})
+    return assetsCategoryRatio.meta.categories.map(category => ({
+      type: category.assetCategory,
+      label: categoryLabelMap[category.assetCategory],
+      percentage: category.percentage
+    }))
+  })
 </script>

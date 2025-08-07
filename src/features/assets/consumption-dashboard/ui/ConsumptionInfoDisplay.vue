@@ -14,19 +14,19 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import Typography from '@/shared/ui/atoms/Typography.vue'
+  import { useRouter } from 'vue-router'
+  import Typography from '@/shared/ui/atoms/Typography.vue'
 
-const router = useRouter()
+  const router = useRouter()
 
-const props = defineProps<{
-  amount: string
-  date: string
-  type: 'current' | 'estimated' | 'today'
-}>()
+  const props = defineProps<{
+    amount: string
+    date: string
+    type: 'current' | 'estimated' | 'today'
+  }>()
 
-function handleClick() {
+  function handleClick() {
   if (props.type === 'estimated') return
-  router.push({ path: '/assets/consumption/detail', query: { type: props.type } })
-}
+    router.push({ path: '/assets/consumption/detail', query: { type: props.type } })
+  }
 </script>

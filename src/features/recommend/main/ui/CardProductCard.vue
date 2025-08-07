@@ -48,5 +48,5 @@
   import type { RecommendedCardProduct } from '@/entities/recommend/recommend.entity'
   
   defineProps<{ product: RecommendedCardProduct }>()
-  defineEmits<{ (e: 'click', product: RecommendedCardProduct): void }>()
+  defineEmits<(e: 'click', product: RecommendedCardProduct) => void>()
   </script>

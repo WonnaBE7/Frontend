@@ -31,55 +31,55 @@
 </template>
 
 <script setup lang="ts">
-import type { ConsumptionSummaryMeta } from '@/entities/consumption/consumption.entity'
-import type { AssetSummaryMeta } from '@/entities/assets/assets.entity'
-import Card from '@/shared/ui/atoms/Card.vue'
-import Typography from '@/shared/ui/atoms/Typography.vue'
-import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
-import { TrendingUp, TrendingDown, MessageCircleWarning } from 'lucide-vue-next'
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+  import type { ConsumptionSummaryMeta } from '@/entities/consumption/consumption.entity'
+  import type { AssetSummaryMeta } from '@/entities/assets/assets.entity'
+  import Card from '@/shared/ui/atoms/Card.vue'
+  import Typography from '@/shared/ui/atoms/Typography.vue'
+  import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
+  import { TrendingUp, TrendingDown, MessageCircleWarning } from 'lucide-vue-next'
+  import { computed } from 'vue'
+  import { useRoute } from 'vue-router'
 
-type SummaryType = '자산' | '소비'
+  type SummaryType = '자산' | '소비'
 
-const route = useRoute()
+  const route = useRoute()
 
-const props = defineProps<{
-  meta: AssetSummaryMeta | ConsumptionSummaryMeta
-  type: SummaryType
-}>()
+  const props = defineProps<{
+    meta: AssetSummaryMeta | ConsumptionSummaryMeta
+    type: SummaryType
+  }>()
 
-const rateColorClass = computed(() => {
-  if (props.meta.changeRate > 0) return 'text-sub-aqua-p'
-  if (props.meta.changeRate < 0) return 'text-sub-red-p'
-  return 'text-gray-500'
-})
+  const rateColorClass = computed(() => {
+    if (props.meta.changeRate > 0) return 'text-sub-aqua-p'
+    if (props.meta.changeRate < 0) return 'text-sub-red-p'
+    return 'text-gray-500'
+  })
 
-const trendIcon = computed(() => {
-  return props.meta.changeRate >= 0 ? TrendingUp : TrendingDown
-})
+  const trendIcon = computed(() => {
+    return props.meta.changeRate >= 0 ? TrendingUp : TrendingDown
+  })
 
-const formattedChangeRate = computed(() => {
-  const rate = props.meta.changeRate
-  if (rate > 0) return `+${rate}`
-  return rate.toString()
-})
+  const formattedChangeRate = computed(() => {
+    const rate = props.meta.changeRate
+    if (rate > 0) return `+${rate}`
+    return rate.toString()
+  })
 
-const formattedChangeAmount = computed(() => {
-  const amount = props.meta.changeAmount
-  const formattedNumber = Math.abs(amount).toLocaleString()
-  
-  if (amount > 0) return `+${formattedNumber}`
-  if (amount < 0) return `-${formattedNumber}`
-  return formattedNumber
-})
+  const formattedChangeAmount = computed(() => {
+    const amount = props.meta.changeAmount
+    const formattedNumber = Math.abs(amount).toLocaleString()
+    
+    if (amount > 0) return `+${formattedNumber}`
+    if (amount < 0) return `-${formattedNumber}`
+    return formattedNumber
+  })
 
-const formattedAmount = computed(() => {
-  const amount =
-    props.type === '자산'
-      ? (props.meta as AssetSummaryMeta).totalAmount
-      : (props.meta as ConsumptionSummaryMeta).monthlyConsumption
-  
-  return `${amount.toLocaleString()}원`
-})
+  const formattedAmount = computed(() => {
+    const amount =
+      props.type === '자산'
+        ? (props.meta as AssetSummaryMeta).totalAmount
+        : (props.meta as ConsumptionSummaryMeta).monthlyConsumption
+    
+    return `${amount.toLocaleString()}원`
+  })
 </script>

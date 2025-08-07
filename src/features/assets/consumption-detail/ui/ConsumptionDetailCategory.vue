@@ -7,26 +7,24 @@
       :category="data.consumptionCategory"
       :transactions="data.transactions"
     />
-  </template>
+</template>
   
  <script setup lang="ts">
-import { computed, onMounted} from 'vue'
-import { categoryLabelMap } from '@/entities/assets/assets.constants'
-import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
-import Typography from '@/shared/ui/atoms/Typography.vue'
-import { useTransactionCategoryDetailStore, type ConsumptionCategoryKey } from '@/entities/consumption/consumption.store';
+  import { computed } from 'vue'
+  import { categoryLabelMap } from '@/entities/assets/assets.constants'
+  import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
+  import Typography from '@/shared/ui/atoms/Typography.vue'
+  import { useTransactionCategoryDetailStore, type ConsumptionCategoryKey } from '@/entities/consumption/consumption.store';
 
-const props = defineProps<{
-  category: ConsumptionCategoryKey
-  type: 'current' | 'today'
-}>()
+  const props = defineProps<{
+    category: ConsumptionCategoryKey
+    type: 'current' | 'today'
+  }>()
 
-const store = useTransactionCategoryDetailStore()
-const data = computed(() => {
-  return props.type === 'today'
-    ? store.getTodayDetail(props.category)
-    : store.getMonthlyDetail(props.category)
-})
-
-
+  const store = useTransactionCategoryDetailStore()
+  const data = computed(() => {
+    return props.type === 'today'
+      ? store.getTodayDetail(props.category)
+      : store.getMonthlyDetail(props.category)
+  })
 </script>

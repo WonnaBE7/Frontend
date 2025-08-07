@@ -127,9 +127,7 @@ interface Props {
   productType: 'savings' | 'card' | 'insurance'
 }
 
-interface Emits {
-  (e: 'close'): void
-}
+type Emits = (e: 'close') => void
 
 const props = defineProps<Props>()
 const emit = defineEmits<Emits>()

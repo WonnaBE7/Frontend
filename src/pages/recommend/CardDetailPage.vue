@@ -4,7 +4,7 @@
         <ChartBox v-if="cardsData && cardsData.comparisonCharts?.length" :commonChartData="chartData"/>
         <NoteBox v-if="cardsData" :note="cardsData.note"/>
         <InputAccount v-model="linkedAccount"/>
-        <ProductButtonBox :request="requestCard"/>
+        <ProductButtonBox v-if="cardsData" :request="requestCard" :isWished="cardsData.productInfo.isWished"/>
     </AppLayout>
 </template>
 <script setup lang="ts">
@@ -41,7 +41,7 @@ const chartData = computed<CommonChartData>(() => {
   }
 })
 
-const linkedAccount = ref('')
+const linkedAccount = ref<string>('')
 
 const requestCard = computed<CardApplicationRequest>(() => {
   if (!cardsData.value) return {} as CardApplicationRequest

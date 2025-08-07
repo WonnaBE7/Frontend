@@ -33,21 +33,19 @@
 </template>
 
 <script setup lang="ts">
-import Card from '@/shared/ui/atoms/Card.vue'
-import Typography from '@/shared/ui/atoms/Typography.vue'
-import { Sparkles } from 'lucide-vue-next'
+  import Card from '@/shared/ui/atoms/Card.vue'
+  import Typography from '@/shared/ui/atoms/Typography.vue'
+  import { Sparkles } from 'lucide-vue-next'
 
-withDefaults(
-  defineProps<{
-    message: string
-    modal?: boolean
-  }>(),
-  {
-    modal: true
-  }
-)
+  withDefaults(
+    defineProps<{
+      message: string
+      modal?: boolean
+    }>(),
+    {
+      modal: true
+    }
+  )
 
-const emit = defineEmits<{
-  (e: 'close'): void
-}>()
+  const emit = defineEmits<(e: 'close') => void>()
 </script>

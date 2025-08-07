@@ -1,18 +1,15 @@
 import type { CardApplicationRequest } from "@/entities/recommend/recommend.entity";
 import { fetcher } from "@/shared/utils/fetcher";
 
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const postRequestCard = async (request : CardApplicationRequest) =>{
-    try{
-        const res = await fetcher({
-            url: `${BASE_URL}/api/users/card/apply`,
-            method: 'POST',
-            auth: true,
-            body: request
-          })
-          return res.code
-    }catch{
-        return '201'
-    }
+    const res = await fetcher({
+        url: `${BASE_URL}/api/users/card/apply`,
+        method: 'POST',
+        auth: true,
+        body: request
+    })
+    return res
 }

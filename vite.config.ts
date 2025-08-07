@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 import { fileURLToPath, URL } from 'node:url'
+import { env } from 'node:process'
 
 export default defineConfig({
   plugins: [
@@ -14,7 +15,6 @@ export default defineConfig({
         skipWaiting: false,
       },
       includeAssets: [
-        'favicon.ico', 
         'apple-touch-icon.png', 
         'mask-icon.svg'
       ],
@@ -82,5 +82,14 @@ export default defineConfig({
   },
   css: {
     postcss: './postcss.config.ts'  
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: env.VITE_API_BASE_URL,
+        changeOrigin: true,
+        secure: false,
+      }
+    }
   }
 })

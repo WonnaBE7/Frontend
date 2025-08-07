@@ -95,4 +95,5 @@ export const useRecommendationStore = defineStore('recommendation', {
       return this.recommendations.insurances[personaId] || []
     },
   },
+  persist: true
 })

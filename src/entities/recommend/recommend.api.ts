@@ -2,12 +2,13 @@ import type { CardDetailResponse, CardRecommendationResponse, CurrentProductsRes
 import { mockCardDetail, mockCardRecommendation, mockCurrentProducts, mockInsuranceDetail, mockInsuranceRecommendation, mockSavingsDetail, mockSavingsRecommendation, mockWishlist } from "@/entities/recommend/recommend.mock";
 import { fetcher } from "@/shared/utils/fetcher";
 
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getCurrentSummmary = async () =>{
     try{
         const res = await fetcher<CurrentProductsResponse>({
-            url: `${BASE_URL}/api/products/summary`,
+            url: `${BASE_URL}/api/user/products/summary`,
             method: 'GET',
             auth: true,
           })
@@ -54,7 +55,7 @@ export const getUserCards = async (productId :number) =>{
             auth: true,
         })
 
-          return res.data
+        return res.data
     }catch{
         return mockCardDetail
     }

@@ -85,9 +85,9 @@ import { postGoalSimulation } from '../service/simulation-input.service'
 import { useUserProfileStore } from '@/entities/user/user.store'
 
 const selectedCategory = ref<string | null>(null)
-const goalName = ref('')
-const targetAmountStr = ref('')
-const goalDurationMonthsStr = ref('')
+const goalName = ref<string>('')
+const targetAmountStr = ref<string>('')
+const goalDurationMonthsStr = ref<string>('')
 
 const router = useRouter()
 const goalSimulationStore = useGoalSimulationStore()

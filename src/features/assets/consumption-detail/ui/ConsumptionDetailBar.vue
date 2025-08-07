@@ -32,39 +32,39 @@
 </template>
 
 <script setup lang="ts">
-import Card from '@/shared/ui/atoms/Card.vue'
-import Typography from '@/shared/ui/atoms/Typography.vue'
-import { Utensils, Bus, Wallet, CircleDollarSign, CalendarCheck } from 'lucide-vue-next'
+  import Card from '@/shared/ui/atoms/Card.vue'
+  import Typography from '@/shared/ui/atoms/Typography.vue'
+  import { Utensils, Bus, Wallet, CircleDollarSign, CalendarCheck } from 'lucide-vue-next'
 
-import type { ConsumptionCategory, ConsumptionTransaction } from '@/entities/consumption/consumption.entity'
+  import type { ConsumptionCategory, ConsumptionTransaction } from '@/entities/consumption/consumption.entity'
 
-type BarCategory = ConsumptionCategory | 'today' | 'current'
+  type BarCategory = ConsumptionCategory | 'today' | 'current'
 
-defineProps<{
-  category: BarCategory
-  transactions: ConsumptionTransaction[]
-}>()
+  defineProps<{
+    category: BarCategory
+    transactions: ConsumptionTransaction[]
+  }>()
 
-const iconMap: Record<string, any> = {
-  food: Utensils,
-  shopping: Wallet,
-  transport: Bus,
-  financial: CircleDollarSign,
-  other: CalendarCheck,
-  current: CalendarCheck,
-  today: CalendarCheck,
-  default: Wallet,
-}
+  const iconMap: Record<string, any> = {
+    food: Utensils,
+    shopping: Wallet,
+    transport: Bus,
+    financial: CircleDollarSign,
+    other: CalendarCheck,
+    current: CalendarCheck,
+    today: CalendarCheck,
+    default: Wallet,
+  }
 
-function formatTime(date: string, time: string): string {
-  const today = new Date().toISOString().split('T')[0]
-  if (date === today) return `${time}`
+  function formatTime(date: string, time: string): string {
+    const today = new Date().toISOString().split('T')[0]
+    if (date === today) return `${time}`
 
-  const yester = new Date()
-  yester.setDate(yester.getDate() - 1)
-  const yesterStr = yester.toISOString().split('T')[0]
-  if (date === yesterStr) return `어제 ${time}`
+    const yester = new Date()
+    yester.setDate(yester.getDate() - 1)
+    const yesterStr = yester.toISOString().split('T')[0]
+    if (date === yesterStr) return `어제 ${time}`
 
-  return `${date} ${time}`
-}
+    return `${date} ${time}`
+  }
 </script>

@@ -28,17 +28,16 @@
         </div>
     </Card>
   </RouterLink>
-
 </template>
 
 <script setup lang="ts">
-import type { CommunityPreview } from '@/entities/board/community/community.entity'
-import Card from '@/shared/ui/atoms/Card.vue';
-import Typography from '@/shared/ui/atoms/Typography.vue';
-import { Users } from 'lucide-vue-next';
-import {finTypeIcons} from '@/shared/constants/finTypes.constants'
+  import type { CommunityPreview } from '@/entities/board/community/community.entity'
+  import Card from '@/shared/ui/atoms/Card.vue';
+  import Typography from '@/shared/ui/atoms/Typography.vue';
+  import { Users } from 'lucide-vue-next';
+  import {finTypeIcons} from '@/shared/constants/finTypes.constants'
 
-defineProps<{
-  communities: CommunityPreview[]
-}>()
+  defineProps<{
+    communities: CommunityPreview[]
+  }>()
 </script>

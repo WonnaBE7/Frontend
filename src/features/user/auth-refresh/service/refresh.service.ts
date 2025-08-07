@@ -9,12 +9,16 @@ interface RefreshResponse {
     }
 }
 
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const refreshToken = async () => {
-  return await fetcher<RefreshResponse>({
+  const res = await fetcher<RefreshResponse>({
     url: `${BASE_URL}/api/auth/refresh`,
     method: 'POST',
-    credentials: 'include', 
+    credentials: 'include',
+    auth: true
   })
+
+  return res.data
 }

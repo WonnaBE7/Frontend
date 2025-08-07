@@ -11,7 +11,7 @@ export const usePostPreviewStore = defineStore('postPreview', {
   }),
   actions: {
     async fetchAssetsMain() {
-        this.posts = await getBoardTop3()
+      this.posts = await getBoardTop3()
     },
     async fetchUserScarped() {
       this.scraped = await getUserScraped()
@@ -32,6 +32,7 @@ export const usePostPreviewStore = defineStore('postPreview', {
       if (post) post.isScraped = !post.isScraped
     },
   },
+  persist: true
 })
 
 
@@ -40,10 +41,11 @@ export const useWriteScrapStore = defineStore('likeScrapStore',{
     count : null as WriteScrapedSummary | null
   }),
   actions :{
-    async fetchLikeScrap(){
+    async fetchWriteScrap(){
       this.count = await getWriteScrapCount()
     }
-  }
+  },
+  persist: true
 })
 
 
@@ -113,5 +115,6 @@ export const useCommunityBoardStore = defineStore('communityBoard', {
   getters: {
     getBoards: state => (categoryId: number) => state.boardsByCategory[categoryId] ?? [],
     getLastBoardId: state => (categoryId: number) => state.lastBoardIdByCategory[categoryId] ?? null,
-  }
+  },
+  persist: true
 })

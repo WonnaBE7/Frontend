@@ -1,31 +1,40 @@
 <template>
   <Card class="bg-white">
     <Typography v-if="wishList" type="B_18_120" class="w-full mb-4">
-      관심 금융 상품 {{ wishList.totalCount }}개
+      관심 금융 상품 {{ totalCount }}개
     </Typography>
 
-    <template v-if="wishList">
-      <template v-for="product in wishList.products" :key="getProductKey(product)">
-        <CardProductCard
-          v-if="product.productType === 'card'"
-          :product="product"
-          @click="goToDetail(product)"
-          class="mb-4"
-        />
-        <SavingsProductCard
-          v-else-if="product.productType === 'savings'"
-          :product="product"
-          @click="goToDetail(product)"
-          class="mb-4"
-        />
-        <InsuranceProductCard
-          v-else-if="product.productType === 'insurance'"
-          :product="product"
-          @click="goToDetail(product)"
-          class="mb-4"
-        />
-        <p v-else class="text-red-500">알 수 없는 상품 유형입니다</p>
-      </template>
+    <!-- 카드 -->
+    <template v-if="wishList?.cards.length">
+      <CardProductCard
+        v-for="card in wishList.cards"
+        :key="card.cardId"
+        :product="card"
+        @click="goToDetail(card, 'card')"
+        class="mb-4"
+      />
+    </template>
+
+    <!-- 예적금 -->
+    <template v-if="wishList?.savings.length">
+      <SavingsProductCard
+        v-for="saving in wishList.savings"
+        :key="saving.productId"
+        :product="saving"
+        @click="goToDetail(saving, 'savings')"
+        class="mb-4"
+      />
+    </template>
+
+    <!-- 보험 -->
+    <template v-if="wishList?.insurances.length">
+      <InsuranceProductCard
+        v-for="insurance in wishList.insurances"
+        :key="insurance.productId"
+        :product="insurance"
+        @click="goToDetail(insurance, 'insurance')"
+        class="mb-4"
+      />
     </template>
   </Card>
 </template>
@@ -40,44 +49,44 @@ import CardProductCard from '../../main/ui/CardProductCard.vue'
 import SavingsProductCard from '../../main/ui/SavingsProductCard.vue'
 import InsuranceProductCard from '../../main/ui/InsuranceProductCard.vue'
 import { useRecommendationStore } from '@/entities/recommend/recommend.store'
-import type { WishlistProduct } from '@/entities/recommend/recommend.entity'
+import type {
+  RecommendedCardProduct,
+  RecommendedSavingsProduct,
+  RecommendedInsuranceProduct,
+  ProductType,
+  WishlistProduct
+} from '@/entities/recommend/recommend.entity'
 
 const store = useRecommendationStore()
 const router = useRouter()
 
 const wishList = computed(() => store.wishlist)
-
-function getProductKey(product: WishlistProduct) {
-  return product.productType === 'card' ? product.cardId : product.productId
-}
+const totalCount = computed(() => wishList.value?.totalCount || 0)
 
 onMounted(async () => {
-  if (!store.wishlist || store.wishlist.products.length === 0) {
+  if (!store.wishlist) {
     await store.fetchWishlist()
   }
 })
 
-function goToDetail(product: WishlistProduct) {
-  let path = ''
-  let productId = ''
-  const productType = product.productType
+function getProductId(product: WishlistProduct): string {
+  return product.productType === 'card' ? product.cardId : product.productId
+}
 
-  if (productType === 'card') {
-    path = '/recommend/card/detail'
-    productId = product.cardId
-  } else if (productType === 'savings') {
-    path = '/recommend/savings/detail'
-    productId = product.productId
-  } else if (productType === 'insurance') {
-    path = '/recommend/insurance/detail'
-    productId = product.productId
+function goToDetail(
+  product: RecommendedCardProduct | RecommendedSavingsProduct | RecommendedInsuranceProduct,
+  productType: ProductType
+) {
+  const pathMap: Record<ProductType, string> = {
+    card: '/recommend/card/detail',
+    savings: '/recommend/savings/detail',
+    insurance: '/recommend/insurance/detail'
   }
+  const productId = getProductId(product)
 
   router.push({
-    path,
+    path: pathMap[productType],
     query: { productId, productType }
   })
 }
-
-
 </script>

@@ -12,6 +12,7 @@ export const useAssetTabStore = defineStore('assetTab', {
       this.selectedTab = tab
     },
   },
+  persist: true
 })
 
 export const useAssetsMain = defineStore('assetsMain', {
@@ -22,7 +23,8 @@ export const useAssetsMain = defineStore('assetsMain', {
     async fetchAssetsMain() {
       this.meta = await getAssets()
     }
-  }
+  },
+  persist: true
 })
 
 export const useAssetsDetail = defineStore('assetsDetail',{
@@ -33,7 +35,8 @@ export const useAssetsDetail = defineStore('assetsDetail',{
       async fetchAssetsDetail() {
         this.meta = await getAssetsSummary()
       }
-    }
+    },
+    persist: true
 })
 
 export const useAssetsCategoryRatio = defineStore('assetsCategoryRatio',{
@@ -44,7 +47,8 @@ export const useAssetsCategoryRatio = defineStore('assetsCategoryRatio',{
     async fetchAssetsCategoryRatio() {
       this.meta = await getAssetsCategoryRatio()
     }
-  }
+  },
+  persist: true
 })
 
 const categories = ['checking', 'savings', 'investment', 'insurance', 'other'] as const

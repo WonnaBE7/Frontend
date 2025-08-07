@@ -66,7 +66,7 @@ const emit = defineEmits<{
 }>()
 
 const checkedInternal = ref<string[]>([])
-const allChecked = ref(false)
+const allChecked = ref<boolean>(false)
 
 const isAllRequiredChecked = computed(() =>
   terms.filter(t => t.required).every(t => checkedInternal.value.includes(t.id))

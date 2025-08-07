@@ -631,7 +631,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
 // 관심상품 목록
 export const mockWishlist: WishlistResponse = {
   totalCount: 3,
-  products: [
+  savings: [
     {
       productType: "savings",
       productId: "1",
@@ -641,6 +641,8 @@ export const mockWishlist: WishlistResponse = {
       maxRate: 4.10,
       totalScore: 86.0
     },
+  ],
+  cards: [
     {
       productType: "card",
       cardId: "2001",
@@ -652,6 +654,8 @@ export const mockWishlist: WishlistResponse = {
       annualFeeDomestic: "해당안함",
       annualFeeOverSeas: "5000"
     },
+  ],
+  insurances: [
     {
       productType: "insurance",
       productId: "3001",

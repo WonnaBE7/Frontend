@@ -1,6 +1,6 @@
 // board.mock.ts
-
-import type { Board, CommunityPreview, CommentSummary, WriteScrapedSummary } from './board.entity'
+import type { Board, CommunityPreview, WriteScrapedSummary } from './board.entity'
+import { financialTendencyList } from '@/shared/constants/finTypes.constants'
 
 export const mockBoards: Board[] = [
   {
@@ -9,7 +9,7 @@ export const mockBoards: Board[] = [
     content: '저는 매달 50만원 이하로 생활하려고 노력 중입니다.',
     userName: '절약왕123',
     categoryId: 5,
-    categoryName: '새싹투자형',
+    categoryName: '공격 투자형',
     likeCount: 12,
     commentCount: 8,
     isScraped: false,
@@ -151,23 +151,6 @@ export const mockCommunityTop3: CommunityPreview[] = [
     latestBoard: '일주일에 한 번은 무조건 스테이크',
   },
 ]
-
-export const mockComments: CommentSummary[] = [
-  {
-    commentId: 1,
-    userName: '절약왕123',
-    nowme: '자린고비형',
-    content: '밥 먹어요',
-    likeCount: 12,
-  },
-  {
-    commentId: 2,
-    userName: '절약싫어',
-    nowme: '경험소비형',
-    content: '돈 아끼죠',
-    likeCount: 13,
-  },
-]
 // 스크랩한 게시글만 (isScraped === true)
 export const mockScrapedBoards: Board[] = mockBoards.filter((b) => b.isScraped)
 
@@ -177,16 +160,11 @@ export const mockLikedBoards: Board[] = mockBoards.filter((b) => b.isLiked)
 // 내가 쓴 글 (예: userName === '절약왕123')
 export const mockMyBoards: Board[] = mockBoards.filter((b) => b.userName === '절약왕123')
 
-
 // 쓴글과 스크랩 숫자
 export const mockMyWriteScrap: WriteScrapedSummary={
   write : 5,
   scrap : 3,
 }
-
-
-
-import { financialTendencyList } from '@/shared/constants/finTypes.constants'
 
 export const mockCommunityBoards: Board[] = (() => {
   let id = 1

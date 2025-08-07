@@ -5,7 +5,7 @@
           <Trash2Icon
             v-if="isMyPost"
             class="w-5 h-5 sm:w-7 sm:h-7 text-gray-900 cursor-pointer hover:text-sub-red-p transition"
-            @click="emit('delete')"
+            @click.stop="handleDelete"
           />
           <BookmarkIcon
             v-else
@@ -13,7 +13,7 @@
               'w-5 h-5 sm:w-7 sm:h-7 cursor-pointer transition',
               isScrapped ? 'text-sub-yellow-p fill-sub-yellow-p' : 'text-sub-yellow-p'
             ]"
-            @click="toggleScrap"
+            @click.stop="toggleScrap"
           />
         </div>
     
@@ -30,7 +30,6 @@
           <div class="flex items-center gap-4 text-sm text-gray-500">
             <div
               class="flex items-center gap-1 md:gap-2 cursor-pointer"
-              @click="toggleLike"
             >
               <HeartIcon
                 :class="[
@@ -55,6 +54,9 @@
   import { HeartIcon, BookmarkIcon, Trash2Icon, MessageCircle } from 'lucide-vue-next'
   import NoBorderTag from '../atoms/NoBorderTag.vue'
   import Card from '../atoms/Card.vue'
+import { patchBoardScrap } from '@/features/board/board-post/service/board-post.service'
+import { usePostPreviewStore } from '@/entities/board/board.store'
+import { deleteBoard } from '@/features/board/board-writed/service/delete-board.service'
 
   
  const props = defineProps<{
@@ -71,29 +73,50 @@
     createdAt:string
   }>()
   
-  const emit = defineEmits<{
-    (e: 'delete'): void
-  }>()
-  
-  // 현재 라우트 기준
   const route = useRoute()
   const isMyPost = computed(() => route.path.includes('/board/write'))
   const router = useRouter()
 
-  // 상태: 좋아요, 스크랩
-  const isLiked = ref(false)
-  const isScrapped = ref(false)
+  const isLiked = ref<boolean>(props.isLiked)
+  const isScrapped = ref<boolean>(props.isScraped)
   
-  const toggleLike = () => {
-    isLiked.value = !isLiked.value
-  }
-  const toggleScrap = () => {
-    isScrapped.value = !isScrapped.value
-  }
   const goToPost = () => {
     router.push({
       path: `/board/post/${props.boardId}`,
       query: { category: props.categoryName }
     })
   }
+
+  const toggleScrap = async () => {
+    isScrapped.value = !isScrapped.value
+    try {
+      await patchBoardScrap(props.categoryId, props.boardId)
+      
+      const store = usePostPreviewStore()
+      store.toggleScrap(props.boardId)
+
+      if (!isScrapped.value) {
+        store.scraped = store.scraped?.filter(p => p.boardId !== props.boardId) ?? null
+      }
+        await store.fetchUserScarped()
+    } catch (e) {
+      console.error('스크랩 실패', e)
+      //isScrapped.value = !isScrapped.value
+    }
+  }
+
+  const handleDelete = async () =>{
+    const confirmed = confirm('정말로 이 게시글을 삭제하시겠습니까?')
+    if (!confirmed) return
+
+    const res = await deleteBoard(props.categoryId, props.boardId)
+    if (res.code === 200) {
+      alert('삭제되었습니다.')
+      const store = usePostPreviewStore()
+      await store.fetchUserWrited()
+    } else {
+      alert('삭제에 실패했습니다.')
+    }
+  }
+  
   </script>

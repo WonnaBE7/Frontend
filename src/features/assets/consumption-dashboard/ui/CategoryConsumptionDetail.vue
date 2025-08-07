@@ -47,25 +47,25 @@
 </template>
 
 <script setup lang="ts">
-import { useConsumptionStore } from '@/entities/consumption/consumption.store'
-import { colorMap, categoryLabelMap } from '@/entities/assets/assets.constants'
-import Typography from '@/shared/ui/atoms/Typography.vue'
-import Card from '@/shared/ui/atoms/Card.vue'
-import { useRouter } from 'vue-router'
+  import { useConsumptionStore } from '@/entities/consumption/consumption.store'
+  import { colorMap, categoryLabelMap } from '@/entities/assets/assets.constants'
+  import Typography from '@/shared/ui/atoms/Typography.vue'
+  import Card from '@/shared/ui/atoms/Card.vue'
+  import { useRouter } from 'vue-router'
 
-const store = useConsumptionStore()
-const router = useRouter()
+  const store = useConsumptionStore()
+  const router = useRouter()
 
-function goToDetail(category: string) {
-  if (store.selectedTab === 'estimated') return
+  function goToDetail(category: string) {
+    if (store.selectedTab === 'estimated') return
 
-  router.push({
-    path: '/assets/consumption/detail',
-    query: {
-      category: category,
-      label: categoryLabelMap[category],
-      type: store.selectedTab === 'today' ? 'today' : 'current',
-    },
-  })
-}
+    router.push({
+      path: '/assets/consumption/detail',
+      query: {
+        category: category,
+        label: categoryLabelMap[category],
+        type: store.selectedTab === 'today' ? 'today' : 'current',
+      },
+    })
+  }
 </script>

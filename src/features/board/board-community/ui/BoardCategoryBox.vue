@@ -3,10 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCommunityListStore } from '@/entities/board/community/community.store';
-import BoardCategory from '@/features/board/board-community/ui/BoardCategory.vue'
+    import { useCommunityListStore } from '@/entities/board/community/community.store';
+    import BoardCategory from '@/features/board/board-community/ui/BoardCategory.vue'
 
-const store = useCommunityListStore()
-
-
+    const store = useCommunityListStore()
 </script>

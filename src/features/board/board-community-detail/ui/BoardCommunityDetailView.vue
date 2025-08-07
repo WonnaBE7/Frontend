@@ -1,45 +1,47 @@
 <template>
-    <PopularTop3Card />
+  <PopularTop3Card 
+    v-if="categoryId"
+    :communityId="categoryId"
+  />
+  <PostPreviewCard
+    v-for="post in pagedPosts"
+    :key="post.boardId"
+    v-bind="post"
+    class="bg-white"
+  />
   
-    <PostPreviewCard
-      v-for="post in pagedPosts"
-      :key="post.boardId"
-      v-bind="post"
-      class="bg-white"
-    />
-  
-    <div class="flex justify-between mt-4 mb-4 px-4">
-      <button
-        :disabled="currentPage === 1"
-        @click="prevPage"
-        class="flex items-center px-4 py-2 text-gray-500"
-        :class="{ 'opacity-40 cursor-not-allowed': currentPage === 1 }"
-      >
-        <ChevronLeft class="w-4 h-4 mr-1" />
-        이전
-      </button>
-  
-      <button
-        :disabled="!hasNextPage"
-        @click="nextPage"
-        class="flex items-center px-4 py-2 text-gray-500"
-        :class="{ 'opacity-40 cursor-not-allowed': !hasNextPage }"
-      >
-        다음
-        <ChevronRight class="w-4 h-4 ml-1" />
-      </button>
-    </div>
-  
-    <Button
-      class="fixed bottom-24 right-4 z-40 bg-sub-yellow-p hover:bg-sub-yellow-d text-white 
-            rounded-full flex items-center justify-center max-w-[56px] max-h-[56px] w-14 h-14"
-      @click="goToWrite"
+  <div class="flex justify-between mt-4 mb-4 px-4">
+    <button
+      :disabled="currentPage === 1"
+      @click="prevPage"
+      class="flex items-center px-4 py-2 text-gray-500"
+      :class="{ 'opacity-40 cursor-not-allowed': currentPage === 1 }"
     >
-      <component :is="FilePlus" class="w-5 h-5 sm:w-7 sm:h-7" />
-    </Button>
-  </template>
+      <ChevronLeft class="w-4 h-4 mr-1" />
+      이전
+    </button>
+
+    <button
+      :disabled="!hasNextPage"
+      @click="nextPage"
+      class="flex items-center px-4 py-2 text-gray-500"
+      :class="{ 'opacity-40 cursor-not-allowed': !hasNextPage }"
+    >
+      다음
+      <ChevronRight class="w-4 h-4 ml-1" />
+    </button>
+  </div>
+
+  <Button
+    class="fixed bottom-24 right-4 z-40 bg-sub-yellow-p hover:bg-sub-yellow-d text-white 
+          rounded-full flex items-center justify-center max-w-[56px] max-h-[56px] w-14 h-14"
+    @click="goToWrite"
+  >
+    <component :is="FilePlus" class="w-5 h-5 sm:w-7 sm:h-7" />
+  </Button>
+</template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   import { ChevronLeft, ChevronRight, FilePlus } from 'lucide-vue-next'
   import Button from '@/shared/ui/atoms/Button.vue'
   import { useRoute, useRouter } from 'vue-router'
@@ -59,7 +61,7 @@
   const posts = ref<Board[]>([])
   const lastBoardId = ref<number | null>(null)
   const pageSize = 5
-  const currentPage = ref(1)
+  const currentPage = ref<number>(1)
   
   onMounted(() => {
     if (categoryId !== null) {
@@ -67,7 +69,7 @@
     }
   })
   
-async function loadInitialPosts() {
+  async function loadInitialPosts() {
     while (posts.value.length < 5) {
       const newPosts = await getCategoryBoard(categoryId!, {
         pageSize,
@@ -109,4 +111,4 @@ async function loadInitialPosts() {
   function goToWrite() {
     router.push({ path: '/board/write', query: { category } })
   }
-  </script>
+</script>

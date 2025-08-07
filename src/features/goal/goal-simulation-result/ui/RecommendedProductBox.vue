@@ -63,11 +63,14 @@ async function submitSelectedProduct() {
   }
 
   try {
-    await patchGoalSelection(goalId, payload)
-    router.push('/goal')
+    const res = await patchGoalSelection(goalId, payload)
+    if(res.code === 200){
+      //모달 넣기
+      router.push('/goal')
+    }
   } catch (e) {
     console.error('목표 저장 실패:', e)
-    router.push('/goal')
+    alert('다시 입력해주세요')
   }
 }
 </script>

@@ -7,41 +7,60 @@
         상품 선택하기
         </Button>
         <Button 
-            @click ="test"
-            class="bg-white border border-gay-150 flex-1"
+            @click="toggleWish"
+            class="flex-1 border bg-white"
         >
-            <component :is="Heart"></component>
+            <HeartIcon 
+                :class="isWishedLocal ? 'text-sub-red-p fill-sub-red-p' : 'bg-white text-gray-900 '" 
+            />
         </Button>
+        <ApplySuccessModal 
+            v-model:visible="showSuccess"
+            @close="handleModalClose"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 import Button from '@/shared/ui/atoms/Button.vue';
-import { Heart } from 'lucide-vue-next';
-import { useRoute } from 'vue-router';
+import { HeartIcon } from 'lucide-vue-next';
+import { useRoute, useRouter } from 'vue-router';
 import { fetchWish } from '../../wish-list/service/add-remove-wish.service';
 import type { CardApplicationRequest } from '@/entities/recommend/recommend.entity';
 import { postRequestCard } from '../service/request-card.service';
+import ApplySuccessModal from '../../ui/ApplySuccessModal.vue';
+import { ref } from 'vue';
 
+const router = useRouter()
 const props = defineProps<{
     request : CardApplicationRequest
+    isWished: boolean
 }>()
 
-async function requestCard(){
-    console.log(props.request)
+const showSuccess = ref<boolean>(false)
+const isWishedLocal = ref<boolean>(props.isWished)
+
+async function requestCard() {
     const res = await postRequestCard(props.request)
-    console.log(res)
+    if (res.code === 200) {
+        showSuccess.value = true
+    }
 }
+
+function handleModalClose() {
+  router.push('/recommend') 
+}
+
 const route = useRoute()
 const cardsId = route.query.productId as string
 const type = route.query.productType as string
-async function test() {
-    console.log(cardsId, type)
-    const wishdata = {
-        action: 'add', //바꿔야할 것 이것도 상품에 추가하는 boolean 값 들어오도록 하면 바꾸기
-        productType: type,
-        productId: cardsId
-    }
-    await fetchWish(wishdata)
+async function toggleWish() {
+    const action = isWishedLocal.value ? 'remove' : 'add'
+    await fetchWish({
+      action,
+      productType: type,
+      productId: cardsId
+    })
+    isWishedLocal.value = !isWishedLocal.value
 }
 </script>

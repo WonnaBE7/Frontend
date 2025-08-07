@@ -1,5 +1,6 @@
 import { fetcher } from '@/shared/utils/fetcher'
 
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 interface DiagnosisRequest {
@@ -7,14 +8,10 @@ interface DiagnosisRequest {
 }
 
 export const submitNowmeDiagnosis = async (payload: DiagnosisRequest) => {
-  const purifiedPayload: DiagnosisRequest = {
-    answers: [...payload.answers]
-  }
-
   const res = await fetcher({
     url: `${BASE_URL}/api/nowme/diagnosis`,
     method: 'POST',
-    body: purifiedPayload,
+    body: payload,
     auth: true,
   })
 

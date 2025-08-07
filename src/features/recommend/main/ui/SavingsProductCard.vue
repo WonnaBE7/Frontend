@@ -12,9 +12,6 @@
             <Typography type="M_12_120" class="text-gray-500 mb-1">
               {{ product.bankName }}
             </Typography>
-            <!-- <Typography type="M_10_120" class="justify-start mb-1  text-sub-yellow-p bg-sub-yellow-bg px-2 py-1 rounded">
-              {{ product.type }}
-            </Typography> -->
         </div>
   
         <div class="flex justify-between w-full">
@@ -41,5 +38,5 @@
   import type { RecommendedSavingsProduct } from '@/entities/recommend/recommend.entity'
   
   defineProps<{ product: RecommendedSavingsProduct }>()
-  defineEmits<{ (e: 'click', product: RecommendedSavingsProduct): void }>()
+  defineEmits<(e: 'click', product: RecommendedSavingsProduct) => void>()
   </script>

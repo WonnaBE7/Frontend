@@ -11,22 +11,23 @@
         </Card>
     </div>
 </template>
+
 <script setup lang="ts">
-import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
-import Card from '@/shared/ui/atoms/Card.vue';
-import Typography from '@/shared/ui/atoms/Typography.vue';
-import { BookmarkIcon, Pen, MonitorDot } from 'lucide-vue-next';
-import { useRouter } from 'vue-router'
-import { useWriteScrapStore } from '@/entities/board/board.store';
+    import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
+    import Card from '@/shared/ui/atoms/Card.vue';
+    import Typography from '@/shared/ui/atoms/Typography.vue';
+    import { BookmarkIcon, Pen, MonitorDot } from 'lucide-vue-next';
+    import { useRouter } from 'vue-router'
+    import { useWriteScrapStore } from '@/entities/board/board.store';
 
-const store = useWriteScrapStore()
-const router = useRouter()
+    const store = useWriteScrapStore()
+    const router = useRouter()
 
-function goToScrap (){
-    router.push({ path: '/board/scraped'})
-}
+    function goToScrap (){
+        router.push({ path: '/board/scraped'})
+    }
 
-function goToWrite (){
-    router.push({ path: '/board/writed'})
-}
+    function goToWrite (){
+        router.push({ path: '/board/writed'})
+    }
 </script>

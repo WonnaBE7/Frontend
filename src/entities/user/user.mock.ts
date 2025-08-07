@@ -1,7 +1,7 @@
 import type { UserHistoryResponse, UserProfile, UserSurveyData } from './user.entity'
 
 export const mockUserProfile: UserProfile = {
-  userId : "12321312412421421",
+  userId: "9e423205-426c-442e-96a6-170a27ad3f8d",
   name: '김금용',
   email: 'kim@example.com',
   nowME: '자린고비형',

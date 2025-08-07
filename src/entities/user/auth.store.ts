@@ -79,12 +79,12 @@ export const useAuthStore = defineStore('auth', {
       try {
         const res = await refreshToken()
 
-        this.accessToken = res.data.accessToken
-        this.user = res.data.user
+        this.accessToken = res.accessToken
+        this.user = res.user
         this.loginTime = localStorage.getItem('loginTime')
 
-        localStorage.setItem('accessToken', res.data.accessToken)
-        localStorage.setItem('user', JSON.stringify(res.data.user))
+        localStorage.setItem('accessToken', res.accessToken)
+        localStorage.setItem('user', JSON.stringify(res.user))
 
         if (this.loginTime) {
           this.scheduleLogout(this.loginTime)
@@ -108,4 +108,5 @@ export const useAuthStore = defineStore('auth', {
       }
     },
   },
+  persist: true
 })

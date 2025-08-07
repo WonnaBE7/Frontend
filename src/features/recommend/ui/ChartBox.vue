@@ -45,7 +45,7 @@ const props = defineProps<{
   commonChartData: CommonChartData
 }>()
 
-const selectedCompareId = ref(String(props.commonChartData.comparisonCharts[0].compareId))
+const selectedCompareId = ref<string>(String(props.commonChartData.comparisonCharts[0].compareId))
 
 const selectedComparison = computed(() => {
   return props.commonChartData.comparisonCharts.find(

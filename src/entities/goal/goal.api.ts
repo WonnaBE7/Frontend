@@ -2,10 +2,11 @@ import { fetcher } from '@/shared/utils/fetcher'
 import { mockGoalReports, mockGoalSummary } from './goal.mock'
 import type { GoalReport, GoalSummary } from './goal.entity'
 
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 
-export const fetchGoals = async (status: 'PUBLISHED' | 'ACHIEVED' = 'PUBLISHED')=> {
+export const getGoals = async (status: 'PUBLISHED' | 'ACHIEVED' = 'PUBLISHED')=> {
   try{
     const res = await fetcher<GoalSummary>({
       url: `${BASE_URL}/api/goals?status=${status}`,
@@ -23,7 +24,7 @@ export const fetchGoals = async (status: 'PUBLISHED' | 'ACHIEVED' = 'PUBLISHED')
   }
 }
 
-export const fetchGoalReport = async (goalId: number)=> {
+export const getGoalReport = async (goalId: number)=> {
   try{
     const res = await fetcher<GoalReport>({
       url: `${BASE_URL}/api/goals/${goalId}`,

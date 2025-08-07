@@ -14,6 +14,7 @@ export const useCommunityListStore = defineStore('communityStore', {
     async fetchCommunityTop3() {
       this.top3 = await getCommunityTop3()
     }
-  }
+  },
+  persist: true
 })
 

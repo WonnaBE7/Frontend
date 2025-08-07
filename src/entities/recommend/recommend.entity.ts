@@ -147,13 +147,13 @@ export interface CardRecommendationResponse {
     products: RecommendedCardProduct[]
   }[]
 }
-
-// 관심상품 목록
 export type WishlistProduct = RecommendedSavingsProduct | RecommendedCardProduct | RecommendedInsuranceProduct
-
+// 관심상품 목록
 export interface WishlistResponse {
   totalCount: number
-  products: WishlistProduct[]
+  savings:RecommendedSavingsProduct[]
+  cards:RecommendedCardProduct[]
+  insurances:RecommendedInsuranceProduct[]
 }
 
 // 관심상품 추가/제거

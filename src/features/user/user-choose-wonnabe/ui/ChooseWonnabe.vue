@@ -77,7 +77,7 @@ const submit = async () => {
   console.log(selectedIds)
   try {
     const res = await patchWonnaBESelections({
-      selected_wonnabe_ids: selectedIds,
+      selectedWonnabeIds : selectedIds,
     })
     console.log('워너비 선택 저장 완료:', res.message)
     router.push('/user')

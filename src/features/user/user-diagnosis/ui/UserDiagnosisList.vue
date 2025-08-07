@@ -43,7 +43,7 @@ const submitAnswers = async () => {
   }
 
   const payload = {
-    diagnosis_answers: values as number[]
+    answers: values as number[]
   }
 
   try {

@@ -1,5 +1,6 @@
 import { fetcher } from "@/shared/utils/fetcher"
 
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 interface Response{
@@ -8,14 +9,10 @@ interface Response{
 }
 
 export const userLogout= async() => {
-    try{
-        const res = await fetcher<Response>({
-            url: `${BASE_URL}/api/auth/logout`,
-            method: 'POST',
-            auth: true,
-        })
-        return res.code
-    }catch{
-        return '400'
-    }
+    const res = await fetcher<Response>({
+        url: `${BASE_URL}/api/auth/logout`,
+        method: 'POST',
+        auth: true,
+    })
+    return res
 }

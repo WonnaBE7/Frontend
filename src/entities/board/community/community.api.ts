@@ -2,6 +2,7 @@ import { fetcher} from '@/shared/utils/fetcher';
 import type { CommunityPreview } from '../board.entity';
 import { mockCommunities } from './community.mock';
 
+//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getCommunity = async () => {

@@ -10,7 +10,11 @@
                 <component :is="ChevronRight"></component>
             </RouterLink>
         </div>
-        <FinTypeRowCard v-if="user.profile" :label="user.profile.nowME" descript="불필요한 소비를 철저히 줄이고 최대한 저축하는 성향"></FinTypeRowCard>
+        <FinTypeRowCard 
+            v-if="user.profile" 
+            :label="user.profile.nowME" 
+            :descript="getFinancialTypeDescription(user.profile.nowME)"
+        ></FinTypeRowCard>
         <IconLabel :icon="TrendingUp" :iconClass="'text-sub-yellow-p'">
             되고 싶은 나,
             <span class="ml-2 text-sub-yellow-p">WonnaBE</span>
@@ -37,6 +41,13 @@
     import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue';
     import { TrendingUp, ChevronRight } from 'lucide-vue-next';
     import { useUserProfileStore } from '@/entities/user/user.store';
+    import { financialTendencyList } from '@/shared/constants/finTypes.constants';
 
     const user = useUserProfileStore()
+
+    console.log('유저프로필 테스트 :',user.profile)
+    const getFinancialTypeDescription = (typeName: string): string => {
+        const matchedType = financialTendencyList.find(type => type.name === typeName);
+        return matchedType ? matchedType.description : '';
+    }
 </script>
