@@ -8,8 +8,8 @@ export const initGoalData = async () => {
 
   await Promise.all([
     // 홈 페이지
-    !userStore.profile && userStore.fetchUserProfile(),
-    !goalStore.publishedGoals.length && goalStore.fetchPublishedGoals(),  // 목표 데이터 조회 - 진행 중 
-    !goalStore.achievedGoals.length && goalStore.fetchAchievedGoals(),    // 목표 데이터 조회 - 완료
+    userStore.fetchUserProfile(),
+    goalStore.fetchPublishedGoals(),  // 목표 데이터 조회 - 진행 중 
+    goalStore.fetchAchievedGoals(),    // 목표 데이터 조회 - 완료
   ])
 }

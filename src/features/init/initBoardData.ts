@@ -13,15 +13,15 @@ export const initBoardData = async () => {
   
   await Promise.all([
     // 홈 페이지
-    !userStore.profile && userStore.fetchUserProfile(),
-    !goalStore.publishedGoals.length && goalStore.fetchPublishedGoals(),  // 목표 데이터 조회 - 진행 중 
+    userStore.fetchUserProfile(),
+    goalStore.fetchPublishedGoals(),  // 목표 데이터 조회 - 진행 중 
 
     // 게시글
     // 인기 글 top 3
-    !postPreviewStore.posts && postPreviewStore.fetchAssetsMain(),
-    !postPreviewStore.scraped && postPreviewStore.fetchUserScarped(),// 내가 스크랩한 글 미리보기
-    !postPreviewStore.writed && postPreviewStore.fetchUserWrited(), // 내가 작성한 글 미리보기
-    !countWriteScrap.count && countWriteScrap.fetchWriteScrap(), // 내가 스크랩한, 내가 쓴 글 갯수
+    postPreviewStore.fetchBoardTop3(),
+    postPreviewStore.fetchUserScarped(),// 내가 스크랩한 글 미리보기
+    postPreviewStore.fetchUserWrited(), // 내가 작성한 글 미리보기
+    countWriteScrap.fetchWriteScrap(), // 내가 스크랩한, 내가 쓴 글 갯수
 
     // 커뮤니티
     !communtyList.all && communtyList.fetchCommunityList(),
