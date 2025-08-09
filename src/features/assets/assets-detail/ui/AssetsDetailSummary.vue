@@ -14,8 +14,11 @@
     <Card class="border border-gray-150">
       <div class="flex flex-row w-full justify-between items-center">
           <div>
-              <Typography type="M_14_140" class="text-gray-800 ">
+            <Typography type="M_14_140" class="text-gray-800 ">
                 {{ account.bankName }}
+              </Typography>
+              <Typography type="M_14_140" class="text-gray-800 ">
+                {{ account.accountName }}
               </Typography>
               <Typography type="M_12_120" class="text-gray-200">
                 {{ account.accountNumber }}

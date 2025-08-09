@@ -12,15 +12,43 @@
     />
     <Card class="bg-white border border-gray-150">
       <div class="w-full flex justify-between mb-4 md:mb-6">
-        <Tag> 직업 </Tag>
-        <Typography type="M_12_120">7/7</Typography>
+        <Tag> 현 직업 상태</Tag>
+        <Typography type="M_12_120">7/9</Typography>
       </div>
       <Typography type="M_14_120" class="w-full px-1 mb-4 md:mb-6">
         현재 직업 상태를 선택해주세요!
       </Typography>
       <CustomDropdown
         class="w-full"
-        v-model="jobAnswer"
+        v-model="sourceData"
+        :options="incomeSource"
+      />
+    </Card>
+    <Card class="bg-white border border-gray-150">
+      <div class="w-full flex justify-between mb-4 md:mb-6">
+        <Tag> 소득 종류 </Tag>
+        <Typography type="M_12_120">8/9</Typography>
+      </div>
+      <Typography type="M_14_120" class="w-full px-1 mb-4 md:mb-6">
+        현재 소득 상태를 선택해주세요!
+      </Typography>
+      <CustomDropdown
+        class="w-full"
+        v-model="employmentData"
+        :options="incomeEmployment"
+      />
+    </Card>
+    <Card class="bg-white border border-gray-150">
+      <div class="w-full flex justify-between mb-4 md:mb-6">
+        <Tag> 직업 </Tag>
+        <Typography type="M_12_120">9/9</Typography>
+      </div>
+      <Typography type="M_14_120" class="w-full px-1 mb-4 md:mb-6">
+        현재 직업 상태를 선택해주세요!
+      </Typography>
+      <CustomDropdown
+        class="w-full"
+        v-model="incomeData"
         :options="job"
       />
     </Card>
@@ -34,21 +62,20 @@ import Typography from '@/shared/ui/atoms/Typography.vue'
 import CustomDropdown from '@/shared/ui/atoms/CustomDropdown.vue'
 import UserDiagnosisItem from '../../user-diagnosis/ui/UserDiagnosisItem.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
-import { questions, choices, choices2, job } from '@/features/user/user-survey/constants/userSurvey.ts'
+import { questions, choices, choices2, job , incomeSource, incomeEmployment} from '@/features/user/user-survey/constants/userSurvey.ts'
 
-import { useUserProfileStore } from '@/entities/user/user.store'
 import {
   getUserSurveyData,
   postUserSurveyData,
   patchUserSurveyData
 } from '../service/user-survey.service.ts'
-import type { UserSurveyData } from '@/entities/user/user.entity'
+import type { UserSurveyData } from '@/entities/user/user.entity.ts'
 
-const userStore = useUserProfileStore()
-const userId = userStore.profile?.userId || ''
 
 const answers = ref<Record<string, string | number>>({})
-const jobAnswer = ref<string>('')
+const sourceData = ref<string>('')
+const employmentData = ref<string>('')
+const incomeData = ref<string>('')
 
 const boolTags = ['술', '담배', '운동', '가족간 질병', '이전 질병']
 
@@ -61,32 +88,34 @@ function getChoices(tag: string) {
 onMounted(async () => {
   const existing = await getUserSurveyData()
   if (existing) {
-    answers.value['담배'] = existing.lifestyle_smoking ? 1 : 2
-    answers.value['술'] = existing.lifestyle_drinking ? 1 : 2
-    answers.value['운동'] = existing.lifestyle_exercise ? 1 : 2
-    answers.value['가족 구성원'] = existing.household_size
-    answers.value['가족간 질병'] = existing.lifestyle_family_medical ? 1 : 2
-    answers.value['이전 질병'] = existing.lifestyle_before_diseases ? 1 : 2
-    jobAnswer.value = existing.income_job_type
+    answers.value['담배'] = existing.lifestyleSmoking === 1 ? 1 : 2
+    answers.value['술'] = existing.lifestyleAlcoholFreq === 1 ? 1 : 2
+    answers.value['운동'] = existing.lifestyleExerciseFreq === 1? 1 : 2
+    answers.value['가족 구성원'] = existing.householdSize
+    answers.value['가족간 질병'] = existing.lifestyleFamilyMedical === 1 ? 1 : 2
+    answers.value['이전 질병'] = existing.lifestyleBeforeDiseases === 1 ? 1 : 2
+    sourceData.value = existing.incomeSourceType
+    employmentData.value = existing.incomeEmploymentStatus
+    incomeData.value = existing.incomeJobType
   }
 })
 
 async function submitAnswers() {
   const payload: UserSurveyData = {
-    user_id: userId,
-    lifestyle_smoking: answers.value['담배'] === 1,
-    lifestyle_drinking: answers.value['술'] === 1,
-    lifestyle_exercise: answers.value['운동'] === 1,
-    household_size: Number(answers.value['가족 구성원']),
-    lifestyle_family_medical: answers.value['가족간 질병'] === 1,
-    lifestyle_before_diseases: answers.value['이전 질병'] === 1,
-    income_job_type: jobAnswer.value,
+    lifestyleSmoking: answers.value['담배'] as number,
+    lifestyleAlcoholFreq: answers.value['술'] as number,
+    lifestyleExerciseFreq: answers.value['운동'] as number,
+    householdSize: Number(answers.value['가족 구성원']),
+    incomeSourceType: sourceData.value,
+    incomeEmploymentStatus:employmentData.value,
+    lifestyleFamilyMedical: answers.value['가족간 질병'] as number,
+    lifestyleBeforeDiseases: answers.value['이전 질병'] as number,
+    incomeJobType: incomeData.value,
   }
 
   const existing = await getUserSurveyData()
-  const isMock = !existing?.user_id || existing.user_id === ''
 
-  if (isMock) {
+  if (existing) {
     await postUserSurveyData(payload)
     console.log('✅ POST: 설문 최초 제출 완료')
   } else {

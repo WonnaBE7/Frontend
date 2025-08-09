@@ -54,7 +54,6 @@ export const getUserCards = async (productId :number) =>{
             method: 'GET',
             auth: true,
         })
-
         return res.data
     }catch{
         return mockCardDetail

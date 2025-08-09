@@ -47,16 +47,16 @@
       </Card>
   </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   import { ref, computed } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
   import Typography from '@/shared/ui/atoms/Typography.vue'
   import { HeartIcon, BookmarkIcon, Trash2Icon, MessageCircle } from 'lucide-vue-next'
   import NoBorderTag from '../atoms/NoBorderTag.vue'
   import Card from '../atoms/Card.vue'
-import { patchBoardScrap } from '@/features/board/board-post/service/board-post.service'
-import { usePostPreviewStore } from '@/entities/board/board.store'
-import { deleteBoard } from '@/features/board/board-writed/service/delete-board.service'
+  import { patchBoardScrap } from '@/features/board/board-post/service/board-post.service'
+  import { usePostPreviewStore } from '@/entities/board/board.store'
+  import { deleteBoard } from '@/features/board/board-writed/service/delete-board.service'
 
   
  const props = defineProps<{

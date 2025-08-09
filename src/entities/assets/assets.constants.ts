@@ -1,6 +1,7 @@
 export const colorMap: Record<string, string> = {
   checking: 'bg-sub-yellow-p',
   savings: 'bg-sub-green-p',
+  pension : 'bg-sub-aqua-p',
   investment: 'bg-sub-aqua-p',
   insurance: 'bg-sub-orange-p',
   other: 'bg-sub-red-p',
@@ -10,13 +11,14 @@ export const colorMap: Record<string, string> = {
   financial: 'bg-sub-aqua-p',
 }
 export const categoryLabelMap: Record<string, string> = {
-  checking: '예금',
-  savings: '적금',
+  checking: '입출금',
+  savings: '저축',
+  pension:'연금',
   investment: '투자',
   insurance: '연금',
   other: '기타',
   food: '식비',
   shopping: '쇼핑',
   transport: '교통',
-  financial: '문화',
+  financial: '금융',
 }

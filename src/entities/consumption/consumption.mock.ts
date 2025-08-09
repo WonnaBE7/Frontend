@@ -81,7 +81,7 @@ export const mockTodayCategoryConsumption: TodayCategoryConsumption = {
       consumptionCategory: 'food',
       amount: 80000,
       percentage: 53.3,
-      diffFromYesterday: -5000,
+      diffFromYesterday: 5000,
     },
     {
       consumptionCategory: 'transport',

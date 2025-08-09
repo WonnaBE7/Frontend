@@ -21,12 +21,15 @@ export const mockUserNowmeHistory: UserHistoryResponse[] = [
 ]
 
 export const mockUserSurveyData: UserSurveyData={
-  user_id: "02747659-2dd1-41d6-80a7-131b9ddfac97",
-  lifestyle_smoking: false,
-  lifestyle_drinking: false,
-  lifestyle_exercise: false,
-  household_size: 2,
-  lifestyle_family_medical: false,
-  lifestyle_before_diseases: false,
-  income_job_type: "개발자"
+  lifestyleSmoking: 0,
+  lifestyleAlcoholFreq: 1,
+  lifestyleExerciseFreq: 1,
+  lifestyleFamilyMedical: 1,
+  lifestyleBeforeDiseases: 0,
+
+  incomeSourceType:"근로소득",
+  incomeEmploymentStatus:"재직",
+
+  householdSize: 2,
+  incomeJobType: "개발자"
 }

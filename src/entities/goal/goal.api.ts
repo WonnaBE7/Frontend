@@ -11,7 +11,9 @@ export const getGoals = async (status: 'PUBLISHED' | 'ACHIEVED' = 'PUBLISHED')=>
     const res = await fetcher<GoalSummary>({
       url: `${BASE_URL}/api/goals?status=${status}`,
       method: 'GET',
+      auth:true,
     })
+    console.log(res.code, res.data, res.message)
     return res.data
   }catch{ 
     const filteredGoals = mockGoalSummary.goals.filter(g => g.status === status)
@@ -29,6 +31,7 @@ export const getGoalReport = async (goalId: number)=> {
     const res = await fetcher<GoalReport>({
       url: `${BASE_URL}/api/goals/${goalId}`,
       method: 'GET',
+      auth:true,
     })
     return res.data
   }catch{ 

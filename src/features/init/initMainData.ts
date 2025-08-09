@@ -24,6 +24,6 @@ export const initMainData = async () => {
     !goalStore.publishedGoals.length && goalStore.fetchPublishedGoals(),  
 
     // 인기 글 top 3
-    !postPreviewStore.posts && postPreviewStore.fetchAssetsMain(),
+    !postPreviewStore.posts && postPreviewStore.fetchBoardTop3(),
   ])
 }

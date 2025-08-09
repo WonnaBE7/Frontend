@@ -12,6 +12,7 @@ export const getBoardTop3 = async () => {
             method: 'GET',
             auth: true
         })
+        console.log('게시판 데이터 테스트',res.data)
         return res.data
     }catch{
         return mockTop3Boards

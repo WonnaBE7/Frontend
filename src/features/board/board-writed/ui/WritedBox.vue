@@ -2,7 +2,17 @@
   <PostPreviewCard
       v-for="post in writedPosts"
       :key="post.boardId"
-      v-bind="post"
+      :board-id="post.boardId"
+      :title="post.title"
+      :content="post.content"
+      :user-name="post.userName"
+      :category-id="post.categoryId"
+      :category-name="post.categoryName"
+      :like-count="post.likeCount"
+      :comment-count="post.commentCount"
+      :is-scraped="post.isScraped"
+      :is-liked="post.isLiked"
+      :created-at="post.createdAt"
       class="bg-white"
   />
 </template>

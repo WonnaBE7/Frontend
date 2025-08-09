@@ -30,7 +30,7 @@ export const useAuthStore = defineStore('auth', {
       this.accessToken = accessToken
       this.user = user
       this.loginTime = now
-
+      console.log('토큰 테스트',this.accessToken)
       localStorage.setItem('accessToken', accessToken)
       localStorage.setItem('user', JSON.stringify(user))
       localStorage.setItem('loginTime', now)
@@ -58,7 +58,7 @@ export const useAuthStore = defineStore('auth', {
 
     scheduleLogout(loginTimeStr: string) {
       const loginTime = new Date(loginTimeStr).getTime()
-      const expirationTime = loginTime + 100000000000 //7 * 24 * 60 * 60 * 1000 // 7일
+      const expirationTime = loginTime  + 7 * 24 * 60 * 60 * 1000
       const now = Date.now()
       const remaining = expirationTime - now
 

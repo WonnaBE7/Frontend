@@ -24,6 +24,18 @@ export const job=[
   {value : '기타', label : '기타' }
 ]
 
+export const incomeSource=[
+  {value : '근로소득', label : '근로소득'},
+  {value : '사업소득', label : '사업소득'},
+  {value : '기타소득', label : '기타소득'},
+]
+
+export const incomeEmployment=[
+  {value : '재직', label : '재직' },
+  {value : '퇴직', label : '퇴직' },
+  {value : '휴직', label : '휴직' }
+]
+
 export const questions = [
     { tag: '술', label: '주 1회 이상 술을 섭취하시나요?' },
     { tag: '담배', label: '주 1회 이상 담배를 하시나요?' },

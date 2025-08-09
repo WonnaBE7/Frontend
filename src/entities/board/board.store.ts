@@ -10,7 +10,7 @@ export const usePostPreviewStore = defineStore('postPreview', {
     writed : null as Board[] | null,
   }),
   actions: {
-    async fetchAssetsMain() {
+    async fetchBoardTop3() {
       this.posts = await getBoardTop3()
     },
     async fetchUserScarped() {

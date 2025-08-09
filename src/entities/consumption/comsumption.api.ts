@@ -2,7 +2,7 @@ import { fetcher } from "@/shared/utils/fetcher"
 import type { ConsumptionCategoryDetail, ConsumptionSummaryMeta, EstimatedAndTodayConsumption, MonthlyCategoryConsumption, MonthlyConsumptionSummary, MonthlyTransactionDetail, TodayCategoryConsumption, TodayTransactionDetail } from "./consumption.entity"
 import { mockConsumptionSummaryMeta, mockEstimatedAndTodayConsumption, mockMonthlyCategoryConsumption, mockMonthlyCategoryDetailMap, mockMonthlyConsumptionSummary, mockMonthlyTransactionDetail, mockTodayCategoryConsumption, mockTodayCategoryDetailMap, mockTodayTransactionDetail } from "./consumption.mock"
 
-//const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getConsumption = async () => {
@@ -81,6 +81,7 @@ export const getMonthlyTransactionDetail = async (yearMonth: string) => {
             method: 'GET',
             auth: true,
         })
+        console.log('월별 테스트',res.code, res.data)
         return res.data
     }catch{
         return mockMonthlyTransactionDetail

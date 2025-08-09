@@ -15,12 +15,15 @@ export interface UserHistoryResponse{
 }
 
 export interface UserSurveyData{
-    user_id : string,
-    lifestyle_smoking: boolean,
-    lifestyle_drinking: boolean,
-    lifestyle_exercise: boolean,
-    household_size: number,
-    lifestyle_family_medical: boolean,
-    lifestyle_before_diseases: boolean,
-    income_job_type: string
+    lifestyleSmoking: number,
+    lifestyleAlcoholFreq: number,
+    lifestyleExerciseFreq: number,
+    lifestyleFamilyMedical: number,
+    lifestyleBeforeDiseases: number,
+
+    incomeSourceType:string,
+    incomeEmploymentStatus:string,
+
+    householdSize: number,
+    incomeJobType: string
 }
