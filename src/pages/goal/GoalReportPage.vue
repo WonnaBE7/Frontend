@@ -22,6 +22,7 @@
         <AchievedButton
         v-if="reportData"
         :goalId="reportData?.id"
+      
       />
     </div>
    

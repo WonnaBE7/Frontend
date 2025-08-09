@@ -23,6 +23,7 @@ export interface AssetDetailItem {
   accountsCount: number        
 }
 export interface AssetDetailResponse {
+  meta: any
   categories: AssetDetailItem[]
 }
 

@@ -13,15 +13,15 @@
       <div class="grid grid-cols-3 gap-2">
         <Tag
           v-for="category in goalCategories"
-          :key="category"
+          :key="category.id"
           :class="[
-            selectedCategory === category
+            selectedCategory?.id === category.id
               ? 'bg-sub-yellow-p text-white border-none'
               : 'bg-white text-gray-800'
           ]"
           @click="selectCategory(category)"
         >
-          {{ goalCategoryIcons[category] }} {{ category }}
+          {{ goalCategoryIcons[category.label] }} {{ category.label }}
         </Tag>
       </div>
     </Card>
@@ -66,46 +66,46 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+  import { ref, computed } from 'vue'
+  import { useRouter } from 'vue-router'
 
-import Typography from '@/shared/ui/atoms/Typography.vue'
-import Input from '@/shared/ui/atoms/Input.vue'
-import Card from '@/shared/ui/atoms/Card.vue'
-import Button from '@/shared/ui/atoms/Button.vue'
+  import Typography from '@/shared/ui/atoms/Typography.vue'
+  import Input from '@/shared/ui/atoms/Input.vue'
+  import Card from '@/shared/ui/atoms/Card.vue'
+  import Button from '@/shared/ui/atoms/Button.vue'
 
-import { goalCategories, goalCategoryIcons } from '@/shared/constants/goalCategory.constants'
-import { finTypeImages } from '@/shared/assets/fintype'
-import { useGoalSimulationStore } from '@/entities/goal/goal.store'
-import { mockGoalSimulationResponse } from '@/entities/goal/goal.mock'
+  import { goalCategories, goalCategoryIcons } from '@/shared/constants/goalCategory.constants'
+  import { finTypeImages } from '@/shared/assets/fintype'
+  import { useGoalSimulationStore } from '@/entities/goal/goal.store'
 
-import type { GoalSimulationInput, GoalSimulationResponse } from '@/entities/goal/goal.entity'
-import Tag from '@/shared/ui/atoms/Tag.vue'
-import { postGoalSimulation } from '../service/simulation-input.service'
-import { useUserProfileStore } from '@/entities/user/user.store'
+  import type { GoalSimulationInput } from '@/entities/goal/goal.entity'
+  import Tag from '@/shared/ui/atoms/Tag.vue'
+  import { postGoalSimulation } from '../service/simulation-input.service'
+  import { useUserProfileStore } from '@/entities/user/user.store'
 
-const selectedCategory = ref<string | null>(null)
-const goalName = ref<string>('')
-const targetAmountStr = ref<string>('')
-const goalDurationMonthsStr = ref<string>('')
+  const goalName = ref<string>('')
+  const targetAmountStr = ref<string>('')
+  const goalDurationMonthsStr = ref<string>('')
 
-const router = useRouter()
-const goalSimulationStore = useGoalSimulationStore()
-const userStore = useUserProfileStore()
-const userProfile = computed(() => userStore.profile)
+  const router = useRouter()
+  const goalSimulationStore = useGoalSimulationStore()
+  const userStore = useUserProfileStore()
+  const userProfile = computed(() => userStore.profile)
 
-const finImage = computed(() => {
-  const me = userProfile.value?.nowME
-  const image = finTypeImages[me ?? '']
-  if (!image) console.warn(`${me}에 대한 이미지가 없습니다.`)
-  return image
-})
+  const finImage = computed(() => {
+    const me = userProfile.value?.nowME
+    const image = finTypeImages[me ?? '']
+    if (!image) console.warn(`${me}에 대한 이미지가 없습니다.`)
+    return image
+  })
 
-const selectCategory = (category: string) => {
-  selectedCategory.value = category
-}
+  const selectedCategory = ref<{ id: number; label: string } | null>(null)
 
-const submitGoal = async () => {
+  const selectCategory = (category: { id: number; label: string }) => {
+    selectedCategory.value = category
+  }
+
+  const submitGoal = async () => {
   if (
     selectedCategory.value === null ||
     !goalName.value ||
@@ -116,30 +116,21 @@ const submitGoal = async () => {
     return
   }
 
-  const categoryId = goalCategories.indexOf(selectedCategory.value)
-  if (categoryId === -1) {
-    alert('선택한 카테고리가 잘못되었습니다.')
-    return
-  }
-
   const requestBody: GoalSimulationInput = {
     goalName: goalName.value,
-    categoryId,
+    categoryId: selectedCategory.value.id, 
     targetAmount: parseInt(targetAmountStr.value),
     goalDurationMonths: parseInt(goalDurationMonthsStr.value),
   }
 
-  let result: GoalSimulationResponse
-
-  try {
-    result = await postGoalSimulation(requestBody)
-  } catch (e) {
-    console.warn('⚠️ 서버 연결 실패, mock 데이터 사용')
-    result = mockGoalSimulationResponse
+    console.log('시뮬레이션 요청: ', requestBody)
+    try {
+      const result = await postGoalSimulation(requestBody)
+      goalSimulationStore.setResult(result)
+      router.push('/goal/simulation/result')
+    } catch {
+      alert('조금 더 현실적인 목표를 써주세요!')
+    }
   }
-
-  goalSimulationStore.setResult(result)
-  router.push('/goal/simulation/result')
-}
 
 </script>

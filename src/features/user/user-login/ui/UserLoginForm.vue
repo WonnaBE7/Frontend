@@ -63,7 +63,7 @@ watch(checked, (newVal) => {
 
 const handleLogin = async () => {
   const res = await userLogin({ email: email.value, password: password.value })
-    //if(res.code === 200){
+    if(res.code === 200){
       const { accessToken, user } = res.data
       authStore.login(accessToken, user)
       
@@ -79,7 +79,7 @@ const handleLogin = async () => {
   // } catch (err: any) {
     
   //   alert(err.message || '로그인에 실패했습니다.')
-  //}
+  }
 }
 
 function goSignup(){

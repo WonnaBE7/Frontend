@@ -1,4 +1,4 @@
-export type ProductType = 'CARD' | 'SAVING' | 'INSURANCE'
+export type ProductType = 'card' | 'savings' | 'insurance'
 
 export interface PopularProduct {
   productId: number

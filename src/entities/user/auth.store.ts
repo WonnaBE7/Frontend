@@ -15,6 +15,8 @@ interface AuthState {
 }
 
 let logoutTimer: ReturnType<typeof setTimeout> | null = null
+let refreshInterval: ReturnType<typeof setInterval> | null = null
+let refreshing = false
 
 export const useAuthStore = defineStore('auth', {
   state: (): AuthState => ({
@@ -24,18 +26,52 @@ export const useAuthStore = defineStore('auth', {
   }),
 
   actions: {
+    // === 자동 갱신 타이머 ===
+    startAutoRefresh() {
+      if (refreshInterval) return // 중복 방지
+      refreshInterval = setInterval(async () => {
+        if (refreshing) return
+        if (!this.accessToken) return
+        try {
+          refreshing = true
+          // refresh.service.ts는 반드시 credentials:'include', auth:false로 구현되어 있어야 함
+          const res = await refreshToken()
+          // 응답 모양에 맞게 세팅 (예: {accessToken, user} or {data:{accessToken}})
+          this.accessToken = res.accessToken
+          if (res.user) this.user = res.user
+
+          localStorage.setItem('accessToken', this.accessToken)
+          if (this.user) localStorage.setItem('user', JSON.stringify(this.user))
+        } catch (e) {
+          // 실패 시: 여기서 즉시 로그아웃할지, 다음 틱에 재시도할지는 정책에 따라
+          // 일단 콘솔만 찍고 유지
+          console.warn('자동 갱신 실패', e)
+        } finally {
+          refreshing = false
+        }
+      }, 10 * 60 * 1000) // 10분
+    },
+
+    stopAutoRefresh() {
+      if (refreshInterval) {
+        clearInterval(refreshInterval)
+        refreshInterval = null
+      }
+    },
+
     async login(accessToken: string, user: User) {
       const now = new Date().toISOString()
 
       this.accessToken = accessToken
       this.user = user
       this.loginTime = now
-      console.log('토큰 테스트',this.accessToken)
+
       localStorage.setItem('accessToken', accessToken)
       localStorage.setItem('user', JSON.stringify(user))
       localStorage.setItem('loginTime', now)
 
       this.scheduleLogout(now)
+      this.startAutoRefresh() // << 추가 포인트
 
       const userProfileStore = useUserProfileStore()
       await userProfileStore.fetchUserProfile()
@@ -54,11 +90,12 @@ export const useAuthStore = defineStore('auth', {
         clearTimeout(logoutTimer)
         logoutTimer = null
       }
+      this.stopAutoRefresh() // << 추가 포인트
     },
 
     scheduleLogout(loginTimeStr: string) {
       const loginTime = new Date(loginTimeStr).getTime()
-      const expirationTime = loginTime  + 7 * 24 * 60 * 60 * 1000
+      const expirationTime = loginTime + 7 * 24 * 60 * 60 * 1000
       const now = Date.now()
       const remaining = expirationTime - now
 
@@ -89,7 +126,7 @@ export const useAuthStore = defineStore('auth', {
         if (this.loginTime) {
           this.scheduleLogout(this.loginTime)
         }
-
+        this.startAutoRefresh() // << 추가 포인트
       } catch (err) {
         console.warn('⚠️ refresh 실패, localStorage fallback 시도')
 
@@ -102,6 +139,7 @@ export const useAuthStore = defineStore('auth', {
           this.user = JSON.parse(user)
           this.loginTime = loginTime
           this.scheduleLogout(loginTime)
+          this.startAutoRefresh() // << 추가 포인트
         } else {
           this.logout()
         }

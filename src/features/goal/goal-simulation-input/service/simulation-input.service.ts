@@ -4,15 +4,13 @@ import type { GoalSimulationInput, GoalSimulationResponse } from '@/entities/goa
 //const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
-export const postGoalSimulation = async (
-  input: GoalSimulationInput
-) => {
+export const postGoalSimulation = async (input: GoalSimulationInput) => {
   const res = await fetcher<GoalSimulationResponse>({
     url: `${BASE_URL}/api/goals`,
     method: 'POST',
     auth: true,
     body: input,
   })
-
+  console.log('시뮬레이션 입력',res.code, res.message, res.data)
   return res.data
 }

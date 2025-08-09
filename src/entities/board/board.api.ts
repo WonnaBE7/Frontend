@@ -5,19 +5,15 @@ import type { Board, WriteScrapedSummary } from './board.entity'
 //const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
-export const getBoardTop3 = async () => {
-    try{
-        const res = await fetcher<Board[]>({
-            url: `${BASE_URL}/api/community/board/top3`,
-            method: 'GET',
-            auth: true
-        })
-        console.log('게시판 데이터 테스트',res.data)
-        return res.data
-    }catch{
-        return mockTop3Boards
-    }
-}
+export const getBoardTop3 = async (): Promise<Board[]> => {
+    const res = await fetcher<{ boards: Board[] }>({
+      url: `${BASE_URL}/api/community/board/top3`,
+      method: 'GET',
+      auth: true,
+    })
+    console.log('게시판 데이터 테스트', res.data)
+    return res.data.boards ?? []     // ✅ 배열만 리턴
+  }
 
 export const getUserScraped = async () =>{
     try{

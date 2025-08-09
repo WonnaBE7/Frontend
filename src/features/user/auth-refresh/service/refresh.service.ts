@@ -17,7 +17,7 @@ export const refreshToken = async () => {
     url: `${BASE_URL}/api/auth/refresh`,
     method: 'POST',
     credentials: 'include',
-    auth: true
+    auth: false
   })
 
   return res.data

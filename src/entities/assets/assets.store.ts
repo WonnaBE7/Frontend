@@ -51,7 +51,7 @@ export const useAssetsCategoryRatio = defineStore('assetsCategoryRatio',{
   persist: true
 })
 
-const categories = ['checking', 'savings', 'investment', 'insurance', 'other'] as const
+const categories = ['checking', 'savings', 'investment', 'pension', 'insurance', 'other'] as const
 export type AssetCategoryType = typeof categories[number]
 
 export const useAssetCategoryDetailStore = defineStore('assetCategoryDetail', {

@@ -1,7 +1,7 @@
 
 
 export const productTypeLabelMap: Record<string, string> = {
-  CARD: '카드',
-  SAVING: '예적금',
-  INSURANCE: '보험',
+  card: '카드',
+  savings: '예적금',
+  insurance: '보험',
 }

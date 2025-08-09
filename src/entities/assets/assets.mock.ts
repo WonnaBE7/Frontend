@@ -15,30 +15,36 @@ export const mockAssetCategoryDetailResponse: AssetDetailResponse = {
   categories: [
     {
       assetCategory: 'checking',
-      amount: 25000000,        
+      amount: 25000000,
       accountsCount: 3,
     },
     {
       assetCategory: 'savings',
-      amount: 12000000,        
+      amount: 12000000,
       accountsCount: 2,
     },
     {
       assetCategory: 'investment',
-      amount: 8000000,         
+      amount: 8000000,
+      accountsCount: 2,
+    },
+    {
+      assetCategory: 'pension',
+      amount: 5000000,
       accountsCount: 2,
     },
     {
       assetCategory: 'insurance',
-      amount: 5000000,         
+      amount: 3000000,
       accountsCount: 2,
     },
     {
       assetCategory: 'other',
-      amount: 2000000,         
+      amount: 2000000,
       accountsCount: 2,
     },
   ],
+  meta: undefined
 }
 
 export const mockAssetCategoryRatio: AssetCategoryRatioResponse = {
@@ -56,7 +62,7 @@ export const mockAssetCategoryRatio: AssetCategoryRatioResponse = {
       percentage: 15.4
     },
     {
-      assetCategory: 'insurance',
+      assetCategory: 'pension',
       percentage: 9.6
     },
     {
@@ -123,6 +129,20 @@ export const mockInvestmentCategoryDetail: AssetCategoryDetailResponse = {
   ]
 }
 
+export const mockPesionCategoryDetail: AssetCategoryDetailResponse = {
+  assetCategory: 'pension',
+  totalAmount: 100000000,        
+  accounts: [
+    {
+      bankName: '삼성증권',
+      accountName: '주식계좌',
+      accountNumber: '0000-11-22-33',
+      balance: 8000000          
+    }
+  ]
+}
+
+
 export const mockInsuranceCategoryDetail: AssetCategoryDetailResponse = {
   assetCategory: 'insurance',
   totalAmount: 5000000,        
@@ -154,5 +174,6 @@ export const mockCategoryDetailMap: Record<string, AssetCategoryDetailResponse> 
   savings: mockSavingsCategoryDetail,
   investment: mockInvestmentCategoryDetail,
   insurance: mockInsuranceCategoryDetail,
+  pension:mockPesionCategoryDetail,
   other: mockOtherCategoryDetail,
 }

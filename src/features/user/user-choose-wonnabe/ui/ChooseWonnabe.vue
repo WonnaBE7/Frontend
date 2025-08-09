@@ -29,7 +29,7 @@
       워너비 설정 완료
     </Button>
 
-    <Button label="white" class="mt-4 mb-4" @click="submitNowMe">
+    <Button label="white" class="mt-4 mb-4" @click="router.back()">
       선택하지 않고 NowMe로 추천받기
     </Button>
   </div>
@@ -53,15 +53,6 @@ const toggleSelect = (label: string) => {
   }
 }
 
-const emit = defineEmits<{
-  (e: 'submit', selected: string[]): void
-  (e: 'submit-nowme'): void
-}>()
-
-
-const submitNowMe = () => {
-  emit('submit-nowme')
-}
 const selected = ref<string[]>([])
 const types = financialTendencyList 
 
@@ -80,7 +71,7 @@ const submit = async () => {
       selectedWonnabeIds : selectedIds,
     })
     console.log('워너비 선택 저장 완료:', res.message)
-    router.push('/user')
+    router.back()
   } catch (e) {
     console.error('❌ 워너비 선택 저장 실패:', e)
   }

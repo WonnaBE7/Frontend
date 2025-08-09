@@ -70,8 +70,9 @@ import {
   patchUserSurveyData
 } from '../service/user-survey.service.ts'
 import type { UserSurveyData } from '@/entities/user/user.entity.ts'
+import { useRouter } from 'vue-router'
 
-
+const router = useRouter()
 const answers = ref<Record<string, string | number>>({})
 const sourceData = ref<string>('')
 const employmentData = ref<string>('')
@@ -115,11 +116,14 @@ async function submitAnswers() {
 
   const existing = await getUserSurveyData()
 
-  if (existing) {
+  if (!existing) {
     await postUserSurveyData(payload)
-    console.log('✅ POST: 설문 최초 제출 완료')
+    alert('설문 저장 완료')
+    router.push('/user/')
   } else {
     await patchUserSurveyData(payload)
+    alert('설문 수정 완료')
+    router.push('/user/')
     console.log('✅ PATCH: 설문 수정 완료')
   }
 }

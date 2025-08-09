@@ -1,19 +1,15 @@
-import type { GoalReportSaveRequest } from "@/entities/goal/goal.entity"
-import { fetcher } from "@/shared/utils/fetcher"
+import { fetcher } from '@/shared/utils/fetcher'
 
+type GoalStatus = 'PUBLISHED' | 'ACHIEVED'
 
-//const BASE_URL = import.meta.env.VITE_API_BASE_URL
-const BASE_URL = import.meta.env.VITE_API_BASE_URL
-
-export const patchGoalSelection = async (
-    goalId: number,
-    payload: GoalReportSaveRequest
-  ) => {
-      const res = await fetcher({
-        url: `${BASE_URL}/api/goals/${goalId}`,
-        method: 'PATCH',
-        auth: true,
-        body: payload,
-      })
-      return res
-  }
+export function patchGoalSelection(
+  goalId: number,
+  payload: { status: GoalStatus; selectedProductId?: number }
+) {
+  return fetcher({
+    url: `/api/goals/${goalId}`,
+    method: 'PATCH',
+    auth: true,
+    body: payload,
+  })
+}

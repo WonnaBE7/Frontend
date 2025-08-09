@@ -41,7 +41,7 @@
   import { useAssetCategoryDetailStore } from '@/entities/assets/assets.store'
   
   const route = useRoute()
-  const category = route.query.category as "checking" | "savings" | "investment" | "insurance" | "other"
+  const category = route.query.category as "checking" | "savings" | "investment" | "insurance" | "other" | "pension"
   const label = categoryLabelMap[category] || '자산'
   
   const store = useAssetCategoryDetailStore()

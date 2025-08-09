@@ -25,7 +25,7 @@ import Card from '@/shared/ui/atoms/Card.vue';
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue';
 import { CheckCircle, MessageCircleIcon } from 'lucide-vue-next'
 import GoalProductCard from '../../goal-report/ui/GoalProductCard.vue';
-import type { GoalReportSaveRequest, RecommendedProduct } from '@/entities/goal/goal.entity';
+import type { RecommendedProduct } from '@/entities/goal/goal.entity';
 import { useRoute } from 'vue-router';
 import { useGoalSimulationStore } from '@/entities/goal/goal.store'
 import { patchGoalSelection } from '../service/simulation-result.service';
@@ -57,17 +57,12 @@ async function submitSelectedProduct() {
     return
   }
 
-  const payload: GoalReportSaveRequest = {
-    selectedProductId: selectedProductId.value,
-    status: 'PUBLISHED',
-  }
-
   try {
-    const res = await patchGoalSelection(goalId, payload)
-    if(res.code === 200){
-      //모달 넣기
+    console.log(goalId)
+      await patchGoalSelection(goalId, {
+      status: 'PUBLISHED',
+      selectedProductId: selectedProductId.value})
       router.push('/goal')
-    }
   } catch (e) {
     console.error('목표 저장 실패:', e)
     alert('다시 입력해주세요')

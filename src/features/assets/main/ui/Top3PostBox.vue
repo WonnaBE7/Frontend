@@ -9,7 +9,6 @@
       </RouterLink>
     </div>
 
-    <!-- 데이터 있을 때만 렌더 (초기 undefined 경고 방지) -->
     <template v-if="topPosts.length">
       <PostPreviewCard
         v-for="post in topPosts"
@@ -28,15 +27,17 @@
         :created-at="post.createdAt"
       />
     </template>
-    <!-- 필요 없으면 else 블록은 지워도 됨 -->
-    <template v-else>
-      <!-- 로딩/빈 상태를 표시하고 싶으면 여기에 스켈레톤/문구 -->
-      <div class="text-gray-400 text-sm mt-3">인기글을 불러오는 중...</div>
-    </template>
+      <Card 
+        v-else
+        class="bg-gray-BGDim !mb-0 mt-4"
+        >
+        <Typography type="M_12_140" class="text-gray-500">작성된 게시글이 없습니다</Typography>
+      </Card>
   </Card>
 </template>
 
 <script setup lang="ts">
+import Typography from '@/shared/ui/atoms/Typography.vue'
 import { computed, onMounted } from 'vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import PostPreviewCard from '@/shared/ui/molecules/PostPreviewCard.vue'
@@ -50,6 +51,5 @@ onMounted(async () => {
   await postStore.fetchBoardTop3()
 })
 
-// 배열 보장 (null 안전)
 const topPosts = computed(() => postStore.posts ?? [])
 </script>

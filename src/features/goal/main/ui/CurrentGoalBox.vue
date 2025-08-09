@@ -5,7 +5,7 @@
         목표 달성 현황
       </IconLabel>
       <RouterLink to="/goal">
-        <component :is="ChevronRight" class="text-gray-500" />
+        <component :is="ChevronRight" />
       </RouterLink>
     </div>
 
@@ -30,12 +30,12 @@
       </div>
     </div>
 
-    <div 
-      v-else-if="goalSummary && goalSummary.goals && goalSummary.goals.length === 0"
-      class="text-center py-8 text-gray-500"
-    >
-      <Typography type="M_14_120">설정된 목표가 없습니다.</Typography>
-    </div>
+    <Card 
+        v-else-if="goalSummary && goalSummary.goals && goalSummary.goals.length === 0"
+        class="bg-gray-BGDim !mb-0 mt-4"
+        >
+        <Typography type="M_12_140" class="text-gray-500">진행 중인 목표가 없습니다</Typography>
+    </Card>
   </Card>
 </template>
 

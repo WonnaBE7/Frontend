@@ -65,5 +65,5 @@ export interface GoalSimulationResponse {
 // 리포트 저장 요청용
 export interface GoalReportSaveRequest {
   selectedProductId: number
-  status: 'PUBLISHED' | 'ACHEVIED'
+  status: 'PUBLISHED' | 'ACHIEVED'
 }

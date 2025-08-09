@@ -6,6 +6,6 @@ export const initUserData = async () => {
   
   await Promise.all([
     // 홈 페이지
-    !userStore.profile && userStore.fetchUserProfile(),
+    userStore.fetchUserProfile(),
   ])
 }
