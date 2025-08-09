@@ -12,7 +12,7 @@
     <!-- goalSummary가 있고 goals 배열이 존재할 때만 렌더링 -->
     <div
       v-if="goalSummary && goalSummary.goals && goalSummary.goals.length > 0"
-      class="space-y-2"
+      class="space-y-2 w-full"
     >
       <div
         v-for="goal in goalSummary.goals"
