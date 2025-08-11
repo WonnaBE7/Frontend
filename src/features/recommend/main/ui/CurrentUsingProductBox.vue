@@ -105,7 +105,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import Card from '@/shared/ui/atoms/Card.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
@@ -119,27 +119,28 @@ import ProductDetailModal from './ProductDetailModal.vue'
 import type {
   SavingsDetailResponse,
   CardDetailResponse,
-  InsuranceDetailResponse
+  InsuranceDetailResponse,
+  CurrentProductsResponse
 } from '@/entities/recommend/recommend.entity'
-import { getUserCards, getUserInsurnaces, getUserSavings } from '@/entities/recommend/recommend.api'
-import { useRecommendationStore } from '@/entities/recommend/recommend.store'
-import { storeToRefs } from 'pinia'
+import { getCurrentSummary, getUserCards, getUserInsurances, getUserSavings } from '@/entities/recommend/recommend.api'
 
-const store = useRecommendationStore()
-const { currentProducts } = storeToRefs(store)
+const currentProducts  = ref<CurrentProductsResponse|null>(null)
+
+onMounted(async ()=>{
+  currentProducts.value = await getCurrentSummary()
+})
 
 const isModalOpen = ref<boolean>(false)
 const selectedProductDetail = ref<SavingsDetailResponse | CardDetailResponse | InsuranceDetailResponse | null>(null)
 const selectedProductType = ref<'savings' | 'card' | 'insurance'>('savings')
 
-// 타입에 따라 상품 ID 추출
 function getProductId(item: any, type: 'savings' | 'card' | 'insurance'): string {
   return type === 'card' ? item.cardId : item.productId
 }
 
-// 모달 오픈
 async function openProductDetail(item: any, type: 'savings' | 'card' | 'insurance') {
   const productId = getProductId(item, type)
+  console.log('선택한 상품 id:',productId)
   const detail = await getProductDetail(productId, type)
   if (detail) {
     selectedProductDetail.value = detail
@@ -167,7 +168,7 @@ async function getProductDetail(productId: string, type: 'savings' | 'card' | 'i
       case 'card':
         return await getUserCards(Number(productId))
       case 'insurance':
-        return await getUserInsurnaces(Number(productId))
+        return await getUserInsurances(Number(productId))
       default:
         return null
     }

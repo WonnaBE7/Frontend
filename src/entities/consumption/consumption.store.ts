@@ -19,7 +19,7 @@ import {
   getEstimatedAndTodayConsumption,
   getMonthlyCategoryConsumption,
   getTodayCategoryConsumption
-} from '@/entities/consumption/comsumption.api'
+} from '@/entities/consumption/comsumption.api.ts'
 import { getConsumption } from './comsumption.api'
 import { getMonthlyCategoryDetail, getMonthlyTransactionDetail, getTodayCategoryDetail, getTodayTransactionDetail } from '@/entities/consumption/comsumption.api'
 
@@ -99,14 +99,22 @@ export const useConsumptionStore = defineStore('consumption', () => {
       : (item as MonthlyConsumptionCategoryItem).diffFromLastMonth
   }
 
-  const goPrevMonth = () => {
-    baseDate.value = baseDate.value.subtract(1, 'month')
+  const fetchMonthOnly = async () => {
+    const yyyymm = baseDate.value.format('YYYY-MM')
+    monthlySummary.value = await getMonthlyConsumptionSummary(yyyymm)
+    monthlyCategories.value = await getMonthlyCategoryConsumption(yyyymm)
   }
-
-  const goNextMonth = () => {
+  
+  const goPrevMonth = async () => {
+    baseDate.value = baseDate.value.subtract(1, 'month')
+    await fetchMonthOnly()
+  }
+  
+  const goNextMonth = async () => {
     const now = dayjs()
     if (!baseDate.value.isSame(now, 'month')) {
       baseDate.value = baseDate.value.add(1, 'month')
+      await fetchMonthOnly()
     }
   }
 
@@ -158,7 +166,8 @@ export const useTransactionDetailStore = defineStore('consumptionDetailStore', {
       this.todayTransactionDetail = await getTodayTransactionDetail()
     },
     async fetchMonthlyTransactionDetail() {
-      const yearMonth = this.baseDate.format('YYYY-MM')
+      const yearMonth = dayjs(this.baseDate).format('YYYY-MM')
+      console.log('월별 거래내역 가지러 가는 중~ ', yearMonth);
       this.monthlyTransactionDetail = await getMonthlyTransactionDetail(yearMonth)
     },
   },

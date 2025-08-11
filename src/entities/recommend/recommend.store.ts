@@ -9,12 +9,7 @@ import type {
   WishlistResponse,
   CurrentProductsResponse,
 } from './recommend.entity'
-import {
-  mockSavingsRecommendation,
-  mockCardRecommendation,
-  mockInsuranceRecommendation,
-} from './recommend.mock'
-import { getCardRecommendation, getCurrentSummmary, getInsuranceRecommendation, getSavingsRecommendation, getWishlist } from '@/entities/recommend/recommend.api'
+import { getCardRecommendation, getCurrentSummary, getInsuranceRecommendation, getSavingsRecommendation, getWishlist } from '@/entities/recommend/recommend.api'
 
 export const useRecommendationStore = defineStore('recommendation', {
   state: () => ({
@@ -29,60 +24,55 @@ export const useRecommendationStore = defineStore('recommendation', {
   }),
   actions: {
     async fetchSavingsRecommendation() {
-      try {
         const res: SavingsRecommendationResponse = await getSavingsRecommendation()
         res.recommendationsByPersona.forEach((rec) => {
           this.setSavings(rec.personaId, rec.products)
         })
-      } catch {
-        mockSavingsRecommendation.recommendationsByPersona.forEach((rec) => {
-          this.setSavings(rec.personaId, rec.products)
-        })
-      }
     },
 
     async fetchCardRecommendation() {
-      try {
         const res: CardRecommendationResponse = await getCardRecommendation()
         res.recommendationsByPersona.forEach((rec) => {
           this.setCards(rec.personaId, rec.products)
         })
-      } catch {
-        mockCardRecommendation.recommendationsByPersona.forEach((rec) => {
-          this.setCards(rec.personaId, rec.products)
-        })
-      }
     },
 
     async fetchInsuranceRecommendation() {
-      try {
         const res: InsuranceRecommendationResponse = await getInsuranceRecommendation()
         res.recommendationsByPersona.forEach((rec) => {
           this.setInsurances(rec.personaId, rec.products)
         })
-      } catch {
-        mockInsuranceRecommendation.recommendationsByPersona.forEach((rec) => {
-          this.setInsurances(rec.personaId, rec.products)
-        })
-      }
     },
 
     async fetchWishlist() {
       this.wishlist = await getWishlist()
     },
     async fetchCurrentProducts() {
-      this.currentProducts = await getCurrentSummmary()
+      this.currentProducts = await getCurrentSummary()
     },
-
 
     setSavings(personaId: number, products: RecommendedSavingsProduct[]) {
-      this.recommendations.savings[personaId] = products
+      const mapped = products.map(p => ({ ...p, productType: 'savings' as const }))
+      this.recommendations.savings = {
+        ...this.recommendations.savings,
+        [personaId]: mapped,
+      }
     },
+    
     setCards(personaId: number, products: RecommendedCardProduct[]) {
-      this.recommendations.cards[personaId] = products
+      const mapped = products.map(p => ({ ...p, productType: 'card' as const }))
+      this.recommendations.cards = {
+        ...this.recommendations.cards,
+        [personaId]: mapped,
+      }
     },
+    
     setInsurances(personaId: number, products: RecommendedInsuranceProduct[]) {
-      this.recommendations.insurances[personaId] = products
+      const mapped = products.map(p => ({ ...p, productType: 'insurance' as const }))
+      this.recommendations.insurances = {
+        ...this.recommendations.insurances,
+        [personaId]: mapped,
+      }
     },
 
     getSavingsByPersona(personaId: number) {

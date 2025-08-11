@@ -2,7 +2,7 @@ import { fetcher } from '@/shared/utils/fetcher'
 import type { AssetCategoryDetailResponse, AssetCategoryRatioResponse, AssetDetailResponse, AssetSummaryMeta } from './assets.entity'
 import { mockAssetCategoryDetailResponse, mockAssetCategoryRatio, mockAssetSummaryMeta, mockCategoryDetailMap } from './assets.mock'
 
-//const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getAssets = async () => {

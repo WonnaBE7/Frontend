@@ -57,7 +57,6 @@
   
   async function toggleWish() {
     const action = isWishedLocal.value ? 'remove' : 'add'
-    console.log('관심 상품 테스트',action, type, savingsId )
     await fetchWish({
       action,
       productType: type,

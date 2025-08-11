@@ -11,7 +11,7 @@ interface SignupResponse {
     name: string
     email: string
 }
-////const BASE_URL = import.meta.env.VITE_API_BASE_URL
+//
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 export const userSignup = async (payload: SignupRequest) => {
   const res =  await fetcher<SignupResponse>({

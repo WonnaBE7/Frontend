@@ -1,10 +1,10 @@
 import { defineStore } from "pinia";
-import type { CommunityPreview } from "./community.entity";
+import type { CommunityList, CommunityPreview } from "./community.entity";
 import { getCommunity, getCommunityTop3 } from "./community.api";
 
 export const useCommunityListStore = defineStore('communityStore', {
   state: () => ({
-    all: null as CommunityPreview[] | null,
+    all: null as CommunityList | null,
     top3: null as CommunityPreview[] | null,
   }),
   actions: {

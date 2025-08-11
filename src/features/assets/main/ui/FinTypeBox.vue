@@ -45,7 +45,6 @@
 
     const user = useUserProfileStore()
 
-    console.log('유저프로필 테스트 :',user.profile)
     const getFinancialTypeDescription = (typeName: string): string => {
         const matchedType = financialTendencyList.find(type => type.name === typeName);
         return matchedType ? matchedType.description : '';

@@ -11,8 +11,9 @@ export const initRecommendData = async () => {
   await Promise.all([
     recommendStore.fetchWishlist(),
     recommendStore.fetchCurrentProducts(),  
-    recommendStore.fetchSavingsRecommendation(),
+    
     recommendStore.fetchCardRecommendation(),
     recommendStore.fetchInsuranceRecommendation(),
+    recommendStore.fetchSavingsRecommendation(),
   ])
 }

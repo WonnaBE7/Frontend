@@ -6,6 +6,7 @@
     </Typography>
 
     <div
+    
       v-for="comment in comments"
       :key="comment.commentId"
       class="mt-4 md:mt-6 w-full"
@@ -60,7 +61,6 @@
   }>()
 
   const emit = defineEmits<(e: 'delete-comment', commentId: number) => void>()
-
   const profile = useUserProfileStore()
   const myUserId = computed(() => profile.profile?.userId)
 

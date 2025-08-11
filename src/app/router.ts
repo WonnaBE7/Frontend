@@ -3,6 +3,8 @@ import type { RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } fro
 import { mockMonthlyConsumptionSummary, mockEstimatedAndTodayConsumption } from '@/entities/consumption/consumption.mock'
 import BoardCategoryDetailPage from '@/pages/board/BoardCategoryDetailPage.vue'
 import { finTypeIcons } from '@/shared/constants/finTypes.constants'
+import dayjs from 'dayjs'
+import { useConsumptionStore } from '@/entities/consumption/consumption.store'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -38,25 +40,35 @@ const routes: RouteRecordRaw[] = [
     meta: {
       icon: { type: 'lucide', value: 'CreditCard' }
     },
-    beforeEnter: async (to, _from, next) => {
-      const type = to.query.type as string
-      const categoryLabel = to.query.label as string 
-  
+    beforeEnter: (to, _from, next) => {
+      const store = useConsumptionStore()
+
+      const type = (to.query.type as string) || 'current'
+      const categoryLabel = (to.query.label as string) || ''
+
+      // 쿼리 → 스토어 동기화 (딥링크/새로고침 대비)
+      const yearMonthFromQuery = to.query.yearMonth as string | undefined
+      if (yearMonthFromQuery) {
+        store.baseDate = dayjs(`${yearMonthFromQuery}-01`)
+      }
+      // 기준 yearMonth (쿼리 없으면 스토어 값 사용)
+      const ym = (yearMonthFromQuery ?? store.baseDate.format('YYYY-MM'))
+
+      // today 상세에서 날짜를 쿼리로 받을 수도 있게 (없으면 오늘)
+      const dateFromQuery = (to.query.date as string) || dayjs().format('YYYY-MM-DD')
+
+      // 타이틀 만들기
       let dateTitle = ''
       if (type === 'current') {
-        const yearMonth = mockMonthlyConsumptionSummary.yearMonth // '2025-07'
-        const month = yearMonth?.split('-')[1] ?? 'MM'
-        dateTitle = `${month}월`
+        dateTitle = `${dayjs(`${ym}-01`).format('MM')}월`
       } else if (type === 'today') {
-        const date = mockEstimatedAndTodayConsumption.todayConsumption.calculatedDate // '2025-07-16'
-        const [_, mm, dd] = date?.split('-') ?? ['2025', 'MM', 'DD']
-        dateTitle = `${mm}/${dd}`
+        dateTitle = dayjs(dateFromQuery).format('MM/DD')
       }
-  
+
       const title = categoryLabel
         ? `${dateTitle} ${categoryLabel} 거래 내역`
         : `${dateTitle} 거래 내역`
-  
+
       to.meta.title = title
       next()
     }

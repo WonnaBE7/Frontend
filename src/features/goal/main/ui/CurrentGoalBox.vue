@@ -56,7 +56,6 @@
   onMounted(async () => {
     try {
       goalSummary.value = await getGoals()
-      console.log('Loaded goals:', goalSummary.value) // 디버깅용
     } catch (e) {
       error.value = '목표를 불러오는데 실패했습니다.'
       console.error('Failed to load goals:', e)

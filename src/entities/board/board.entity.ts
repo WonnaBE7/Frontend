@@ -36,3 +36,7 @@ export interface WriteScrapedSummary{
   write : number,
   scrap : number
 }
+
+export type BoardsPayload = { boards: Board[] }
+export type BoardsResponse = { data: Board }
+

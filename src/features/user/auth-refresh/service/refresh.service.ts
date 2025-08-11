@@ -9,16 +9,26 @@ interface RefreshResponse {
     }
 }
 
-//const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
-export const refreshToken = async () => {
-  const res = await fetcher<RefreshResponse>({
-    url: `${BASE_URL}/api/auth/refresh`,
+export const refreshToken = async (): Promise<RefreshResponse> => {
+  const resp = await fetch(`${BASE_URL}/api/auth/refresh`, {
     method: 'POST',
-    credentials: 'include',
-    auth: false
+    credentials: 'include', 
+    headers: { 'Content-Type': 'application/json' },
   })
 
-  return res.data
+  if (resp.status === 401) {
+    let msg = 'Refresh Token이 유효하지 않습니다.'
+    try {
+      const j = await resp.json()
+      msg = j?.message || msg
+    } catch {}
+    throw new Error(msg)
+  }
+
+  const json = await resp.json() as { code: number; message: string; data: RefreshResponse }
+  if (!resp.ok) throw new Error(json?.message || '리프레시 실패')
+  return json.data
 }

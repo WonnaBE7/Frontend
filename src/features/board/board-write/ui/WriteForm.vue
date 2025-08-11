@@ -72,11 +72,9 @@
       title: title.value,
       content: content.value,
     }
-    console.log('전송할 카레고리:',categoryId, '전송할 데이터:', payload)
     const res = await postCreateBoard(categoryId, payload);
     
     if(res.code === 200){
-      console.log('전송할 데이터:', payload)
       router.back()
     }
   }

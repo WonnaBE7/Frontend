@@ -1,7 +1,7 @@
 import { mockPopularProducts } from "@/entities/board/product/product.mock"
 import { fetcher } from "@/shared/utils/fetcher"
 
-//const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getCommunityRecommendTop3 = async(communityId : number) => {
@@ -11,6 +11,7 @@ export const getCommunityRecommendTop3 = async(communityId : number) => {
             method:'GET',
             auth: true,
         })
+        console.log('인기 상품 조회',res)
         return res.data
     }
     catch{

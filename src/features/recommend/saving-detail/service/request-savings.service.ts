@@ -1,7 +1,7 @@
 import type { SavingsApplicationRequest } from "@/entities/recommend/recommend.entity";
 import { fetcher } from "@/shared/utils/fetcher";
 
-//const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const postRequestSavings = async (request : SavingsApplicationRequest) =>{

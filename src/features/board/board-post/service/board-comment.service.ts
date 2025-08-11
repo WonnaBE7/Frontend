@@ -2,7 +2,6 @@ import { mockComments } from "@/entities/board/comment/comment.mock"
 import { fetcher } from "@/shared/utils/fetcher"
 
 
-//const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getBoardComment = async(communityId : number, boardId : number) => {
@@ -12,10 +11,11 @@ export const getBoardComment = async(communityId : number, boardId : number) => 
             method:'GET',
             auth: true,
         })
+        console.log('댓글 조회 :',res)
         return res.data
     }
     catch{
-        return mockComments.slice(0,4)
+        return []
     }
 }
 
@@ -45,5 +45,6 @@ export const patchCommentLike = async (communityId: number, boardId: number, com
       method: 'PATCH',
       auth: true,
     })
+    console.log('좋아요 기능 -댓글', res)
     return res
 }

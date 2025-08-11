@@ -62,23 +62,13 @@ watch(checked, (newVal) => {
 })
 
 const handleLogin = async () => {
-  const res = await userLogin({ email: email.value, password: password.value })
+    const res = await userLogin({ email: email.value, password: password.value })
     if(res.code === 200){
       const { accessToken, user } = res.data
+      console.log('토큰 : ', accessToken)
       authStore.login(accessToken, user)
       
       router.push('/')
-  // try {
-  //   const res = await userLogin({ email: email.value, password: password.value })
-  //   if(res.code === 200){
-  //     const { accessToken, user } = res.data
-  //     authStore.login(accessToken, user)
-      
-  //     router.push('/')
-  //   }
-  // } catch (err: any) {
-    
-  //   alert(err.message || '로그인에 실패했습니다.')
   }
 }
 

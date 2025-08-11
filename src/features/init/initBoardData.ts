@@ -24,7 +24,7 @@ export const initBoardData = async () => {
     countWriteScrap.fetchWriteScrap(), // 내가 스크랩한, 내가 쓴 글 갯수
 
     // 커뮤니티
-    !communtyList.all && communtyList.fetchCommunityList(),
-    !communtyList.top3 && communtyList.fetchCommunityTop3(),
+    communtyList.fetchCommunityList(),
+    communtyList.fetchCommunityTop3(),
   ])
 }

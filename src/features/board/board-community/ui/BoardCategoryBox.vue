@@ -1,5 +1,5 @@
 <template>
-    <BoardCategory v-if="store.all" :communities="store.all"></BoardCategory>
+    <BoardCategory v-if="store.all" :communities="store.all.communities"></BoardCategory>
 </template>
 
 <script setup lang="ts">
