@@ -32,7 +32,7 @@
             </Typography>
             <Typography type="M_12_120" class="text-gray-500 ml-2">해외 연회비:</Typography>
             <Typography type="M_12_120" class="text-sub-green-p">
-              {{ product.annualFeeOverSeas }}
+              {{ product.annualFeeOverseas }}
             </Typography>
           </div>
           <ChevronRight />

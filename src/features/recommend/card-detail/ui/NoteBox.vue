@@ -6,7 +6,7 @@
           <Typography type="M_12_120">{{datas.category}}</Typography>
         </li>
         <li>
-          <Typography type="M_12_120">{{datas.previousMonthSpendig}}</Typography>
+          <Typography type="M_12_120">{{datas.previousMonthSpending}}</Typography>
         </li>
         <li>
           <Typography type="M_12_120">{{datas.usage}}</Typography>

@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-col w-full h-full justify-center">
+  <SplashScreen v-if="showSplash" />
+  <div v-else class="flex flex-col w-full h-full justify-center">
     <div class="mb-40">
       <LabelInput label="이메일" v-model="email" class="mb-4" />
       <LabelInput label="비밀번호" type="password" v-model="password" class="mb-8" />
@@ -38,6 +39,7 @@
 </template>
 
 <script setup lang="ts">
+import SplashScreen from '@/shared/ui/organisms/SplashScreen.vue'
 import AgreeMentBox from '../../user-signup/ui/AgreeMentBox.vue'
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
@@ -56,6 +58,7 @@ const router = useRouter()
 const showModal = ref<boolean>(false)
 const checked = ref<string[]>([])
 const allChecked = ref<boolean>(false)
+const showSplash = ref(true) 
 
 watch(checked, (newVal) => {
   allChecked.value = newVal.length === terms.length
@@ -67,7 +70,12 @@ const handleLogin = async () => {
     const { accessToken, user } = res.data
     authStore.login(accessToken, user)
     
-    router.push('/')
+    showSplash.value = true
+
+    // 5초 후에 메인 페이지 이동
+    setTimeout(() => {
+      router.push('/')
+    }, 5000)
   }
 }
 

@@ -136,7 +136,7 @@ export interface RecommendedCardProduct {
   score: number
   mainBenefit: string
   annualFeeDomestic: string
-  annualFeeOverSeas: string
+  annualFeeOverseas: string
 }
 
 export interface CardRecommendationResponse {
@@ -246,14 +246,14 @@ export interface CardProductInfo {
 
 export interface CardNote {
   category: string
-  previousMonthSpendig: string 
+  previousMonthSpending: string 
   usage: string
   annualFee: string
 }
 
 export interface CardDetailPageResponse {
-  productInfo: CardProductInfo
-  comparisonCharts: ComparisonChart[]
+  cardInfo: CardProductInfo
+  comparisonChart: ComparisonChart[]
   note: CardNote
 }
 

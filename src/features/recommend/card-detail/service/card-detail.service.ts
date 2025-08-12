@@ -8,9 +8,10 @@ export const getCardDetailView = async (id : number) =>{
     try{
         const res = await fetcher({
             url: `${BASE_URL}/api/products/cards/${id}`,
-            method: 'POST',
+            method: 'GET',
             auth: true,
           })
+          console.log('카드 상세보기 api',res.data)
           return res.data
     }catch{
         return mockCardDetailPage

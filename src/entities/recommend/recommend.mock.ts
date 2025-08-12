@@ -455,7 +455,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 95,
           mainBenefit: '생활비 캐시백 5%',
           annualFeeDomestic: '없음',
-          annualFeeOverSeas: '없음'
+          annualFeeOverseas: '없음'
         },
         {
           productType: 'card',
@@ -466,7 +466,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 91,
           mainBenefit: '저축 자동이체 시 포인트 적립',
           annualFeeDomestic: '면제',
-          annualFeeOverSeas: '없음'
+          annualFeeOverseas: '없음'
         },
         {
           productType: 'card',
@@ -477,7 +477,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 89,
           mainBenefit: '공과금 할인',
           annualFeeDomestic: '없음',
-          annualFeeOverSeas: '없음'
+          annualFeeOverseas: '없음'
         },
         {
           productType: 'card',
@@ -488,7 +488,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 87,
           mainBenefit: '지하철/버스 할인',
           annualFeeDomestic: '면제',
-          annualFeeOverSeas: '면제'
+          annualFeeOverseas: '면제'
         },
         {
           productType: 'card',
@@ -499,7 +499,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 90,
           mainBenefit: '카카오페이 결제시 적립',
           annualFeeDomestic: '없음',
-          annualFeeOverSeas: '5,000'
+          annualFeeOverseas: '5,000'
         }
       ]
     },
@@ -516,7 +516,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 92,
           mainBenefit: '쇼핑/여행/저축 균형 적립',
           annualFeeDomestic: '10,000',
-          annualFeeOverSeas: '15,000'
+          annualFeeOverseas: '15,000'
         },
         {
           productType: 'card',
@@ -527,7 +527,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 90,
           mainBenefit: '생활/금융 포인트 자동 분배',
           annualFeeDomestic: '8,000',
-          annualFeeOverSeas: '12,000'
+          annualFeeOverseas: '12,000'
         },
         {
           productType: 'card',
@@ -538,7 +538,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 88,
           mainBenefit: '카테고리별 할인 균등 제공',
           annualFeeDomestic: '없음',
-          annualFeeOverSeas: '없음'
+          annualFeeOverseas: '없음'
         },
         {
           productType: 'card',
@@ -549,7 +549,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 85,
           mainBenefit: '적립과 할인 동시 제공',
           annualFeeDomestic: '10,000',
-          annualFeeOverSeas: '15,000'
+          annualFeeOverseas: '15,000'
         },
         {
           productType: 'card',
@@ -560,7 +560,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 89,
           mainBenefit: '월 소비 패턴 기반 리워드',
           annualFeeDomestic: '무료',
-          annualFeeOverSeas: '5,000'
+          annualFeeOverseas: '5,000'
         }
       ]
     },
@@ -577,7 +577,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 93,
           mainBenefit: '증권사 자동이체 2% 적립',
           annualFeeDomestic: '5,000',
-          annualFeeOverSeas: '5,000'
+          annualFeeOverseas: '5,000'
         },
         {
           productType: 'card',
@@ -588,7 +588,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 91,
           mainBenefit: '주식 투자시 캐시백 제공',
           annualFeeDomestic: '없음',
-          annualFeeOverSeas: '없음'
+          annualFeeOverseas: '없음'
         },
         {
           productType: 'card',
@@ -599,7 +599,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 89,
           mainBenefit: '증권계좌 연동 시 혜택',
           annualFeeDomestic: '없음',
-          annualFeeOverSeas: '없음'
+          annualFeeOverseas: '없음'
         },
         {
           productType: 'card',
@@ -610,7 +610,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 86,
           mainBenefit: '금융앱 연동 포인트 적립',
           annualFeeDomestic: '8,000',
-          annualFeeOverSeas: '10,000'
+          annualFeeOverseas: '10,000'
         },
         {
           productType: 'card',
@@ -621,7 +621,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           score: 90,
           mainBenefit: '소액 투자 시 매월 리워드',
           annualFeeDomestic: '없음',
-          annualFeeOverSeas: '5,000'
+          annualFeeOverseas: '5,000'
         }
       ]
     }
@@ -652,7 +652,7 @@ export const mockWishlist: WishlistResponse = {
       score: 94,
       mainBenefit: "간편결제 5% 적립",
       annualFeeDomestic: "해당안함",
-      annualFeeOverSeas: "5000"
+      annualFeeOverseas: "5000"
     },
   ],
   insurances: [
@@ -739,7 +739,7 @@ export const mockSavingsDetailPage: SavingsDetailPageResponse = {
 
 // 카드 상세보기 페이지 (보험상품 상세 조회 API 데이터)
 export const mockCardDetailPage: CardDetailPageResponse = {
-  productInfo: {
+  cardInfo: {
     cardId: "100", 
     cardName: "카카오페이 카드",
     cardCompany: "카카오페이",
@@ -751,7 +751,7 @@ export const mockCardDetailPage: CardDetailPageResponse = {
     isWished: false,
     currentUserData: [80, 60, 40, 80, 60],
   },
-  comparisonCharts:  [
+  comparisonChart:  [
     {
       compareId : 1,
       compareName : "삼성카드",
@@ -765,7 +765,7 @@ export const mockCardDetailPage: CardDetailPageResponse = {
   ],
   note: {
       category: "혜택 적용 범위: 교통, 식비",
-      previousMonthSpendig: "전월 실적: 없음",
+      previousMonthSpending: "전월 실적: 없음",
       usage: "국내 전용 / 해외 겸용",
       annualFee: "국내 연회비: 없음 / 해외 연회비: 없음"
     }

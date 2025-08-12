@@ -64,9 +64,7 @@ const wishList = computed(() => store.wishlist)
 const totalCount = computed(() => wishList.value?.totalCount || 0)
 
 onMounted(async () => {
-  if (!store.wishlist) {
     await store.fetchWishlist()
-  }
 })
 
 function getProductId(product: WishlistProduct): string {
@@ -83,7 +81,6 @@ function goToDetail(
     insurance: '/recommend/insurance/detail'
   }
   const productId = getProductId(product)
-
   router.push({
     path: pathMap[productType],
     query: { productId, productType }

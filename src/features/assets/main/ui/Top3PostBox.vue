@@ -9,7 +9,7 @@
       </RouterLink>
     </div>
 
-    <div v-if="topPosts.length">
+    <div v-if="topPosts.length" class="w-full">
       <PostPreviewCard
         v-for="post in topPosts"
         :key="post.boardId"
