@@ -20,8 +20,7 @@ export const getUserScraped = async (): Promise<Board[]> => {
       method: 'GET',
       auth: true,
     })
-
-    console.log('스크랩한거 가져옴!', res.data)
+    console.log('스크랩한거 가져옴>>>>', res.data)
     return res.data?.boards ?? []   
   }
   
@@ -31,7 +30,7 @@ export const getUserScraped = async (): Promise<Board[]> => {
       method: 'GET',
       auth: true,
     })
-    console.log('내가 쓴글 가져옴!')
+    console.log('내가 쓴글 가져옴!',res)
     return res.data?.boards ?? []
   }
 

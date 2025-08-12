@@ -18,7 +18,7 @@ import type {
 
 // 현재 보유상품 조회
 export const mockCurrentProducts: CurrentProductsResponse = {
-  deposits: {
+  savings: {
     count: 2,
     products: [
       {
@@ -132,7 +132,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: 'KB국민은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -141,7 +141,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '신한은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -150,7 +150,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '하나은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -159,7 +159,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '우리은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -168,7 +168,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '카카오뱅크',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         }
       ]
     },
@@ -183,7 +183,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: 'KB국민은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -192,7 +192,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '신한은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -201,7 +201,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '하나은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -210,7 +210,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '우리은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -219,7 +219,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '카카오뱅크',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         }
       ]
     },
@@ -234,7 +234,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: 'KB국민은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -243,7 +243,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '신한은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -252,7 +252,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '하나은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -261,7 +261,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '우리은행',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         },
         {
           productType: 'savings',
@@ -270,7 +270,7 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
           bankName: '카카오뱅크',
           baseRate: 3.10,
           maxRate: 4.10,
-          totalScore: 86.0
+          score: 86.0
         }
       ]
     }
@@ -292,7 +292,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: 'KB손해보험',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -301,7 +301,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: 'DB손해보험',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -310,7 +310,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '메리츠화재',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -319,7 +319,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '교보생명',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -328,7 +328,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '토스',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         }
       ]
     },
@@ -343,7 +343,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '삼성생명',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -352,7 +352,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '한화생명',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -361,7 +361,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '현대해상',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -370,7 +370,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '롯데손보',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -379,7 +379,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: 'KB생명',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         }
       ]
     },
@@ -394,7 +394,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '카카오손보',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -403,7 +403,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '메트라이프',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -412,7 +412,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: 'AIA생명',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -421,7 +421,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '라이나생명',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         },
         {
           productType: 'insurance',
@@ -430,7 +430,7 @@ export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
           providerName: '토스',
           coverageType: "상해급여",
           coverageLimit: "연간 5천만원",
-          totalScore: 96.4
+          score: 96.4
         }
       ]
     }
@@ -452,7 +452,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: 'KB절약카드',
           cardCompany: '국민카드',
           cardType: '체크카드',
-          matchScore: 95,
+          score: 95,
           mainBenefit: '생활비 캐시백 5%',
           annualFeeDomestic: '없음',
           annualFeeOverSeas: '없음'
@@ -463,7 +463,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '신한 짠테크 카드',
           cardCompany: '신한카드',
           cardType: '체크카드',
-          matchScore: 91,
+          score: 91,
           mainBenefit: '저축 자동이체 시 포인트 적립',
           annualFeeDomestic: '면제',
           annualFeeOverSeas: '없음'
@@ -474,7 +474,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '우리 절약형 카드',
           cardCompany: '우리카드',
           cardType: '체크카드',
-          matchScore: 89,
+          score: 89,
           mainBenefit: '공과금 할인',
           annualFeeDomestic: '없음',
           annualFeeOverSeas: '없음'
@@ -485,7 +485,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '하나 알뜰카드',
           cardCompany: '하나카드',
           cardType: '체크카드',
-          matchScore: 87,
+          score: 87,
           mainBenefit: '지하철/버스 할인',
           annualFeeDomestic: '면제',
           annualFeeOverSeas: '면제'
@@ -496,7 +496,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '카카오 절약카드',
           cardCompany: '카카오페이',
           cardType: '체크카드',
-          matchScore: 90,
+          score: 90,
           mainBenefit: '카카오페이 결제시 적립',
           annualFeeDomestic: '없음',
           annualFeeOverSeas: '5,000'
@@ -513,7 +513,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '삼성 밸런스 카드',
           cardCompany: '삼성카드',
           cardType: '신용카드',
-          matchScore: 92,
+          score: 92,
           mainBenefit: '쇼핑/여행/저축 균형 적립',
           annualFeeDomestic: '10,000',
           annualFeeOverSeas: '15,000'
@@ -524,7 +524,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '롯데 스마트밸런스',
           cardCompany: '롯데카드',
           cardType: '신용카드',
-          matchScore: 90,
+          score: 90,
           mainBenefit: '생활/금융 포인트 자동 분배',
           annualFeeDomestic: '8,000',
           annualFeeOverSeas: '12,000'
@@ -535,7 +535,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '하나 균형잡힌 카드',
           cardCompany: '하나카드',
           cardType: '체크카드',
-          matchScore: 88,
+          score: 88,
           mainBenefit: '카테고리별 할인 균등 제공',
           annualFeeDomestic: '없음',
           annualFeeOverSeas: '없음'
@@ -546,7 +546,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '우리 성장형 카드',
           cardCompany: '우리카드',
           cardType: '신용카드',
-          matchScore: 85,
+          score: 85,
           mainBenefit: '적립과 할인 동시 제공',
           annualFeeDomestic: '10,000',
           annualFeeOverSeas: '15,000'
@@ -557,7 +557,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '토스 밸런스 카드',
           cardCompany: '토스',
           cardType: '체크카드',
-          matchScore: 89,
+          score: 89,
           mainBenefit: '월 소비 패턴 기반 리워드',
           annualFeeDomestic: '무료',
           annualFeeOverSeas: '5,000'
@@ -574,7 +574,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '신한 투자 첫걸음 카드',
           cardCompany: '신한카드',
           cardType: '신용카드',
-          matchScore: 93,
+          score: 93,
           mainBenefit: '증권사 자동이체 2% 적립',
           annualFeeDomestic: '5,000',
           annualFeeOverSeas: '5,000'
@@ -585,7 +585,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: 'NH 투자응원 카드',
           cardCompany: 'NH카드',
           cardType: '체크카드',
-          matchScore: 91,
+          score: 91,
           mainBenefit: '주식 투자시 캐시백 제공',
           annualFeeDomestic: '없음',
           annualFeeOverSeas: '없음'
@@ -596,7 +596,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '토스 주식카드',
           cardCompany: '토스',
           cardType: '체크카드',
-          matchScore: 89,
+          score: 89,
           mainBenefit: '증권계좌 연동 시 혜택',
           annualFeeDomestic: '없음',
           annualFeeOverSeas: '없음'
@@ -607,7 +607,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '삼성 새싹 투자카드',
           cardCompany: '삼성카드',
           cardType: '신용카드',
-          matchScore: 86,
+          score: 86,
           mainBenefit: '금융앱 연동 포인트 적립',
           annualFeeDomestic: '8,000',
           annualFeeOverSeas: '10,000'
@@ -618,7 +618,7 @@ export const mockCardRecommendation:CardRecommendationResponse = {
           cardName: '카카오 주린이카드',
           cardCompany: '카카오뱅크',
           cardType: '체크카드',
-          matchScore: 90,
+          score: 90,
           mainBenefit: '소액 투자 시 매월 리워드',
           annualFeeDomestic: '없음',
           annualFeeOverSeas: '5,000'
@@ -639,7 +639,7 @@ export const mockWishlist: WishlistResponse = {
       bankName: "테스트은행1",
       baseRate: 3.10,
       maxRate: 4.10,
-      totalScore: 86.0
+      score: 86.0
     },
   ],
   cards: [
@@ -649,7 +649,7 @@ export const mockWishlist: WishlistResponse = {
       cardName: "카카오페이 카드",
       cardCompany: "카카오페이",
       cardType: "체크카드",
-      matchScore: 94,
+      score: 94,
       mainBenefit: "간편결제 5% 적립",
       annualFeeDomestic: "해당안함",
       annualFeeOverSeas: "5000"
@@ -663,7 +663,7 @@ export const mockWishlist: WishlistResponse = {
       providerName: "DB손보",
       coverageType: "상해급여",
       coverageLimit: "연간 5천만원",
-      totalScore: 96.4
+      score: 96.4
     }
   ]
 }
@@ -712,7 +712,7 @@ export const mockSavingsDetailPage: SavingsDetailPageResponse = {
     productId: "KAKAO_BANK_SAVE_001",
     productName: "카카오뱅크 세이브업 적금",
     bankName: "카카오뱅크",
-    matchScore: 95,
+    score: 95,
     interestRate: "연 3.9%",
     maxInterestRate: "연 4.2%",             
     benefitSummary: "거래실적 따라 최고 연 0.1% 우대 제공", 
@@ -743,7 +743,7 @@ export const mockCardDetailPage: CardDetailPageResponse = {
     cardId: "100", 
     cardName: "카카오페이 카드",
     cardCompany: "카카오페이",
-    matchScore: 94,
+    score: 94,
     mainBenefit: "간편결제 5% 적립",
     cardType: "debit",
     benefitSummary: "스타벅스 50% 할인\n대중교통 10% 할인\nCGV, 롯데시네마 5,000원 할인",
@@ -777,7 +777,7 @@ export const mockInsuranesDetailPage : InsurancesDetailPageResponse={
       productId: "01",
       productName: "카카오페이 보험",
       providerName: "DB손보",                   
-      matchScore: 95,                            
+      score: 95,                            
       coverageType: "상해급여",                   
       coverageLimit: "연간 5천만원 한도",          
       deductible: "급여 10% 또는 20%",             

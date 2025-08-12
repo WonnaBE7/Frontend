@@ -1,6 +1,6 @@
 import { fetcher } from '@/shared/utils/fetcher'
 import type { AssetCategoryDetailResponse, AssetCategoryRatioResponse, AssetDetailResponse, AssetSummaryMeta } from './assets.entity'
-import { mockAssetCategoryDetailResponse, mockAssetCategoryRatio, mockAssetSummaryMeta, mockCategoryDetailMap } from './assets.mock'
+import { mockAccountDetail, mockAssetCategoryDetailResponse, mockAssetCategoryRatio, mockAssetSummaryMeta, mockCategoryDetailMap } from './assets.mock'
 
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
@@ -52,9 +52,36 @@ export const getAssetCategoryDetail = async (assetCategory: string) => {
             method: 'GET',
             auth: true,
         })
-
-        return res.data
+        console.log('총자산 상세페이지 - 카테고리별 계좌', res)
+        return res.data 
     } catch {
         return mockCategoryDetailMap[assetCategory]
+    }
+}
+
+
+export interface AccountTransaction {
+  transactionName: string
+  transactionDate: string // YYYY-MM-DD
+  transactionTime: string // HH:mm:ss
+  amount: number
+}
+export interface AccountDetailResponse {
+  bankName: string
+  accountName: string
+  accountNumber: string
+  transactions: AccountTransaction[]
+}
+
+export const getAccountDetail = async (accountId: number) => {
+    try{
+    const res = await fetcher<AccountDetailResponse>({
+        url: `${BASE_URL}/api/assets/detail/accountId?accountId=${accountId}`,
+        method: 'GET',
+        auth: true
+    })
+    return res.data }
+    catch{
+        return mockAccountDetail
     }
 }

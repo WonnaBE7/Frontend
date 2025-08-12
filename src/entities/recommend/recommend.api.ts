@@ -22,14 +22,14 @@ export const getCurrentSummary = async () =>{
 export const getUserSavings = async (productId :number) =>{
     try{
         const res = await fetcher<SavingsDetailResponse>({
-            url: `${BASE_URL}/api/user/savings/${productId}`,
+            url: `${BASE_URL}/api/products/savings/${productId}`,
             method: 'GET',
             auth: true,
           })
           console.log('현재 보유한 예적금 상품의 상세 정보 모달창 조회 : ',res);
           return res.data
     }catch(e){
-        console.log('현재 보유한 보험 상품의 상세 정보 모달창 조회 실패: ',e);
+        console.log('현재 보유한 예적금 상품의 상세 정보 모달창 조회 실패: ',e);
         console.log('실패')
         //return mockSavingsDetail
     }
@@ -39,7 +39,7 @@ export const getUserSavings = async (productId :number) =>{
 export const getUserInsurances = async (productId :number) =>{
     try{
         const res = await fetcher<InsuranceDetailResponse>({
-            url: `${BASE_URL}/api/user/insurances/${productId}`,
+            url: `${BASE_URL}/api/user/products/insurances/${productId}`,
             method: 'GET',
             auth: true,
           })

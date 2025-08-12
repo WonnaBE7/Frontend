@@ -78,17 +78,14 @@ const userStore = useUserProfileStore()
 const recommendStore = useRecommendationStore()
 const router = useRouter()
 
-/** 헤더 타이틀 */
 const selectedFinName = computed(
   () => userStore.selectedFinType.name || userStore.profile?.wonnaBE?.[0] || '금융'
 )
 
-/** 페르소나 */
 const selectedFinType = computed(() => userStore.selectedFinType)
 const personaId = computed(() => selectedFinType.value.id)
 const isPersonaReady = computed(() => !!personaId.value)
 
-/** 탭 */
 const productTabs = [
   { value: 'savings' as ProductType, label: '예적금' },
   { value: 'card' as ProductType, label: '카드' },
@@ -96,11 +93,11 @@ const productTabs = [
 ]
 const selectedTab = ref<ProductType>('savings')
 
-/** 현재 탭의 상품들 */
 const currentProducts = computed(() => {
   if (!isPersonaReady.value) return []
   switch (selectedTab.value) {
     case 'savings':
+      console.log('예적금 가져온다~',recommendStore.getSavingsByPersona(personaId.value as number))
       return recommendStore.getSavingsByPersona(personaId.value as number)
     case 'card':
       return recommendStore.getCardsByPersona(personaId.value as number)

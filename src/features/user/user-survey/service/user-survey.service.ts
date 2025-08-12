@@ -12,6 +12,7 @@ export const getUserSurveyData = async () => {
         method:'GET',
         auth: true,
     })
+    console.log('사용자 상세정보 조회 : ',res)
     return res.data
 }
 
@@ -23,6 +24,7 @@ export const postUserSurveyData = async (input : UserSurveyData ) => {
             auth: true,
             body : input
         })
+        console.log('사용자 상세정보 생성 : ',res)
         return res.data
     }
     catch{
@@ -39,6 +41,7 @@ export const patchUserSurveyData = async (input : UserSurveyData) => {
             auth: true,
             body: input
         })
+        console.log('사용자 상세정보 수정 : ',res)
         return res.data
     }
     catch{

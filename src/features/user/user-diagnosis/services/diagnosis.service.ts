@@ -14,6 +14,7 @@ export const submitNowmeDiagnosis = async (payload: DiagnosisRequest) => {
     body: payload,
     auth: true,
   })
+  console.log('성향 진단 응답 데이터',res)
 
   return res.data
 }

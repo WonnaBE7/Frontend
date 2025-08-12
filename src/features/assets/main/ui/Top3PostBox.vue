@@ -9,7 +9,7 @@
       </RouterLink>
     </div>
 
-    <template v-if="topPosts.length">
+    <div v-if="topPosts.length">
       <PostPreviewCard
         v-for="post in topPosts"
         :key="post.boardId"
@@ -26,7 +26,7 @@
         :isLiked="post.isLiked"
         :createdAt="post.createdAt"
       />
-    </template>
+    </div>
       <Card 
         v-else
         class="bg-gray-BGDim !mb-0 mt-4"

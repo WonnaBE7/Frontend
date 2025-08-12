@@ -20,14 +20,14 @@ import { useTransactionCategoryDetailStore, useTransactionDetailStore, type Cons
 const consumptionCategoryStoore = useTransactionCategoryDetailStore()
 const consumptionStoore = useTransactionDetailStore()
 
+const route = useRoute()
+const category = computed(() => route.query.category as ConsumptionCategoryKey || '') 
+const type = computed(() => route.query.type as 'current' | 'today' | undefined)
+
 onMounted(async () => {
-  await consumptionCategoryStoore.fetchAllTodayDetails()
-  await consumptionCategoryStoore.fetchAllMonthlyDetails()
+  await consumptionCategoryStoore.fetchAllTodayDetails(category.value)
+  await consumptionCategoryStoore.fetchAllMonthlyDetails(category.value)
   await consumptionStoore.fetchMonthlyTransactionDetail()
   await consumptionStoore.fetchTodayTransactionDetail()
 })
-
-const route = useRoute()
-const category = computed(() => route.query.category as ConsumptionCategoryKey || '')
-const type = computed(() => route.query.type as 'current' | 'today' | undefined)
 </script>

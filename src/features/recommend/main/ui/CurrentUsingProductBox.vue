@@ -9,14 +9,14 @@
           <PiggyBankIcon class="w-4 h-4 text-blue-500" />
           <Typography type="M_14_120" class="text-gray-700">예적금</Typography>
           <Typography v-if="currentProducts" type="B_14_120" class="text-blue-500">
-            {{ currentProducts.deposits.count }}개
+            {{ currentProducts.savings.count }}개
           </Typography>
         </div>
 
-        <div v-if="currentProducts" class="space-y-2">
+        <div v-if="currentProducts" class="space-y-2 max-h-56 overflow-y-auto pr-1" >
           <div
-          v-if="currentProducts.deposits.count > 0"
-            v-for="product in currentProducts.deposits.products"
+          v-if="currentProducts.savings.count > 0"
+            v-for="product in currentProducts.savings.products"
             :key="product.productId"
             @click="openProductDetail(product, 'savings')"
             class="bg-blue-50 p-3 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors"
@@ -43,7 +43,7 @@
           </Typography>
         </div>
 
-        <div v-if="currentProducts" class="space-y-2">
+        <div v-if="currentProducts" class="space-y-2 max-h-56 overflow-y-auto pr-1">
           <div
             v-if="currentProducts.cards.count > 0"
             v-for="card in currentProducts.cards.products"
@@ -65,7 +65,7 @@
 
       <!-- 보험 -->
       <div class="flex flex-col flex-1">
-        <div class="flex items-center gap-2 mb-2">
+        <div class="flex items-center gap-2 mb-2 max-h-56 overflow-y-auto pr-1">
           <ShieldIcon class="w-4 h-4 text-purple-500" />
           <Typography type="M_14_120" class="text-gray-700">보험</Typography>
           <Typography v-if="currentProducts" type="B_14_120" class="text-purple-500">
@@ -142,6 +142,7 @@ async function openProductDetail(item: any, type: 'savings' | 'card' | 'insuranc
   const productId = getProductId(item, type)
   console.log('선택한 상품 id:',productId)
   const detail = await getProductDetail(productId, type)
+  console.log('선택한 상품 id 모달 데이터',detail)
   if (detail) {
     selectedProductDetail.value = detail
     selectedProductType.value = type

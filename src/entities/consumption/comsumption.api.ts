@@ -106,10 +106,10 @@ export const getTodayTransactionDetail = async () => {
   }
 }
 
-export const getMonthlyCategoryDetail = async (consumptionDetailCategory: string) => {
+export const getMonthlyCategoryDetail = async (consumptionDetailCategory: string, yearMonth : string) => {
     try {
       const res = await fetcher<ConsumptionCategoryDetail>({
-        url: `${BASE_URL}/api/assets/consumption/transactions/category?category=${consumptionDetailCategory}`,
+        url: `${BASE_URL}/api/assets/consumption/transactions/category?category=${consumptionDetailCategory}&?yearMonth=${yearMonth}`,
         method: 'GET',
         auth: true,
       })

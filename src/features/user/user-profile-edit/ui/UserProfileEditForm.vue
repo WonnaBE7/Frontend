@@ -22,13 +22,12 @@
     </form>
   </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   import { ref } from 'vue'
   import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
   import Button from '@/shared/ui/atoms/Button.vue'
   import { putUserProfile } from '@/features/user/user-profile-edit/services/profile-edit.service'
   import { useRouter } from 'vue-router'
-  
 
   interface FormData {
     name: string
@@ -39,14 +38,21 @@
     name: '',
     password: ''
   })
-  
+
   const router = useRouter()
+
   const handleSubmit = async () => {
+    const { name, password } = form.value
+
+    if (!name.trim() || !password.trim()) {
+      alert('이름과 비밀번호를 모두 입력해주세요.')
+      return
+    }
+
     try {
-      const { name, password } = form.value
       const res = await putUserProfile({ name, password })
-      if(res.code === 200){
-        //모달 넣기
+      if (res.code === 200) {
+        // 모달 넣기
         console.log('수정 완료:')
         alert('사용자 정보가 성공적으로 수정되었습니다.')
         router.push('/user')
@@ -57,8 +63,7 @@
     }
   }
 
-  async function goBack(){
-      router.back()
+  function goBack() {
+    router.back()
   }
-
-  </script>
+</script>

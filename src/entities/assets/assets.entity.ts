@@ -56,6 +56,7 @@ export type AssetOrConsumptionSummary = {
 
 // 단일 계좌 정보
 export interface AccountDetail {
+  accountId : number,
   bankName: string
   accountName: string
   accountNumber: string        

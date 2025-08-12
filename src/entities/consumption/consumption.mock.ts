@@ -58,7 +58,7 @@ export const mockMonthlyCategoryConsumption: MonthlyCategoryConsumption = {
       diffFromLastMonth: 40000,
     },
     {
-      consumptionCategory: 'financial',
+      consumptionCategory: 'culture',
       amount: 300000,
       percentage: 12.9,
       diffFromLastMonth: -10000,
@@ -243,7 +243,7 @@ export const mockTransportTransactions: ConsumptionCategoryDetail = {
 }
 
 export const mockFinancialTransactions: ConsumptionCategoryDetail = {
-  consumptionCategory: 'financial',
+  consumptionCategory: 'culture',
   transactions: [
     {
       transactionName: 'CGV 강남',
@@ -323,7 +323,7 @@ export const mockTodayTransportTransactions: ConsumptionCategoryDetail = {
 }
 
 export const mockTodayFinancialTransactions: ConsumptionCategoryDetail = {
-  consumptionCategory: 'financial',
+  consumptionCategory: 'culture',
   transactions: [
     {
       transactionName: '토스 보험료',
@@ -353,7 +353,7 @@ export const mockMonthlyCategoryDetailMap: Record<ConsumptionCategory, Consumpti
   food: mockFoodTransactions,
   shopping: mockShoppingTransactions,
   transport: mockTransportTransactions,
-  financial: mockFinancialTransactions,
+  culture: mockFinancialTransactions,
   other: mockOtherTransactions,
 }
 
@@ -361,6 +361,6 @@ export const mockTodayCategoryDetailMap: Record<ConsumptionCategory, Consumption
   food: mockTodayFoodTransactions,
   shopping: mockTodayShoppingTransactions,
   transport: mockTodayTransportTransactions,
-  financial: mockTodayFinancialTransactions,
+  culture: mockTodayFinancialTransactions,
   other: mockTodayOtherTransactions,
 }

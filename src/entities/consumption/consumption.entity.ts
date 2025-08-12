@@ -58,7 +58,7 @@ export type ConsumptionCategory =
   | 'food'
   | 'shopping'
   | 'transport'
-  | 'financial'
+  | 'culture'
   | 'other'
 
 // 소비 내역

@@ -1,23 +1,24 @@
 <template>
-  <div class="space-y-3 sm:space-y-5">
+  <div>
     <Card
       v-for="ts in transactions"
       :key="ts.transactionName + ts.transactionTime"
       class="border border-gray-150 bg-white"
     >
       <div class="flex items-center gap-3 sm:gap-4 w-full justify-between">
-        <div class="flex flex-row mb-1 sm:mb-2">
+        <div class="flex flex-row items-center mb-1 sm:mb-2">
           <div class="bg-gray-BGDim w-10 sm:w-14 md:w-18 h-10 sm:h-14 md:h-18 flex items-center justify-center rounded-full mr-2">
             <component :is="iconMap[category] ?? iconMap.default" class="w-5 h-5 sm:w-7 sm:h-7 text-gray-500" />
           </div>
-          <div>
+          <div class="flex flex-col mb-1 sm:mb-2">
             <Typography type="M_16_140" class="text-gray-900 mb-2 sm:mb-3 md:mb-4">
               {{ ts.transactionName }}
             </Typography>
             <Typography type="M_12_120" class="text-gray-500">
-              <span>{{ formatTime(ts.transactionDate, ts.transactionTime) }}</span>
-              <span class="mx-1">•</span>
-              <span>{{ ts.accountName }} 결제</span>
+              {{ formatTime(ts.transactionDate, ts.transactionTime) }}
+            </Typography>
+            <Typography type="M_12_120" class="text-gray-500">
+              {{ ts.accountName }} 결제
             </Typography>
           </div>
         </div>
@@ -49,7 +50,7 @@
     food: Utensils,
     shopping: Wallet,
     transport: Bus,
-    financial: CircleDollarSign,
+    culture: CircleDollarSign,
     other: CalendarCheck,
     current: CalendarCheck,
     today: CalendarCheck,

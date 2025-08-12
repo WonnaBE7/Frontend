@@ -5,7 +5,7 @@
           <Typography type="B_16_140">{{ product.productName }}</Typography>
           <Typography type="B_14_120" class="flex items-center gap-2">
             <Star class="fill-sub-yellow-p text-sub-yellow-p w-4" />
-            {{ product.totalScore }}
+            {{ product.score.toFixed(2) }}
           </Typography>
         </div>
         <div class="flex flex-row items-center w-full gap-2 mb-2">

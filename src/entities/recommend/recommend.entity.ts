@@ -22,7 +22,7 @@ export interface InsuranceProduct {
 
 // 보유 상품 3가지 모음
 export interface CurrentProductsResponse {
-  deposits: {
+  savings: {
     count: number
     products: DepositProduct[]
   }
@@ -96,7 +96,7 @@ export interface RecommendedSavingsProduct {
   bankName: string
   baseRate: number
   maxRate: number
-  totalScore: number
+  score: number
 }
 
 export interface SavingsRecommendationResponse {
@@ -115,7 +115,7 @@ export interface RecommendedInsuranceProduct {
   providerName: string
   coverageType: string
   coverageLimit:string
-  totalScore:number
+  score:number
 }
 
 export interface InsuranceRecommendationResponse {
@@ -133,7 +133,7 @@ export interface RecommendedCardProduct {
   cardName: string
   cardCompany: string
   cardType: string 
-  matchScore: number
+  score: number
   mainBenefit: string
   annualFeeDomestic: string
   annualFeeOverSeas: string
@@ -148,6 +148,7 @@ export interface CardRecommendationResponse {
   }[]
 }
 export type WishlistProduct = RecommendedSavingsProduct | RecommendedCardProduct | RecommendedInsuranceProduct
+
 // 관심상품 목록
 export interface WishlistResponse {
   totalCount: number
@@ -208,7 +209,7 @@ export interface SavingsProductInfo {
   productId: string
   productName: string
   bankName: string
-  matchScore: number
+  score: number
   interestRate:string,
   maxInterestRate: string
   benefitSummary: string
@@ -235,7 +236,7 @@ export interface CardProductInfo {
   cardName: string
   cardCompany: string
   cardType:string
-  matchScore: number
+  score: number
   mainBenefit: string
   benefitSummary: string
   isWished : boolean
@@ -261,7 +262,7 @@ export interface InsuranceProductInfo {
   productId: string
   productName: string
   providerName: string
-  matchScore: number
+  score: number
   coverageType:string
   coverageLimit:string
   deductible:string

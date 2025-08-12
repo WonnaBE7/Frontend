@@ -18,7 +18,6 @@
   import Typography from '@/shared/ui/atoms/Typography.vue'
 
   const router = useRouter()
-
   const props = defineProps<{
     amount: string
     date: string

@@ -34,6 +34,15 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/assets/account/detail',
+    name: 'AssetsAccountDetail',
+    component: () => import('@/pages/assets/AssetsAccountDetailPage.vue'),
+    meta: {
+      icon: { type: 'lucide', value: 'CreditCard' },
+      title: '계좌 상세 내역'
+    },
+  },
+  {
     path: '/assets/consumption/detail',
     name: 'ConsumptionDetail',
     component: () => import('@/pages/assets/ConsumptionDetailPage.vue'),
@@ -187,6 +196,7 @@ const routes: RouteRecordRaw[] = [
       try {
         const postId = Number(to.params.id)
         const { mockBoards } = await import('@/entities/board/board.mock')
+        
         const postData = mockBoards.find((b) => b.boardId === postId)
         if (!postData) {
           console.warn(`게시글 ${postId}을 찾을 수 없습니다.`)

@@ -60,10 +60,19 @@ export const useConsumptionStore = defineStore('consumption', () => {
   })
 
   const displayedDate = computed(() => {
+    const now = dayjs()
+  
     switch (selectedTab.value) {
-      case 'current':
+      case 'current': {
+        // 오늘이 속한 달이 아니면 "MM월"만 간단히 보여주기
+        if (!baseDate.value.isSame(now, 'month')) {
+          return baseDate.value.format('MM월')
+        }
+        // 현재 달이면 기존 API 날짜 사용
         return monthlySummary.value?.monthToDateConsumption.calculatedUntil as string
+      }
       case 'estimated':
+        // 예상 탭은 월 이동을 막아두셨으니 기존 값 유지
         return estimatedAndToday.value?.estimatedMonthlyConsumption.calculatedUntil as string
       case 'today':
         return estimatedAndToday.value?.todayConsumption.calculatedDate as string
@@ -109,10 +118,10 @@ export const useConsumptionStore = defineStore('consumption', () => {
     baseDate.value = baseDate.value.subtract(1, 'month')
     await fetchMonthOnly()
   }
-  
+
   const goNextMonth = async () => {
     const now = dayjs()
-    if (!baseDate.value.isSame(now, 'month')) {
+    if (baseDate.value.isBefore(now, 'month')) {
       baseDate.value = baseDate.value.add(1, 'month')
       await fetchMonthOnly()
     }
@@ -157,7 +166,6 @@ export const useConsumptionMain = defineStore('consumptionMain', {
 // 월별, 오늘 소비내역
 export const useTransactionDetailStore = defineStore('consumptionDetailStore', {
   state: () => ({
-    baseDate: dayjs(),
     todayTransactionDetail: null as TodayTransactionDetail | null,
     monthlyTransactionDetail: null as MonthlyTransactionDetail | null,
   }),
@@ -166,7 +174,7 @@ export const useTransactionDetailStore = defineStore('consumptionDetailStore', {
       this.todayTransactionDetail = await getTodayTransactionDetail()
     },
     async fetchMonthlyTransactionDetail() {
-      const yearMonth = dayjs(this.baseDate).format('YYYY-MM')
+      const yearMonth = useConsumptionStore().baseDate.format('YYYY-MM')
       console.log('월별 거래내역 가지러 가는 중~ ', yearMonth);
       this.monthlyTransactionDetail = await getMonthlyTransactionDetail(yearMonth)
     },
@@ -176,7 +184,7 @@ export const useTransactionDetailStore = defineStore('consumptionDetailStore', {
 
 
 // 월별, 오늘 카테고리 별 상세 내역
-export const categories = ['food', 'shopping', 'transport', 'financial', 'other'] as const
+export const categories = ['food', 'shopping', 'transport', 'culture', 'other'] as const
 export type ConsumptionCategoryKey = typeof categories[number]
 
 export const useTransactionCategoryDetailStore = defineStore('consumptionCategoryStore', {
@@ -186,18 +194,15 @@ export const useTransactionCategoryDetailStore = defineStore('consumptionCategor
   }),
 
   actions: {
-    async fetchAllTodayDetails() {
-      for (const category of categories) {
-        const res = await getTodayCategoryDetail(category)
+    async fetchAllTodayDetails(category : ConsumptionCategoryKey) {
+      const res = await getTodayCategoryDetail(category)
         this.todayDetails[category] = res
-      }
     },
 
-    async fetchAllMonthlyDetails() {
-      for (const category of categories) {
-        const res = await getMonthlyCategoryDetail(category)
+    async fetchAllMonthlyDetails(category : ConsumptionCategoryKey) {
+        const yearMonth = useConsumptionStore().baseDate.format('YYYY-MM')
+        const res = await getMonthlyCategoryDetail(category, yearMonth)
         this.monthlyDetails[category] = res
-      }
     },
 
     getTodayDetail(category: ConsumptionCategoryKey) {

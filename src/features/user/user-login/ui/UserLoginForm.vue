@@ -62,13 +62,12 @@ watch(checked, (newVal) => {
 })
 
 const handleLogin = async () => {
-    const res = await userLogin({ email: email.value, password: password.value })
-    if(res.code === 200){
-      const { accessToken, user } = res.data
-      console.log('토큰 : ', accessToken)
-      authStore.login(accessToken, user)
-      
-      router.push('/')
+  const res = await userLogin({ email: email.value, password: password.value })
+  if(res.code === 200){
+    const { accessToken, user } = res.data
+    authStore.login(accessToken, user)
+    
+    router.push('/')
   }
 }
 

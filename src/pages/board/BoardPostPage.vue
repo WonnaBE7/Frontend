@@ -1,4 +1,3 @@
-<!-- BoardPostPage.vue -->
 <template>
   <AppLayout>
     <BoardPostContent 
@@ -28,7 +27,7 @@ import BoardPostContent from '@/features/board/board-post/ui/BoardPostContent.vu
 import BoardPostCommentList from '@/features/board/board-post/ui/BoardPostCommentList.vue'
 import type { Board } from '@/entities/board/board.entity'
 import type { Comment } from '@/entities/board/comment/comment.entity'
-import { financialTendencyList, finTypeIcons } from '@/shared/constants/finTypes.constants'
+import { financialTendencyList } from '@/shared/constants/finTypes.constants'
 import { getBoardComment, patchBoardComment, postBoardComment } from '@/features/board/board-post/service/board-comment.service'
 
 const route = useRoute()

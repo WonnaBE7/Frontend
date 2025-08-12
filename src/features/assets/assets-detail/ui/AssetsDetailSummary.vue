@@ -11,7 +11,7 @@
   <Typography type="B_18_120" class="mb-4 sm:mb-6 md:mb-8">보유 계좌</Typography>
   
   <div v-if="details" v-for="account in details.accounts" :key="account.accountNumber" class="mb-4 sm:mb-6 md:mb-8">
-    <Card class="border border-gray-150">
+    <Card class="border border-gray-150" @click="openAccount(account.accountId)">
       <div class="flex flex-row w-full justify-between items-center">
           <div>
             <Typography type="M_14_140" class="text-gray-800 ">
@@ -34,16 +34,21 @@
   
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useRoute } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
   import Typography from '@/shared/ui/atoms/Typography.vue'
   import Card from '@/shared/ui/atoms/Card.vue'
   import { categoryLabelMap } from '@/entities/assets/assets.constants'
   import { useAssetCategoryDetailStore } from '@/entities/assets/assets.store'
   
   const route = useRoute()
+  const router = useRouter()
   const category = route.query.category as "checking" | "savings" | "investment" | "insurance" | "other" | "pension"
   const label = categoryLabelMap[category] || '자산'
   
   const store = useAssetCategoryDetailStore()
   const details = computed(() => store.getCategoryDetail(category))
+
+  async function openAccount(accountId: number) {
+    router.push({ name: 'AssetsAccountDetail', params: { accountId } })
+  }
 </script>

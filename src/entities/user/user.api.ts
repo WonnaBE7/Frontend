@@ -1,6 +1,5 @@
 import { fetcher } from "@/shared/utils/fetcher"
 import type { UserProfile } from "./user.entity"
-import { mockUserProfile } from "./user.mock"
 
 
 
@@ -12,18 +11,7 @@ export const getUserProfileData = async () => {
         method: 'GET',
         auth: true,
     })
+    console.log('유저 프로필 가져오기',res.data)
     return res.data
-    // try{
-    //     const res = await fetcher<UserProfile>({
-    //         url: `${BASE_URL}/api/user/me`,
-    //         method: 'GET',
-    //         auth: true,
-    //     })
-    //     console.log('유저 데이터 가져옴!', res.code, res.data)
-    //     return res.data
-    // }
-    // catch{
-    //     return mockUserProfile
-    // }
 }
 

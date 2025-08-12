@@ -15,7 +15,7 @@
             <Typography type="M_12_140">Match Score</Typography>
             <div class="flex flex-row items-center gap-2">
                 <component :is="Star" class="fill-sub-orange-p text-sub-yellow-p w-4 h-4"/>
-                <Typography type="B_14_140">{{data.matchScore}}</Typography>   
+                <Typography type="B_14_140">{{data.score}}</Typography>   
             </div>
         </div>
         <div class="flex flex-row w-full justify-between mb-2">

@@ -9,7 +9,7 @@ export const colorMap: Record<string, string> = {
   food: 'bg-sub-yellow-p',
   shopping: 'bg-sub-orange-p',
   transport: 'bg-sub-green-p',
-  financial: 'bg-sub-aqua-p',
+  culture: 'bg-sub-aqua-p',
 }
 export const categoryLabelMap: Record<string, string> = {
   checking: '입출금',
@@ -22,5 +22,5 @@ export const categoryLabelMap: Record<string, string> = {
   food: '식비',
   shopping: '쇼핑',
   transport: '교통',
-  financial: '금융',
+  culture: '문화',
 }

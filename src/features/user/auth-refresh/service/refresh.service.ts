@@ -1,5 +1,3 @@
-import { fetcher } from '@/shared/utils/fetcher'
-
 interface RefreshResponse {
     accessToken: string
     user: {

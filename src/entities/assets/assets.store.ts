@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { AssetCategoryDetailResponse, AssetCategoryRatioResponse, AssetDetailResponse, AssetSummaryMeta, AssetTabKey } from '@/entities/assets/assets.entity'
-import { getAssetCategoryDetail, getAssets, getAssetsCategoryRatio, getAssetsSummary } from './assets.api'
+import { getAssetCategoryDetail, getAssets, getAssetsCategoryRatio, getAssetsSummary, type AccountDetailResponse } from './assets.api'
 
 
 export const useAssetTabStore = defineStore('assetTab', {
@@ -72,3 +72,4 @@ export const useAssetCategoryDetailStore = defineStore('assetCategoryDetail', {
     },
   },
 })
+
