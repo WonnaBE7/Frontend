@@ -142,7 +142,7 @@ async function openProductDetail(item: any, type: 'savings' | 'card' | 'insuranc
   const productId = getProductId(item, type)
   console.log('선택한 상품 id:',productId)
   const detail = await getProductDetail(productId, type)
-  console.log('선택한 상품 id 모달 데이터',detail)
+  console.log('선택한 상품 id 모달 데이터', detail)
   if (detail) {
     selectedProductDetail.value = detail
     selectedProductType.value = type

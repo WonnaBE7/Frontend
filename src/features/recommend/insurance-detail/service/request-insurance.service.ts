@@ -11,6 +11,7 @@ export const postRequestInsurance = async (request : InsuranceApplicationRequest
         auth: true,
         body: request
     })
+    console.log('보험 상품 신청하기',res)
     return res
 
 }

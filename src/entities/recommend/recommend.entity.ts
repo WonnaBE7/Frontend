@@ -179,8 +179,10 @@ export interface SavingsApplicationRequest {
   productType: 'savings'
   productId: string
   productName: string
-  monthlyDeposit: number
-  savingsPeriod: number
+
+  amount:string 
+  payment: string
+  joinPeriod:string
 }
 
 export interface InsuranceApplicationRequest {
