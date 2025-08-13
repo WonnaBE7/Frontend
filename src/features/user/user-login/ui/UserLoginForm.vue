@@ -58,7 +58,7 @@ const router = useRouter()
 const showModal = ref<boolean>(false)
 const checked = ref<string[]>([])
 const allChecked = ref<boolean>(false)
-const showSplash = ref(false) 
+const showSplash = ref(true) 
 
 watch(checked, (newVal) => {
   allChecked.value = newVal.length === terms.length
