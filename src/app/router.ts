@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
-import { mockMonthlyConsumptionSummary, mockEstimatedAndTodayConsumption } from '@/entities/consumption/consumption.mock'
 import BoardCategoryDetailPage from '@/pages/board/BoardCategoryDetailPage.vue'
 import { finTypeIcons } from '@/shared/constants/finTypes.constants'
 import dayjs from 'dayjs'
@@ -34,7 +33,7 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/assets/account/detail',
+    path: '/assets/account/detail:accountId',
     name: 'AssetsAccountDetail',
     component: () => import('@/pages/assets/AssetsAccountDetailPage.vue'),
     meta: {

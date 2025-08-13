@@ -25,8 +25,10 @@ const category = computed(() => route.query.category as ConsumptionCategoryKey |
 const type = computed(() => route.query.type as 'current' | 'today' | undefined)
 
 onMounted(async () => {
-  await consumptionCategoryStoore.fetchAllTodayDetails(category.value)
-  await consumptionCategoryStoore.fetchAllMonthlyDetails(category.value)
+  if(category.value){
+    await consumptionCategoryStoore.fetchAllTodayDetails(category.value)
+    await consumptionCategoryStoore.fetchAllMonthlyDetails(category.value)
+  }
   await consumptionStoore.fetchMonthlyTransactionDetail()
   await consumptionStoore.fetchTodayTransactionDetail()
 })

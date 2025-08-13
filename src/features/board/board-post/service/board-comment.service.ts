@@ -1,6 +1,4 @@
-import { mockComments } from "@/entities/board/comment/comment.mock"
 import { fetcher } from "@/shared/utils/fetcher"
-
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 

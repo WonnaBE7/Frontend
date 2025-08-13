@@ -18,11 +18,11 @@
           <div class="flex items-center gap-1">
             <Typography type="M_12_120" class="text-gray-500">금리:</Typography>
             <Typography type="M_12_120" class="text-sub-green-p">
-              연 {{ product.baseRate }}%
+              연 {{ product.baseRate.toFixed(2) }}%
             </Typography>
             <Typography type="M_12_120" class="text-gray-500 ml-2">최대:</Typography>
             <Typography type="M_12_120" class="text-sub-green-p">
-              {{ product.maxRate}}%
+              {{ product.maxRate.toFixed(2) }}%
             </Typography>
           </div>
           <ChevronRight />

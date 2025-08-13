@@ -5,7 +5,7 @@
           v-for="(src, i) in fintypeImages"
           :key="src"
           class="icon-wrapper absolute"
-          :class="`drop-path-${(i % 12) + 1}`"
+          :class="`drop-path-${(i % 13) + 1}`"
           :style="{
             left: iconPositions[i],
             animationDelay: iconDelays[i],
@@ -200,6 +200,16 @@
     98% { transform: translateY(-9px) translateX(-16px) rotate(-550deg); }
     100% { transform: translateY(0) translateX(0) rotate(-720deg); }
   }
+  @keyframes drop-path-13 {
+     0%   { transform: translateY(-120vh) translateX(20px) rotate(0deg); opacity: 0; }
+     18%  { opacity: 1; }
+     70%  { transform: translateY(0) translateX(-20px) rotate(260deg); }
+     80%  { transform: translateY(-26px) translateX(-18px) rotate(290deg); }
+     90%  { transform: translateY(-13px) translateX(-12px) rotate(320deg); }
+     96%  { transform: translateY(-6px) translateX(-6px) rotate(340deg); }
+     100% { transform: translateY(0) translateX(0) rotate(360deg); }
+  }
+    
   
   /* 경로별 애니메이션 클래스 */
   .drop-path-1  { animation: drop-path-1 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
@@ -214,6 +224,7 @@
   .drop-path-10 { animation: drop-path-10 1.38s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
   .drop-path-11 { animation: drop-path-11 1.22s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
   .drop-path-12 { animation: drop-path-12 1.48s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+  .drop-path-13 { animation: drop-path-13 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;}
   
   /* 아이콘 정착 미세 흔들림 */
   .drop-bounce-enhanced {

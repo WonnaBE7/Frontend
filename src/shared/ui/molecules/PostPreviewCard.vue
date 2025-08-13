@@ -48,7 +48,7 @@
   </template>
   
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { computed } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
   import Typography from '@/shared/ui/atoms/Typography.vue'
   import { HeartIcon, BookmarkIcon, Trash2Icon, MessageCircle } from 'lucide-vue-next'

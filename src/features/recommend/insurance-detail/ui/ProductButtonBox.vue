@@ -37,6 +37,7 @@ const showSuccess = ref<boolean>(false)
 const isWishedLocal = ref<boolean>(props.isWished)
 
 async function requestInsurance(){
+    console.log('보험 신청하기 보내기',props.request)
     const res = await postRequestInsurance(props.request)
     if (res.code === 200) {
         showSuccess.value = true

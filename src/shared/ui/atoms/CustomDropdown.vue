@@ -1,5 +1,5 @@
 <template>
-    <div ref="dropdownRef" class="relative inline-block w-36">
+    <div ref="dropdownRef" class="relative inline-block w-48">
       <!-- 드롭다운 버튼 -->
       <button
         @click="toggleDropdown"

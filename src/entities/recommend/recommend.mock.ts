@@ -4,8 +4,6 @@ import type {
   InsuranceDetailResponse,
   CardDetailResponse,
   SavingsRecommendationResponse,
-  CardRecommendationResponse,
-  WishlistResponse,
   WishlistActionResponse,
   SavingsDetailPageResponse,
   CardDetailPageResponse,
@@ -13,7 +11,6 @@ import type {
   InsuranceApplicationRequest,
   CardApplicationRequest,
   InsurancesDetailPageResponse,
-  InsuranceRecommendationResponse
 } from './recommend.entity'
 
 // 현재 보유상품 조회
@@ -277,397 +274,6 @@ export const mockSavingsRecommendation: SavingsRecommendationResponse = {
   ]
 }
 
-// 보험 추천 상품
-export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
-  userId: 'a1b2c3d4-e5f6-7890-ab12-cd34ef56gh78',
-  recommendationsByPersona: [
-    {
-      personaId: 1,
-      personaName: '자린고비형',
-      products: [
-        {
-          productType: 'insurance',
-          productId: '101',
-          productName: '절약 플랜 보험',
-          providerName: 'KB손해보험',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '102',
-          productName: '최소보장 건강보험',
-          providerName: 'DB손해보험',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '103',
-          productName: '가성비 의료실비',
-          providerName: '메리츠화재',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: 'I104',
-          productName: '미니 생명보험',
-          providerName: '교보생명',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '105',
-          productName: '토스 간편보험',
-          providerName: '토스',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        }
-      ]
-    },
-    {
-      personaId: 11,
-      personaName: '균형 성장형',
-      products: [
-        {
-          productType: 'insurance',
-          productId: '201',
-          productName: '종합보장 패키지',
-          providerName: '삼성생명',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '202',
-          productName: '미래플랜 보험',
-          providerName: '한화생명',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: 'I203',
-          productName: '밸런스 케어 보험',
-          providerName: '현대해상',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '204',
-          productName: '적립형 건강보험',
-          providerName: '롯데손보',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '205',
-          productName: '마이플랜 생명보험',
-          providerName: 'KB생명',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        }
-      ]
-    },
-    {
-      personaId: 5,
-      personaName: '새싹 투자형',
-      products: [
-        {
-          productType: 'insurance',
-          productId: '301',
-          productName: '투자 입문 보험',
-          providerName: '카카오손보',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '302',
-          productName: '기초 건강플랜',
-          providerName: '메트라이프',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '303',
-          productName: '소액 저축 보험',
-          providerName: 'AIA생명',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '304',
-          productName: '비상금 보험',
-          providerName: '라이나생명',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        },
-        {
-          productType: 'insurance',
-          productId: '305',
-          productName: '토스 간편보험',
-          providerName: '토스',
-          coverageType: "상해급여",
-          coverageLimit: "연간 5천만원",
-          score: 96.4
-        }
-      ]
-    }
-  ]
-}
-
-
-// 카드 추천 상품
-export const mockCardRecommendation:CardRecommendationResponse = {
-  userId: 'a1b2c3d4-e5f6-7890-ab12-cd34ef56gh78',
-  recommendationsByPersona: [
-    {
-      personaId: 1,
-      personaName: '자린고비형',
-      products: [
-        {
-          productType: 'card',
-          cardId: '1001',
-          cardName: 'KB절약카드',
-          cardCompany: '국민카드',
-          cardType: '체크카드',
-          score: 95,
-          mainBenefit: '생활비 캐시백 5%',
-          annualFeeDomestic: '없음',
-          annualFeeOverseas: '없음'
-        },
-        {
-          productType: 'card',
-          cardId: '1002',
-          cardName: '신한 짠테크 카드',
-          cardCompany: '신한카드',
-          cardType: '체크카드',
-          score: 91,
-          mainBenefit: '저축 자동이체 시 포인트 적립',
-          annualFeeDomestic: '면제',
-          annualFeeOverseas: '없음'
-        },
-        {
-          productType: 'card',
-          cardId: '1003',
-          cardName: '우리 절약형 카드',
-          cardCompany: '우리카드',
-          cardType: '체크카드',
-          score: 89,
-          mainBenefit: '공과금 할인',
-          annualFeeDomestic: '없음',
-          annualFeeOverseas: '없음'
-        },
-        {
-          productType: 'card',
-          cardId: '1004',
-          cardName: '하나 알뜰카드',
-          cardCompany: '하나카드',
-          cardType: '체크카드',
-          score: 87,
-          mainBenefit: '지하철/버스 할인',
-          annualFeeDomestic: '면제',
-          annualFeeOverseas: '면제'
-        },
-        {
-          productType: 'card',
-          cardId: '1005',
-          cardName: '카카오 절약카드',
-          cardCompany: '카카오페이',
-          cardType: '체크카드',
-          score: 90,
-          mainBenefit: '카카오페이 결제시 적립',
-          annualFeeDomestic: '없음',
-          annualFeeOverseas: '5,000'
-        }
-      ]
-    },
-    {
-      personaId: 11,
-      personaName: '균형 성장형',
-      products: [
-        {
-          productType: 'card',
-          cardId: '1101',
-          cardName: '삼성 밸런스 카드',
-          cardCompany: '삼성카드',
-          cardType: '신용카드',
-          score: 92,
-          mainBenefit: '쇼핑/여행/저축 균형 적립',
-          annualFeeDomestic: '10,000',
-          annualFeeOverseas: '15,000'
-        },
-        {
-          productType: 'card',
-          cardId: '1102',
-          cardName: '롯데 스마트밸런스',
-          cardCompany: '롯데카드',
-          cardType: '신용카드',
-          score: 90,
-          mainBenefit: '생활/금융 포인트 자동 분배',
-          annualFeeDomestic: '8,000',
-          annualFeeOverseas: '12,000'
-        },
-        {
-          productType: 'card',
-          cardId: '1103',
-          cardName: '하나 균형잡힌 카드',
-          cardCompany: '하나카드',
-          cardType: '체크카드',
-          score: 88,
-          mainBenefit: '카테고리별 할인 균등 제공',
-          annualFeeDomestic: '없음',
-          annualFeeOverseas: '없음'
-        },
-        {
-          productType: 'card',
-          cardId: '1104',
-          cardName: '우리 성장형 카드',
-          cardCompany: '우리카드',
-          cardType: '신용카드',
-          score: 85,
-          mainBenefit: '적립과 할인 동시 제공',
-          annualFeeDomestic: '10,000',
-          annualFeeOverseas: '15,000'
-        },
-        {
-          productType: 'card',
-          cardId: '1105',
-          cardName: '토스 밸런스 카드',
-          cardCompany: '토스',
-          cardType: '체크카드',
-          score: 89,
-          mainBenefit: '월 소비 패턴 기반 리워드',
-          annualFeeDomestic: '무료',
-          annualFeeOverseas: '5,000'
-        }
-      ]
-    },
-    {
-      personaId: 5,
-      personaName: '새싹 투자형',
-      products: [
-        {
-          productType: 'card',
-          cardId: '0501',
-          cardName: '신한 투자 첫걸음 카드',
-          cardCompany: '신한카드',
-          cardType: '신용카드',
-          score: 93,
-          mainBenefit: '증권사 자동이체 2% 적립',
-          annualFeeDomestic: '5,000',
-          annualFeeOverseas: '5,000'
-        },
-        {
-          productType: 'card',
-          cardId: '0502',
-          cardName: 'NH 투자응원 카드',
-          cardCompany: 'NH카드',
-          cardType: '체크카드',
-          score: 91,
-          mainBenefit: '주식 투자시 캐시백 제공',
-          annualFeeDomestic: '없음',
-          annualFeeOverseas: '없음'
-        },
-        {
-          productType: 'card',
-          cardId: '0503',
-          cardName: '토스 주식카드',
-          cardCompany: '토스',
-          cardType: '체크카드',
-          score: 89,
-          mainBenefit: '증권계좌 연동 시 혜택',
-          annualFeeDomestic: '없음',
-          annualFeeOverseas: '없음'
-        },
-        {
-          productType: 'card',
-          cardId: '0504',
-          cardName: '삼성 새싹 투자카드',
-          cardCompany: '삼성카드',
-          cardType: '신용카드',
-          score: 86,
-          mainBenefit: '금융앱 연동 포인트 적립',
-          annualFeeDomestic: '8,000',
-          annualFeeOverseas: '10,000'
-        },
-        {
-          productType: 'card',
-          cardId: '0505',
-          cardName: '카카오 주린이카드',
-          cardCompany: '카카오뱅크',
-          cardType: '체크카드',
-          score: 90,
-          mainBenefit: '소액 투자 시 매월 리워드',
-          annualFeeDomestic: '없음',
-          annualFeeOverseas: '5,000'
-        }
-      ]
-    }
-  ]
-}
-
-// 관심상품 목록
-export const mockWishlist: WishlistResponse = {
-  totalCount: 3,
-  savings: [
-    {
-      productType: "savings",
-      productId: "1",
-      productName: "테스트 적금 상품 1",
-      bankName: "테스트은행1",
-      baseRate: 3.10,
-      maxRate: 4.10,
-      score: 86.0
-    },
-  ],
-  cards: [
-    {
-      productType: "card",
-      cardId: "2001",
-      cardName: "카카오페이 카드",
-      cardCompany: "카카오페이",
-      cardType: "체크카드",
-      score: 94,
-      mainBenefit: "간편결제 5% 적립",
-      annualFeeDomestic: "해당안함",
-      annualFeeOverseas: "5000"
-    },
-  ],
-  insurances: [
-    {
-      productType: "insurance",
-      productId: "3001",
-      productName: "실손의료비보험2507",
-      providerName: "DB손보",
-      coverageType: "상해급여",
-      coverageLimit: "연간 5천만원",
-      score: 96.4
-    }
-  ]
-}
-
 // 관심상품 추가/제거 응답
 export const mockWishlistAddResponse: WishlistActionResponse = {
   productId: "1",
@@ -694,9 +300,7 @@ export const mockSavingsApplicationRequest: SavingsApplicationRequest = {
 
 export const mockInsuranceApplicationRequest: InsuranceApplicationRequest = {
   productType: "insurance",
-  productId: "22222",
-  productName:"KB 보험",
-  userName: "홍길동",
+  insuranceId: "22222",
 }
 
 export const mockCardApplicationRequest: CardApplicationRequest = {
@@ -716,11 +320,11 @@ export const mockSavingsDetailPage: SavingsDetailPageResponse = {
     interestRate: "연 3.9%",
     maxInterestRate: "연 4.2%",             
     benefitSummary: "거래실적 따라 최고 연 0.1% 우대 제공", 
-    isWished :false,
+    wished :false,
     labels: ["금리", "단/복리", "우대조건", "중도해지 페널티", "최대한도"],
     currentUserData: [95, 70, 90, 75, 80], 
   },
-  comparisonCharts: [{
+  comparisonChart: [{
     compareId : 1,
     compareName : "KB 적금",
     recommendedProductData: [80, 80, 100, 80, 100]
@@ -782,11 +386,11 @@ export const mockInsuranesDetailPage : InsurancesDetailPageResponse={
       coverageLimit: "연간 5천만원 한도",          
       deductible: "급여 10% 또는 20%",             
       average_premium: "13,000원",           
-      isWished: false,
+      wished: false,
       labels: ["가격 경쟁력", "보장한도", "보장범위", "자기부담금 수준", "환급범위"],
       currentUserData: [60, 80, 70, 65, 75],
     },
-    comparisonCharts: [{
+    comparisonChart: [{
       compareId : 1,
       compareName : "삼성화재",
       recommendedProductData: [100, 80, 100, 80, 100]

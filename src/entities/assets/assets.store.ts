@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { AssetCategoryDetailResponse, AssetCategoryRatioResponse, AssetDetailResponse, AssetSummaryMeta, AssetTabKey } from '@/entities/assets/assets.entity'
-import { getAssetCategoryDetail, getAssets, getAssetsCategoryRatio, getAssetsSummary, type AccountDetailResponse } from './assets.api'
+import { getAssetCategoryDetail, getAssets, getAssetsCategoryRatio, getAssetsSummary } from './assets.api'
 
 
 export const useAssetTabStore = defineStore('assetTab', {
@@ -51,8 +51,7 @@ export const useAssetsCategoryRatio = defineStore('assetsCategoryRatio',{
   persist: true
 })
 
-const categories = ['checking', 'savings', 'investment', 'pension', 'insurance', 'other'] as const
-export type AssetCategoryType = typeof categories[number]
+export type AssetCategoryType = 'checking' | 'savings' | 'investment' | 'insurance' | 'other' | 'pension'
 
 export const useAssetCategoryDetailStore = defineStore('assetCategoryDetail', {
   state: () => ({
@@ -60,11 +59,9 @@ export const useAssetCategoryDetailStore = defineStore('assetCategoryDetail', {
   }),
 
   actions: {
-    async fetchAllCategoryDetails() {
-      for (const category of categories) {
+    async fetchAllCategoryDetails(category : AssetCategoryType) {
         const data = await getAssetCategoryDetail(category)
         this.categoryDetails[category] = data
-      }
     },
 
     getCategoryDetail(category: AssetCategoryType) {

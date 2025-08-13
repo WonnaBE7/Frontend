@@ -49,6 +49,7 @@
   const details = computed(() => store.getCategoryDetail(category))
 
   async function openAccount(accountId: number) {
+    console.log('선택한 계좌 번호',accountId)
     router.push({ name: 'AssetsAccountDetail', params: { accountId } })
   }
 </script>

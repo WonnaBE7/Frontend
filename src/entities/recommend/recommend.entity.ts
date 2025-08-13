@@ -113,8 +113,9 @@ export interface RecommendedInsuranceProduct {
   productId: string
   productName: string
   providerName: string
-  coverageType: string
+  myMoney: string
   coverageLimit:string
+  note: string
   score:number
 }
 
@@ -136,7 +137,7 @@ export interface RecommendedCardProduct {
   score: number
   mainBenefit: string
   annualFeeDomestic: string
-  annualFeeOverseas: string
+  annualFeeOverSeas: string
 }
 
 export interface CardRecommendationResponse {
@@ -184,9 +185,7 @@ export interface SavingsApplicationRequest {
 
 export interface InsuranceApplicationRequest {
   productType: 'insurance'
-  productId: string
-  productName : string
-  userName: string | undefined
+  insuranceId: string
 }
 
 export interface CardApplicationRequest {
@@ -213,7 +212,7 @@ export interface SavingsProductInfo {
   interestRate:string,
   maxInterestRate: string
   benefitSummary: string
-  isWished : boolean
+  wished : boolean
   labels : string[]
   currentUserData : number[]
 }
@@ -226,7 +225,7 @@ export interface MainFeature {
 
 export interface SavingsDetailPageResponse {
   productInfo: SavingsProductInfo
-  comparisonCharts: ComparisonChart[]
+  comparisonChart: ComparisonChart[]
   maturityInfo: MainFeature
 }
 
@@ -267,7 +266,7 @@ export interface InsuranceProductInfo {
   coverageLimit:string
   deductible:string
   average_premium:string
-  isWished : boolean
+  wished : boolean
   labels : string[]
   currentUserData : number[]
 }
@@ -278,7 +277,7 @@ export interface MaturityInfo{
 
 export interface InsurancesDetailPageResponse {
   productInfo: InsuranceProductInfo
-  comparisonCharts: ComparisonChart[]
+  comparisonChart: ComparisonChart[]
   maturityInfo: MaturityInfo
 }
 

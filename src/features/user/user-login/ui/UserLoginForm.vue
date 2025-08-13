@@ -58,7 +58,7 @@ const router = useRouter()
 const showModal = ref<boolean>(false)
 const checked = ref<string[]>([])
 const allChecked = ref<boolean>(false)
-const showSplash = ref(true) 
+const showSplash = ref(false) 
 
 watch(checked, (newVal) => {
   allChecked.value = newVal.length === terms.length
@@ -75,7 +75,7 @@ const handleLogin = async () => {
     // 5초 후에 메인 페이지 이동
     setTimeout(() => {
       router.push('/')
-    }, 5000)
+    }, 4000)
   }
 }
 

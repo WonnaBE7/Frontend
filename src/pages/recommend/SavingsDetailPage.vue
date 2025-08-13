@@ -1,11 +1,11 @@
 <template>
     <AppLayout>
       <IntroduceBox v-if="savingsData" :productInfo="savingsData.productInfo"/>
-      <ChartBox v-if="chartData && savingsData?.comparisonCharts" :commonChartData="chartData"/>
+      <ChartBox v-if="chartData && savingsData?.comparisonChart" :commonChartData="chartData"/>
       <MaturityInfoBox v-if="savingsData?.maturityInfo" :maturityInfo="savingsData.maturityInfo"/>
       <InputDepositBox v-model="monthlyDeposit"/>
       <InputPeriodBox v-model="savingsPeriod"/>
-      <ProductButtonBox v-if="savingsData" :request="requestSavings" :isWished="savingsData?.productInfo.isWished"/>
+      <ProductButtonBox v-if="savingsData" :request="requestSavings" :isWished="savingsData?.productInfo.wished"/>
     </AppLayout>
   </template>
   
@@ -44,7 +44,7 @@ const chartData = computed<CommonChartData>(() => {
     name: savingsData.value.productInfo.productName,
     labels: savingsData.value.productInfo.labels,
     currentUserData: savingsData.value.productInfo.currentUserData,
-    comparisonCharts: savingsData.value.comparisonCharts
+    comparisonCharts: savingsData.value.comparisonChart
   }
 })
 

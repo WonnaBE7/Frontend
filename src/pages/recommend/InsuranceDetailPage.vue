@@ -1,11 +1,11 @@
 <template>
     <AppLayout>
       <IntroduceBox v-if="insurancesData" :productInfo="insurancesData.productInfo"/>
-      <ChartBox v-if="chartData && insurancesData?.comparisonCharts" :commonChartData="chartData"/>
+      <ChartBox v-if="chartData && insurancesData?.comparisonChart" :commonChartData="chartData"/>
       <MaturityInfoBox v-if="insurancesData?.maturityInfo" :maturityInfo="insurancesData.maturityInfo"/>
-      <ProductButtonBox v-if="insurancesData" :request="requestInsurance" :isWished="insurancesData.productInfo.isWished"/>
+      <ProductButtonBox v-if="insurancesData" :request="requestInsurance" :isWished="insurancesData.productInfo.wished"/>
     </AppLayout>
-  </template>
+</template>
   
   <script setup lang="ts">
   import ChartBox from '@/features/recommend/ui/ChartBox.vue';
@@ -16,13 +16,11 @@
   import { useRoute } from 'vue-router';
   import { computed, onMounted, ref } from 'vue';
   import { getInsuranceDetailView } from '@/features/recommend/insurance-detail/service/insurance-detail.service';
-import MaturityInfoBox from '@/features/recommend/insurance-detail/ui/MaturityInfoBox.vue';
-import { useUserProfileStore } from '@/entities/user/user.store';
+  import MaturityInfoBox from '@/features/recommend/insurance-detail/ui/MaturityInfoBox.vue';
 
   const route = useRoute()
   const productId = computed(() => Number(route.query.productId))
   const insurancesData = ref<InsurancesDetailPageResponse | null>(null)
-  const userStore = useUserProfileStore()
 
   onMounted(async () => {
     if (!isNaN(productId.value)) {
@@ -38,7 +36,7 @@ const chartData = computed<CommonChartData>(() => {
     name: insurancesData.value.productInfo.productName,
     labels: insurancesData.value.productInfo.labels,
     currentUserData: insurancesData.value.productInfo.currentUserData,
-    comparisonCharts: insurancesData.value.comparisonCharts
+    comparisonCharts: insurancesData.value.comparisonChart
   }
 })
 
@@ -46,9 +44,7 @@ const requestInsurance = computed<InsuranceApplicationRequest>(() => {
   if (!insurancesData.value) return {} as InsuranceApplicationRequest
   return {
     productType: 'insurance',
-    productId: insurancesData.value.productInfo.productId,
-    productName: insurancesData.value.productInfo.productName,
-    userName : userStore.profile?.name
+    insuranceId: insurancesData.value.productInfo.productId,
   }
 })
   </script>

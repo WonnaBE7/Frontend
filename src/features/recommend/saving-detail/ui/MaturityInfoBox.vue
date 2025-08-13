@@ -9,7 +9,7 @@
       <div class="mt-4 mb-2 w-full flex justify-between">
         <Typography type="B_12_120">{{data.title}}</Typography>
       </div>
-      <ul class="w-full list-disc pl-4">
+      <ul class="w-full pl-4">
         <li v-for="data in data.content" :key="data">
           <Typography type="M_12_120" class="w-full mt-1">{{ data }}</Typography>
         </li>
