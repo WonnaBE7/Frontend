@@ -7,7 +7,6 @@ import type {
   WishlistActionResponse,
   SavingsDetailPageResponse,
   CardDetailPageResponse,
-  SavingsApplicationRequest,
   InsuranceApplicationRequest,
   CardApplicationRequest,
   InsurancesDetailPageResponse,
@@ -289,14 +288,6 @@ export const mockWishlistRemoveResponse: WishlistActionResponse = {
   totalWishlistCount: 4
 }
 
-// 상품 신청 요청 예시
-export const mockSavingsApplicationRequest: SavingsApplicationRequest = {
-  productType: "savings",
-  productId: "1001",
-  productName: "KB적금",
-  monthlyDeposit: 300000,
-  savingsPeriod: 12,
-}
 
 export const mockInsuranceApplicationRequest: InsuranceApplicationRequest = {
   productType: "insurance",
