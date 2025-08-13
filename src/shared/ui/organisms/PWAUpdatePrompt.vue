@@ -38,14 +38,14 @@
 import { ref, onMounted } from 'vue'
 import Button from '../atoms/Button.vue'
 
-const showUpdatePrompt = ref(false)
+const showUpdatePrompt = ref<boolean>(false)
 
 // 간단한 PWA 업데이트 로직
 const checkForUpdates = () => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       // 새 서비스 워커가 활성화되면 페이지 새로고침
-      //window.location.reload()
+      window.location.reload()
     })
     
     // 서비스 워커 업데이트 확인
@@ -72,7 +72,6 @@ const updateApp = async () => {
     const registrations = await navigator.serviceWorker.getRegistrations()
     registrations.forEach(reg => reg.update())
 
-    // ✅ 유저가 버튼 누를 때만 새로고침
     window.location.reload()
   }
 }

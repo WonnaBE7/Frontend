@@ -15,7 +15,7 @@
         </Typography>
         <Typography type="M_12_140" class="flex flex-row items-center text-gray-500">
           <component :is="Users" class="w-4 mr-1" />
-          {{ community.memberCount.toLocaleString() }}명
+          {{ (community.memberCount?? 0).toLocaleString() }}명
         </Typography>
       </div>
       <Typography type="M_12_140" class="flex flex-row w-full text-gray-500 mt-1 sm:mt-2 ml-2">
@@ -28,17 +28,16 @@
         </div>
     </Card>
   </RouterLink>
-
 </template>
 
 <script setup lang="ts">
-import type { CommunityPreview } from '@/entities/board/community/community.entity'
-import Card from '@/shared/ui/atoms/Card.vue';
-import Typography from '@/shared/ui/atoms/Typography.vue';
-import { Users } from 'lucide-vue-next';
-import {finTypeIcons} from '@/shared/constants/finTypes.constants'
+  import type { CommunityPreview } from '@/entities/board/community/community.entity'
+  import Card from '@/shared/ui/atoms/Card.vue';
+  import Typography from '@/shared/ui/atoms/Typography.vue';
+  import { Users } from 'lucide-vue-next';
+  import {finTypeIcons} from '@/shared/constants/finTypes.constants'
 
-defineProps<{
-  communities: CommunityPreview[]
-}>()
+  defineProps<{
+    communities: CommunityPreview[]
+  }>()
 </script>

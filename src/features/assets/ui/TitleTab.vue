@@ -4,20 +4,16 @@
 </template>
 
 <script setup lang="ts">
-import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
-import AssetTypeTab from './AssetTypeTab.vue';
-import { assetTabs } from '@/entities/assets/assets.entity';
-import type { AssetTabKey } from '@/entities/assets/assets.entity';
+  import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
+  import AssetTypeTab from './AssetTypeTab.vue';
+  import { assetTabs } from '@/entities/assets/assets.entity';
+  import type { AssetTabKey } from '@/entities/assets/assets.entity';
 
-// 부모로부터 받는 selected 값
-defineProps<{
-  selected: AssetTabKey
-}>()
+  defineProps<{
+    selected: AssetTabKey
+  }>()
 
-// 클릭한 탭을 부모에게 전달
-defineEmits<{
-  (e: 'update:selected', tab: AssetTabKey): void
-}>()
+  defineEmits<(e: 'update:selected', tab: AssetTabKey) => void>()
 
-const tabs = assetTabs;
+  const tabs = assetTabs;
 </script>

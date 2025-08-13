@@ -4,21 +4,17 @@ import type {
   InsuranceDetailResponse,
   CardDetailResponse,
   SavingsRecommendationResponse,
-  InsuranceRecommendationResponse,
-  CardRecommendationResponse,
-  WishlistResponse,
   WishlistActionResponse,
   SavingsDetailPageResponse,
   CardDetailPageResponse,
-  SavingsApplicationRequest,
   InsuranceApplicationRequest,
   CardApplicationRequest,
-  InsurancesDetailPageResponse
+  InsurancesDetailPageResponse,
 } from './recommend.entity'
 
 // 현재 보유상품 조회
 export const mockCurrentProducts: CurrentProductsResponse = {
-  deposits: {
+  savings: {
     count: 2,
     products: [
       {
@@ -119,147 +115,183 @@ export const mockCardDetail: CardDetailResponse = {
 
 // 예적금 추천 상품
 export const mockSavingsRecommendation: SavingsRecommendationResponse = {
-  totalProducts: 4,
-  products: [
+  userId: 'a1b2c3d4-e5f6-7890-ab12-cd34ef56gh78',
+  recommendationsByPersona: [
     {
-      productType: "savings",
-      productId: "200",
-      productName: "카카오뱅크 세이브 적금",
-      bankName: "카카오뱅크",
-      type: "정기적금",
-      interestRate: 3.5,
-      matchScore: 95
+      personaId: 1,
+      personaName: '자린고비형',
+      products: [
+        {
+          productType: 'savings',
+          productId: '101',
+          productName: '알뜰 저축 예금',
+          bankName: 'KB국민은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '102',
+          productName: '절약형 정기예금',
+          bankName: '신한은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '103',
+          productName: '하나 알뜰 저축',
+          bankName: '하나은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '104',
+          productName: '우리 적금 플랜',
+          bankName: '우리은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '105',
+          productName: '카카오 절약 저축',
+          bankName: '카카오뱅크',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        }
+      ]
     },
     {
-      productId: "TOSS_BANK_SAVE_001",
-      productName: "토스뱅크 먼치 적금",
-      bankName: "토스뱅크",
-      type: "정기적금",
-      interestRate: 3.5,
-      matchScore: 92
+      personaId: 11,
+      personaName: '균형 성장형',
+      products: [
+        {
+          productType: 'savings',
+          productId: '201',
+          productName: '밸런스 예금',
+          bankName: 'KB국민은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '202',
+          productName: '스마트 적금 플랜',
+          bankName: '신한은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '203',
+          productName: '균형 투자 저축',
+          bankName: '하나은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '204',
+          productName: '우리 밸런스 저축',
+          bankName: '우리은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '205',
+          productName: '카카오 균형 플랜',
+          bankName: '카카오뱅크',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        }
+      ]
     },
     {
-      productId: "KB_STAR_FLEX_001",
-      productName: "KB Star 정기적금",
-      bankName: "KB국민은행",
-      type: "정기적금",
-      interestRate: 3.4,
-      matchScore: 89
-    }
-  ]
-}
-
-// 보험 추천 상품
-export const mockInsuranceRecommendation: InsuranceRecommendationResponse = {
-  totalProducts: 1,
-  products: [
-    {
-      productId: "3111",
-      insuranceName: "토스 간편보험",
-      insuranceCompany: "토스",
-      matchScore: 93,
-      mainCoverage: "월 1.5만원",
-      monthlyPremium: 15000
-    }
-  ]
-}
-
-// 카드 추천 상품
-export const mockCardRecommendation: CardRecommendationResponse = {
-  totalProducts: 2,
-  products: [
-    {
-      productType: "card",
-      cardId: "10001",
-      cardName: "카카오페이 카드",
-      cardCompany: "카카오페이",
-      cardType: "체크카드",
-      matchScore: 94,
-      mainBenefit: "간편결제 5% 적립",
-      annualFeeDomestic: 0,
-      annualFeeOverSeas: 5000
-    },
-    {
-      productType: "card",
-      cardId: "10001", // 동일한 데이터 (API에서 중복)
-      cardName: "카카오페이 카드",
-      cardCompany: "카카오페이",
-      cardType: "체크카드",
-      matchScore: 94,
-      mainBenefit: "간편결제 5% 적립",
-      annualFeeDomestic: 0,
-      annualFeeOverSeas: 5000
-    }
-  ]
-}
-
-// 관심상품 목록
-export const mockWishlist: WishlistResponse = {
-  totalCount: 3,
-  products: [
-    {
-      productType: "savings",
-      productId: "300011",
-      productName: "카카오뱅크 세이브업 적금",
-      bankName: "카카오뱅크",
-      interestRate: 3.5,
-      matchScore: 95
-    },
-    {
-      productType: "card",
-      cardId: "1001",
-      cardName: "카카오페이 카드",
-      cardCompany: "카카오페이",
-      cardType: "체크카드",
-      matchScore: 94,
-      mainBenefit: "간편결제 5% 적립",
-      annualFee: 0
-    },
-    {
-      productType: "insurance",
-      productId: "100003",
-      insuranceName: "토스 간편보험",
-      insuranceCompany: "토스",
-      matchScore: 93,
-      mainCoverage: "월 1.5만원",
-      monthlyPremium: 15000
+      personaId: 5,
+      personaName: '새싹 투자형',
+      products: [
+        {
+          productType: 'savings',
+          productId: '301',
+          productName: '첫걸음 적금',
+          bankName: 'KB국민은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '302',
+          productName: '신한 스타터 예금',
+          bankName: '신한은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '303',
+          productName: '하나 새싹 플랜',
+          bankName: '하나은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '304',
+          productName: '우리 첫 투자 적금',
+          bankName: '우리은행',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        },
+        {
+          productType: 'savings',
+          productId: '305',
+          productName: '카카오 새싹 예금',
+          bankName: '카카오뱅크',
+          baseRate: 3.10,
+          maxRate: 4.10,
+          score: 86.0
+        }
+      ]
     }
   ]
 }
 
 // 관심상품 추가/제거 응답
 export const mockWishlistAddResponse: WishlistActionResponse = {
-  productId: "KAKAO_BANK_SAVE_001",
+  productId: "1",
   productType: "deposit",
   isWishlisted: true,
   totalWishlistCount: 5
 }
 
 export const mockWishlistRemoveResponse: WishlistActionResponse = {
-  productId: "KAKAO_BANK_SAVE_001",
+  productId: "1",
   productType: "deposit",
   isWishlisted: false,
   totalWishlistCount: 4
 }
 
-// 상품 신청 요청 예시
-export const mockSavingsApplicationRequest: SavingsApplicationRequest = {
-  productType: "savings",
-  productId: "1001",
-  accountAlias: "여행자금 적금",
-  monthlyDeposit: 300000,
-  savingPeriod: 12,
-  transferDate: 25
-}
 
 export const mockInsuranceApplicationRequest: InsuranceApplicationRequest = {
   productType: "insurance",
-  productId: "22222",
-  name: "홍길동",
-  birthDate: "1990-01-01",
-  gender: "M",
-  phone: "010-1234-5678",
-  transferDate: 15
+  insuranceId: "22222",
 }
 
 export const mockCardApplicationRequest: CardApplicationRequest = {
@@ -275,54 +307,60 @@ export const mockSavingsDetailPage: SavingsDetailPageResponse = {
     productId: "KAKAO_BANK_SAVE_001",
     productName: "카카오뱅크 세이브업 적금",
     bankName: "카카오뱅크",
-    matchScore: 95,
-    mainBenefit: "앱으로 간편 관리",
+    score: 95,
     interestRate: "연 3.9%",
-    description: "카카오뱅크 세이브업 적금은 모바일 특화 금융서비스로, 간편한 앱 인터페이스를 통해 누구나 쉽게 적금을 시작할 수 있습니다. 소액부터 시작 가능하며 금융 초보자에게 적합합니다."
+    maxInterestRate: "연 4.2%",             
+    benefitSummary: "거래실적 따라 최고 연 0.1% 우대 제공", 
+    wished :false,
+    labels: ["금리", "단/복리", "우대조건", "중도해지 페널티", "최대한도"],
+    currentUserData: [95, 70, 90, 75, 80], 
   },
-  comparisonChart: {
-    labels: ["금리", "혜택", "편의성", "안정성", "접근성"],
-    currentUserData: [3, 3, 2, 4, 3],
-    recommendedProductData: [4, 4, 5, 4, 5]
-  },
-  mainFeatures: [
-    {
+  comparisonChart: [{
+    compareId : 1,
+    compareName : "KB 적금",
+    recommendedProductData: [80, 80, 100, 80, 100]
+    },
+  ],
+  maturityInfo:{
+      maxJoinPeroid : '36개월',
       title: "모바일 특화 서비스",
-      items: [
+      content: [
         "소액 적금 가능 (1만원부터)",
         "자동이체 설정 가능",
         "실시간 잔액 확인"
       ]
-    }
-  ],
-  termsAndConditions: {
-    joinConditions: "만 17세 이상",
-    requiredDocuments: "카카오뱅크 계좌 보유자",
-    specialNotes: [
-      "본인 명의 휴대폰 필요",
-      "본인 명의 휴대폰 필요2"
-    ]
   }
 }
 
 // 카드 상세보기 페이지 (보험상품 상세 조회 API 데이터)
 export const mockCardDetailPage: CardDetailPageResponse = {
-  productInfo: {
+  cardInfo: {
     cardId: "100", 
     cardName: "카카오페이 카드",
     cardCompany: "카카오페이",
-    matchScore: 94,
+    score: 94,
     mainBenefit: "간편결제 5% 적립",
-    benefitSummary: "스타벅스 50% 할인\n대중교통 10% 할인\nCGV, 롯데시네마 5,000원 할인"
+    cardType: "debit",
+    benefitSummary: "스타벅스 50% 할인\n대중교통 10% 할인\nCGV, 롯데시네마 5,000원 할인",
+    labels: ["확장성", "혜택 범위", "전월 실적", "카드 활용도", "연회비 부담"],
+    isWished: false,
+    currentUserData: [80, 60, 40, 80, 60],
   },
-  comparisonChart: {
-    labels: ["혜택", "적절성", "편의성", "안정성", "접근성"],
-    currentUserData: [3, 3, 3, 4, 4],
-    recommendedProductData: [5, 4, 5, 4, 5]
-  },
+  comparisonChart:  [
+    {
+      compareId : 1,
+      compareName : "삼성카드",
+      recommendedProductData: [60, 80, 100, 80, 100]
+    },
+    {
+      compareId : 4,
+      compareName : "국민카드",
+      recommendedProductData: [60, 80, 100, 80, 100]
+    }
+  ],
   note: {
       category: "혜택 적용 범위: 교통, 식비",
-      previousMonthSpendig: "전월 실적: 없음",
+      previousMonthSpending: "전월 실적: 없음",
       usage: "국내 전용 / 해외 겸용",
       annualFee: "국내 연회비: 없음 / 해외 연회비: 없음"
     }
@@ -333,33 +371,24 @@ export const mockInsuranesDetailPage : InsurancesDetailPageResponse={
   productInfo: {
       productId: "01",
       productName: "카카오페이 보험",
-      productCompany: "카카오페이",
-      matchScore: 94,
-      mainBenefit: "간편결제 5% 적립",
-      benefitRate: "최대 5%",
-      description: "카카오페이 카드는 간편결제 시장을 선도하는 카드로, 일상 속 모든 결제를 더욱 편리하고 혜택있게 만들어줍니다. 특히 온라인 쇼핑과 배달앱 사용이 많은 분들께 최적화된 카드입니다."
+      providerName: "DB손보",                   
+      score: 95,                            
+      coverageType: "상해급여",                   
+      coverageLimit: "연간 5천만원 한도",          
+      deductible: "급여 10% 또는 20%",             
+      average_premium: "13,000원",           
+      wished: false,
+      labels: ["가격 경쟁력", "보장한도", "보장범위", "자기부담금 수준", "환급범위"],
+      currentUserData: [60, 80, 70, 65, 75],
     },
-    comparisonChart: {
-      labels: ["혜택", "적절성", "편의성", "안정성", "접근성"],
-      currentUserData: [3, 3, 3, 4, 4],
-      recommendedProductData: [5, 4, 5, 4, 5]
+    comparisonChart: [{
+      compareId : 1,
+      compareName : "삼성화재",
+      recommendedProductData: [100, 80, 100, 80, 100]
     },
-    mainFeatures: [
-      {
-        title: "주요 혜택",
-        items: [
-          "간편결제 5% 적립",
-          "온라인쇼핑 3% 적립",
-          "배달앱 5% 할인"
-        ]
-      }
     ],
-    termsAndConditions: {
-      annualFee: "연회비 없음",
-      previousPerformance: "전월실적 없음",
-      specialNotes: [
-        "카카오페이 가입 필수",
-        "즉시 발급 가능"
-      ]
+    maturityInfo:{
+        coverageDesc: "상해로 인한 급여 항목 의료비 보장",
+        note: "기준일: 20250701, 유형: 4세대 실손의료보험, 제공기관: 손해보험협회",
     }
   }

@@ -22,15 +22,15 @@
             </Typography>
         </div>
     </Card>
-  </template>
-  
-  <script setup lang="ts">
-  import { computed } from 'vue'
-  import Card from '@/shared/ui/atoms/Card.vue'
-  import { assetCategoryIconMap } from '@/features/assets/constants/assetCategoryIcons'
-  import { colorMap } from '@/entities/assets/assets.constants'
-  import Typography from '@/shared/ui/atoms/Typography.vue';
-  import { useRouter } from 'vue-router'
+</template> 
+
+<script setup lang="ts">
+    import { computed } from 'vue'
+    import Card from '@/shared/ui/atoms/Card.vue'
+    import { assetCategoryIconMap } from '@/features/assets/constants/assetCategoryIcons'
+    import { colorMap } from '@/entities/assets/assets.constants'
+    import Typography from '@/shared/ui/atoms/Typography.vue';
+    import { useRouter } from 'vue-router'
 
     const props = defineProps<{
         assetCategory: string
@@ -40,7 +40,7 @@
         iconText: string
     }>()
     const iconComponent = computed(() => assetCategoryIconMap[props.assetCategory] ?? assetCategoryIconMap['other'])
-    
+
     const amountClass = computed(() => {
         if (props.amount.startsWith('+')) return 'text-blue-500'
         if (props.amount.startsWith('-')) return 'text-red-500'
@@ -52,4 +52,4 @@
     function goToDetail(category: string) {
         router.push({ path: '/assets/detail', query: { category } })
     }
-  </script>
+</script>

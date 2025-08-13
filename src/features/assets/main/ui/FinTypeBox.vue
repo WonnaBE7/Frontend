@@ -10,18 +10,23 @@
                 <component :is="ChevronRight"></component>
             </RouterLink>
         </div>
-        <FinTypeRowCard label="자린고비형" descript="불필요한 소비를 철저히 줄이고 최대한 저축하는 성향"></FinTypeRowCard>
+        <FinTypeRowCard 
+            v-if="user.profile" 
+            :label="user.profile.nowME" 
+            :descript="getFinancialTypeDescription(user.profile.nowME)"
+        ></FinTypeRowCard>
         <IconLabel :icon="TrendingUp" :iconClass="'text-sub-yellow-p'">
             되고 싶은 나,
             <span class="ml-2 text-sub-yellow-p">WonnaBE</span>
         </IconLabel>
         <div class="flex flex-row" >
             <div
-                v-for="type in finTypes"
-                :key="type.label"
+                v-if="user.profile"
+                v-for="type in user.profile.wonnaBE"
+                :key="type"
             >
                 <FinTypeColCard
-                    :label="type.label"
+                    :label="type"
                     class="border-none"
                 />
             </div>
@@ -35,11 +40,13 @@
     import FinTypeRowCard from '@/shared/ui/molecules/FinTypeRowCard.vue';
     import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue';
     import { TrendingUp, ChevronRight } from 'lucide-vue-next';
+    import { useUserProfileStore } from '@/entities/user/user.store';
+    import { financialTendencyList } from '@/shared/constants/finTypes.constants';
 
-    const finTypes = [
-        { label: '가족중심형' },
-        { label: '경험소비형' },
-        { label: '공격투자형' },
-    ]
+    const user = useUserProfileStore()
 
+    const getFinancialTypeDescription = (typeName: string): string => {
+        const matchedType = financialTendencyList.find(type => type.name === typeName);
+        return matchedType ? matchedType.description : '';
+    }
 </script>

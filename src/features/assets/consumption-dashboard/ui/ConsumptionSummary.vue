@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import ConsumptionTopBox from './ConsumptionTopBox.vue';
-import CategoryConsumptionDetail from './CategoryConsumptionDetail.vue'
+    import ConsumptionTopBox from './ConsumptionTopBox.vue';
+    import CategoryConsumptionDetail from './CategoryConsumptionDetail.vue'
 
 </script>

@@ -20,7 +20,7 @@
 
         <Card class="bg-sub-orange-bg border border-sub-orange-s !mb-0">
             <Typography type="B_12_140" class="w-full mb-2">월 저축 현황</Typography>
-            <Typography type="B_18_120" class="w-full mb-2">{{goal.monthlySaveAmount.toLocaleString()}}원</Typography>
+            <Typography type="B_18_120" class="w-full mb-2">{{goal.saveAmount.toLocaleString()}}원</Typography>
             <Typography type="M_12_120" class="w-full">목표 달성을 위한 월 필요 금액</Typography>
         </Card>
     </Card>

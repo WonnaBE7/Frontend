@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
-import { mockMonthlyConsumptionSummary, mockEstimatedAndTodayConsumption } from '@/entities/assets/consumption/consumption.mock'
 import BoardCategoryDetailPage from '@/pages/board/BoardCategoryDetailPage.vue'
 import { finTypeIcons } from '@/shared/constants/finTypes.constants'
+import dayjs from 'dayjs'
+import { useConsumptionStore } from '@/entities/consumption/consumption.store'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -32,32 +33,50 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/assets/account/detail:accountId',
+    name: 'AssetsAccountDetail',
+    component: () => import('@/pages/assets/AssetsAccountDetailPage.vue'),
+    meta: {
+      icon: { type: 'lucide', value: 'CreditCard' },
+      title: '계좌 상세 내역'
+    },
+  },
+  {
     path: '/assets/consumption/detail',
     name: 'ConsumptionDetail',
     component: () => import('@/pages/assets/ConsumptionDetailPage.vue'),
     meta: {
       icon: { type: 'lucide', value: 'CreditCard' }
     },
-    beforeEnter: async (to, _from, next) => {
-      const type = to.query.type as string
-      const categoryLabel = to.query.label as string // 예: 식비
-  
-      // ✅ 날짜 추출
+    beforeEnter: (to, _from, next) => {
+      const store = useConsumptionStore()
+
+      const type = (to.query.type as string) || 'current'
+      const categoryLabel = (to.query.label as string) || ''
+
+      // 쿼리 → 스토어 동기화 (딥링크/새로고침 대비)
+      const yearMonthFromQuery = to.query.yearMonth as string | undefined
+      if (yearMonthFromQuery) {
+        store.baseDate = dayjs(`${yearMonthFromQuery}-01`)
+      }
+      // 기준 yearMonth (쿼리 없으면 스토어 값 사용)
+      const ym = (yearMonthFromQuery ?? store.baseDate.format('YYYY-MM'))
+
+      // today 상세에서 날짜를 쿼리로 받을 수도 있게 (없으면 오늘)
+      const dateFromQuery = (to.query.date as string) || dayjs().format('YYYY-MM-DD')
+
+      // 타이틀 만들기
       let dateTitle = ''
       if (type === 'current') {
-        const yearMonth = mockMonthlyConsumptionSummary.yearMonth // '2025-07'
-        const month = yearMonth?.split('-')[1] ?? 'MM'
-        dateTitle = `${month}월`
+        dateTitle = `${dayjs(`${ym}-01`).format('MM')}월`
       } else if (type === 'today') {
-        const date = mockEstimatedAndTodayConsumption.todayConsumption.calculatedDate // '2025-07-16'
-        const [_, mm, dd] = date?.split('-') ?? ['2025', 'MM', 'DD']
-        dateTitle = `${mm}/${dd}`
+        dateTitle = dayjs(dateFromQuery).format('MM/DD')
       }
-  
+
       const title = categoryLabel
         ? `${dateTitle} ${categoryLabel} 거래 내역`
         : `${dateTitle} 거래 내역`
-  
+
       to.meta.title = title
       next()
     }
@@ -176,13 +195,14 @@ const routes: RouteRecordRaw[] = [
       try {
         const postId = Number(to.params.id)
         const { mockBoards } = await import('@/entities/board/board.mock')
+        
         const postData = mockBoards.find((b) => b.boardId === postId)
         if (!postData) {
           console.warn(`게시글 ${postId}을 찾을 수 없습니다.`)
           next()
           return
         }
-        const category = postData.category
+        const category = postData.categoryName
         to.meta.icon = {
           type: 'emoji',
           value: finTypeIcons[category] || '📝'
@@ -238,55 +258,36 @@ const routes: RouteRecordRaw[] = [
     path: '/user/login',
     name: 'UserLoginPage',
     component: () => import('@/pages/user/UserLoginPage.vue'),
-    // meta: {
-    //   title: '로그인',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/user/signup',
     name: 'UserSignupPage',
     component: () => import('@/pages/user/UserSignupPage.vue'),
-    // meta: {
-    //   title: '회원 가입',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/user/profile-edit',
     name: 'UserProfileEditPage',
     component: () => import('@/pages/user/UserProfileEditPage.vue'),
-    // meta: {
-    //   title: '회원정보 수정',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/user/choose-wonnabe',
     name: 'UserChooseWonnabePage',
     component: () => import('@/pages/user/UserChooseWonnabePage.vue'),
-    // meta: {
-    //   title: '워너비 선택',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/user/diagnosis',
     name: 'UserDiagnosisPage',
     component: () => import('@/pages/user/UserDiagnosisPage.vue'),
-    // meta: {
-    //   title: '유저 금융 상태 진단',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
+  },
+  {
+    path:'/user/survey',
+    name:'UserAdditionalSurveyPage',
+    component: () => import('@/pages/user/UserAdditionalSurveyPage.vue')
   },
   {
     path: '/user/history',
     name: 'UserHistoryPage',
     component: () => import('@/pages/user/UserHistoryPage.vue'),
-    // meta: {
-    //   title: '나의 금융 히스토리',
-    //   icon: { type: 'lucide', value: 'User' }
-    // }
   },
   {
     path: '/:pathMatch(.*)*',
@@ -302,7 +303,6 @@ export const router = createRouter({
   }
 })
 
-// ✅ from에 타입 명시 (RouteLocationNormalized)
 router.beforeEach((to: RouteLocationNormalized, _from: RouteLocationNormalized, next: NavigationGuardNext) => {
   if (to.meta?.title) {
     document.title = to.meta.title as string

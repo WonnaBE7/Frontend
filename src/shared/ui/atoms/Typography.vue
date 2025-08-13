@@ -5,7 +5,8 @@
       'font-pretendard',
       ...fontSizeClass,
       fontWeightClass,
-      customClass
+      customClass,
+      'whitespace-pre-line break-keep',
     ]"
   >
     <slot />

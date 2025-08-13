@@ -1,79 +1,69 @@
 <template>
-    <LabelInput label="이름" class="mb-4"/>
-    <LabelInput label="이메일" class="mb-4"/>
-    <LabelInput label="비밀번호" class="mb-8"/>
-    <Card class="p-4 bg-white border border-gray-150">
-      <div class="flex w-full justify-between items-center mb-2">
-        <Typography type="M_14_120">약관 동의</Typography>
-        <div class="flex flex-row gap-2">
-            <input type="checkbox" v-model="allChecked" @change="toggleAll" />
-            <Typography type="M_14_120">전체동의</Typography>
-        </div>
-      </div>
-      <hr class="mb-2" />
-      <div v-for="(term, index) in terms" :key="index" class="flex w-full justify-startitems-center mb-2">
-        <input
-          type="checkbox"
-          :value="term.id"
-          v-model="checked"
-          @change="syncAllChecked"
-          class="mb-2"
-        />
-        <Typography 
-          type="M_14_120"
-          class="ml-2 mb-2"
-          :class="term.required ? 'text-sub-red-p' : 'text-sub-aqua-p'"
-        >
-          [{{ term.required ? '필수' : '선택' }}] 
-        </Typography>
-        <Typography type="M_14_120" class="ml-1 mb-2">{{ term.label }}</Typography>
-      </div>
-    </Card>
-    <Button class="mt-4">회원가입 및 자산 연동하기</Button>
-  </template>
-  
-  <script setup lang="ts">
-  import Button from '@/shared/ui/atoms/Button.vue'
-  import Card from '@/shared/ui/atoms/Card.vue'
-import Typography from '@/shared/ui/atoms/Typography.vue'
-  import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
-  import { ref, computed } from 'vue'
-  
-  interface Term {
-    id: string
-    label: string
-    required: boolean
+  <LabelInput v-model="name" label="이름" class="mb-4" />
+  <LabelInput v-model="email" label="이메일" class="mb-4" />
+  <LabelInput v-model="password" label="비밀번호" type="password" class="mb-8" />
+
+  <AgreeMentBox
+    v-model:checked="checked"
+  />
+  <Button class="mt-4 w-full" @click="onSubmit">
+    회원가입 및 자산 연동하기
+  </Button>
+</template>
+
+<script setup lang="ts">
+import Button from '@/shared/ui/atoms/Button.vue'
+import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
+import { ref, watch } from 'vue'
+import { userSignup } from '@/features/user/user-signup/services/signup.service'
+import { useRouter } from 'vue-router'
+import AgreeMentBox from './AgreeMentBox.vue'
+import { terms } from '../constants/terms.constants'
+import { userLogin } from '../../user-login/services/login.service'
+import { useUserProfileStore } from '@/entities/user/user.store'
+
+const name = ref<string>('')
+const email = ref<string>('')
+const password = ref<string>('')
+const router = useRouter();
+
+const checked = ref<string[]>([])
+const allChecked = ref<boolean>(false)
+
+watch(checked, (newVal) => {
+  allChecked.value = newVal.length === terms.length
+})
+
+
+const onSubmit = async () => {
+  const missingRequiredTerms = terms
+    .filter(t => t.required && !checked.value.includes(t.id))
+    .map(t => `- ${t.label}`)
+
+  if (missingRequiredTerms.length > 0) {
+    alert(
+      `필수 약관에 모두 동의해야 가입할 수 있습니다.\n\n동의가 필요한 항목:\n${missingRequiredTerms.join('\n')}`
+    )
+    return
   }
-  
-  const terms: Term[] = [
-    { id: 'service', label: '서비스 이용약관', required: true },
-    { id: 'privacy', label: '개인정보 수집 및 이용 동의서', required: true },
-    { id: 'asset', label: '자산 정보 수집 및 연동 동의서', required: true },
-    { id: 'credit', label: '개인신용정보 제3자 제공 동의서', required: true },
-    { id: 'marketing', label: '마케팅 활용 동의서', required: false },
-  ]
-  
-  const checked = ref<string[]>([])
-  const allChecked = computed({
-    get: () => checked.value.length === terms.length,
-    set: (val: boolean) => {
-      checked.value = val ? terms.map(term => term.id) : []
+  try {
+    const res = await userSignup({
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    })
+    if(res.code === 200){
+      alert('회원가입이 완료되었습니다!')
+
+      const loginRes = await userLogin({ email: email.value, password: password.value })
+      if(loginRes.code === 200){
+          await useUserProfileStore().fetchUserProfile()
+          router.push('/user/diagnosis')
+      }
     }
-  })
-  
-  const toggleAll = () => {
-    allChecked.value = !allChecked.value
+  } catch (error) {
+      console.log(name.value, email.value, password.value)
+      alert('회원가입에 실패했습니다.')
   }
-  
-  const syncAllChecked = () => {
-    if (checked.value.length === terms.length) {
-      allChecked.value = true
-    }
-  }
-  
-  const isValid = computed(() => {
-    return terms.filter(t => t.required).every(t => checked.value.includes(t.id))
-  })
-  
-  defineExpose({ checked, isValid })
-  </script>
+}
+</script>

@@ -4,7 +4,7 @@
       modal ?'fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center h-full' : 'w-full'
     ]"
   >
-    <Card class="!max-w-[320px] md:!max-w-[600px] h-[600px] bg-gradient-to-br from-[#302DAC] to-[#5754DA] text-white rounded-xl p-6 text-center relative">
+    <Card class="bg-gradient-to-br from-sub-orange-p to-sub-yellow-p text-white rounded-xl p-6 text-center relative">
       <button
         v-if="modal"
         class="absolute top-2 right-4 text-white text-xl"
@@ -23,7 +23,7 @@
         미래의 나에게서 온 메시지
       </Typography>
 
-      <Card class="bg-white bg-opacity-10">
+      <Card class="bg-white bg-opacity-10 !mb-0">
         <Typography type="B_16_120" class="leading-relaxed whitespace-pre-line">
           {{ message }}
         </Typography>
@@ -33,21 +33,19 @@
 </template>
 
 <script setup lang="ts">
-import Card from '@/shared/ui/atoms/Card.vue'
-import Typography from '@/shared/ui/atoms/Typography.vue'
-import { Sparkles } from 'lucide-vue-next'
+  import Card from '@/shared/ui/atoms/Card.vue'
+  import Typography from '@/shared/ui/atoms/Typography.vue'
+  import { Sparkles } from 'lucide-vue-next'
 
-withDefaults(
-  defineProps<{
-    message: string
-    modal?: boolean
-  }>(),
-  {
-    modal: true
-  }
-)
+  withDefaults(
+    defineProps<{
+      message: string
+      modal?: boolean
+    }>(),
+    {
+      modal: true
+    }
+  )
 
-const emit = defineEmits<{
-  (e: 'close'): void
-}>()
+  const emit = defineEmits<(e: 'close') => void>()
 </script>

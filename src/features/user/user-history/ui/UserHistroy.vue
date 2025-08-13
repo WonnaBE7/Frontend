@@ -1,10 +1,10 @@
 <template>
   <div class="grid grid-cols-3 gap-2">
-    <div v-for="type in types" :key="type.label">
+    <div v-for="type in types" :key="type.typeName">
       <Card class="bg-white border border-gray-150">
         <FinTypeColCard
-          :label="type.label"
-          :descript="type.descript"
+          :label="type.typeName"
+          :descript="type.diagnosedDate"
         />
       </Card>
     </div>
@@ -12,7 +12,7 @@
 
   <Card class="mt-2 justify-start bg-white border border-gray-150">
     <Typography class="w-full" type="B_16_120">이번 달 현황</Typography>
-    <FinTypeRowCard :label="lastType.label" :descript="lastType.descript"></FinTypeRowCard>
+    <FinTypeRowCard v-if="lastType" :label="lastType.typeName" :descript="lastType.diagnosedDate"></FinTypeRowCard>
   </Card>
 
   <Button class="flex tems-center justify-center mb-4" @click="goToDiagnosis">
@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 import Card from '@/shared/ui/atoms/Card.vue'
@@ -30,11 +30,22 @@ import Button from '@/shared/ui/atoms/Button.vue'
 import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
 import { RefreshCw } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
-import { finTypeMonth } from '@/shared/constants/finTypes.constants'
+import { getUserNowmeHistory } from '../services/user-history.service'
+import { useUserProfileStore } from '@/entities/user/user.store'
+import type { UserHistoryResponse } from '@/entities/user/user.entity'
 
-const types = finTypeMonth
+const userStore = useUserProfileStore()
+const userId = userStore.profile?.userId
+const types = ref<UserHistoryResponse[] | null>(null)
 
-const lastType = computed(() => types.at(-1)!)
+onMounted(async()=>{
+  types.value = await getUserNowmeHistory(String(userId))
+})
+
+const lastType = computed(() => {
+  if (!types.value || types.value.length === 0) return null
+  return types.value[types.value.length - 1]
+})
 const router = useRouter()
 
 function goToDiagnosis() {

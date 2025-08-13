@@ -1,8 +1,7 @@
-// goal.store.ts
 import { defineStore } from 'pinia'
-import type { GoalSimulationResponse } from './goal.entity'
+import type { Goal, GoalSimulationResponse } from './goal.entity'
+import { getGoals } from './goal.api'
 
-// goal.store.ts
 
 export const useGoalSimulationStore = defineStore('goalSimulation', {
     state: () => ({
@@ -16,5 +15,37 @@ export const useGoalSimulationStore = defineStore('goalSimulation', {
         this.result = null
       }
     },
-    persist: true // ✅ 이거 추가
-  })
+    persist: true 
+})
+
+
+interface GoalState {
+  publishedGoals: Goal[]
+  achievedGoals: Goal[]
+}
+
+export const useGoalStore = defineStore('goal', {
+  state: (): GoalState => ({
+    publishedGoals: [],
+    achievedGoals: [],
+  }),
+
+  actions: {
+    async fetchPublishedGoals() {
+      const res = await getGoals('PUBLISHED')
+      this.publishedGoals = res.goals
+    },
+
+    async fetchAchievedGoals() {
+      const res = await getGoals('ACHIEVED')
+      this.achievedGoals = res.goals
+    },
+  },
+
+  getters: {
+    totalGoalCount: (state) => state.publishedGoals.length,
+    totalTargetAmount: (state) =>
+      state.publishedGoals.reduce((sum, g) => sum + g.targetAmount, 0),
+  },
+  persist: true
+})

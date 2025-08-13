@@ -7,16 +7,16 @@
     <div class="grid grid-cols-2 gap-4">
       <Card
         v-for="type in types"
-        :key="type.label"
-        @click="toggleSelect(type.label)"
+        :key="type.id"
+        @click="toggleSelect(type.name)"
         :class="[
           'cursor-pointer transition rounded-xl bg-white border border-gray-150',
-          selected.includes(type.label) ? 'ring-2 ring-sub-yellow-p' : ''
+          selected.includes(type.name) ? 'ring-2 ring-sub-yellow-p' : ''
         ]"
       >
           <FinTypeColCard
-            :label="type.label"
-            :descript="type.descript"
+            :label="type.name"
+            :descript="type.description"
           />
       </Card>
     </div>
@@ -29,7 +29,7 @@
       워너비 설정 완료
     </Button>
 
-    <Button label="white" class="mt-4 mb-4" @click="submitNowMe">
+    <Button label="white" class="mt-4 mb-4" @click="router.back()">
       선택하지 않고 NowMe로 추천받기
     </Button>
   </div>
@@ -41,9 +41,9 @@ import Card from '@/shared/ui/atoms/Card.vue'
 import FinTypeColCard from '@/shared/ui/molecules/FinTypeColCard.vue'
 import Tag from '@/shared/ui/atoms/Tag.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
-import { finTypes } from '@/shared/constants/finTypes.constants'
-
-const selected = ref<string[]>([])
+import { financialTendencyList } from '@/shared/constants/finTypes.constants'
+import { patchWonnaBESelections } from '../services/choose-wannabe.service'
+import { router } from '@/app/router'
 
 const toggleSelect = (label: string) => {
   if (selected.value.includes(label)) {
@@ -53,18 +53,27 @@ const toggleSelect = (label: string) => {
   }
 }
 
-const emit = defineEmits<{
-  (e: 'submit', selected: string[]): void
-  (e: 'submit-nowme'): void
-}>()
+const selected = ref<string[]>([])
+const types = financialTendencyList 
 
-const submit = () => {
-  console.log(selected.value);
+
+const getSelectedIds = () => {
+  return types
+    .filter((t) => selected.value.includes(t.name))
+    .map((t) => t.id)
 }
 
-const submitNowMe = () => {
-  emit('submit-nowme')
+const submit = async () => {
+  const selectedIds = getSelectedIds()
+  console.log(selectedIds)
+  try {
+    const res = await patchWonnaBESelections({
+      selectedWonnabeIds : selectedIds,
+    })
+    console.log('워너비 선택 저장 완료:', res.message)
+    router.back()
+  } catch (e) {
+    console.error('❌ 워너비 선택 저장 실패:', e)
+  }
 }
-
-const types = finTypes
 </script>

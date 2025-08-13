@@ -1,9 +1,33 @@
-import type { Method } from '@/shared/utils/fetcher';
+import { fetcher} from '@/shared/utils/fetcher';
+import type { CommunityPreview } from '../board.entity';
+import { mockCommunities } from './community.mock';
+import type { CommunityList } from './community.entity';
 
-export const community = {
-  getCommunityList: () => ({
-    url: `${import.meta.env.VITE_APP_API_URL}/api/community/list`,
-    method: 'GET' as Method,  // 또는 그냥 'GET'도 가능
-    auth: true,
-  }),
+
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
+
+export const getCommunity = async () => {
+    const res = await fetcher<CommunityList>({
+        url: `${BASE_URL}/api/community/list`,
+        method: 'GET',
+        auth: true
+    })
+    console.log('게시판 목록 조회 : ', res.data)
+    return res.data
 };
+
+export const getCommunityTop3 = async () => {
+    try{
+        const res = await fetcher<CommunityPreview[]>({
+            url: `${BASE_URL}/api/community/list/top3`,
+            method: 'GET',
+            auth: true
+        })
+        console.log('인기 게시판 조회(게시판 메인 페이지용) : ',res.data)
+        return res.data
+    }catch{
+        return mockCommunities.slice(0,3)
+    }
+}
+

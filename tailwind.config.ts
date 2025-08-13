@@ -113,6 +113,12 @@ export default {
             s:'#FFE1AD',
             c:'#FFEFD3',
             bg:'#FFF6E7',
+          },
+          pupple:{
+            p:'#8B5DC5',
+            s:'#C6B0FF',
+            c:'#E5DCFD',
+            bg:'#F5F1FF'
           }
         }
       },

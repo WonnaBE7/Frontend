@@ -1,5 +1,5 @@
 <template>
-    <div ref="dropdownRef" class="relative inline-block w-36">
+    <div ref="dropdownRef" class="relative inline-block w-48">
       <!-- 드롭다운 버튼 -->
       <button
         @click="toggleDropdown"
@@ -63,14 +63,12 @@ import Typography from './Typography.vue'
     options: DropdownOption[]
   }
   
-  interface Emits {
-    (e: 'update:modelValue', value: string): void
-  }
+  type Emits = (e: 'update:modelValue', value: string) => void
   
   const props = defineProps<Props>()
   const emit = defineEmits<Emits>()
   
-  const isOpen = ref(false)
+  const isOpen = ref<boolean>(false)
   const dropdownRef = ref<HTMLElement>()
   
   const selectedOption = computed(() => {

@@ -18,9 +18,7 @@
   import Typography from '@/shared/ui/atoms/Typography.vue'
   import { MailWarning } from 'lucide-vue-next'
   
-  const emit = defineEmits<{
-    (e: 'openMessage'): void
-  }>()
+  const emit = defineEmits<(e: 'openMessage') => void>()
   </script>
   
   <style scoped>

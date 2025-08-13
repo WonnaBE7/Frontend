@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import Button from '@/shared/ui/atoms/Button.vue'
-import { useConsumptionStore } from '@/entities/assets/consumption/consumption.store.ts'
+  import Button from '@/shared/ui/atoms/Button.vue'
+  import { useConsumptionStore } from '@/entities/consumption/consumption.store'
 
-const store = useConsumptionStore()
+  const store = useConsumptionStore()
 </script>

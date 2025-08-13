@@ -1,17 +1,13 @@
 <template>
-  <!-- 모달 배경 -->
   <div v-if="isOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" @click="closeModal">
-    <!-- 모달 내용 -->
     <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4" @click.stop>
-      <!-- 헤더 -->
       <div class="flex justify-between items-center mb-4">
-        <Typography type="B_18_140" class="text-gray-900">{{ productName }}</Typography>
+        <Typography type="B_18_120" class="text-gray-900">{{ productName }}</Typography>
         <button @click="closeModal" class="text-gray-500 hover:text-gray-700">
           <X class="w-5 h-5 sm:w-7 sm:h-7" />
         </button>
       </div>
 
-      <!-- 기간 정보 -->
       <Card class="bg-sub-aqua-bg mb-4">
         <div class="flex items-center gap-2 mb-4 w-full">
           <Calendar class="w-4 h-4 text-sub-aqua-p" />
@@ -27,7 +23,6 @@
         </Typography>
       </Card>
 
-      <!-- 활용 현황 (예적금/보험) 또는 소비 현황 (카드) -->
       <Card class="bg-sub-yellow-bg mb-4">
         <div class="flex items-center gap-2 mb-2 w-full">
           <TrendingUp class="w-4 h-4 text-sub-yellow-p" />
@@ -36,7 +31,6 @@
           </Typography>
         </div>
         
-        <!-- 예적금 정보 -->
         <div v-if="productType === 'savings'" class="space-y-2 w-full">
           <div class="flex justify-between">
             <Typography type="M_12_120" class="text-gray-900">월 납입액:</Typography>
@@ -62,7 +56,6 @@
           </div>
         </div>
 
-        <!-- 카드 정보 -->
         <div v-else-if="productType === 'card'" class="space-y-2 w-full">
           <div class="flex justify-between w-full">
             <Typography type="M_12_120" class="text-gray-900">이번달 사용액:</Typography>
@@ -80,7 +73,6 @@
           </div>
         </div>
 
-        <!-- 보험 정보 -->
         <div v-else class="space-y-2 w-full">
           <div class="flex justify-between w-full">
             <Typography type="M_12_120" class="text-gray-900">총 납입금액:</Typography>
@@ -103,7 +95,6 @@
         </div>
       </Card>
 
-      <!-- 차트 -->
       <div class="mb-4">
         <Typography type="B_14_120" class="mb-3 text-gray-900">
           {{
@@ -136,9 +127,7 @@ interface Props {
   productType: 'savings' | 'card' | 'insurance'
 }
 
-interface Emits {
-  (e: 'close'): void
-}
+type Emits = (e: 'close') => void
 
 const props = defineProps<Props>()
 const emit = defineEmits<Emits>()

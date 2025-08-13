@@ -1,28 +1,27 @@
 <template>
   <div class="w-full flex flex-row items-center mt-4 mb-4">
     <IconLabel :icon="Star" iconClass="text-sub-yellow-p">
-      인기 게시판 TOP 3
+      인기 카테고리 TOP 3
     </IconLabel>
     <ChevronRight
       class="w-5 h-5 sm:w-7 sm:h-7"
       @click="goToCategory"
     />
   </div>
-  <BoardCategory :communities="top3Communities"></BoardCategory>
+  <BoardCategory v-if="store.top3" :communities="store.top3"></BoardCategory>
 </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
   import { Star , ChevronRight} from 'lucide-vue-next'
   import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
-  import { mockCommunities } from '@/entities/board/community/community.mock';
   import BoardCategory from '../../board-community/ui/BoardCategory.vue';
   import { useRouter } from 'vue-router';
+  import { useCommunityListStore } from '@/entities/board/community/community.store';
 
-  const top3Communities = mockCommunities.slice(0, 3)
-
+  const store = useCommunityListStore()
   const router = useRouter()
 
-    function goToCategory() {
-        router.push({ path: '/board/category' })
-    }
-  </script>
+  function goToCategory() {
+      router.push({ path: '/board/category' })
+  }
+</script>

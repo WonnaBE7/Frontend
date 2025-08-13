@@ -10,13 +10,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import ConsumptionDetailCategory from '@/features/assets/consumption-detail/ui/ConsumptionDetailCategory.vue'
 import ConsumptionDetailDate from '@/features/assets/consumption-detail/ui/ConsumptionDetailDate.vue'
+import { useTransactionCategoryDetailStore, useTransactionDetailStore, type ConsumptionCategoryKey } from '@/entities/consumption/consumption.store'
+
+const consumptionCategoryStoore = useTransactionCategoryDetailStore()
+const consumptionStoore = useTransactionDetailStore()
 
 const route = useRoute()
-const category = computed(() => route.query.category as string || '')
+const category = computed(() => route.query.category as ConsumptionCategoryKey || '') 
 const type = computed(() => route.query.type as 'current' | 'today' | undefined)
+
+onMounted(async () => {
+  if(category.value){
+    await consumptionCategoryStoore.fetchAllTodayDetails(category.value)
+    await consumptionCategoryStoore.fetchAllMonthlyDetails(category.value)
+  }
+  await consumptionStoore.fetchMonthlyTransactionDetail()
+  await consumptionStoore.fetchTodayTransactionDetail()
+})
 </script>

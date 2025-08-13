@@ -21,28 +21,25 @@
     />
   </Card>
 </template>
-  
   <script setup lang="ts">
   import Card from '@/shared/ui/atoms/Card.vue'
   import ConsumptionTabs from './CunsumptionTabs.vue'
   import MonthNavigator from './MonthNavigator.vue'
   import ConsumptionInfoDisplay from './ConsumptionInfoDisplay.vue'
-  import { useConsumptionStore } from '@/entities/assets/consumption/consumption.store.ts'
+  import { useConsumptionStore } from '@/entities/consumption/consumption.store'
 
   const store = useConsumptionStore()
-
-
-const getLabelText = () => {
-  switch (store.selectedTab) {
-    case 'estimated':
-      return '예상 월 소비'
-    case 'today':
-      return '오늘의 소비'
-    default:
-      return store.displayedLabel
+  const disableNavigation = () => store.selectedTab !== 'current'
+  const getLabelText = () => {
+    switch (store.selectedTab) {
+      case 'estimated':
+        return '예상 월 소비'
+      case 'today':
+        return '오늘의 소비'
+      default:
+        return store.displayedLabel
+    }
   }
-}
+  
 
-const disableNavigation = () => store.selectedTab !== 'current'
-
-  </script>
+</script>

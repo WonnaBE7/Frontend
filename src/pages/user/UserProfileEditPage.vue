@@ -15,4 +15,15 @@ import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
 import { userSubTextMap } from '@/features/user/constants/userSubTextMap'
 import UserProfileCard from '@/shared/ui/molecules/UserProfileCard.vue';
 import UserProfileEditForm from '@/features/user/user-profile-edit/ui/UserProfileEditForm.vue';
+
+import { onMounted } from 'vue';
+import { useUserProfileStore } from '@/entities/user/user.store';
+
+const userStore = useUserProfileStore()
+
+onMounted(async ()=>{
+  await userStore.fetchUserProfile()
+})
+
+
 </script>
