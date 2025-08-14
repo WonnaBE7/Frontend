@@ -20,6 +20,7 @@ import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/entities/user/auth.store'
 import { onMounted } from 'vue'
 import { initAssetsData } from '@/features/init/initAssetsData'
+import { getCodefAssets } from '@/entities/assets/assets.api'
 
 const assetTabStore = useAssetTabStore()
 const { selectedTab } = storeToRefs(assetTabStore)
@@ -31,11 +32,13 @@ function onTabChange(tab: AssetTabKey) {
 const router = useRouter()
 const authStore = useAuthStore()
 
-onMounted(() => {
+onMounted( async () => {
   if (!authStore.accessToken) {
     router.push('/user/login')
   }
-  initAssetsData()
+  await getCodefAssets()
+  await initAssetsData()
+  
 })
 
 </script>

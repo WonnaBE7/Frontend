@@ -5,7 +5,8 @@
 </template>
 
 <script setup lang="ts">
-    import { useAssetCategoryDetailStore } from '@/entities/assets/assets.store'
+    import { getCodefAssets } from '@/entities/assets/assets.api'
+import { useAssetCategoryDetailStore } from '@/entities/assets/assets.store'
     import AssetsDetailSummary from '@/features/assets/assets-detail/ui/AssetsDetailSummary.vue'
     import AppLayout from '@/shared/layout/AppLayout.vue'
     import { computed, onMounted } from 'vue'
@@ -18,6 +19,8 @@
     const category = computed(() => route.query.category as AssetCategoryType)
 
     onMounted(async () => {
-    await store.fetchAllCategoryDetails(category.value)
+      await getCodefAssets()
+      await store.fetchAllCategoryDetails(category.value)
+
     })
 </script>

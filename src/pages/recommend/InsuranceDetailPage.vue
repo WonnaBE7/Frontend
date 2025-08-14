@@ -21,10 +21,16 @@
   const route = useRoute()
   const productId = computed(() => Number(route.query.productId))
   const insurancesData = ref<InsurancesDetailPageResponse | null>(null)
+  const wonnaBEId = computed(() => {
+    const id = route.query.wonnaBEId
+    return id != null ? Number(id) : null
+  })
 
   onMounted(async () => {
     if (!isNaN(productId.value)) {
-      insurancesData.value = await getInsuranceDetailView(productId.value)
+      console.log('보험 상세보기id 값들',productId.value, wonnaBEId.value);
+      
+      insurancesData.value = await getInsuranceDetailView(productId.value, wonnaBEId.value)
     } else {
       console.error('Invalid productId:', route.query.productId)
     }

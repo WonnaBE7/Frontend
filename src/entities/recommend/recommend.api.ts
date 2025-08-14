@@ -57,7 +57,7 @@ export const getSavingsRecommendation = async () =>{
 
 export const getInsuranceRecommendation = async () =>{
     const res = await fetcher<InsuranceRecommendationResponse>({
-        url: `${BASE_URL}/api/recommendations/insurance`,
+        url: `${BASE_URL}/api/recommendations/insurances`,
         method: 'GET',
         auth: true,
     })

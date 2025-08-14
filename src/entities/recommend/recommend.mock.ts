@@ -376,7 +376,7 @@ export const mockInsuranesDetailPage : InsurancesDetailPageResponse={
       coverageType: "상해급여",                   
       coverageLimit: "연간 5천만원 한도",          
       deductible: "급여 10% 또는 20%",             
-      average_premium: "13,000원",           
+      averagePremium: "13,000원",           
       wished: false,
       labels: ["가격 경쟁력", "보장한도", "보장범위", "자기부담금 수준", "환급범위"],
       currentUserData: [60, 80, 70, 65, 75],

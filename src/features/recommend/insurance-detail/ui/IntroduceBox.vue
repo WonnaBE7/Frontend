@@ -33,7 +33,7 @@
         </div>
         <div class="flex flex-row w-full justify-between mb-2">
             <Typography type="M_12_140">평균 월보험료</Typography>
-            <Typography type="B_12_140" class="text-sub-orange-p">{{data.average_premium}}</Typography>
+            <Typography type="B_12_140" class="text-sub-orange-p">{{data.averagePremium}}</Typography>
         </div>
         
     </Card>

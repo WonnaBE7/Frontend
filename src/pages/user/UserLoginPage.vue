@@ -1,6 +1,6 @@
 <template>
     <AppLayout>
-      <UserTitle :label="'로그인'" :subText="userSubTextMap['회원 가입']" />
+      <UserTitle class="mb-40" :label="'로그인'" :subText="userSubTextMap['회원 가입']" />
       <UserLoginForm />
     </AppLayout>
   </template>

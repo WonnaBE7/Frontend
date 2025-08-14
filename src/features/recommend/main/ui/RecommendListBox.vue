@@ -16,7 +16,6 @@
       </Button>
     </div>
 
-    <!-- 본문 -->
     <template v-if="isPersonaReady">
       <template v-if="currentProducts.length > 0">
         <template v-for="product in currentProducts" :key="getProductKey(product)">
@@ -152,7 +151,8 @@ function goToDetail(
   let productId: string
   let routePath: string
   let productType: string
-
+  console.log('현 상태 wonnaBEId',userStore.selectedFinType.id);
+  
   if ('productId' in product && product.productType === 'savings') {
     productId = product.productId
     productType = product.productType
@@ -166,7 +166,7 @@ function goToDetail(
     productType = product.productType
     routePath = '/recommend/insurance/detail'
   }
-
-  router.push({ path: routePath, query: { productId, productType } })
+  const wonnaBEId = userStore.selectedFinType?.id
+  router.push({ path: routePath, query: { productId, productType, wonnaBEId } })
 }
 </script>

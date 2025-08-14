@@ -49,7 +49,7 @@
   import AppLayout from '@/shared/layout/AppLayout.vue'
   import Card from '@/shared/ui/atoms/Card.vue'
   import Typography from '@/shared/ui/atoms/Typography.vue'
-  import { getAccountDetail, type AccountDetailResponse } from '@/entities/assets/assets.api'
+  import { getAccountDetail, getCodefAssets, type AccountDetailResponse } from '@/entities/assets/assets.api'
   
   const route = useRoute()
   const detail = ref<AccountDetailResponse | null>(null)
@@ -69,11 +69,13 @@
       return
     }
   
+    await getCodefAssets()
     try {
       detail.value = await getAccountDetail(accountId)
-        console.log('계좌 상세정보',detail.value)
+      console.log('계좌 상세정보',detail.value)
     } catch (e) {
       console.error('계좌 상세 로드 실패:', e)
     }
+
   })
   </script>

@@ -267,7 +267,7 @@ export interface InsuranceProductInfo {
   coverageType:string
   coverageLimit:string
   deductible:string
-  average_premium:string
+  averagePremium:string
   wished : boolean
   labels : string[]
   currentUserData : number[]

@@ -17,15 +17,17 @@ import { onMounted } from 'vue';
 import { initMainData } from '@/features/init/initMainData';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/entities/user/auth.store';
+import { getCodefAssets } from '@/entities/assets/assets.api';
 
 const router = useRouter()
 const authStore = useAuthStore()
 
-onMounted(() => {
+onMounted(async() => {
   if (!authStore.accessToken) {
     router.push('/user/login')
   }
-  initMainData()
+  await getCodefAssets()
+  await initMainData()
 })
 
 

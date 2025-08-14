@@ -5,6 +5,16 @@ import { mockAccountDetail, mockAssetCategoryDetailResponse, mockAssetCategoryRa
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
+export const getCodefAssets = async () => {
+    const res = await fetcher({
+        url: `${BASE_URL}/api/assets/sync?force=true`,
+        method: 'POST',
+        auth: true
+    })
+    console.log('Codef 실행 : ',res)
+    return res
+}
+
 export const getAssets = async () => {
     try{
         const res = await fetcher<AssetSummaryMeta>({

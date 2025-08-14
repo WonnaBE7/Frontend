@@ -28,10 +28,15 @@
   const route = useRoute()
   const productId = computed(() => Number(route.query.productId))
   const savingsData = ref<SavingsDetailPageResponse | null>(null)
+  const wonnaBEId = computed(() => {
+    const id = route.query.wonnaBEId
+    return id != null ? Number(id) : null
+  })
 
   onMounted(async () => {
     if (!isNaN(productId.value)) {
-      savingsData.value = await getSavingsDetailView(productId.value)
+      console.log('예적금 상세보기id 값들',productId.value, wonnaBEId.value);
+      savingsData.value = await getSavingsDetailView(productId.value, wonnaBEId.value)
     } else {
       console.error('Invalid productId:', route.query.productId)
     }

@@ -21,12 +21,15 @@
 
   const route = useRoute()
   const productId = computed(() => Number(route.query.productId))
-  console.log('카드 상세보기',productId.value)
   const cardsData = ref<CardDetailPageResponse | null>(null)
-
+  const wonnaBEId = computed(() => {
+    const id = route.query.wonnaBEId
+    return id != null ? Number(id) : null
+  })
   onMounted(async () => {
     if (!isNaN(productId.value)) {
-      cardsData.value = await getCardDetailView(productId.value)
+      console.log('카드 상세보기id 값들',productId.value, wonnaBEId.value);
+      cardsData.value = await getCardDetailView(productId.value, wonnaBEId.value)
       console.log('카드 데이터 불러온거',cardsData.value)
     } else {
       console.error('Invalid productId:', route.query.productId)
