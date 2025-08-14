@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import SplashScreen from '@/shared/ui/organisms/SplashScreen.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
 import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
 import { ref, watch } from 'vue'
@@ -30,11 +31,11 @@ const router = useRouter();
 
 const checked = ref<string[]>([])
 const allChecked = ref<boolean>(false)
-  const showSplash = ref(false) 
+const showSplash = ref(false) 
+
 watch(checked, (newVal) => {
   allChecked.value = newVal.length === terms.length
 })
-
 
 const onSubmit = async () => {
   const missingRequiredTerms = terms
