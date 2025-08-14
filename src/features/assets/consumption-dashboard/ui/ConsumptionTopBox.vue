@@ -15,7 +15,7 @@
     />
 
     <ConsumptionInfoDisplay
-      :amount="store.displayedAmount"
+      :amount="store.displayedAmount ?? '0원'" 
       :date="store.displayedDate"
       :type="store.selectedTab"
     />

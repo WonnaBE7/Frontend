@@ -91,7 +91,12 @@ function toggleModal(){
 }
 
 function goKakao() {
+  const KAKAO_CLIENT_ID = import.meta.env.VITE_KAKAO_CLIENT_ID
+  const REDIRECT_URI = 'http://localhost:8080/api/auth/kakao/callback'
   showModal.value = false
-  alert('카카오 로그인 실행')
-}
+  const url =
+    `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}` +
+    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code`
+    window.location.href = url
+  }
 </script>

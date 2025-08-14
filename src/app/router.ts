@@ -13,6 +13,12 @@ const routes: RouteRecordRaw[] = [
     meta: { title: '홈' }
   },
   {
+    path: '/auth/kakao',
+    name: 'Kakao',
+    component: () => import('@/pages/auth/KakaoLoginRedirectPage.vue'),
+    meta: { title: '카카오 로그인' }
+  },
+  {
     path: '/assets',
     name: 'Assets',
     component: () => import('@/pages/assets/AssetsPage.vue')
