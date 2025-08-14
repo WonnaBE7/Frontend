@@ -58,7 +58,7 @@ import Typography from '../atoms/Typography.vue'
 const route = useRoute()
 const router = useRouter()
 
-const basePaths = ['/', '/assets', '/recommend', '/goal', '/user', '/board']
+const basePaths = ['/', '/assets', '/recommend', '/goal', '/user', '/board', '/user/login', '/user/signup']
 const isBasePath = computed(() => basePaths.includes(route.path))
 
 const showBackButton = computed(() => !isBasePath.value)

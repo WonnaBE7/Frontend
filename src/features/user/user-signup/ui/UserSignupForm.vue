@@ -1,4 +1,5 @@
 <template>
+  <SplashScreen v-if="showSplash" />
   <LabelInput v-model="name" label="이름" class="mb-4" />
   <LabelInput v-model="email" label="이메일" class="mb-4" />
   <LabelInput v-model="password" label="비밀번호" type="password" class="mb-8" />
@@ -29,7 +30,7 @@ const router = useRouter();
 
 const checked = ref<string[]>([])
 const allChecked = ref<boolean>(false)
-
+  const showSplash = ref(false) 
 watch(checked, (newVal) => {
   allChecked.value = newVal.length === terms.length
 })
@@ -54,11 +55,13 @@ const onSubmit = async () => {
     })
     if(res.code === 200){
       alert('회원가입이 완료되었습니다!')
-
+      showSplash.value = true
       const loginRes = await userLogin({ email: email.value, password: password.value })
       if(loginRes.code === 200){
           await useUserProfileStore().fetchUserProfile()
-          router.push('/user/diagnosis')
+          setTimeout(() => {
+            router.push('/user/diagnosis')
+          }, 4000)
       }
     }
   } catch (error) {

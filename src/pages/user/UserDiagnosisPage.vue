@@ -4,7 +4,6 @@
       :label="'금융 성향 진단'"
       :subText="userSubTextMap['금융 성향 진단']"
     />
-
     <Card class="bg-sub-yellow-bg border border-sub-yellow-c flex items-center mb-4">
       <div class="flex flex-row w-full items-center justify-between">
         <div class="w-2/3">

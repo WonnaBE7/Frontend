@@ -77,6 +77,9 @@ const handleLogin = async () => {
       router.push('/')
     }, 4000)
   }
+  else{
+    alert('이메일 및 비밀번호를 다시 입력해주세요')
+  }
 }
 
 function goSignup(){

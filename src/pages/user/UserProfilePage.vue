@@ -38,14 +38,16 @@ async function clickLogout(){
     await store.logout()
     await router.push('/user/login')
   } catch (error) {
+    await store.logout()
     console.error('로그아웃 중 오류:', error)
-    // 에러가 있어도 강제로 로그인 페이지로
     router.replace('/user/login')
   }
 }
 
 onMounted(() => {
-  initUserData()
+  if (store.accessToken) {
+    initUserData()
+  }
 })
 
 </script>

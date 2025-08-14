@@ -37,6 +37,5 @@ export const useUserProfileStore = defineStore('userProfile', {
     setSelectedFinType(fin: { id: number; name: string }) {
       this.selectedFinType = fin
     }
-  },
-  persist: true
+  }
 })
