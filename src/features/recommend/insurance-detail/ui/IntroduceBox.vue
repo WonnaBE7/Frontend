@@ -29,11 +29,11 @@
         </div>
         <div class="flex flex-row w-full justify-between mb-2">
             <Typography type="M_12_140">자기부담금</Typography>
-            <Typography type="B_12_140" class="text-sub-orange-p">{{data.deductible}}</Typography>
+            <Typography type="B_12_140" class="text-sub-orange-p">{{data.deductible}}만원</Typography>
         </div>
         <div class="flex flex-row w-full justify-between mb-2">
             <Typography type="M_12_140">평균 월보험료</Typography>
-            <Typography type="B_12_140" class="text-sub-orange-p">{{data.averagePremium}}</Typography>
+            <Typography type="B_12_140" class="text-sub-orange-p">{{data.averagePremium}}원</Typography>
         </div>
         
     </Card>

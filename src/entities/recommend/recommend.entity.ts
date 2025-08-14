@@ -42,50 +42,60 @@ export interface MonthlyChartItem {
   percentage: number
 }
 
+// 공통
+export interface MonthlyPercentItem {
+  month: string;      // "YYYY-MM" 또는 "8월"
+  percentage: number; // 0~100
+}
+export interface MonthlyAmountItem {
+  month: string;      // "YYYY-MM" 또는 "8월"
+  amount: number;     // 원 단위
+}
+
+// 예적금
 export interface SavingsDetailResponse {
-  productId: string
-  productName: string
-  bankName: string
-  category: string
-  startDate: string         
-  maturityDate: string      
-  term: string
-  total_term: string
-  currentAmount: string
-  rate: string
-  beforeInterest: string
-  achievementRate: string
-  monthlyChart: MonthlyChartItem[]
+  productId: string;
+  productName: string;
+  bankName: string;
+  productType: 'savings' | '예금' | '적금'; // 서버 표준화되면 'savings'만
+  startDate: string;    
+  maturityDate: string; 
+  term: string;         
+  currentAmount: number;
+  baseRate: number;     
+  achievementRate: number; // 0~100
+  monthlyChart: MonthlyPercentItem[];
 }
 
+// 보험
 export interface InsuranceDetailResponse {
-  productId: string
-  insuranceName: string
-  insuranceCompany: string
-  startDate: string          // "YYYY-MM" 형식
-  maturityDate: string       // "YYYY-MM" 형식
-  term: string
-  currentAmount: string
-  getAmount: string
-  achievementRate: string
-  monthlyChart: MonthlyChartItem[]
+  productId: string;
+  insuranceName: string;
+  insuranceCompany: string;
+  startDate: string;
+  maturityDate: string;
+  term: string;
+  currentAmount: string; 
+  getAmount: string;    
+  achievementRate: number;
+  monthlyChart: MonthlyAmountItem[];
 }
 
+// 카드
 export interface MonthlyConsumption {
-  month: string              // "YYYY-MM" 형식
-  amount: number
+  month: string;
+  amount: number;
 }
-
 export interface CardDetailResponse {
-  cardId: string
-  cardName: string
-  cardCompany: string
-  startDate: string          // "YYYY-MM" 형식
-  expiryDate: string         // "YYYY-MM" 형식
-  term: string
-  currentAmount: number
-  performanceRate: number
-  monthlyConsumptions: MonthlyConsumption[]
+  cardId: string;
+  cardName: string;
+  cardCompany: string;
+  startDate: string;
+  expiryDate: string;
+  term: string;
+  currentAmount: number;
+  performanceRate: number; // 0~100
+  monthlyConsumptions: MonthlyConsumption[];
 }
 
 // 추천 상품 조회

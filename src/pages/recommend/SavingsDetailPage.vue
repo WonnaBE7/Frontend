@@ -23,7 +23,6 @@
   import InputPeriodBox from '@/features/recommend/saving-detail/ui/InputPeriodBox.vue';
   import InputPaymentBox from '@/features/recommend/saving-detail/ui/InputPaymentBox.vue';
   import InputAmountBox from '@/features/recommend/saving-detail/ui/InputAmountBox.vue';
-
   
   const route = useRoute()
   const productId = computed(() => Number(route.query.productId))

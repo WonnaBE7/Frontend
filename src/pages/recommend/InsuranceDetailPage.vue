@@ -6,8 +6,7 @@
       <ProductButtonBox v-if="insurancesData" :request="requestInsurance" :isWished="insurancesData.productInfo.wished"/>
     </AppLayout>
 </template>
-  
-  <script setup lang="ts">
+<script setup lang="ts">
   import ChartBox from '@/features/recommend/ui/ChartBox.vue';
   import IntroduceBox from '@/features/recommend/insurance-detail/ui/IntroduceBox.vue';
   import ProductButtonBox from '@/features/recommend/insurance-detail/ui/ProductButtonBox.vue';
@@ -36,21 +35,21 @@
     }
   })
 
-const chartData = computed<CommonChartData>(() => {
-  if (!insurancesData.value) return {} as CommonChartData
-  return {
-    name: insurancesData.value.productInfo.productName,
-    labels: insurancesData.value.productInfo.labels,
-    currentUserData: insurancesData.value.productInfo.currentUserData,
-    comparisonCharts: insurancesData.value.comparisonChart
-  }
-})
+  const chartData = computed<CommonChartData>(() => {
+    if (!insurancesData.value) return {} as CommonChartData
+    return {
+      name: insurancesData.value.productInfo.productName,
+      labels: insurancesData.value.productInfo.labels,
+      currentUserData: insurancesData.value.productInfo.currentUserData,
+      comparisonCharts: insurancesData.value.comparisonChart
+    }
+  })
 
-const requestInsurance = computed<InsuranceApplicationRequest>(() => {
-  if (!insurancesData.value) return {} as InsuranceApplicationRequest
-  return {
-    productType: 'insurance',
-    insuranceId: insurancesData.value.productInfo.productId,
-  }
-})
-  </script>
+  const requestInsurance = computed<InsuranceApplicationRequest>(() => {
+    if (!insurancesData.value) return {} as InsuranceApplicationRequest
+    return {
+      productType: 'insurance',
+      insuranceId: insurancesData.value.productInfo.productId,
+    }
+  })
+</script>

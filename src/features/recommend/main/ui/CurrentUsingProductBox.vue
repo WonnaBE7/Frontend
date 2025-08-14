@@ -13,9 +13,9 @@
           </Typography>
         </div>
 
-        <div v-if="currentProducts" class="space-y-2 max-h-56 overflow-y-auto pr-1" >
+        <div v-if="currentProducts" class="space-y-2 max-h-56 overflow-y-auto pr-1">
           <div
-          v-if="currentProducts.savings.count > 0"
+            v-if="currentProducts.savings.count > 0"
             v-for="product in currentProducts.savings.products"
             :key="product.productId"
             @click="openProductDetail(product, 'savings')"
@@ -94,12 +94,21 @@
       </div>
     </div>
 
-    <!-- 상세 모달 -->
-    <ProductDetailModal
-      :isOpen="isModalOpen"
-      :productDetail="selectedProductDetail"
-      :productType="selectedProductType"
-      @close="closeModal"
+    <!-- 상세 모달들 -->
+    <SavingsDetailModal
+      :isOpen="isSavingsOpen"
+      :data="savingsDetail"
+      @close="closeSavings"
+    />
+    <CardDetailModal
+      :isOpen="isCardOpen"
+      :data="cardDetail"
+      @close="closeCard"
+    />
+    <InsuranceDetailModal
+      :isOpen="isInsuranceOpen"
+      :data="insuranceDetail"
+      @close="closeInsurance"
     />
   </Card>
 </template>
@@ -115,7 +124,11 @@ import {
   CreditCard as CreditCardIcon,
   Shield as ShieldIcon
 } from 'lucide-vue-next'
-import ProductDetailModal from './ProductDetailModal.vue'
+
+import SavingsDetailModal from './SavingsDetailModal.vue'
+import CardDetailModal from './CardDetailModal.vue'
+import InsuranceDetailModal from './InsuranceDetailModal.vue'
+
 import type {
   SavingsDetailResponse,
   CardDetailResponse,
@@ -124,58 +137,64 @@ import type {
 } from '@/entities/recommend/recommend.entity'
 import { getCurrentSummary, getUserCards, getUserInsurances, getUserSavings } from '@/entities/recommend/recommend.api'
 
-const currentProducts  = ref<CurrentProductsResponse|null>(null)
+const currentProducts  = ref<CurrentProductsResponse | null>(null)
 
-onMounted(async ()=>{
+onMounted(async () => {
   currentProducts.value = await getCurrentSummary()
 })
 
-const isModalOpen = ref<boolean>(false)
-const selectedProductDetail = ref<SavingsDetailResponse | CardDetailResponse | InsuranceDetailResponse | null>(null)
-const selectedProductType = ref<'savings' | 'card' | 'insurance'>('savings')
+/** 모달 상태 & 데이터(타입별 분리) */
+const isSavingsOpen   = ref(false)
+const isCardOpen      = ref(false)
+const isInsuranceOpen = ref(false)
+
+const savingsDetail   = ref<SavingsDetailResponse | null>(null)
+const cardDetail      = ref<CardDetailResponse | null>(null)
+const insuranceDetail = ref<InsuranceDetailResponse | null>(null)
+
+/** 유틸 */
+function truncateText(text: string | null | undefined, maxLength: number): string {
+  if (!text) return ''
+  return text.length <= maxLength ? text : text.substring(0, maxLength) + '...'
+}
 
 function getProductId(item: any, type: 'savings' | 'card' | 'insurance'): string {
   return type === 'card' ? item.cardId : item.productId
 }
 
+/** 상세 열기 */
 async function openProductDetail(item: any, type: 'savings' | 'card' | 'insurance') {
   const productId = getProductId(item, type)
-  console.log('선택한 상품 id:',productId)
-  const detail = await getProductDetail(productId, type)
-  console.log('선택한 상품 id 모달 데이터', detail)
-  if (detail) {
-    selectedProductDetail.value = detail
-    selectedProductType.value = type
-    isModalOpen.value = true
-  }
-}
-
-function truncateText(text: string | null | undefined, maxLength: number): string {
-  if (!text) return ''
-  if (text.length <= maxLength) return text
-  return text.substring(0, maxLength) + '...'
-}
-
-function closeModal() {
-  isModalOpen.value = false
-  selectedProductDetail.value = null
-}
-
-async function getProductDetail(productId: string, type: 'savings' | 'card' | 'insurance') {
   try {
-    switch (type) {
-      case 'savings':
-        return await getUserSavings(Number(productId))
-      case 'card':
-        return await getUserCards(Number(productId))
-      case 'insurance':
-        return await getUserInsurances(Number(productId))
-      default:
-        return null
+    if (type === 'savings') {
+      const detail = await getUserSavings(Number(productId))
+      savingsDetail.value = detail
+      isSavingsOpen.value = true
+    } else if (type === 'card') {
+      const detail = await getUserCards(Number(productId))
+      cardDetail.value = detail
+      isCardOpen.value = true
+    } else {
+      const detail = await getUserInsurances(Number(productId))
+      insuranceDetail.value = detail
+      isInsuranceOpen.value = true
     }
   } catch (e) {
     console.error('상세 조회 실패:', e)
-    return null
   }
+}
+
+/** 닫기 */
+function closeSavings() {
+  isSavingsOpen.value = false
+  savingsDetail.value = null
+}
+function closeCard() {
+  isCardOpen.value = false
+  cardDetail.value = null
+}
+function closeInsurance() {
+  isInsuranceOpen.value = false
+  insuranceDetail.value = null
 }
 </script>
