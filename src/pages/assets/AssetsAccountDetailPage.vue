@@ -69,7 +69,7 @@
       return
     }
   
-    await getCodefAssets()
+    //await getCodefAssets()
     try {
       detail.value = await getAccountDetail(accountId)
       console.log('계좌 상세정보',detail.value)

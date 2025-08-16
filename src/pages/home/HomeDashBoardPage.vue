@@ -26,7 +26,7 @@ onMounted(async() => {
   if (!authStore.accessToken) {
     router.push('/user/login')
   }
-  await getCodefAssets()
+  //await getCodefAssets()
   await initMainData()
 })
 

@@ -19,7 +19,7 @@ import { useAssetCategoryDetailStore } from '@/entities/assets/assets.store'
     const category = computed(() => route.query.category as AssetCategoryType)
 
     onMounted(async () => {
-      await getCodefAssets()
+      //await getCodefAssets()
       await store.fetchAllCategoryDetails(category.value)
 
     })

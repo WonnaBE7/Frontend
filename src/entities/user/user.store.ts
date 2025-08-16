@@ -39,3 +39,38 @@ export const useUserProfileStore = defineStore('userProfile', {
     }
   }
 })
+
+export interface DiagnosisResult {
+  success: boolean
+  personaName: string
+  activityScore: number
+  spendingScore: number
+  planningScore: number
+  riskScore: number
+  similarity: number
+}
+
+const KEY = 'diagnosis:result'
+
+export const useDiagnosisStore = defineStore('diagnosis', {
+  state: () => ({
+    result: null as DiagnosisResult | null,
+  }),
+  actions: {
+    setResult(r: DiagnosisResult) {
+      this.result = r
+      sessionStorage.setItem(KEY, JSON.stringify(r))
+    },
+    hydrate() {
+      if (this.result) return
+      const raw = sessionStorage.getItem(KEY)
+      if (raw) {
+        try { this.result = JSON.parse(raw) } catch {}
+      }
+    },
+    clear() {
+      this.result = null
+      sessionStorage.removeItem(KEY)
+    }
+  },
+})
