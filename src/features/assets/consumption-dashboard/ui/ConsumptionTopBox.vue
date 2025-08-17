@@ -40,6 +40,5 @@
         return store.displayedLabel
     }
   }
-  
 
 </script>

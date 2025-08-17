@@ -23,7 +23,7 @@
       </Typography>
         <div class="w-full bg-gray-100 p-2 sm:p-4 mt-2 sm:mt-4 flex items-center">
             <Typography type="M_10_120" class="flex flex-row w-full text-gray-500">
-              {{ community.latestBoard }}
+              {{ community.latestBoard?? '아직 작성된 글이 없습니다'}}
             </Typography>
         </div>
     </Card>

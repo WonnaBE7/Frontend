@@ -92,7 +92,8 @@ function toggleModal(){
 
 function goKakao() {
   const KAKAO_CLIENT_ID = import.meta.env.VITE_KAKAO_CLIENT_ID
-  const REDIRECT_URI = 'http://localhost:8080/api/auth/kakao/callback'
+  const BACKENT_URL=import.meta.env.VITE_API_BASE_URL
+  const REDIRECT_URI = `${BACKENT_URL}/api/auth/kakao/callback`
   showModal.value = false
   const url =
     `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}` +

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full cursor-pointer" @click="$emit('click', product)">
+  <div class="mt-4 w-full cursor-pointer" @click="$emit('click', product)">
     <Card class="bg-gray-BGDim !mb-0 hover:bg-gray-50 transition-colors">
       <div class="flex justify-between mb-2 w-full">
         <Typography type="B_16_140">{{ product.productName }}</Typography>

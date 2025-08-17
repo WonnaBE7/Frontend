@@ -64,15 +64,12 @@ export const useConsumptionStore = defineStore('consumption', () => {
   
     switch (selectedTab.value) {
       case 'current': {
-        // 오늘이 속한 달이 아니면 "MM월"만 간단히 보여주기
         if (!baseDate.value.isSame(now, 'month')) {
           return baseDate.value.format('MM월')
         }
-        // 현재 달이면 기존 API 날짜 사용
         return monthlySummary.value?.monthToDateConsumption.calculatedUntil as string
       }
       case 'estimated':
-        // 예상 탭은 월 이동을 막아두셨으니 기존 값 유지
         return estimatedAndToday.value?.estimatedMonthlyConsumption.calculatedUntil as string
       case 'today':
         return estimatedAndToday.value?.todayConsumption.calculatedDate as string

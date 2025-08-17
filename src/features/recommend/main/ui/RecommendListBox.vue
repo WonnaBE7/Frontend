@@ -5,7 +5,7 @@
     </IconLabel>
 
     <!-- 탭 -->
-    <div class="flex flex-row gap-2 mb-4 w-full bg-gray-BGDim p-2">
+    <div class="flex flex-row gap-2 w-full bg-gray-BGDim p-2">
       <Button
         v-for="tab in productTabs"
         :key="tab.value"
@@ -23,19 +23,16 @@
             v-if="product.productType === 'card'"
             :product="product"
             @click="goToDetail(product)"
-            class="mb-4"
           />
           <InsuranceProductCard
             v-else-if="product.productType === 'insurance'"
             :product="product"
             @click="goToDetail(product)"
-            class="mb-4"
           />
           <SavingsProductCard
             v-else
             :product="product"
             @click="goToDetail(product)"
-            class="mb-4"
           />
         </template>
       </template>

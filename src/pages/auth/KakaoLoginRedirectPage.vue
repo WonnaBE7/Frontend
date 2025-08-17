@@ -1,36 +1,53 @@
-<!-- src/pages/auth/KakaoResultPage.vue -->
 <template>
-    <div class="p-6 text-center">
-      <p class="text-gray-700">카카오 로그인 처리 중...</p>
+  <div class="p-6 flex flex-col items-center justify-center gap-3">
+    <div v-if="state === 'loading'">
+      <p>카카오 로그인 처리 중...</p>
     </div>
-  </template>
-  
-  <script setup lang="ts">
-  import { onMounted } from 'vue'
-  import { useRoute, useRouter } from 'vue-router'
-  import { useAuthStore } from '@/entities/user/auth.store'
-  
-  const route = useRoute()
-  const router = useRouter()
-  const auth = useAuthStore()
-  
-  onMounted(async () => {
-    const ok = route.query.ok === '1'
-    if (!ok) {
-      const reason = String(route.query.reason || 'unknown')
-      alert('카카오 로그인 실패: ' + reason)
-      router.replace('/login')
-      return
-    }
-  
-    try {
-      // 백엔드가 콜백 때 HttpOnly 쿠키(리프레시)를 심어줬으므로
-      // 여기서 /refresh를 호출해 accessToken만 받아서 상태 복구
-      await auth.restore()         // 내부에서 /refresh 요청 (credentials: 'include' 필수)
-      router.replace('/')          // 홈으로
-    } catch (e) {
-      alert('세션 복구 실패. 다시 로그인해주세요.')
-      router.replace('/login')
-    }
-  })
-  </script>
+    <div v-else-if="state === 'ok'">
+      <p>로그인 완료! 이동 중...</p>
+    </div>
+    <div v-else>
+      <p class="text-red-500">로그인 실패: {{ errorMessage }}</p>
+      <button @click="goHome" class="mt-2 underline">홈으로</button>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { onMounted, ref, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useAuthStore } from '@/entities/user/auth.store'
+import { userKakaoLogin } from '@/features/user/user-login/services/login.service'
+
+const route = useRoute()
+const router = useRouter()
+const store = useAuthStore()
+const state = ref<'loading' | 'ok' | 'error'>('loading')
+
+const errorMessage = computed(() => '카카오 로그인에 실패했습니다.')
+
+function goHome() {
+  router.replace('/')
+}
+
+onMounted(async () => {
+  const code = String(route.query.code ?? '')
+  if (!code) {
+    state.value = 'error'
+    return
+  }
+  try {
+    const { data } = await userKakaoLogin(code)
+    if (!data.accessToken) throw new Error('login-failed')
+
+    const { accessToken, user } = data
+    store.login(accessToken, user)
+    state.value = 'ok'
+
+    setTimeout(() => router.replace('/'), 100)
+  } catch (e) {
+    console.error(e)
+    state.value = 'error'
+  }
+})
+</script>

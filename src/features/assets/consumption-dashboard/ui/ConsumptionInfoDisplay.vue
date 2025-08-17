@@ -18,27 +18,39 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import Typography from '@/shared/ui/atoms/Typography.vue'
 
-// 1) 프롭스를 선택형으로 바꾸고 기본값을 지정
 const props = withDefaults(defineProps<{
-  amount?: string | number
-  date?: string
+  amount?: string | number | null
+  date?: string | null
   type: 'current' | 'estimated' | 'today'
 }>(), {
   amount: '0원',
   date: ''
 })
 
-// 2) 숫자/문자/의미없는 문자열 모두 안전하게 처리
-const safeAmount = computed(() => {
-  const v = props.amount
-  if (typeof v === 'number') return `${v.toLocaleString()}원`
-  if (v == null || v === '' || v === 'undefined' || v === 'null') return '0원'
-  return v
-})
+function normalizeAmount(a: unknown): string {
+  if (
+    a === undefined || a === null ||
+    a === '' ||
+    a === 'undefined' || a === 'null'
+  ) return '0원'
 
+  if (typeof a === 'number' && Number.isFinite(a)) {
+    return `${Math.floor(a).toLocaleString()}원`
+  }
+
+  const s = String(a)
+  const parsed = Number(s.replace(/[^\d.-]/g, ''))
+  if (Number.isFinite(parsed)) {
+    return `${Math.floor(parsed).toLocaleString()}원`
+  }
+
+  return s || '0원'
+}
+
+const safeAmount = computed(() => normalizeAmount(props.amount))
 const safeDate = computed(() => {
   const d = props.date
-  if (d == null || d === 'undefined' || d === 'null') return ''
+  if (d === undefined || d === null || d === '' || d === 'undefined' || d === 'null') return ''
   return d
 })
 
