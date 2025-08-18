@@ -44,7 +44,7 @@
             </Typography>
           </div>
           <div class="flex justify-between">
-            <Typography type="M_12_120" class="text-gray-900">적금금리:</Typography>
+            <Typography type="M_12_120" class="text-gray-900">금리:</Typography>
             <Typography type="B_12_120" class="text-sub-yellow-p">
               {{ rateText }}
             </Typography>

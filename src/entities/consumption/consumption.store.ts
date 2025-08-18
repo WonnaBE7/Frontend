@@ -12,13 +12,16 @@ import type {
   TodayTransactionDetail,
   MonthlyTransactionDetail,
   ConsumptionCategoryDetail,
+  EstimatedCategoryConsumption,
+  EstimatedConsumptionCategoryItem,
 } from '@/entities/consumption/consumption.entity'
 
 import {
   getMonthlyConsumptionSummary,
   getEstimatedAndTodayConsumption,
   getMonthlyCategoryConsumption,
-  getTodayCategoryConsumption
+  getTodayCategoryConsumption,
+  getEstimatedCategoryConsumption
 } from '@/entities/consumption/comsumption.api.ts'
 import { getConsumption } from './comsumption.api'
 import { getMonthlyCategoryDetail, getMonthlyTransactionDetail, getTodayCategoryDetail, getTodayTransactionDetail } from '@/entities/consumption/comsumption.api'
@@ -33,6 +36,7 @@ export const useConsumptionStore = defineStore('consumption', () => {
   const estimatedAndToday = ref<EstimatedAndTodayConsumption | null>(null)
   const monthlyCategories = ref<MonthlyCategoryConsumption | null>(null)
   const todayCategories = ref<TodayCategoryConsumption | null>(null)
+  const estimatedCategories = ref<EstimatedCategoryConsumption | null>(null)
 
   const tabs = [
     { key: 'current', label: '이번달 소비' },
@@ -45,6 +49,7 @@ export const useConsumptionStore = defineStore('consumption', () => {
     monthlySummary.value = await getMonthlyConsumptionSummary(yearMonth)
     estimatedAndToday.value = await getEstimatedAndTodayConsumption()
     monthlyCategories.value = await getMonthlyCategoryConsumption(yearMonth)
+    estimatedCategories.value= await getEstimatedCategoryConsumption(yearMonth)
     todayCategories.value = await getTodayCategoryConsumption()
   }
 
@@ -57,6 +62,15 @@ export const useConsumptionStore = defineStore('consumption', () => {
       case 'today':
         return `${estimatedAndToday.value?.todayConsumption.amount.toLocaleString()}원`
     }
+  })
+
+  const diffamount = computed(() => {
+    if (selectedTab.value === 'estimated') {
+      const val = estimatedAndToday.value?.estimatedMonthlyConsumption.diffAmount ?? 0
+      const formatted = Math.abs(val).toLocaleString() + '원'
+      return val < 0 ? `${formatted} 초과` : `${formatted} 여유`
+    }
+    return ''
   })
 
   const displayedDate = computed(() => {
@@ -79,9 +93,10 @@ export const useConsumptionStore = defineStore('consumption', () => {
   const categoryData = computed(() => {
     switch (selectedTab.value) {
       case 'current':
-      case 'estimated':
         return monthlyCategories.value?.categories 
-      case 'today':
+      case 'estimated':
+        return estimatedCategories.value?.categories 
+      case 'today': 
         return todayCategories.value?.categories
     }
   })
@@ -98,11 +113,13 @@ export const useConsumptionStore = defineStore('consumption', () => {
   })
 
   const diffValue = (
-    item: MonthlyConsumptionCategoryItem | TodayConsumptionCategoryItem
+    item: MonthlyConsumptionCategoryItem | TodayConsumptionCategoryItem | EstimatedConsumptionCategoryItem
   ): number => {
     return selectedTab.value === 'today'
       ? (item as TodayConsumptionCategoryItem).diffFromYesterday
-      : (item as MonthlyConsumptionCategoryItem).diffFromLastMonth
+      : selectedTab.value ==='current' 
+        ? (item as MonthlyConsumptionCategoryItem).diffFromLastMonth
+        : (item as EstimatedConsumptionCategoryItem).diffFromEstimate
   }
 
   const fetchMonthOnly = async () => {
@@ -134,6 +151,7 @@ export const useConsumptionStore = defineStore('consumption', () => {
     goNextMonth,
 
     // 데이터
+    diffamount,
     displayedAmount,
     displayedDate,
     categoryData,

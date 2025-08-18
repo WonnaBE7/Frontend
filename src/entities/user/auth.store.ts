@@ -42,7 +42,7 @@ export const useAuthStore = defineStore('auth', {
         } catch (e) {
           console.warn('자동 갱신 실패', e)
           // 정책에 따라: 즉시 로그아웃 처리
-          this.logout()
+          //this.logout()
         } finally {
           refreshing = false
         }
@@ -97,20 +97,17 @@ export const useAuthStore = defineStore('auth', {
       const now = Date.now()
       const remaining = expirationTime - now
 
-      if (remaining <= 0) {
-        this.logout()
+      if (remaining <= 0) {        
         alert('세션이 만료되었습니다. 다시 로그인해주세요.')
         return
       }
 
       if (logoutTimer) clearTimeout(logoutTimer)
-      logoutTimer = setTimeout(() => {
-        this.logout()
-        alert('세션이 만료되었습니다. 다시 로그인해주세요.')
+        logoutTimer = setTimeout(() => {
+          alert('세션이 만료되었습니다. 다시 로그인해주세요.')
       }, remaining)
     },
 
-    /** 🛠 새로고침 시 복구 */
     async restore() {
       try {
         const res = await refreshToken()
@@ -139,7 +136,8 @@ export const useAuthStore = defineStore('auth', {
           this.scheduleLogout(loginTime)
           this.startAutoRefresh()
         } else {
-          this.logout()
+          console.log('재발급 실패')
+          //this.logout()
         }
       }
     },

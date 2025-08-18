@@ -14,5 +14,6 @@ export const userLogout= async() => {
         method: 'POST',
         auth: true,
     })
+    console.log('로그아웃',res)
     return res
 }

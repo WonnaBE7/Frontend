@@ -1,5 +1,5 @@
 import { fetcher } from "@/shared/utils/fetcher"
-import type { ConsumptionCategoryDetail, ConsumptionSummaryMeta, EstimatedAndTodayConsumption, MonthlyCategoryConsumption, MonthlyConsumptionSummary, MonthlyTransactionDetail, TodayCategoryConsumption, TodayTransactionDetail } from "./consumption.entity"
+import type { ConsumptionCategoryDetail, ConsumptionSummaryMeta, EstimatedAndTodayConsumption, EstimatedCategoryConsumption, MonthlyCategoryConsumption, MonthlyConsumptionSummary, MonthlyTransactionDetail, TodayCategoryConsumption, TodayTransactionDetail } from "./consumption.entity"
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
@@ -44,6 +44,16 @@ export const getMonthlyCategoryConsumption = async (yearMonth: string) => {
     return res.data
 }
 
+export const getEstimatedCategoryConsumption = async (yearMonth:string) => {
+    const res = await fetcher<EstimatedCategoryConsumption>({
+        url: `${BASE_URL}/api/assets/consumption/estimated/categories?yearMonth=${yearMonth}`,
+        method: 'GET',
+        auth: true,
+    })
+    console.log('소비분석 페이지 - 예상 월별 카테고리 비율:', res)
+    return res.data
+}
+
 export const getTodayCategoryConsumption = async () => {
     const res = await fetcher<TodayCategoryConsumption>({
         url: `${BASE_URL}/api/assets/consumption/today/categories`,
@@ -74,6 +84,7 @@ export const getTodayTransactionDetail = async () => {
     console.log('소비분석 페이지 - 오늘의 거래내역 :', res.data)
     return res.data
 }
+
 
 export const getMonthlyCategoryDetail = async (consumptionDetailCategory: string, yearMonth : string) => {
     const res = await fetcher<ConsumptionCategoryDetail>({

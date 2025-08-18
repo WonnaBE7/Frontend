@@ -15,15 +15,25 @@
             ></span>
             <Typography type="M_14_140">{{ categoryLabelMap[item.consumptionCategory] }}</Typography>
           </div>
-          <div class="text-right">
+          
+          <div v-if="store.selectedTab==='estimated'" class="text-right">
+            <Typography type="B_14_160"> 예상 {{ ((item as any).estimatedAmount ?? 0).toLocaleString() }}원</Typography>
+            <Typography type="M_12_140" class="text-gray-500"> 사용 {{ item?.amount.toLocaleString()}}원</Typography>
+            <Typography type="M_12_140"
+              :class="store.diffValue(item) > 0 ? 'text-sub-red-p' :'text-sub-aqua-p'"
+            >
+              {{ store.diffValue(item) > 0 ? '+' : '' }}{{ store.diffValue(item).toLocaleString() }}원
+            </Typography>
+          </div>
+          <div v-else class="text-right">
             <Typography type="B_14_160">{{ item.amount.toLocaleString() }}원</Typography>
             <Typography type="M_12_140"
-              :class="store.diffValue(item) > 0 ?  'text-sub-aqua-p' :'text-sub-red-p'"
+              :class="store.diffValue(item) > 0 ?  'text-sub-red-p' :'text-sub-aqua-p'"
             >
               {{ store.diffLabel }}
             </Typography>
             <Typography type="M_12_140"
-              :class="store.diffValue(item) > 0 ? 'text-sub-aqua-p' :'text-sub-red-p'"
+              :class="store.diffValue(item) > 0 ? 'text-sub-red-p' :'text-sub-aqua-p'"
             >
               {{ store.diffValue(item) > 0 ? '+' : '' }}{{ store.diffValue(item).toLocaleString() }}원
             </Typography>
@@ -33,8 +43,8 @@
         <div class="h-2 sm:h-3 md:h-4 bg-gray-BGDim rounded-full mb-2 sm:mb-3 md:mb-4">
           <div
             class="h-full rounded-full"
-            :class="`${colorMap[item.consumptionCategory]}`"
-            :style="{ width: item.percentage + '%' }"
+            :class="colorMap[item.consumptionCategory]"
+            :style="{ width: Math.min(item.percentage, 100) + '%' }"
           ></div>
         </div>
 

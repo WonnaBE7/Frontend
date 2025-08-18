@@ -19,6 +19,7 @@ export interface EstimatedAndTodayConsumption {
   estimatedMonthlyConsumption: {
     amount: number
     calculatedUntil: string
+    diffAmount: number
   }
   todayConsumption: {
     amount: number
@@ -37,6 +38,21 @@ export interface MonthlyConsumptionCategoryItem {
 // 한달 소비 카테고리 모음
 export interface MonthlyCategoryConsumption {
   categories: MonthlyConsumptionCategoryItem[]
+}
+
+// 예상 월 소비 단일 카테고리
+export interface EstimatedConsumptionCategoryItem {
+  consumptionCategory: string
+  estimatedAmount : number
+  amount: number
+  percentage: number
+  diffFromEstimate: number
+}
+
+// 예상 월 소비 카테고리 모음
+export interface EstimatedCategoryConsumption {
+  yearMonth:string
+  categories: EstimatedConsumptionCategoryItem[]
 }
 
 // 오늘 소비 카테고리 단일

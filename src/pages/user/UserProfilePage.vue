@@ -38,7 +38,6 @@ async function clickLogout(){
     await store.logout()
     await router.push('/user/login')
   } catch (error) {
-    await store.logout()
     console.error('로그아웃 중 오류:', error)
     router.replace('/user/login')
   }
