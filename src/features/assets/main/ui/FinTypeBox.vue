@@ -19,9 +19,8 @@
             되고 싶은 나,
             <span class="ml-2 text-sub-yellow-p">WonnaBE</span>
         </IconLabel>
-        <div class="flex flex-row" >
+        <div v-if="user.profile?.wonnaBE.length"  class="flex flex-row" >
             <div
-                v-if="user.profile"
                 v-for="type in user.profile.wonnaBE"
                 :key="type"
             >
@@ -29,8 +28,14 @@
                     :label="type"
                     class="border-none"
                 />
-            </div>
+            </div>            
         </div>
+        <Card 
+            v-else
+            class="bg-gray-BGDim !mb-0 mt-4"
+        >
+            <Typography type="M_12_140" class="text-gray-500">WonnaBE를 선택하지 않았습니다!</Typography>
+        </Card>
     </Card>
 </template>
 
@@ -47,6 +52,6 @@
 
     const getFinancialTypeDescription = (typeName: string): string => {
         const matchedType = financialTendencyList.find(type => type.name === typeName);
-        return matchedType ? matchedType.description : '';
+        return matchedType ? matchedType.description : 'NowMe 진단 되지않은 상태입니다!';
     }
 </script>

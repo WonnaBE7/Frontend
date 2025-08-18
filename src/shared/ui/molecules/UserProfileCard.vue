@@ -5,7 +5,7 @@
         <div>
           <Typography type="B_16_120">{{ userProfile?.name }}</Typography>
           <div class="mt-1">
-            <NoBorderTag color="bg-gray-BGDim">{{ userProfile?.nowME }}</NoBorderTag>
+            <NoBorderTag color="bg-gray-BGDim">{{ userProfile?.nowME ?? '없음'}}</NoBorderTag>
           </div>
           <Typography type="M_12_140" class="text-gray-500 mt-1">
             {{ userProfile?.job }} · 월 {{ formattedIncome }}

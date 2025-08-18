@@ -52,7 +52,7 @@
             </div>
   
             <div class="flex justify-between w-full">
-              <Typography type="M_12_120" class="text-gray-900">활용도:</Typography>
+              <Typography type="M_12_120" class="text-gray-900">만기까지:</Typography>
               <Typography type="B_12_120" class="text-gray-900">
                 {{ achievementRateText }}
               </Typography>
@@ -70,7 +70,7 @@
         <!-- 차트 -->
         <div class="mb-4">
           <Typography type="B_14_120" class="mb-3 text-gray-900">
-            월별 활용 내역
+            보험금 수령 내역
           </Typography>
           <div class="h-40 bg-gray-50 p-4 rounded-lg">
             <canvas ref="chartCanvas" class="w-full h-full"></canvas>
