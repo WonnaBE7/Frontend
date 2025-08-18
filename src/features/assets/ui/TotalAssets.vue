@@ -23,7 +23,7 @@
         지난달 대비 {{ formattedChangeAmount }}원
       </Typography>
 
-      <Typography v-if="route.path.startsWith('/assets')" type="M_10_120" class="flex flex-row items-center gap-2 text-sub-orange-s">
+      <Typography v-if="route.path.startsWith('/assets')" type="M_10_120" class="flex flex-row items-center gap-2 text-sub-orange-p">
          <component :is="MessageCircleWarning" class="w-4"/> 보험은 총자산에 들어가지 않습니다
       </Typography> 
     </div>
