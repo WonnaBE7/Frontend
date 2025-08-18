@@ -91,13 +91,12 @@ function toggleModal(){
 }
 
 function goKakao() {
-  const KAKAO_CLIENT_ID = import.meta.env.VITE_KAKAO_CLIENT_ID
-  const BACKENT_URL=import.meta.env.VITE_API_BASE_URL
-  const REDIRECT_URI = `${BACKENT_URL}/api/auth/kakao/callback`
-  showModal.value = false
+  const KAKAO_CLIENT_ID = import.meta.env.VITE_KAKAO_CLIENT_ID;
+  const REDIRECT_URI = `${window.location.origin}/auth/kakao/callback`;
+  showModal.value = false;
   const url =
     `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}` +
-    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code`
-    window.location.href = url
-  }
+    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code`;
+  window.location.href = url;
+}
 </script>

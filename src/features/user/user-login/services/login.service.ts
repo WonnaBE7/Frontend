@@ -41,27 +41,18 @@ export const userLogin = async (payload: LoginRequest) => {
   }
 }
 
-export const userKakaoLogin = async (code:string) => {
-  try{
+export const userKakaoLogin = async (code: string) => {
+  try {
     const res = await fetcher<LoginResponse>({
       url: `${BASE_URL}/api/auth/kakao/login`,
       method: 'POST',
-      body: code,
-    })
-    console.log('토큰 : ', res.data.accessToken)
-    return res
-  }catch{
-    return {
-      code : 201,
-      data:{
-        accessToken: 'mock-access-token-123456',
-        user: {
-          userId: 'mock-user-id-001',
-          name: '홍길동',
-          email: 'hong@example.com'
-        }
-      },
-      message:'실패'
-    }
+      body: { code },
+      credentials: 'include',
+    });
+    console.log('토큰 : ', res.data.accessToken);
+    return res;
+  } catch (error) {
+    console.error('카카오 로그인 실패:', error);
+    throw error; 
   }
-}
+};
