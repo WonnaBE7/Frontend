@@ -1,4 +1,5 @@
 <template>
+  <SplashScreen v-if="showSplash" />
   <div class="flex flex-col items-center justify-center max-w-md mx-auto">
     <img
       v-if="finImage"
@@ -10,13 +11,13 @@
 
     <Card class="w-full mb-4 bg-white border border-gray-150">
       <Typography type="B_16_120" class="mb-4 w-full">🎯 목표 카테고리를 선택해주세요</Typography>
-      <div class="grid grid-cols-3 gap-2">
+      <div class="grid grid-cols-3 gap-2 w-full">
         <Tag
           v-for="category in goalCategories"
           :key="category.id"
           :class="[
             selectedCategory?.id === category.id
-              ? 'bg-sub-yellow-p text-white border-none'
+              ? 'bg-sub-orange-p text-white border-none'
               : 'bg-white text-gray-800'
           ]"
           @click="selectCategory(category)"
@@ -82,10 +83,12 @@
   import Tag from '@/shared/ui/atoms/Tag.vue'
   import { postGoalSimulation } from '../service/simulation-input.service'
   import { useUserProfileStore } from '@/entities/user/user.store'
+import SplashScreen from '@/shared/ui/organisms/SplashScreen.vue'
 
   const goalName = ref<string>('')
   const targetAmountStr = ref<string>('')
   const goalDurationMonthsStr = ref<string>('')
+  const showSplash = ref(false) 
 
   const router = useRouter()
   const goalSimulationStore = useGoalSimulationStore()
@@ -124,10 +127,14 @@
   }
 
     console.log('시뮬레이션 요청: ', requestBody)
+    showSplash.value = true
     try {
       const result = await postGoalSimulation(requestBody)
       goalSimulationStore.setResult(result)
-      router.push('/goal/simulation/result')
+      
+      setTimeout(() => {
+        router.push('/goal/simulation/result')
+      }, 3000)
     } catch {
       alert('조금 더 현실적인 목표를 써주세요!')
     }

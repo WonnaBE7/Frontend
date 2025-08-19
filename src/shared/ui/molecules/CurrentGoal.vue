@@ -10,7 +10,7 @@
       </Typography>
 
       <div class="flex-1">
-        <Typography type="B_14_120">{{ label }}</Typography>
+        <Typography type="B_16_120">{{ label }}</Typography>
         <div class="flex gap-2 mt-2 md:mt-4">
           <NoBorderTag :color="color === 'white' ? 'bg-white/10' : 'bg-gray-100'">
             {{ category }}
@@ -29,7 +29,7 @@
           {{ percent }}%
         </Typography>
         <Typography
-          type="M_10_120"
+          type="M_14_120"
           :class="color === 'white' ? 'text-white' : 'text-gray-500'"
         >
           진행률

@@ -1,5 +1,5 @@
 <template>
-  <Card class="p-4 rounded-xl text-white bg-gradient-to-br from-sub-orange-p to-sub-yellow-p">
+  <Card class="p-4 rounded-xl text-white bg-gradient-to-br from-main-yellow-s to-kb-yellow">
 
     <CurrentGoal
       :label="goal.goalName"
