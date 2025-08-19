@@ -1,5 +1,5 @@
 <template>
-  <Card class="p-4 bg-white border border-gray-150 w-full max-w-md">
+  <Card class="p-4 bg-white border border-gray-150 w-full">
     <div v-if="props.modal"class="w-full flex items-center justify-end mb-8 " variant="outline" @click="emit('close')">
         <X class="w-4 h-4 mr-1" /> 
     </div>

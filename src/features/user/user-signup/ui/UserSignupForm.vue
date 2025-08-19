@@ -4,15 +4,15 @@
   <LabelInput v-model="password" label="비밀번호" type="password" class="mb-8" />
 
   <AgreeMentBox
+    class="w-full"
     v-model:checked="checked"
   />
-  <Button class="mt-4 w-full" @click="onSubmit">
+  <Button class="mt-4 w-full mb-4" @click="onSubmit">
     회원가입 및 자산 연동하기
   </Button>
 </template>
 
 <script setup lang="ts">
-import SplashScreen from '@/shared/ui/organisms/SplashScreen.vue'
 import Button from '@/shared/ui/atoms/Button.vue'
 import LabelInput from '@/shared/ui/molecules/LabelInput.vue'
 import { ref, watch } from 'vue'
