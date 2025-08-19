@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="flex flex-row w-full justify-between mb-2">
-            <Typography type="M_12_140">주요 혜택(prefer)</Typography>
+            <Typography type="M_12_140">주요 혜택</Typography>
             <Typography type="B_12_140" class="text-sub-orange-p">{{data.mainBenefit}}</Typography>
         </div>
         <Typography type="M_12_140" class="w-full">{{data.benefitSummary}}</Typography>

@@ -15,11 +15,11 @@
             </div>
         </div>
         <div class="flex flex-row w-full justify-between items-center mb-2">
-            <Typography type="M_12_140">금리(prefer)</Typography>
+            <Typography type="M_12_140">금리</Typography>
             <Typography type="B_12_140" class="text-sub-orange-p">{{data.interestRate}}</Typography>
         </div>
         <div class="flex flex-row w-full justify-between mb-4">
-            <Typography type="M_12_140">최대 금리(base_rate)</Typography>
+            <Typography type="M_12_140">최대 금리</Typography>
             <Typography type="B_12_140" class="text-sub-green-p">{{data.maxInterestRate}}</Typography>
         </div>
         <Typography type="M_12_140" class="w-full">{{data.benefitSummary}}</Typography>
