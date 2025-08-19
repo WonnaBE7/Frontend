@@ -108,12 +108,12 @@
   }
 
   const handleDelete = async () =>{
-    const confirmed = confirm('정말로 이 게시글을 삭제하시겠습니까?')
-    if (!confirmed) return
+    // const confirmed = confirm('정말로 이 게시글을 삭제하시겠습니까?')
+    // if (!confirmed) return
 
     const res = await deleteBoard(props.categoryId, props.boardId)
     if (res.code === 200) {
-      alert('삭제되었습니다.')
+      // alert('삭제되었습니다.')
       const store = usePostPreviewStore()
       await store.fetchUserWrited()
     } else {
