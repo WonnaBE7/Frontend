@@ -1,0 +1,1 @@
+import{d as a,m as s,e as t,w as o,ay as r,p as n,o as _}from"./index-5R7XgTz3.js";const c={class:"inline-flex items-center px-4 py-1 rounded-full border border-gray-150"},i=a({__name:"Tag",setup(p){return(e,l)=>(_(),s("span",c,[t(n,{type:"M_12_140",class:"whitespace-nowrap"},{default:o(()=>[r(e.$slots,"default")]),_:3})]))}});export{i as _};

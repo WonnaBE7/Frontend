@@ -56,15 +56,13 @@ export const mockSavingsDetail: SavingsDetailResponse = {
   productId: "200",
   productName: "KB Star 적금",
   bankName: "KB국민은행",
-  category: "적금",
+  productType: "적금",
   startDate: "2023-03",
   maturityDate: "2024-03",
   term: "16개월",
-  total_term: "24개월",
-  currentAmount: "200000",
-  rate: "3.0%",
-  beforeInterest: "62400",
-  achievementRate: "66%",
+  currentAmount: 200000,
+  baseRate: 3,
+  achievementRate: 66,
   monthlyChart: [
     { month: "2025-03", percentage: 20 },
     { month: "2025-04", percentage: 35 },
@@ -84,13 +82,13 @@ export const mockInsuranceDetail: InsuranceDetailResponse = {
   term: "16개월",
   currentAmount: "1845000",
   getAmount: "180500",
-  achievementRate: "95",
+  achievementRate: 9,
   monthlyChart: [
-    { month: "2025-03", percentage: 0 },
-    { month: "2025-04", percentage: 0 },
-    { month: "2025-05", percentage: 80 },
-    { month: "2025-06", percentage: 70 },
-    { month: "2025-07", percentage: 80 }
+    { month: "2025-03", amount: 0 },
+    { month: "2025-04", amount: 0 },
+    { month: "2025-05", amount: 80 },
+    { month: "2025-06", amount: 70 },
+    { month: "2025-07", amount: 80 }
   ]
 }
 

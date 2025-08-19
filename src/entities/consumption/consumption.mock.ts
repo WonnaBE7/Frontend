@@ -28,7 +28,8 @@ export const mockMonthlyConsumptionSummary: MonthlyConsumptionSummary = {
 export const mockEstimatedAndTodayConsumption: EstimatedAndTodayConsumption = {
   estimatedMonthlyConsumption: {
     amount: 4500000,
-    calculatedUntil: '2025-07-16'
+    calculatedUntil: '2025-07-16',
+    diffAmount:40000
   },
   todayConsumption: {
     amount: 80000,
