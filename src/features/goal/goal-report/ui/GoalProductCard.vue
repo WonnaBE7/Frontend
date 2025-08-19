@@ -2,7 +2,7 @@
     <div class="w-full">
       <Card class="bg-gray-BGDim !mb-0 mt-4" :class="{ 'border-2 border-sub-yellow-p': props.isSelected }">
         <div class="flex flex-row items-center justify-between w-full mb-2">
-          <Typography type="B_16_140">{{ product.name }}</Typography>
+          <Typography type="B_16_140">{{ truncatedName }}</Typography>
           <Typography type="B_14_120" class="text-sub-yellow-p">달성률 {{ product.achievementRate }}%</Typography>
         </div>
         <Typography type="M_12_120" class="text-gray-500 w-full mb-4">{{ product.bank }}</Typography>
@@ -64,7 +64,11 @@ import Button from '@/shared/ui/atoms/Button.vue';
   function toggleDetail() {
     isOpen.value = !isOpen.value
   }
-
+  const truncatedName = computed(() => {
+    const name = props.product.name
+    return name.length > 10 ? name.slice(0, 9) + '...' : name
+  })
+  
   const formattedDate = computed(
     () => formatDateToKoreanMonth(props.product.expectedAchievementDate))
   

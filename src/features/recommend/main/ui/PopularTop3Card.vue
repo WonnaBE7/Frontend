@@ -14,7 +14,7 @@
             </div>
             <div>
               <Typography type="B_14_120" class="text-gray-900 mb-2">
-                {{ item.productName }}
+                {{ truncate(item.productName) }}
               </Typography>
               <Typography type="M_12_120" class="text-gray-500">
                 - {{ item.description }}
@@ -47,5 +47,7 @@
   onMounted( async ()=>{
     items.value = await getCommunityRecommendTop3(props.communityId)
   })
-  
+  function truncate(name: string, maxLength = 10) {
+    return name.length > maxLength ? name.slice(0, maxLength - 1) + '...' : name
+  }
 </script>
