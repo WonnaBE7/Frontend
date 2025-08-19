@@ -22,6 +22,7 @@
         <AchievedButton
         v-if="reportData"
         :goalId="reportData?.id"
+      
       />
     </div>
    
@@ -37,23 +38,22 @@ import ReportCurrentBox from '@/features/goal/goal-report/ui/ReportCurrentBox.vu
 import ReportProductBox from '@/features/goal/goal-report/ui/ReportProductBox.vue'
 import LetterOverlay from '@/features/goal/goal-report/ui/LetterOverlay.vue'
 import FutureMessageCard from '@/features/goal/goal-report/ui/FutureMessageCard.vue'
-import { mockGoalReports } from '@/entities/goal/goal.mock'
+import { getGoalReport } from '@/entities/goal/goal.api'
 import type { GoalReport } from '@/entities/goal/goal.entity'
 import AchievedButton from '@/features/goal/goal-report/ui/AchievedButton.vue'
 
 const route = useRoute()
-const reportData = ref<GoalReport | null>(null)
+const reportData = ref<GoalReport>()
 
-const showLetterIcon = ref(true)
-const showMessageModal = ref(false)
+const showLetterIcon = ref<boolean>(true)
+const showMessageModal = ref<boolean>(false)
 
-onMounted(() => {
+onMounted(async () => {
   const goalIdParam = route.query.goalId
   if (typeof goalIdParam === 'string') {
     const parsedId = parseInt(goalIdParam, 10)
     if (!isNaN(parsedId)) {
-      const found = mockGoalReports.find((r) => r.id === parsedId)
-      reportData.value = found ?? null
+      reportData.value = await getGoalReport(parsedId)
     }
   }
 })

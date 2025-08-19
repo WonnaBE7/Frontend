@@ -15,13 +15,56 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import UserDiagnosisItem from './UserDiagnosisItem.vue'
-import Button from '@/shared/ui/atoms/Button.vue'
-import {choices, questions} from '@/features/user/user-diagnosis/constants/userDiagnosis'
-const answers = ref<(number | null)[]>(Array(questions.length).fill(null))
+  import { ref } from 'vue'
+  import UserDiagnosisItem from './UserDiagnosisItem.vue'
+  import Button from '@/shared/ui/atoms/Button.vue'
+  import {choices, questions} from '@/features/user/user-diagnosis/constants/userDiagnosis'
+  import { submitNowmeDiagnosis } from '@/features/user/user-diagnosis/services/diagnosis.service.ts'
+  import { useRouter } from 'vue-router'
+import { useDiagnosisStore } from '@/entities/user/user.store'
 
-const submitAnswers = () => {
-  console.log('진단 결과:', answers.value)
-}
+  const answers = ref<(number | null)[]>(Array(questions.length).fill(null))
+  const router = useRouter()
+
+  const submitAnswers = async () => {
+    const completed = answers.value.every(answer => answer !== null)
+    if (!completed) {
+      alert('모든 질문에 답해주세요.')
+      return
+    }
+
+    const values = answers.value.map((id) => {
+      const match = choices.find(choice => choice.id === id)
+      return match?.value ?? null
+    })
+
+    if (values.includes(null)) {
+      alert('유효하지 않은 선택이 포함되어 있습니다.')
+      return
+    }
+
+    const payload = {
+      answers: values as number[]
+    }
+    const store = useDiagnosisStore()
+
+    try {
+        const res = await submitNowmeDiagnosis(payload)
+        store.setResult({
+          success: true,
+          personaName: res.personaName,
+          activityScore: res.activityScore,
+          spendingScore: res.spendingScore,
+          planningScore: res.planningScore,
+          riskScore: res.riskScore,
+          similarity: res.similarity,
+        })
+        alert('진단 결과가 저장되었습니다.')
+        router.push('/user/diagnosis/result')
+      } catch (e) {
+        console.error('❌ 제출 실패:', e)
+        alert('저장 중 오류가 발생했습니다.')
+    }
+  }
+
 </script>

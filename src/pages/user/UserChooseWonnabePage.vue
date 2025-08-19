@@ -11,5 +11,13 @@ import UserTitle from '@/shared/ui/molecules/UserTitle.vue';
 import { userSubTextMap } from '@/features/user/constants/userSubTextMap'
 import ChooseWonnabe from '@/features/user/user-choose-wonnabe/ui/ChooseWonnabe.vue';
 
+import { onMounted } from 'vue';
+import { useUserProfileStore } from '@/entities/user/user.store';
+
+const userStore = useUserProfileStore()
+
+onMounted(async ()=>{
+  await userStore.fetchUserProfile()
+})
 
 </script>

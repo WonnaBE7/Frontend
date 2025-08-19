@@ -10,7 +10,7 @@
           <Typography type="M_14_140">{{ label }}</Typography>
         </div>
         <Typography type="M_14_140">
-          <ChevronRight class="w-5 h-5" />
+          <ChevronRight class="w-5 h-5 sm:w-7 sm:h-7" />
         </Typography>
       </div>
     </Card>
@@ -34,6 +34,7 @@ const routeMap: Record<string, string> = {
   '워너비 선택': '/user/choose-wonnabe',
   '금융 성향 진단': '/user/diagnosis',
   '나의 금융 히스토리': '/user/history',
+  '추가 정보 입력' : '/user/survey',
   '회원 가입' : '/user/signup',
   '로그인' : '/user/login'
 }

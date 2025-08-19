@@ -1,7 +1,6 @@
-<!-- LabelInput.vue -->
 <template>
     <div>
-      <label class="block mb-1">{{ label }}</label>
+      <Typography type="B_14_120" class="block mb-1 sm:mb-3">{{ label }}</Typography>
       <input
         v-model="modelValue"
         :type="type"
@@ -12,6 +11,8 @@
   </template>
   
   <script setup lang="ts">
+import Typography from '../atoms/Typography.vue';
+
   const props = defineProps({
     label: { type: String, required: true },
     type: { type: String, default: 'text' }

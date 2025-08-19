@@ -4,9 +4,9 @@
             v-if="finImage"
             :src="finImage"
             alt="성향 이미지"
-            class="w-full"
+            class="w-full p-2 md:p-4 "
         >
-        <Typography type="B_14_140">{{label}}</Typography>
+        <Typography type="B_14_140" class="whitespace-nowrap">{{label}}</Typography>
         <Typography type="M_12_120" class="text-gray-500">{{descript}}</Typography>
     </div>
 </template>

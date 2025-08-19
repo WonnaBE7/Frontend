@@ -5,6 +5,6 @@
   </template>
   
   <script setup lang="ts">
-  import WishlistProductListBox from '@/features/recommend/wishlist/ui/WishlistProductListBox.vue';
-import AppLayout from '@/shared/layout/AppLayout.vue'
+  import WishlistProductListBox from '@/features/recommend/wish-list/ui/WishlistProductListBox.vue';
+  import AppLayout from '@/shared/layout/AppLayout.vue'
   </script>

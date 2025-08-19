@@ -13,7 +13,7 @@
         'hover:text-sub-yellow-c'
       ]"
     >
-      <component :is="item.icon" class="w-5 h-5 mb-1" />
+      <component :is="item.icon" class="w-5 h-5 sm:w-7 sm:h-7 mb-1" />
       <span class="text-xs mb-4">{{ item.label }}</span>
     </RouterLink>
   </nav>
@@ -26,7 +26,14 @@ import { Home, Star, Target, ChartNoAxesCombined, MessageSquare } from 'lucide-v
 
 const route = useRoute()
 
-const navItems = ref([
+interface NavItem {
+  name: string
+  path: string
+  label: string
+  icon: any 
+}
+
+const navItems = ref<NavItem[]>([
   { name: 'Board', path: '/board', label: '게시판', icon: MessageSquare },
   { name: 'Goal', path: '/goal', label: '목표', icon: Target },
   { name: 'Home', path: '/', label: '홈', icon: Home },

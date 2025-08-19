@@ -20,11 +20,15 @@ import type { GoalSimulationResponse } from '@/entities/goal/goal.entity'
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import FutureMessageCard from '@/features/goal/goal-report/ui/FutureMessageCard.vue'
 import RecommendedProductBox from '@/features/goal/goal-simulation-result/ui/RecommendedProductBox.vue'
+import { useUserProfileStore } from '@/entities/user/user.store';
 
+const userStore = useUserProfileStore()
 const goalSimulationStore = useGoalSimulationStore()
 const report = ref<GoalSimulationResponse | null>(null)
 
-onMounted(() => {
+onMounted (async() => {
   report.value = goalSimulationStore.result
+  await userStore.fetchUserProfile()
 })
+  
 </script>

@@ -10,6 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import Card from '@/shared/ui/atoms/Card.vue';
-import Typography from '@/shared/ui/atoms/Typography.vue';
+    import Card from '@/shared/ui/atoms/Card.vue';
+    import Typography from '@/shared/ui/atoms/Typography.vue';
 </script>

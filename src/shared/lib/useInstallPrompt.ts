@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 export function useInstallPrompt() {
   const deferredPrompt = ref<any>(null)
-  const showInstallButton = ref(false)
+  const showInstallButton = ref<boolean>(false)
 
   const handleBeforeInstallPrompt = (e: Event) => {
     e.preventDefault()

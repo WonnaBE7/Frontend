@@ -1,0 +1,17 @@
+import type { InsuranceApplicationRequest } from "@/entities/recommend/recommend.entity";
+import { fetcher } from "@/shared/utils/fetcher";
+
+
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
+export const postRequestInsurance = async (request : InsuranceApplicationRequest) =>{
+    const res = await fetcher({
+        url: `${BASE_URL}/api/users/insurances/apply`,
+        method: 'POST',
+        auth: true,
+        body: request
+    })
+    console.log('보험 상품 신청하기',res)
+    return res
+
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row justify-between w-full gap-1 p-2 bg-white">
+  <div class="flex flex-row justify-between w-full gap-1 sm:gap-2 p-2 sm:p-3 bg-white">
     <Button
       v-for="tab in tabs"
       :key="tab"
@@ -17,18 +17,16 @@
 </template>
 
 <script setup lang="ts">
-import Button from '@/shared/ui/atoms/Button.vue';
-import type { AssetTabKey } from '@/entities/assets/assets.entity';
-import { DollarSign, Wallet } from 'lucide-vue-next';
-import Typography from '@/shared/ui/atoms/Typography.vue';
+  import Button from '@/shared/ui/atoms/Button.vue';
+  import type { AssetTabKey } from '@/entities/assets/assets.entity';
+  import { DollarSign, Wallet } from 'lucide-vue-next';
+  import Typography from '@/shared/ui/atoms/Typography.vue';
 
 
-defineProps<{
-  selected: AssetTabKey
-  tabs: readonly AssetTabKey[]
-}>()
+  defineProps<{
+    selected: AssetTabKey
+    tabs: readonly AssetTabKey[]
+  }>()
 
-defineEmits<{
-  (e: 'update:selected', tab: AssetTabKey): void
-}>()
+  defineEmits<(e: 'update:selected', tab: AssetTabKey) => void>()
 </script>

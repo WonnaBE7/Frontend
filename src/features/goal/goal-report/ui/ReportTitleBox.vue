@@ -1,5 +1,5 @@
 <template>
-  <Card class="p-4 rounded-xl text-white" :style="gradientStyle">
+  <Card class="p-4 rounded-xl text-white bg-gradient-to-br from-sub-orange-p to-sub-yellow-p">
 
     <CurrentGoal
       :label="goal.goalName"
@@ -34,5 +34,4 @@ defineProps<{
   goal: GoalReport
 }>()
 
-const gradientStyle = `background: linear-gradient(to right, #302DAC, #5754DA)`
 </script>

@@ -1,20 +1,22 @@
 import { fetcher } from '@/shared/utils/fetcher'
-import { mockGoalReports } from './goal.mock'
-import type { GoalSimulationInput, GoalReport } from './goal.entity'
+import type { GoalReport, GoalSummary } from './goal.entity'
 
-export const postGoalSimulation = async (
-  input: GoalSimulationInput
-): Promise<GoalReport> => {
-  try {
-    const res = await fetcher<{ code: number; message: string; data: GoalReport }>({
-      url: '/api/goals',
-      method: 'POST',
-      body: input,
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+
+export const getGoals = async (status: 'PUBLISHED' | 'ACHIEVED' = 'PUBLISHED')=> {
+  const res = await fetcher<GoalSummary>({
+    url: `${BASE_URL}/api/goals?status=${status}`,
+    method: 'GET',
+    auth:true,
+  })
+  return res.data
+}
+
+export const getGoalReport = async (goalId: number)=> {
+    const res = await fetcher<GoalReport>({
+      url: `${BASE_URL}/api/goals/${goalId}`,
+      method: 'GET',
+      auth:true,
     })
-
     return res.data
-  } catch (err) {
-    console.warn('서버 응답 실패, mock 데이터 반환')
-    return mockGoalReports[0]
-  }
 }

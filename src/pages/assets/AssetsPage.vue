@@ -13,11 +13,32 @@ import AppLayout from '@/shared/layout/AppLayout.vue'
 import TitleTab from '@/features/assets/ui/TitleTab.vue'
 import AssetSummary from '@/features/assets/assets-dashboard/ui/AssetSummary.vue'
 import ConsumptionSummary from '@/features/assets/consumption-dashboard/ui/ConsumptionSummary.vue'
-import { ref } from 'vue'
 import type {AssetTabKey } from '@/entities/assets/assets.entity'
+import { useAssetTabStore } from '@/entities/assets/assets.store'
+import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/entities/user/auth.store'
+import { onMounted } from 'vue'
+import { initAssetsData } from '@/features/init/initAssetsData'
+import { getCodefAssets } from '@/entities/assets/assets.api'
 
-const selectedTab = ref<AssetTabKey>('자산 현황')
+const assetTabStore = useAssetTabStore()
+const { selectedTab } = storeToRefs(assetTabStore)
+
 function onTabChange(tab: AssetTabKey) {
   selectedTab.value = tab
 }
+
+const router = useRouter()
+const authStore = useAuthStore()
+
+onMounted( async () => {
+  if (!authStore.accessToken) {
+    router.push('/user/login')
+  }
+  await getCodefAssets()
+  await initAssetsData()
+  
+})
+
 </script>

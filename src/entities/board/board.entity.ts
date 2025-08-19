@@ -4,7 +4,8 @@ export interface Board {
   title: string
   content: string
   userName: string
-  category: string
+  categoryId:number
+  categoryName:string
   likeCount: number
   commentCount: number
   isScraped: boolean
@@ -36,8 +37,6 @@ export interface WriteScrapedSummary{
   scrap : number
 }
 
-export interface CreatePostPayload {
-  communityId: number
-  title: string
-  content: string
-}
+export type BoardsPayload = { boards: Board[] }
+export type BoardsResponse = { data: Board }
+

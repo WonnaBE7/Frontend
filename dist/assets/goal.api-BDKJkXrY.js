@@ -1,0 +1,1 @@
+import{U as a}from"./index-5R7XgTz3.js";const s="http://localhost:8080",e=async(t="PUBLISHED")=>(await a({url:`${s}/api/goals?status=${t}`,method:"GET",auth:!0})).data,c=async t=>(await a({url:`${s}/api/goals/${t}`,method:"GET",auth:!0})).data;export{c as a,e as g};

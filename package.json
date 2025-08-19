@@ -12,13 +12,17 @@
     "preview:https": "vite preview --host --https"
   },
   "dependencies": {
+    "@tanstack/vue-query": "^5.83.1",
     "chart.js": "^4.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
     "lucide-vue-next": "^0.525.0",
     "pinia": "^3.0.3",
     "pinia-plugin-persistedstate": "^4.4.1",
+    "pulltorefreshjs": "^0.1.22",
+    "router": "^2.2.0",
     "tailwind-scrollbar-hide": "^4.0.0",
     "vue": "^3.5.17",
     "vue-chartjs": "^5.3.2",
@@ -26,6 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.15",
+    "@types/pulltorefreshjs": "^0.1.7",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/compiler-sfc": "^3.5.17",
     "@vue/tsconfig": "^0.7.0",

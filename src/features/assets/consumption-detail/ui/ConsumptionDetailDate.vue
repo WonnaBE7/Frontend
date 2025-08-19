@@ -1,34 +1,25 @@
 <template>
-    <div class="space-y-6">
-        <Typography type="B_18_120" class="mb-4">
-            {{date}} 거래 내역
-        </Typography>
-  
-      <ConsumptionDetailBar
-        :category="type"
-        :transactions="data.transactions"
-      />
-    </div>
-  </template>
-  
-  <script setup lang="ts">
+  <div class="space-y-3 sm:space-y-5">
+    <ConsumptionDetailBar
+      v-if="data"
+      :category="type"
+      :transactions="data.transactions"
+    />
+  </div>
+</template>
+
+<script setup lang="ts">
   import { computed } from 'vue'
-  import Typography from '@/shared/ui/atoms/Typography.vue'
   import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
-  import {
-    mockCurrentDateTransactions,
-    mockTodayTransactions,
-  } from '@/entities/assets/consumption/consumption.mock'
-  import type { ConsumptionDateSummary } from '@/entities/assets/consumption/consumption.entity'
-  import { formatDateLabel } from '@/shared/utils/formatDateLabel.ts'
-  
+  import type { MonthlyTransactionDetail, TodayTransactionDetail } from '@/entities/consumption/consumption.entity'
+  import { useTransactionDetailStore } from '@/entities/consumption/consumption.store'
+
   const props = defineProps<{ type: 'current' | 'today' }>()
-  
-  const mockMap: Record<'current' | 'today', ConsumptionDateSummary> = {
-    current: mockCurrentDateTransactions,
-    today: mockTodayTransactions,
-  }
-  
-  const data = computed(() => mockMap[props.type])
-  const date = computed(() => formatDateLabel(data.value.date))
-  </script>
+  const store = useTransactionDetailStore()
+
+  const data = computed<MonthlyTransactionDetail | TodayTransactionDetail | null>(() => {
+    return props.type === 'today'
+      ? store.todayTransactionDetail
+      : store.monthlyTransactionDetail
+  })
+</script>

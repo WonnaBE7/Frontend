@@ -20,8 +20,9 @@ export interface InsuranceProduct {
   coverage: string
 }
 
+// 보유 상품 3가지 모음
 export interface CurrentProductsResponse {
-  deposits: {
+  savings: {
     count: number
     products: DepositProduct[]
   }
@@ -37,84 +38,104 @@ export interface CurrentProductsResponse {
 
 // 상품 상세 조회 (현재 보유상품용)
 export interface MonthlyChartItem {
-  month: string              // "YYYY-MM" 형식
+  month: string             
   percentage: number
 }
 
+// 공통
+export interface MonthlyPercentItem {
+  month: string;      // "YYYY-MM" 또는 "8월"
+  percentage: number; // 0~100
+}
+export interface MonthlyAmountItem {
+  month: string;      // "YYYY-MM" 또는 "8월"
+  amount: number;     // 원 단위
+}
+
+// 예적금
 export interface SavingsDetailResponse {
-  productId: string
-  productName: string
-  bankName: string
-  category: string
-  startDate: string          // "YYYY-MM" 형식
-  maturityDate: string       // "YYYY-MM" 형식
-  term: string
-  total_term: string
-  currentAmount: string
-  rate: string
-  beforeInterest: string
-  achievementRate: string
-  monthlyChart: MonthlyChartItem[]
+  productId: string;
+  productName: string;
+  bankName: string;
+  productType: 'savings' | '예금' | '적금'; // 서버 표준화되면 'savings'만
+  startDate: string;    
+  maturityDate: string; 
+  term: string;         
+  currentAmount: number;
+  baseRate: number;     
+  achievementRate: number; // 0~100
+  monthlyChart: MonthlyPercentItem[];
 }
 
+// 보험
 export interface InsuranceDetailResponse {
-  productId: string
-  insuranceName: string
-  insuranceCompany: string
-  startDate: string          // "YYYY-MM" 형식
-  maturityDate: string       // "YYYY-MM" 형식
-  term: string
-  currentAmount: string
-  getAmount: string
-  achievementRate: string
-  monthlyChart: MonthlyChartItem[]
+  productId: string;
+  insuranceName: string;
+  insuranceCompany: string;
+  startDate: string;
+  maturityDate: string;
+  term: string;
+  currentAmount: string; 
+  getAmount: string;    
+  achievementRate: number;
+  monthlyChart: MonthlyAmountItem[];
 }
 
+// 카드
 export interface MonthlyConsumption {
-  month: string              // "YYYY-MM" 형식
-  amount: number
+  month: string;
+  amount: number;
 }
-
 export interface CardDetailResponse {
-  cardId: string
-  cardName: string
-  cardCompany: string
-  startDate: string          // "YYYY-MM" 형식
-  expiryDate: string         // "YYYY-MM" 형식
-  term: string
-  currentAmount: number
-  performanceRate: number
-  monthlyConsumptions: MonthlyConsumption[]
+  cardId: string;
+  cardName: string;
+  cardCompany: string;
+  startDate: string;
+  expiryDate: string;
+  term: string;
+  currentAmount: number;
+  performanceRate: number; // 0~100
+  monthlyConsumptions: MonthlyConsumption[];
 }
 
 // 추천 상품 조회
 export interface RecommendedSavingsProduct {
-  productType?: 'savings'    // 첫 번째 상품만 있을 수 있음
+  productType: 'savings'
   productId: string
   productName: string
   bankName: string
-  type: string
-  interestRate: number
-  matchScore: number
+  baseRate: number
+  maxRate: number
+  score: number
 }
 
 export interface SavingsRecommendationResponse {
-  totalProducts: number
-  products: RecommendedSavingsProduct[]
+  userId: string
+  recommendationsByPersona: {
+    personaId: number
+    personaName: string
+    products: RecommendedSavingsProduct[]
+  }[]
 }
 
 export interface RecommendedInsuranceProduct {
+  productType: 'insurance'
   productId: string
-  insuranceName: string
-  insuranceCompany: string
-  matchScore: number
-  mainCoverage: string
-  monthlyPremium: number
+  productName: string
+  providerName: string
+  myMoney: string
+  coverageLimit:string
+  note: string
+  score:number
 }
 
 export interface InsuranceRecommendationResponse {
-  totalProducts: number
-  products: RecommendedInsuranceProduct[]
+  userId: string
+  recommendationsByPersona: {
+    personaId: number
+    personaName: string
+    products: RecommendedInsuranceProduct[]
+  }[]
 }
 
 export interface RecommendedCardProduct {
@@ -122,54 +143,29 @@ export interface RecommendedCardProduct {
   cardId: string
   cardName: string
   cardCompany: string
-  cardType: string
-  matchScore: number
+  cardType: string 
+  score: number
   mainBenefit: string
-  annualFeeDomestic: number
-  annualFeeOverSeas: number
+  annualFeeDomestic: string
+  annualFeeOverSeas: string
 }
 
 export interface CardRecommendationResponse {
-  totalProducts: number
-  products: RecommendedCardProduct[]
+  userId: string
+  recommendationsByPersona: {
+    personaId: number
+    personaName: string
+    products: RecommendedCardProduct[]
+  }[]
 }
+export type WishlistProduct = RecommendedSavingsProduct | RecommendedCardProduct | RecommendedInsuranceProduct
 
 // 관심상품 목록
-export interface WishlistSavingsProduct {
-  productType: 'savings'
-  productId: string
-  productName: string
-  bankName: string
-  interestRate: number
-  matchScore: number
-}
-
-export interface WishlistCardProduct {
-  productType: 'card'
-  cardId: string
-  cardName: string
-  cardCompany: string
-  cardType: string
-  matchScore: number
-  mainBenefit: string
-  annualFee: number
-}
-
-export interface WishlistInsuranceProduct {
-  productType: 'insurance'
-  productId: string
-  insuranceName: string
-  insuranceCompany: string
-  matchScore: number
-  mainCoverage: string
-  monthlyPremium: number
-}
-
-export type WishlistProduct = WishlistSavingsProduct | WishlistCardProduct | WishlistInsuranceProduct
-
 export interface WishlistResponse {
   totalCount: number
-  products: WishlistProduct[]
+  savings:RecommendedSavingsProduct[]
+  cards:RecommendedCardProduct[]
+  insurances:RecommendedInsuranceProduct[]
 }
 
 // 관심상품 추가/제거
@@ -192,91 +188,83 @@ export interface WishlistActionResponse {
 export interface SavingsApplicationRequest {
   productType: 'savings'
   productId: string
-  accountAlias: string
-  monthlyDeposit: number
-  savingPeriod: number
-  transferDate: number
+  productName: string
+
+  amount:string 
+  payment: string
+  joinPeriod:string
 }
 
 export interface InsuranceApplicationRequest {
   productType: 'insurance'
-  productId: string
-  name: string
-  birthDate: string          // "YYYY-MM-DD" 형식
-  gender: 'M' | 'F'
-  phone: string
-  transferDate: number
+  insuranceId: string
 }
 
 export interface CardApplicationRequest {
   productType: 'card'
   cardId: string
   cardType: string
-  linkedAccount: string
+  linkedAccount: string 
 }
 
 // 상품 상세보기 페이지 공통
 export interface ComparisonChart {
-  labels: string[]
-  currentUserData: number[]
+  compareId : number
+  compareName: string
   recommendedProductData: number[]
 }
 
-export interface MainFeature {
-  title: string
-  items: string[]
-}
 
 // 예적금 상세보기 페이지
 export interface SavingsProductInfo {
   productId: string
   productName: string
   bankName: string
-  matchScore: number
-  mainBenefit: string
-  interestRate: string
-  description: string
+  score: number
+  interestRate:string,
+  maxInterestRate: string
+  benefitSummary: string
+  wished : boolean
+  labels : string[]
+  currentUserData : number[]
 }
 
-export interface SavingsTermsAndConditions {
-  joinConditions: string
-  requiredDocuments: string
-  specialNotes: string[]
+export interface MainFeature {
+  maxJoinPeroid : string
+  title: string
+  content: string[]
 }
 
 export interface SavingsDetailPageResponse {
   productInfo: SavingsProductInfo
-  comparisonChart: ComparisonChart
-  mainFeatures: MainFeature[]
-  termsAndConditions: SavingsTermsAndConditions
+  comparisonChart: ComparisonChart[]
+  maturityInfo: MainFeature
 }
 
 // 카드 상세보기 페이지 (보험상품 상세 조회에서 나온 데이터)
 export interface CardProductInfo {
-  cardId: string          // 오타로 보이는 필드
+  cardId: string          
   cardName: string
   cardCompany: string
-  matchScore: number
+  cardType:string
+  score: number
   mainBenefit: string
   benefitSummary: string
-}
-
-export interface CardTermsAndConditions {
-  annualFee?: string
-  previousPerformance?: string
-  specialNotes?: string[]
+  isWished : boolean
+  labels : string[]
+  currentUserData : number[]
 }
 
 export interface CardNote {
   category: string
-  previousMonthSpendig: string 
+  previousMonthSpending: string 
   usage: string
   annualFee: string
 }
 
 export interface CardDetailPageResponse {
-  productInfo: CardProductInfo
-  comparisonChart: ComparisonChart
+  cardInfo: CardProductInfo
+  comparisonChart: ComparisonChart[]
   note: CardNote
 }
 
@@ -284,22 +272,36 @@ export interface CardDetailPageResponse {
 export interface InsuranceProductInfo {
   productId: string
   productName: string
-  productCompany: string
-  matchScore: number
-  mainBenefit: string
-  benefitRate: string
-  description: string
+  providerName: string
+  score: number
+  coverageType:string
+  coverageLimit:string
+  deductible:string
+  averagePremium:string
+  wished : boolean
+  labels : string[]
+  currentUserData : number[]
+}
+export interface MaturityInfo{
+  coverageDesc:string,
+  note:string,
 }
 
 export interface InsurancesDetailPageResponse {
   productInfo: InsuranceProductInfo
-  comparisonChart: ComparisonChart
-  mainFeatures: MainFeature[]
-  termsAndConditions: InsurancesTermsAndConditions
+  comparisonChart: ComparisonChart[]
+  maturityInfo: MaturityInfo
 }
 
 export interface InsurancesTermsAndConditions {
   annualFee: string
   previousPerformance: string
   specialNotes: string[]
+}
+
+export interface CommonChartData{
+  name: string
+  labels: string[]
+  currentUserData: number[]
+  comparisonCharts:ComparisonChart[]
 }
