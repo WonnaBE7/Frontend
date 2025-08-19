@@ -75,7 +75,7 @@
   
   const truncatedName = computed(() => {
     const name = props.title
-    return name.length > 10 ? name.slice(0, 9) + '...' : name
+    return name.length > 12 ? name.slice(0, 9) + '...' : name
   })
   const route = useRoute()
   const isMyPost = computed(() => route.path.includes('/board/write'))
