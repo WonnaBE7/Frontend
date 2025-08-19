@@ -18,6 +18,7 @@ export const mockUserNowmeHistory: UserHistoryResponse[] = [
   { diagnosedDate: '2025-03-01', typeName: '자린고비형', score: 91 },
   { diagnosedDate: '2025-04-01', typeName: '균형 성장형', score: 74 },
   { diagnosedDate: '2025-07-01', typeName: '균형 성장형', score: 79 },
+  { diagnosedDate: '2025-08-01', typeName: '공격 투자형', score: 79 },
 ]
 
 export const mockUserSurveyData: UserSurveyData={
