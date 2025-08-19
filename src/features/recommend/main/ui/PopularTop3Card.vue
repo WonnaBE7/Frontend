@@ -4,18 +4,24 @@
       <ul class="w-full space-y-4">
         <li
           v-if="items"
-          v-for="item in items"
+           v-for="(item, index) in items"
           :key="item.productName"
           class="flex justify-between items-center text-sm"
         >
-          <div class="flex items-start gap-2 justify-center">
-            <Typography type="B_14_120" class="text-gray-900">{{ item.productId}}</Typography>
+        <div class="flex items-center gap-4 justify-start">
+            <div class="flex items-center justify-center w-6 h-6 rounded-full bg-gray-150">
+              {{ index + 1 }}
+            </div>
             <div>
-              <Typography type="B_14_120" class="text-gray-900 mb-2">{{ item.productName }}</Typography>
-              <Typography type="M_12_120" class="text-gray-500"> - {{ item.description }}</Typography>
+              <Typography type="B_14_120" class="text-gray-900 mb-2">
+                {{ item.productName }}
+              </Typography>
+              <Typography type="M_12_120" class="text-gray-500">
+                - {{ item.description }}
+              </Typography>
             </div>
           </div>
-          <NoBorderTag color="bg-gray-BGDim">
+          <NoBorderTag color="bg-gray-150">
             {{ productTypeLabelMap[item.type] }}
           </NoBorderTag>
         </li>
