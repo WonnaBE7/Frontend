@@ -14,6 +14,12 @@ export interface UserHistoryResponse{
   score:number
 }
 
+export interface UserHistoryResponseData{
+  isSuccess : boolean,
+  response : UserHistoryResponse[]
+}
+
+
 export interface UserSurveyData{
     lifestyleSmoking: number,
     lifestyleAlcoholFreq: number,

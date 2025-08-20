@@ -28,6 +28,7 @@
         class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-40"
        > 
         <AgreeMentBox
+          class="w-4/5"
           v-model:checked="checked"
           :modal="true"
           @close="showModal = false"

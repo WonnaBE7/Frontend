@@ -4,7 +4,7 @@
       modal ?'fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center h-full' : 'w-full'
     ]"
   >
-    <Card class="bg-gradient-to-br from-sub-orange-p to-sub-yellow-p text-white rounded-xl p-6 text-center relative">
+    <Card class="bg-gradient-to-br from-main-yellow-s to-kb-yellow text-white rounded-xl p-6 text-center relative">
       <button
         v-if="modal"
         class="absolute top-2 right-4 text-white text-xl"

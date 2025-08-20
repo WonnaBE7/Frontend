@@ -30,7 +30,10 @@
                 {{ tx.transactionTime }}
               </Typography>
             </div>
-            <Typography type="B_16_120">
+            <Typography 
+              type="B_16_120"
+              :class="tx.amount < 0 ? 'text-sub-red-p' : 'text-sub-aqua-p'"
+            >
               {{ formatAmount(tx.amount) }}원
             </Typography>
           </div>

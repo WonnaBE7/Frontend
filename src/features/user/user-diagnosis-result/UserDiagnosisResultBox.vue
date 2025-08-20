@@ -7,7 +7,7 @@
         :label="result?.personaName ?? '-'"
         :descript="descript?.description ?? ''"
       />
-      <div class="w-1/2 bg-gradient-to-br from-sub-orange-p to-sub-yellow-p rounded-3xl px-4 py-2 mt-3 flex items-center justify-center">
+      <div class="w-1/2 bg-gradient-to-br from-main-yellow-s to-kb-yellow rounded-3xl px-4 py-2 mt-3 flex items-center justify-center">
         <Typography type="B_16_120" class="text-white">
           유사도 {{ similarityText }}
         </Typography>

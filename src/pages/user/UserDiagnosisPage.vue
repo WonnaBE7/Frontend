@@ -39,7 +39,7 @@ import { useUserProfileStore } from '@/entities/user/user.store';
 const router = useRouter()
 
 function goSurVey(){
-    router.push('/user/diagnosis/result')
+    router.push('/user/survey')
 }
 
 const userStore = useUserProfileStore()

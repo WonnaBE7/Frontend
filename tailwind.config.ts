@@ -75,6 +75,11 @@ export default {
           BG : '#FDFDFD',
           BGDim:'#FAFAFA' 
         },
+        main:{
+          yellow:{
+            s: '#FF7A00'
+          }
+        },
         kb:{
           yellow : '#FAB806',
           orange : '#F8A809',

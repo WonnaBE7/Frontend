@@ -1,7 +1,7 @@
 <template>
     <Card @click="goToPost" class="!mb-0 mt-4">
       <div class="w-full flex flex-row justify-between mb-4">
-        <Typography type="B_14_140">{{ title }}</Typography>
+        <Typography type="B_14_140">{{ truncatedName }}</Typography>
         <Trash2Icon
           v-if="isMyPost"
           class="w-5 h-5 sm:w-7 sm:h-7 text-gray-900 cursor-pointer hover:text-sub-red-p transition"
@@ -73,6 +73,10 @@
     createdAt:string
   }>()
   
+  const truncatedName = computed(() => {
+    const name = props.title
+    return name.length > 12 ? name.slice(0, 9) + '...' : name
+  })
   const route = useRoute()
   const isMyPost = computed(() => route.path.includes('/board/write'))
   const router = useRouter()
@@ -104,12 +108,12 @@
   }
 
   const handleDelete = async () =>{
-    const confirmed = confirm('정말로 이 게시글을 삭제하시겠습니까?')
-    if (!confirmed) return
+    // const confirmed = confirm('정말로 이 게시글을 삭제하시겠습니까?')
+    // if (!confirmed) return
 
     const res = await deleteBoard(props.categoryId, props.boardId)
     if (res.code === 200) {
-      alert('삭제되었습니다.')
+      // alert('삭제되었습니다.')
       const store = usePostPreviewStore()
       await store.fetchUserWrited()
     } else {
