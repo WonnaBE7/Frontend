@@ -1,6 +1,6 @@
 import { useAssetsMain } from "@/entities/assets/assets.store"
 import { usePostPreviewStore } from "@/entities/board/board.store"
-import { useConsumptionMain} from "@/entities/consumption/consumption.store"
+import { useConsumptionMain} from "@/entities/assets/consumption/consumption.store"
 import { useGoalStore } from "@/entities/goal/goal.store"
 import { useUserProfileStore } from "@/entities/user/user.store"
 

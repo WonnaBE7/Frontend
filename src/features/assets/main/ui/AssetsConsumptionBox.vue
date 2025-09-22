@@ -18,7 +18,7 @@
   import { Wallet, ChevronRight } from 'lucide-vue-next'
   import IconLabel from '@/shared/ui/atoms/IconLabel.vue'
   import { useAssetsMain, useAssetTabStore } from '@/entities/assets/assets.store'
-  import { useConsumptionMain } from '@/entities/consumption/consumption.store'
+  import { useConsumptionMain } from '@/entities/assets/consumption/consumption.store'
 import { useRouter } from 'vue-router'
 
   const assetsData = useAssetsMain()

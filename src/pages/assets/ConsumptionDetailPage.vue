@@ -15,7 +15,7 @@ import { useRoute } from 'vue-router'
 import AppLayout from '@/shared/layout/AppLayout.vue'
 import ConsumptionDetailCategory from '@/features/assets/consumption-detail/ui/ConsumptionDetailCategory.vue'
 import ConsumptionDetailDate from '@/features/assets/consumption-detail/ui/ConsumptionDetailDate.vue'
-import { useTransactionCategoryDetailStore, useTransactionDetailStore, type ConsumptionCategoryKey } from '@/entities/consumption/consumption.store'
+import { useTransactionCategoryDetailStore, useTransactionDetailStore, type ConsumptionCategoryKey } from '@/entities/assets/consumption/consumption.store'
 import { getCodefAssets } from '@/entities/assets/assets.api'
 
 const consumptionCategoryStoore = useTransactionCategoryDetailStore()

@@ -3,7 +3,7 @@ import type { RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } fro
 import BoardCategoryDetailPage from '@/pages/board/BoardCategoryDetailPage.vue'
 import { finTypeIcons } from '@/shared/constants/finTypes.constants'
 import dayjs from 'dayjs'
-import { useConsumptionStore } from '@/entities/consumption/consumption.store'
+import { useConsumptionStore } from '@/entities/assets/consumption/consumption.store'
 
 const routes: RouteRecordRaw[] = [
   {

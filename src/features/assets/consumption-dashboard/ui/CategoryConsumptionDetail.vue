@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useConsumptionStore } from '@/entities/consumption/consumption.store'
+  import { useConsumptionStore } from '@/entities/assets/consumption/consumption.store'
   import { colorMap, categoryLabelMap } from '@/entities/assets/assets.constants'
   import Typography from '@/shared/ui/atoms/Typography.vue'
   import Card from '@/shared/ui/atoms/Card.vue'

@@ -37,7 +37,7 @@
   import Typography from '@/shared/ui/atoms/Typography.vue'
   import { Utensils, Bus, Wallet, CircleDollarSign, CalendarCheck } from 'lucide-vue-next'
 
-  import type { ConsumptionCategory, ConsumptionTransaction } from '@/entities/consumption/consumption.entity'
+  import type { ConsumptionCategory, ConsumptionTransaction } from '@/entities/assets/consumption/consumption.entity'
 
   type BarCategory = ConsumptionCategory | 'today' | 'current'
 

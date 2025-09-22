@@ -14,7 +14,7 @@
   import { categoryLabelMap } from '@/entities/assets/assets.constants'
   import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
   import Typography from '@/shared/ui/atoms/Typography.vue'
-  import { useTransactionCategoryDetailStore, type ConsumptionCategoryKey } from '@/entities/consumption/consumption.store';
+  import { useTransactionCategoryDetailStore, type ConsumptionCategoryKey } from '@/entities/assets/consumption/consumption.store';
 
   const props = defineProps<{
     category: ConsumptionCategoryKey

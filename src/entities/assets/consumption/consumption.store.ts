@@ -14,7 +14,7 @@ import type {
   ConsumptionCategoryDetail,
   EstimatedCategoryConsumption,
   EstimatedConsumptionCategoryItem,
-} from '@/entities/consumption/consumption.entity'
+} from '@/entities/assets/consumption/consumption.entity'
 
 import {
   getMonthlyConsumptionSummary,
@@ -22,9 +22,9 @@ import {
   getMonthlyCategoryConsumption,
   getTodayCategoryConsumption,
   getEstimatedCategoryConsumption
-} from '@/entities/consumption/comsumption.api.ts'
+} from '@/entities/assets/consumption/comsumption.api.ts'
 import { getConsumption } from './comsumption.api'
-import { getMonthlyCategoryDetail, getMonthlyTransactionDetail, getTodayCategoryDetail, getTodayTransactionDetail } from '@/entities/consumption/comsumption.api'
+import { getMonthlyCategoryDetail, getMonthlyTransactionDetail, getTodayCategoryDetail, getTodayTransactionDetail } from '@/entities/assets/consumption/comsumption.api'
 
 export type TabType = 'current' | 'estimated' | 'today'
 

@@ -11,8 +11,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import ConsumptionDetailBar from './ConsumptionDetailBar.vue'
-  import type { MonthlyTransactionDetail, TodayTransactionDetail } from '@/entities/consumption/consumption.entity'
-  import { useTransactionDetailStore } from '@/entities/consumption/consumption.store'
+  import type { MonthlyTransactionDetail, TodayTransactionDetail } from '@/entities/assets/consumption/consumption.entity'
+  import { useTransactionDetailStore } from '@/entities/assets/consumption/consumption.store'
 
   const props = defineProps<{ type: 'current' | 'today' }>()
   const store = useTransactionDetailStore()

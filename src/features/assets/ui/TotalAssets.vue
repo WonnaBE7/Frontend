@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-  import type { ConsumptionSummaryMeta } from '@/entities/consumption/consumption.entity'
+  import type { ConsumptionSummaryMeta } from '@/entities/assets/consumption/consumption.entity'
   import type { AssetSummaryMeta } from '@/entities/assets/assets.entity'
   import Card from '@/shared/ui/atoms/Card.vue'
   import Typography from '@/shared/ui/atoms/Typography.vue'

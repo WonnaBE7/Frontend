@@ -1,5 +1,5 @@
 import { useAssetsCategoryRatio, useAssetsDetail, useAssetsMain } from "@/entities/assets/assets.store"
-import { useConsumptionMain, useConsumptionStore, useTransactionDetailStore  } from "@/entities/consumption/consumption.store"
+import { useConsumptionMain, useConsumptionStore, useTransactionDetailStore  } from "@/entities/assets/consumption/consumption.store"
 import { useUserProfileStore } from "@/entities/user/user.store"
 
 
