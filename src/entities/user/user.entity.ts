@@ -33,3 +33,14 @@ export interface UserSurveyData{
     householdSize: number,
     incomeJobType: string
 }
+
+
+export interface DiagnosisResult {
+  success: boolean
+  personaName: string
+  activityScore: number
+  spendingScore: number
+  planningScore: number
+  riskScore: number
+  similarity: number
+}

@@ -66,11 +66,27 @@ watch(checked, (newVal) => {
 })
 
 const handleLogin = async () => {
+  // MOCK 모드일 때는 바로 홈으로 이동
+  if (import.meta.env.VITE_USE_MOCK === 'true') {
+    console.log('MOCK 모드: 자동 로그인')
+    await authStore.login('mock-token', {
+      userId: '9e423205-426c-442e-96a6-170a27ad3f8d',
+      name: '김금용',
+      email: 'kim@example.com'
+    })
+
+    showSplash.value = true
+    setTimeout(() => {
+      router.push('/')
+    }, 2000)
+    return
+  }
+
   const res = await userLogin({ email: email.value, password: password.value })
   if(res.code === 200){
     const { accessToken, user } = res.data
     authStore.login(accessToken, user)
-    
+
     showSplash.value = true
 
     // 5초 후에 메인 페이지 이동

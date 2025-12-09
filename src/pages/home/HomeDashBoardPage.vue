@@ -23,9 +23,9 @@ const router = useRouter()
 const authStore = useAuthStore()
 
 onMounted(async() => {
-  if (!authStore.accessToken) {
-    router.push('/user/login')
-  }
+  // if (!authStore.accessToken) {
+  //   router.push('/user/login')
+  // }
   await getCodefAssets()
   await initMainData()
 })

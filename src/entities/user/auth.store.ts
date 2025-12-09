@@ -71,7 +71,11 @@ export const useAuthStore = defineStore('auth', {
       this.startAutoRefresh()
 
       const userProfileStore = useUserProfileStore()
-      await userProfileStore.fetchUserProfile()
+      try {
+        await userProfileStore.fetchUserProfile()
+      } catch (error) {
+        console.warn('프로필 로드 실패, mock 데이터 사용 가능', error)
+      }
     },
 
     logout() {

@@ -8,13 +8,19 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 
 export const getCommunity = async () => {
-    const res = await fetcher<CommunityList>({
-        url: `${BASE_URL}/api/community/list`,
-        method: 'GET',
-        auth: true
-    })
-    console.log('게시판 목록 조회 : ', res.data)
-    return res.data
+    try {
+        const res = await fetcher<CommunityList>({
+            url: `${BASE_URL}/api/community/list`,
+            method: 'GET',
+            auth: true
+        })
+        console.log('게시판 목록 조회 : ', res.data)
+        return res.data
+    } catch {
+        return {
+            communities: mockCommunities
+        }
+    }
 };
 
 export const getCommunityTop3 = async () => {

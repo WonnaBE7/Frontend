@@ -1,18 +1,44 @@
 import { defineStore } from 'pinia'
-import type { UserProfile, UserSurveyData } from './user.entity'
+import type { UserProfile, UserSurveyData, DiagnosisResult } from './user.entity'
 import { financialTendencyList } from '@/shared/constants/finTypes.constants'
 import { getUserSurveyData } from '@/features/user/user-survey/service/user-survey.service'
 import { getUserProfileData } from './user.api'
 
+// MOCK 모드일 때 사용할 초기 프로필
+const getInitialProfile = (): UserProfile | null => {
+  if (import.meta.env.VITE_USE_MOCK === 'true') {
+    return {
+      userId: "9e423205-426c-442e-96a6-170a27ad3f8d",
+      name: '김금용',
+      email: 'kim@example.com',
+      nowME: '자린고비형',
+      wonnaBE: ['자린고비형', '균형 성장형', '새싹 투자형'],
+      job: '사무직',
+      monthlyIncome: 3200000,
+    }
+  }
+  return null
+}
+
 export const useUserProfileStore = defineStore('userProfile', {
-  state: () => ({
-    profile: null as UserProfile | null,
-    selectedFinType: {
-      id: null as number | null,
-      name: ''
-    },
-    userSurvey: null as UserSurveyData | null
-  }),
+  state: () => {
+    const initialProfile = getInitialProfile()
+    const firstFinTypeName = initialProfile?.wonnaBE?.[0]
+    let selectedFinType = { id: null as number | null, name: '' }
+
+    if (firstFinTypeName) {
+      const match = financialTendencyList.find(item => item.name === firstFinTypeName)
+      if (match) {
+        selectedFinType = { id: match.id, name: match.name }
+      }
+    }
+
+    return {
+      profile: initialProfile,
+      selectedFinType,
+      userSurvey: null as UserSurveyData | null
+    }
+  },
 
   actions: {
     async fetchUserProfile() {
@@ -40,15 +66,7 @@ export const useUserProfileStore = defineStore('userProfile', {
   }
 })
 
-export interface DiagnosisResult {
-  success: boolean
-  personaName: string
-  activityScore: number
-  spendingScore: number
-  planningScore: number
-  riskScore: number
-  similarity: number
-}
+
 
 const KEY = 'diagnosis:result'
 

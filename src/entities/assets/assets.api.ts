@@ -4,6 +4,7 @@ import { mockAccountDetail, mockAssetCategoryDetailResponse, mockAssetCategoryRa
 
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
+const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true'
 
 export const getCodefAssets = async () => {
     const res = await fetcher({
@@ -16,15 +17,21 @@ export const getCodefAssets = async () => {
 }
 
 export const getAssets = async () => {
+    if (USE_MOCK) {
+        console.log('MOCK 모드: 자산 데이터 mock 사용')
+        return mockAssetSummaryMeta
+    }
+
     try{
         const res = await fetcher<AssetSummaryMeta>({
             url: `${BASE_URL}/api/assets/main/overview`,
             method: 'GET',
             auth: true
         })
-    
+
         return res.data
     }catch{
+        console.log('API 실패: 자산 데이터 mock 사용')
         return mockAssetSummaryMeta
     }
 }

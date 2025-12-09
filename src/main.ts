@@ -29,18 +29,49 @@ async function initApp(): Promise<void> {
     authStore.$subscribe((_mutation, state) => {
       // 현재 라우트가 로그인 페이지가 아닐 때만 리다이렉트
       if (!state.accessToken && router.currentRoute.value.path !== '/user/login') {
-        router.push('/user/login')
+        // 개발 환경에서는 mock 사용자 로그인
+        if (import.meta.env.DEV) {
+          console.log('개발 환경: mock 사용자로 로그인')
+          authStore.login('mock-token', {
+            userId: '9e423205-426c-442e-96a6-170a27ad3f8d',
+            name: '김금용',
+            email: 'kim@example.com'
+          })
+        } else {
+          router.push('/user/login')
+        }
       }
     })
 
     // 초기 인증 상태 확인
     if (!authStore.accessToken && router.currentRoute.value.path !== '/user/login') {
-      router.push('/user/login')
+      // 개발 환경에서는 mock 사용자로 로그인
+      if (import.meta.env.DEV) {
+        console.log('개발 환경: mock 사용자로 로그인')
+        await authStore.login('mock-token', {
+          userId: '9e423205-426c-442e-96a6-170a27ad3f8d',
+          name: '김금용',
+          email: 'kim@example.com'
+        })
+      } else {
+        router.push('/user/login')
+      }
     }
   } catch (error) {
     console.error('Auth initialization failed:', error)
-    // 인증 실패 시 로그인 페이지로
-    router.push('/user/login')
+    // 개발 환경에서는 mock 사용자로 로그인
+    if (import.meta.env.DEV) {
+      console.log('개발 환경: mock 사용자로 로그인')
+      const authStore = useAuthStore()
+      await authStore.login('mock-token', {
+        userId: '9e423205-426c-442e-96a6-170a27ad3f8d',
+        name: '김금용',
+        email: 'kim@example.com'
+      })
+    } else {
+      // 인증 실패 시 로그인 페이지로
+      router.push('/user/login')
+    }
   }
 }
 
